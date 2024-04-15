@@ -17,6 +17,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.use('/', require('./routes/authRouters'));
 app.use('/', require('./routes/timetableRouter'));
+app.use('/', require('./routes/noticeRouter'));
 
 
 const port = 5000;

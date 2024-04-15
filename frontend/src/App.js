@@ -6,6 +6,7 @@ import Portal from './screen/Portal';
 import StudentProfile from './screen/Student/StudentProfile';
 import StudentProfileEdit from './screen/Student/StudentProfieEdit';
 import StudentForgetPassword from './screen/Student/Forgetpasswordstudent';
+import StudentDashboard from './screen/Student/Dashboard';
 import StudentTimetable from './screen/Student/Timetable';
 
 import TeacherLogin from './screen/Teacher/TeacherLogin';
@@ -43,6 +44,7 @@ function App() {
       <Route path="/studentprofile" element={<StudentProfile />} />
       <Route path='/studentprofileedit' element={<StudentProfileEdit/>}/> 
       <Route path='/studentforgetpassword' element={<StudentForgetPassword/>}/>
+      <Route path="/studentdashboard" element={<StudentDashboard />} />
       <Route path="/studenttimetable" element={<StudentTimetable />} />
 
       <Route path="/teacherlogin" element={<TeacherLogin />} />

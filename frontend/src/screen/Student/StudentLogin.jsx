@@ -22,7 +22,7 @@ function StudentLogin() {
         toast.error(data.error);
       }else{
         setData({});
-        navigate('/studentprofile');
+        navigate('/studentdashboard');
       }
     } catch (error) {
       console.log(error);
