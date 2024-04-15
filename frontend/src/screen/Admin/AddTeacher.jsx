@@ -122,7 +122,7 @@ function AddTeacher() {
                         
                     </tr>
                 </table>    
-                <p class='usertxt'>User Profile</p> 
+                <p class='usertxt'>Add Teacher</p> 
                 <div class="line1"></div>  
                 <table>
                     <tr>

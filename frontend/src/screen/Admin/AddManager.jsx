@@ -122,7 +122,7 @@ function AddManager() {
                         
                     </tr>
                 </table>    
-                <p class='usertxt'>User Profile</p> 
+                <p class='usertxt'>Add Manager</p> 
                 <div class="line1"></div>  
                 <table>
                     <tr>

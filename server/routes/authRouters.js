@@ -24,6 +24,8 @@ const { test,
     getAdminProfile,
     getallStudent,
     getallTeacher,
+    deleteStudent,
+    deleteTeacher,
     logout 
 } = require('../controllers/authController');
 
@@ -62,6 +64,8 @@ router.post('/adminforgetpassword', forgotPasswordadmin)
 router.get('/adminprofile', getAdminProfile)
 router.get('/getstudentsadmin', getallStudent)
 router.get('/getteachersadmin', getallTeacher)
+router.delete('/deletestudent/:id', deleteStudent)
+router.delete('/deleteteacher/:id', deleteTeacher)
 
 
 router.get('/logout', logout)

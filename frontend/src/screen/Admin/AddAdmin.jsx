@@ -122,7 +122,7 @@ function AddAdmin() {
                         
                     </tr>
                 </table>    
-                <p class='usertxt'>User Profile</p> 
+                <p class='usertxt'>Add Admin</p> 
                 <div class="line1"></div>  
                 <table>
                     <tr>

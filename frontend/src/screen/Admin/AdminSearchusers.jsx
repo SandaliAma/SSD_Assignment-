@@ -50,6 +50,26 @@ function AdminSearchusers() {
         })
     },[])
 
+    const studentDelete = (id) =>{
+        axios.delete('/deletestudent/'+id)
+        .then((res)=>{
+            window.location.reload();        
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
+
+    const teacherDelete = (id) =>{
+        axios.delete('/deleteteacher/'+id)
+        .then((res)=>{
+            window.location.reload();        
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
+
     const handleDelete = () => {
         axios.get('/logout').then(res => {
             console.log(res);
@@ -161,7 +181,7 @@ function AdminSearchusers() {
                                 <td className='searchtable'>{student.parentname}</td>
                                 <td className='searchtable'>{student.parentphonenumber}</td>
                                 <td className='searchtable'>{student.SecAnswer}</td>
-                                <td><button className='btnedit' type="submit">Delete</button></td>
+                                <td><button className='btnedit' onClick={(e) => studentDelete(student._id)}>Delete</button></td>
                             </tr>
                         ))}
 
@@ -203,7 +223,7 @@ function AdminSearchusers() {
                                 <td className='searchtable'>{teacher.gender}</td>  
                                 <td className='searchtable'>{teacher.subject}</td>                                
                                 <td className='searchtable'>{teacher.SecAnswer}</td>
-                                <td><button className='btnedit' type="submit">Delete</button></td>
+                                <td><button className='btnedit' onClick={(e) => teacherDelete(teacher._id)}>Delete</button></td>
                             </tr>
                         ))}
 

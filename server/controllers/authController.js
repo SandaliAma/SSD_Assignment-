@@ -778,6 +778,22 @@ const getallTeacher = async (req, res) =>{
     .catch(err => res.json(err));
 }
 
+//delete a student
+const deleteStudent = async (req, res) =>{
+    const id = req.params.id;
+    Student.findByIdAndDelete(id)
+    .then(student => res.json(student))
+    .catch(err => res.json(err));
+}
+
+//delete a teacher
+const deleteTeacher = async (req, res) =>{
+    const id = req.params.id;
+    Teacher.findByIdAndDelete(id)
+    .then(teacher => res.json(teacher))
+    .catch(err => res.json(err));
+}
+
 module.exports = {
     test,
     registerStudent,
@@ -802,5 +818,7 @@ module.exports = {
     getAdminProfile,
     getallStudent,
     getallTeacher,
+    deleteStudent,
+    deleteTeacher,
     logout
 }
