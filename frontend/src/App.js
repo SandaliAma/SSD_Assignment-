@@ -24,6 +24,7 @@ import AdminLogin from './screen/Admin/AdminLogin';
 import AdminForgetPassword from './screen/Admin/Forgetpasswordadmin';
 import AdminProfile from './screen/Admin/AdminProfile';
 import AddTeacher from './screen/Admin/AddTeacher';
+import AddManager from './screen/Admin/AddManager';
 
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
@@ -62,6 +63,7 @@ function App() {
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>
       <Route path="/adminprofile" element={<AdminProfile />} />
       <Route path="/addteacher" element={<AddTeacher />} />
+      <Route path="/addmanager" element={<AddManager />} />
             
       
     </Routes>    

@@ -128,7 +128,7 @@ function AdminProfile() {
                             <Link to={'/addteacher'}><button className='btnedit' type="submit">Add Teacher</button> </Link>
                         </td>  
                         <td>          
-                            <Link to={'/addteacher'}><button className='btnedit' type="submit">Add Manager</button> </Link>
+                            <Link to={'/addmanager'}><button className='btnedit' type="submit">Add Manager</button> </Link>
                         </td>  
                         <td>          
                             <Link to={'/addteacher'}><button className='btnedit' type="submit">Add Admin</button> </Link>
