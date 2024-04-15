@@ -12,6 +12,7 @@ import TeacherLogin from './screen/Teacher/TeacherLogin';
 import TeacherProfile from './screen/Teacher/TeacherProfile';
 import TeacherProfileEdit from './screen/Teacher/TeacherProfileEdit';
 import TeacherForgetPassword from './screen/Teacher/Forgetpasswordteacher';
+import TeacherTimetable from './screen/Teacher/Timetable';
 
 import AdminManagerLogin from './screen/AdminManagerLogin';
 import ManagerLogin from './screen/Manager/ManagerLogin';
@@ -36,20 +37,25 @@ function App() {
     <Toaster position='top-center' toastOptions={{duration: 2000}}/>
     <Routes>
       <Route path='/' element={<Portal/>}/>
+
       <Route path="/login" element={ <StudentLogin /> } />
       <Route path="/register" element={ <StudentRegister />} />
       <Route path="/studentprofile" element={<StudentProfile />} />
       <Route path='/studentprofileedit' element={<StudentProfileEdit/>}/> 
       <Route path='/studentforgetpassword' element={<StudentForgetPassword/>}/>
       <Route path="/studenttimetable" element={<StudentTimetable />} />
+
       <Route path="/teacherlogin" element={<TeacherLogin />} />
       <Route path="/teacherprofile" element={<TeacherProfile />} />
       <Route path='/teacherprofileedit' element={<TeacherProfileEdit/>}/>
       <Route path='/teacherforgetpassword' element={<TeacherForgetPassword/>}/>
+      <Route path="/teachertimetable" element={<TeacherTimetable />} />
+
       <Route path="/adminmanagerlogin" element={<AdminManagerLogin />} />
       <Route path="/managerlogin" element={<ManagerLogin />} />
       <Route path='/managerforgetpassword' element={<ManagerForgetPassword/>}/>
       <Route path="/managerprofile" element={<ManagerProfile />} />
+      
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>
       <Route path="/adminprofile" element={<AdminProfile />} />

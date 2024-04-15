@@ -69,7 +69,7 @@ function TeacherProfile() {
                     </li>
                     <li>
                         <img src={time} alt='home' className='navimage'/>
-                        <a href='/login'>TimeTable</a>
+                        <a href='/teachertimetable'>TimeTable</a>
                     </li>
                     <li>
                         <img src={attendance} alt='home' className='navimage'/>
