@@ -764,6 +764,20 @@ const getAdminProfile = async (req, res) =>{
     }        
 }
 
+//view all students
+const getallStudent = async (req, res) =>{
+    Student.find()
+    .then(student => res.json(student))
+    .catch(err => res.json(err));
+}
+
+//view all teachers
+const getallTeacher = async (req, res) =>{
+    Teacher.find()
+    .then(teacher => res.json(teacher))
+    .catch(err => res.json(err));
+}
+
 module.exports = {
     test,
     registerStudent,
@@ -786,5 +800,7 @@ module.exports = {
     loginAdmin,
     forgotPasswordadmin,
     getAdminProfile,
+    getallStudent,
+    getallTeacher,
     logout
 }

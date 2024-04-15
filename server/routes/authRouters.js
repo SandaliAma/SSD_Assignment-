@@ -22,6 +22,8 @@ const { test,
     loginAdmin,
     forgotPasswordadmin,
     getAdminProfile,
+    getallStudent,
+    getallTeacher,
     logout 
 } = require('../controllers/authController');
 
@@ -58,6 +60,9 @@ router.post('/adminregister', registerAdmin)
 router.post('/adminlogin', loginAdmin)
 router.post('/adminforgetpassword', forgotPasswordadmin)
 router.get('/adminprofile', getAdminProfile)
+router.get('/getstudentsadmin', getallStudent)
+router.get('/getteachersadmin', getallTeacher)
+
 
 router.get('/logout', logout)
 

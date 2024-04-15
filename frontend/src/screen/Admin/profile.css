@@ -188,10 +188,18 @@ a:hover{
 }
 
 .searchbarcol{
-    width: 800px;
+    width: 1000px;
     margin-left: 20px;
 }
 
 .updateform{
     margin-left: -90px;
+}
+
+.searchtable{
+    border: 1px solid rgb(7, 0, 102);    
+}
+
+.searchtablemain{
+    width: 100%;
 }

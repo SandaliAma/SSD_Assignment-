@@ -122,7 +122,7 @@ function AdminProfile() {
                             <p class='hellotxt'>{name}<br/>Admin</p>
                         </td>
                         <td>          
-                            <Link to={'/'}><button className='btnedit' type="submit">Search users</button> </Link>
+                            <Link to={'/searchusersadmin'}><button className='btnedit' type="submit">Search users</button> </Link>
                         </td>
                         <td>          
                             <Link to={'/addteacher'}><button className='btnedit' type="submit">Add Teacher</button> </Link>

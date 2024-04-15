@@ -14,7 +14,7 @@ import logout from './navbar_images/Logout.png'
 import logo from './photos/logofull.png'
 import userpng from './photos/User.png'
 import './MyClasses.css';
-import dashboard from './photos/dashboard.jpg';
+import dashboard from './photos/dashboard.png';
 
 
 
@@ -125,7 +125,7 @@ function Dashboard() {
                 </table>
                     <div className="box" >
                     <p>{currentDate}</p>
-                        <h1>WelcomeBack , {name} !</h1>
+                        <h1>Welcome Back , {name} !</h1>
                         <img src={dashboard} alt="Dashboard" className="image" />
                     </div>
                     

@@ -26,6 +26,7 @@ import AdminProfile from './screen/Admin/AdminProfile';
 import AddTeacher from './screen/Admin/AddTeacher';
 import AddManager from './screen/Admin/AddManager';
 import AddAdmin from './screen/Admin/AddAdmin';
+import SearchusersAdmin from './screen/Admin/AdminSearchusers';
 
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
@@ -66,7 +67,7 @@ function App() {
       <Route path="/addteacher" element={<AddTeacher />} />
       <Route path="/addmanager" element={<AddManager />} />
       <Route path="/addadmin" element={<AddAdmin />} />
-            
+      <Route path="/searchusersadmin" element={<SearchusersAdmin />} />            
       
     </Routes>    
     </>
