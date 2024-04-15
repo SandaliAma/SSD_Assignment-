@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './profile.css'
+import './navbar.css'
 import home from './navbar_images/Home.png'
 import classes from './navbar_images/Class.png'
 import enroll from './navbar_images/Enroll.png'
