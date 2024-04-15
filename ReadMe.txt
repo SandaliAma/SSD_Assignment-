@@ -8,7 +8,8 @@ npm install express@^4.19.2
 npm install jsonwebtoken@^9.0.2
 npm install mongoose@^8.3.1
 npm install nodemon@^3.1.0
-
+npm i multer
+npm i react-pdf
 
 Frontend
 
@@ -31,4 +32,6 @@ npm install react-icons@^5.0.1
 npm install react-router-dom@^6.22.3
 npm install react-scripts@^5.0.1
 npm install web-vitals@^2.1.4
+npm i react-to-print
+npm install sweetalert2
 
