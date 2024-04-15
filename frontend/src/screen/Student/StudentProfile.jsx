@@ -59,7 +59,7 @@ function StudentProfile() {
                 <ul className='sidenavbarul'>
                     <li>
                         <img src={home} alt='home' className='navimage'/>
-                        <a href='/login'>Dashboard</a>
+                        <a href='/studentdashboard'>Dashboard</a>
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
