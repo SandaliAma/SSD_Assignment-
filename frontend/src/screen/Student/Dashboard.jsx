@@ -11,6 +11,8 @@ import feedback from './navbar_images/Feedback.png'
 import profile from './navbar_images/Profile.png'
 import wallet from './navbar_images/Wallet.png'
 import logout from './navbar_images/Logout.png'
+import logo from './photos/logofull.png'
+import userpng from './photos/User.png'
 import './MyClasses.css';
 import dashboard from './photos/dashboard.jpg';
 
@@ -106,8 +108,21 @@ function Dashboard() {
                     </li>
                 </ul>
             </div>
-            <div className="container">
+            <div className="container">           
                 <div className="main-content">
+                <table>
+                    <tr>
+                        <td className='tbllogo'>
+                            <img src={logo} alt='logo'/>
+                        </td>
+                        <td>
+                            <p class='hellotxt'><b>Hello, {name}</b><br/>Student</p>
+                        </td>
+                        <td>
+                            <img src={userpng} alt='logo' class='hellopic'/>
+                        </td>
+                    </tr>
+                </table>
                     <div className="box" >
                     <p>{currentDate}</p>
                         <h1>WelcomeBack , {name} !</h1>
