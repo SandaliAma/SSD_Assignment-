@@ -1,6 +1,8 @@
 import './stmain.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Nav from '../NavBar/Nav';
+
 
 function StMain() {
   const navigator = useNavigate();
@@ -41,7 +43,10 @@ function StMain() {
 
 
   return (
+
+    
     <div>
+      <Nav/>
       <Toaster />
       <div className="bodyst">
         <form className="mainst">

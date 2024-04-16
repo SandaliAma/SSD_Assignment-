@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Nav from '../NavBar/Nav';
 
 function StViewBank() {
 
@@ -91,6 +92,7 @@ function StViewBank() {
 
   return (
     <div>
+      <Nav/>
       <Toaster/>
      <div className='bodyvb'>
       <h1 className='h1vb'><br/>My Payments</h1>
@@ -140,7 +142,7 @@ function StViewBank() {
               <td className='tdvb'>{bank.date}</td>
               <td className='tdvb'>{bank.amount}</td>
               <td className='tdvb'>view</td>
-              <td className='tdtv6' style={{ color: bank.status === 'Approved' ? 'green' : bank.status === 'Rejected' ? 'red' : bank.status === 'Pending' ? 'blue' : 'inherit' }}>{bank.status}</td>
+              <td className='tdvb' style={{ color: bank.status === 'Approved' ? 'green' : bank.status === 'Rejected' ? 'red' : bank.status === 'Pending' ? 'blue' : 'inherit' }}>{bank.status}</td>
 
               <td className='tdvb'>
               {bank.status !== 'Approved' && bank.status !== 'Rejected' ? (
