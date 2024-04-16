@@ -38,7 +38,7 @@ function ManagerProfile() {
         })
     },[])
 
-    const handleDelete = () => {
+    const handleDeletetoken = () => {
         axios.get('/logout').then(res => {
             console.log(res);
             window.location.href = '/';
@@ -93,7 +93,7 @@ function ManagerProfile() {
                     <br/><br/><br/><br/>
                     <li className='logoutsq'>
                         <img src={logout} alt='home' className='navimage'/>
-                        <button className='logoutbtn' onClick={handleDelete}>Logout</button>
+                        <button className='logoutbtn' onClick={handleDeletetoken}>Logout</button>
                     </li>
                 </ul>
             </div>
