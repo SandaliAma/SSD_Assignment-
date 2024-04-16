@@ -243,7 +243,7 @@ function MyClasses() {
                         </td>
                     </tr>
                 </table>
-            <div className="class-details">
+            <div className="class_details">
 
               <h2>Class Details</h2>
               <div className="class-info">
@@ -262,7 +262,7 @@ function MyClasses() {
                   <div className="notice-description">{notice.description}</div>
         
                   <Link to={`/editnotice/${notice._id}`} className="edit_button">Edit Notice <FaEdit style={{ marginTop: '5px', marginLeft: '2px', fontSize: '13px' }} /></Link>
-                  <button className="delete-button" onClick={(e) => handleDeleteNotice(notice._id)}>Delete Notice <MdDelete style={{ marginTop: '5px', marginLeft: '2px', fontSize: '13px' }} /> </button>
+                  <button className="delete_button" onClick={(e) => handleDeleteNotice(notice._id)}>Delete Notice <MdDelete style={{ marginTop: '5px', marginLeft: '2px', fontSize: '13px' }} /> </button>
 
                 </div>
               ))}
