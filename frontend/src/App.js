@@ -8,7 +8,19 @@ import StudentProfileEdit from './screen/Student/User_Management/StudentProfieEd
 import StudentForgetPassword from './screen/Student/User_Management/Forgetpasswordstudent';
 import StudentDashboard from './screen/Student/Dashboard';
 import StudentTimetable from './screen/Student/Timetbale_Management/Timetable';
-import LessonMaterial from './screen/Student/Lesson_Management/StMyClasses'
+import LessonMaterial from './screen/Student/Lesson_Management/StMyClasses';
+import PayOnline from './screen/Student/Financial_Management/StPaymentOnline';
+import ViewOnline from './screen/Student/Financial_Management/StViewOnline';
+import PayBank from './screen/Student/Financial_Management/StPaymentBank';
+import ViewBank from './screen/Student/Financial_Management/StViewBank';
+import ViewCash from './screen/Student/Financial_Management/StViewCash';
+import EditOnline from './screen/Student/Financial_Management/StEditOnline';
+import Wallet from './screen/Student/Financial_Management/StWallet';
+import EditBank from './screen/Student/Financial_Management/StEditBank';
+import CancelOnline from './screen/Student/Financial_Management/StCancelOnline';
+import CancelBank from './screen/Student/Financial_Management/StCancelBank';
+import Payment from './screen/Student/Financial_Management/StMain';
+
 
 import TeacherLogin from './screen/Teacher/TeacherLogin';
 import TeacherProfile from './screen/Teacher/TeacherProfile';
@@ -51,6 +63,17 @@ function App() {
       <Route path="/studentdashboard" element={<StudentDashboard />} />
       <Route path="/studenttimetable" element={<StudentTimetable />} />
       <Route path="/lessonmaterial" element={<LessonMaterial />} />
+      <Route path= '/payment' element = {<Payment/>} />
+      <Route path= '/payonline' element = {<PayOnline/>} />
+      <Route path= '/viewonline' element = {<ViewOnline/>} />
+      <Route path= '/paybank' element = {<PayBank/>} />      
+      <Route path= '/viewbank' element = {<ViewBank/>} />
+      <Route path= '/viewcash' element = {<ViewCash/>} />      
+      <Route path= '/editonline/:id' element = {<EditOnline/>} />
+      <Route path= '/Wallet' element = {<Wallet/>} />
+      <Route path= '/editbank/:id' element = {<EditBank/>} />     
+      <Route path= '/cancelonline/:id' element = {<CancelOnline/>} />
+      <Route path= '/cancelbank/:id' element = {<CancelBank/>} /> 
 
       <Route path="/teacherlogin" element={<TeacherLogin />} />
       <Route path="/teacherprofile" element={<TeacherProfile />} />

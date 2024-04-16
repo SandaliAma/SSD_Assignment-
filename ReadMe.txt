@@ -34,4 +34,6 @@ npm install react-scripts@^5.0.1
 npm install web-vitals@^2.1.4
 npm i react-to-print
 npm install sweetalert2
+npm i react-toastify
+npm i react-transition-group
 
