@@ -41,6 +41,12 @@ import AddManager from './screen/Admin/AddManager';
 import AddAdmin from './screen/Admin/AddAdmin';
 import SearchusersAdmin from './screen/Admin/AdminSearchusers';
 
+import MyClassess from './screen/Teacher/Lesson_Management/MyClasses';
+import CreateNotice from './screen/Teacher/Lesson_Management/CreateNotice';
+import EditNotice from './screen/Teacher/Lesson_Management/EditNotice';
+import AddMaterials from './screen/Teacher/Lesson_Management/AddMaterials';
+import EditMaterials from './screen/Teacher/Lesson_Management/EditMaterials';
+
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
 
@@ -92,7 +98,13 @@ function App() {
       <Route path="/addteacher" element={<AddTeacher />} />
       <Route path="/addmanager" element={<AddManager />} />
       <Route path="/addadmin" element={<AddAdmin />} />
-      <Route path="/searchusersadmin" element={<SearchusersAdmin />} />            
+      <Route path="/searchusersadmin" element={<SearchusersAdmin />} />   
+
+      <Route path="/myclasses" element={<MyClassess />} />
+        <Route path="/createnotice" element={<CreateNotice />} />
+        <Route path="/editnotice/:id" element={<EditNotice />} />
+        <Route path="/addmaterial" element={<AddMaterials />} />
+        <Route path="/editmaterial/:id" element={<EditMaterials />} />         
       
     </Routes>    
     </>
