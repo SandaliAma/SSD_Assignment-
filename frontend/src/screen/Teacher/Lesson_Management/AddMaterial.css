@@ -67,6 +67,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     border-radius: 20px;
+    margin-left: 60px;
   }
   
   
@@ -74,26 +75,18 @@
     background-color: #0056b3;
   }
   
-  .cancelbutton {
+  .cancelbutton_AM {
     background-color: #667A8A;
-    transition: background-color 0.3s;
     padding: 10px 80px;
     color: #fff;
     border: none;
-    border-radius: 5px;
     font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
     border-radius: 20px;
     text-decoration: none;
     margin-right: 90px;
     margin-bottom: 10px;
   }
-  
-  .cancelbutton:hover {
-    background-color: #96d9e2;
-  }
-  
+ 
   .adm_container  textarea {
     width: calc(100% - 22px);
     padding: 10px;

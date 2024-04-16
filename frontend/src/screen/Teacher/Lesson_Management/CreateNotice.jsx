@@ -79,7 +79,7 @@ function CreateNotice() {
 
                     <div className="button-group">
                         <button className="addNoticebutton" type="submit">Create</button>
-                        <Link to="/myclasses" className="cancelbutton">Cancel</Link>
+                        <Link to="/myclasses" className="cancelbutton_CN">Cancel</Link>
                     </div>
                 </form>
             </div>

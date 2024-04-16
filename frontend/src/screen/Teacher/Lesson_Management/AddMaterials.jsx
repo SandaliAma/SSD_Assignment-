@@ -128,7 +128,7 @@ function AddMaterials() {
 
           <div className="ad_button_group">
             <button type="submit">Upload</button>
-            <Link to="/myclasses" className="cancelbutton">
+            <Link to="/myclasses" className="cancelbutton_AM">
               Cancel
             </Link>
           </div>
