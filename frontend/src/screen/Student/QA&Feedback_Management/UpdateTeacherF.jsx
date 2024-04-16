@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './TFeedback.css';
-import {Link } from 'react-router-dom';
 import axios from 'axios';
 import {useParams,useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
