@@ -1,11 +1,10 @@
 import React, { useState,useEffect } from 'react';
 import './profile.css'
-import logo from './photos/logofull.png'
 import userpng from './photos/User.png'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
 // import toast from 'react-hot-toast';
 
 function StudentProfieEdit() {
@@ -68,23 +67,11 @@ function StudentProfieEdit() {
 
   return (
     <main>
-        <Nav/>
+        <Head/>
         <div className='profilecontent'>
            
             <div>
-                <table>
-                    <tr>
-                        <td className='tbllogo'>
-                            <img src={logo} alt='logo'/>
-                        </td>
-                        <td>
-                            <p class='hellotxt'><b>Hello, {name}</b><br/>Student</p>
-                        </td>
-                        <td>
-                            <img src={userpng} alt='logo' class='hellopic'/>
-                        </td>
-                    </tr>
-                </table>    
+                
                 <p class='usertxt'>User Profile</p> 
                 <div class="line1"></div>  
                 <table>

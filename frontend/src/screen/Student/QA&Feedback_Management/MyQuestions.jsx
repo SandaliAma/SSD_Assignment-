@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Link } from 'react-router-dom';
 import './MyQuestions.css';
 import axios from 'axios';
+import Head from '../Header/Header';
 
 function MyQuestions() {
 
@@ -24,7 +25,13 @@ function MyQuestions() {
     .catch((err) => console.error(err));
   }
 
+
   return (
+    <div>
+      <Head/>
+      
+                
+   
     <div>
       <label className="heading3">Connect With Your Teachers - My Questions</label>
       <ul style={{ position: 'absolute', left: '344px', top: '220px',  width: '864px', background: '#FFFFFF',  padding: '10px',listStyleType: 'none'}}>
@@ -41,6 +48,7 @@ function MyQuestions() {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   )
 }

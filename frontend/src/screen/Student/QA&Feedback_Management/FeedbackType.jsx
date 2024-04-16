@@ -1,10 +1,12 @@
 import React from 'react';
 import './FeedbackType.css';
 import {Link } from 'react-router-dom';
+import Head from '../Header/Header';
 
 function FeedbackType() {
   return (
     <div>
+       <Head/>
         <text className="heading7">We Want to Hear from You - Add Your Feedbacks</text>
         <h4>Pick Feedback Type</h4>
 
