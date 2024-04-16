@@ -57,7 +57,7 @@ function TeacherProfile() {
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
-                        <a href='/login'>My Classes</a>
+                        <a href='/MyClasses'>My Classes</a>
                     </li>                    
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
