@@ -50,7 +50,7 @@ function TeacherLogin() {
               <input type="password" id="password" name="password" placeholder="Enter your password" class="loginbox" value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
             </div>           
             <a href='/teacherforgetpassword'><p class="forget">Forgot Password?<br/></p></a>          
-            <button type="submit">LOGIN</button>
+            <button type="submit"  className='btnloging'>LOGIN</button>
             <a href='/adminmanagerlogin'><p class="register">Manager/Admin Login</p></a>
           </form>
         </div>

@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const { InstituteNotices } = require('../controllers/noticeController');
+const { InstituteNotices,
+    createInstituteNotices,
+    deleteInstituteNotices
+ } = require('../controllers/InstituenoticeController');
 
 //middleware
 router.use(
@@ -13,6 +16,8 @@ router.use(
 
 
 router.get('/getinstitutenotices', InstituteNotices);
+router.get('/createInstitutenotice', createInstituteNotices);
+router.get('/deleteInotice/:id', deleteInstituteNotices);
 
 
 module.exports = router;

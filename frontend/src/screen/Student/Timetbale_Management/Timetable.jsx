@@ -3,18 +3,18 @@ import axios from 'axios';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
-import home from './navbar_images/Home.png'
-import classes from './navbar_images/Class.png'
-import enroll from './navbar_images/Enroll.png'
-import pay from './navbar_images/Pay.png'
-import time from './navbar_images/Time.png'
-import attendance from './navbar_images/Attendance.png'
-import qa from './navbar_images/Qa.png'
-import feedback from './navbar_images/Feedback.png'
-import profile from './navbar_images/Profile.png'
-import wallet from './navbar_images/Wallet.png'
-import logout from './navbar_images/Logout.png'
-import './navbar.css'
+import home from '../navbar_images/Home.png'
+import classes from '../navbar_images/Class.png'
+import enroll from '../navbar_images/Enroll.png'
+import pay from '../navbar_images/Pay.png'
+import time from '../navbar_images/Time.png'
+import attendance from '../navbar_images/Attendance.png'
+import qa from '../navbar_images/Qa.png'
+import feedback from '../navbar_images/Feedback.png'
+import profile from '../navbar_images/Profile.png'
+import wallet from '../navbar_images/Wallet.png'
+import logout from '../navbar_images/Logout.png'
+import '../navbar.css'
 
 const WeekTimetable = () => {
   const [timetableData, setTimetableData] = useState([]);

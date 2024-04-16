@@ -50,7 +50,7 @@ function Dashboard() {
             .catch(err => console.error(err));
     }, []);
 
-    const handleDelete = () => {
+    const handleDeletetoken = () => {
         axios.get('/logout').then(res => {
             console.log(res);
             window.location.href = '/';
@@ -67,7 +67,7 @@ function Dashboard() {
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
-                        <a href='/login'>My Classes</a>
+                        <a href='/lessonmaterial'>My Classes</a>
                     </li>
                     <li>
                         <img src={enroll} alt='home' className='navimage'/>
@@ -104,7 +104,7 @@ function Dashboard() {
                     <br/><br/><br/><br/>
                     <li className='logoutsq'>
                         <img src={logout} alt='home' className='navimage'/>
-                        <button className='logoutbtn' onClick={handleDelete}>Logout</button>
+                        <button className='logoutbtn' onClick={handleDeletetoken}>Logout</button>
                     </li>
                 </ul>
             </div>
