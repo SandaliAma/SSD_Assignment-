@@ -28,7 +28,10 @@ const { createque,
     servicefeedbackid,
     giveresponse,
     gettoreply,
-    showfeedback
+    showfeedback,
+    getreply,
+    updatereply,
+    deletereply
 } = require('../controllers/QA&FeedbackController');
 
 //middleware
@@ -68,6 +71,11 @@ router.get('/getMFeedbacks', servicefeedbackid)
 router.get('/giveToReply/:id', giveresponse)
 router.get('/getToReply/:id', gettoreply)
 router.get('/feedbacksShow', showfeedback)
-router.get('/getReply/:id', showfeedback)
+router.get('/getReply/:id', getreply)
+router.put('/updateReply/:id', updatereply)
+router.put('/deleteReply/:id', deletereply)
+
+
+
 
 module.exports = router;
