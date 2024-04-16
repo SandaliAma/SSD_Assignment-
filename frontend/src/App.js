@@ -40,11 +40,26 @@ import TeacherProfile from './screen/Teacher/TeacherProfile';
 import TeacherProfileEdit from './screen/Teacher/TeacherProfileEdit';
 import TeacherForgetPassword from './screen/Teacher/Forgetpasswordteacher';
 import TeacherTimetable from './screen/Teacher/Timetable';
+import MyClassess from './screen/Teacher/Lesson_Management/MyClasses';
+import CreateNotice from './screen/Teacher/Lesson_Management/CreateNotice';
+import EditNotice from './screen/Teacher/Lesson_Management/EditNotice';
+import AddMaterials from './screen/Teacher/Lesson_Management/AddMaterials';
+import EditMaterials from './screen/Teacher/Lesson_Management/EditMaterials';
+import AnswerQ from './screen/Teacher/QA&Feedback_Management/AnswerQ';
+import AnswerUpdate from './screen/Teacher/QA&Feedback_Management/AnswerUpdate';
+import TeacherQuestion from './screen/Teacher/QA&Feedback_Management/TeacherQuestion';
+import THQuestion from './screen/Teacher/QA&Feedback_Management/THQuestion';
+import ViewTeacherFeedback from './screen/Teacher/QA&Feedback_Management/ViewTeacherFeedback';
+
 
 import AdminManagerLogin from './screen/AdminManagerLogin';
 import ManagerLogin from './screen/Manager/ManagerLogin';
 import ManagerForgetPassword from './screen/Manager/Forgetpasswordmanager';
 import ManagerProfile from './screen/Manager/ManagerProfile';
+import ManagerFeedback from './screen/ManagerFeedback';
+import ManagerNFeedback from './screen/ManagerNFeedback';
+import ReplyF from './screen/Manager/QA&Feedback_Management/ReplyF';
+import MFeedbackUpdate from './screen/Manager/QA&Feedback_Management/MFeedbackUpdate';
 
 import AdminLogin from './screen/Admin/AdminLogin';
 import AdminForgetPassword from './screen/Admin/Forgetpasswordadmin';
@@ -54,11 +69,7 @@ import AddManager from './screen/Admin/AddManager';
 import AddAdmin from './screen/Admin/AddAdmin';
 import SearchusersAdmin from './screen/Admin/AdminSearchusers';
 
-import MyClassess from './screen/Teacher/Lesson_Management/MyClasses';
-import CreateNotice from './screen/Teacher/Lesson_Management/CreateNotice';
-import EditNotice from './screen/Teacher/Lesson_Management/EditNotice';
-import AddMaterials from './screen/Teacher/Lesson_Management/AddMaterials';
-import EditMaterials from './screen/Teacher/Lesson_Management/EditMaterials';
+
 
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
@@ -96,6 +107,16 @@ function App() {
       <Route path='/AddQuestion' element={<AddQuestion/>}/>
       <Route path='/FAskedQ' element={<FAskedQ/>}/>
       <Route path='/MyQuestions' element={<MyQuestions/>}/>
+      <Route path='/question' element={<Question/>}/>
+      <Route path='/UpdateQuestion/:id' element={<UpdateQuestion/>}/>
+      <Route path='/Feedback' element={<Feedback/>}/>
+      <Route path='/FeedbackType' element={<FeedbackType/>}/>
+      <Route path='/MyFeedbacks' element={<MyFeedbacks/>}/>
+      <Route path='/TFeedback' element={<TFeedback/>}/>
+      <Route path='/SFeedback' element={<SFeedback/>}/>
+      <Route path='/UpdateTeacherF/:id' element={<UpdateTeacherF/>}/>
+      <Route path='/UpdateSFeedback/:id' element={<UpdateSFeedback/>}/>
+
 
       <Route path="/teacherlogin" element={<TeacherLogin />} />
       <Route path="/teacherprofile" element={<TeacherProfile />} />
@@ -107,6 +128,16 @@ function App() {
       <Route path="/editnotice/:id" element={<EditNotice />} />
       <Route path="/addmaterial" element={<AddMaterials />} />
       <Route path="/editmaterial/:id" element={<EditMaterials />} /> 
+      <Route path='/AnswerQ/:id' element={<AnswerQ/>}/>
+      <Route path='/AnswerUpdate/:id' element={<AnswerUpdate/>}/>
+      <Route path='/THQuestion' element={<THQuestion/>}/>
+      <Route path='/ViewTeacherFeedback' element={<ViewTeacherFeedback/>}/>   
+      <Route path='/TeacherQuestion' element={<TeacherQuestion/>}/>   
+      <Route path='/ManagerFeedback' element={<ManagerFeedback/>}/>
+      <Route path='/ManagerNFeedback' element={<ManagerNFeedback/>}/>
+      <Route path='/ReplyF/:id' element={<ReplyF/>}/>
+      <Route path='/MFeedbackUpdate/:id' element={<MFeedbackUpdate/>}/>
+
 
       <Route path="/adminmanagerlogin" element={<AdminManagerLogin />} />
       <Route path="/managerlogin" element={<ManagerLogin />} />
