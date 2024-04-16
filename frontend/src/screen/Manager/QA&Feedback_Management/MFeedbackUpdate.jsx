@@ -22,7 +22,7 @@ function MFeedbackUpdate() {
             setReply(res.data.reply);
         })
         .catch((err) => console.error(err));
-    },[]); 
+    },[id]); 
 
     
 
