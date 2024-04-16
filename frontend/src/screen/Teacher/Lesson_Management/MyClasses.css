@@ -19,17 +19,17 @@ body {
 .main-content {
     overflow-y: auto;
 }
-.class-details h2{
-    color: #5D7285;
+.class_details h2{
+    color: #060606;
 }
-.class-details{
+.class_details{
     background-color: #C9E8EA;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
     color: #5D7285;
 }
-.class-details,
+.class_details,
 .notices {
     margin-bottom: 20px;
 }
