@@ -208,6 +208,50 @@ const getteacherfeedbackid = (req, res) => {
     .catch(err => res.json(err));
 }
 
+//update teacher feedback
+const updateteacherfeedbackid = (req, res) => {
+    const id = req.params.id;
+    TFeedbackModel.findByIdAndUpdate({_id:id},{grade:req.body.grade,subject:req.body.subject,teacher:req.body.teacher,sid:req.body.sid,feedback:req.body.tfeedback},{ new: true })
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//delete teacher feedback
+const deleteteacherfeedbackid = (req, res) => {
+    const id = req.params.id;
+    TFeedbackModel.findByIdAndDelete({_id:id})
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//get service feedback to update
+const getservicefeedbackid = (req, res) => {
+    const id = req.params.id;
+    SFeedbackModel.findById({_id:id})
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//delete service feedback
+const deleteservicefeedbackid = (req, res) => {
+    const id = req.params.id;
+    SFeedbackModel.findById({_id:id})
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//update service feedback
+const updateservicefeedbackid = (req, res) => {
+    const id = req.params.id;
+    SFeedbackModel.findByIdAndUpdate({_id:id},{grade:req.body.grade,feedback:req.body.sfeedbacks,date:req.body.date},{ new: true })
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//-----------------------------------Manager side feedback(service feedback)------------------------------------
+//get not anwered service feedback 
+
+
 module.exports = {
     createque,
     allque,
@@ -227,5 +271,10 @@ module.exports = {
     createservicefeedback,
     getteacherfeedback,
     getservicefeedback,
-    getteacherfeedbackid
+    getteacherfeedbackid,
+    updateteacherfeedbackid,
+    deleteteacherfeedbackid,
+    getservicefeedbackid,
+    deleteservicefeedbackid,
+    updateservicefeedbackid
 }
