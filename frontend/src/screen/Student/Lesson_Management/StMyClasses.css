@@ -8,7 +8,8 @@ body {
     
     width: 100%;
     max-width: 1200px;
-    margin: auto ;
+    margin-left: 50px;
+    margin-right: 20px;
     overflow-x: hidden;
 }
 .t_container h2 {
@@ -94,9 +95,8 @@ body {
     padding-bottom:10px;
 }
 
-
-.material-link,
-.notice-link {
+.material_download,
+.material_view {
     display: inline-block;
     padding: 8px 15px;
     background-color: #3EA87B; 
@@ -107,60 +107,12 @@ body {
     margin-top:10px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border: 2px solid #f0f9fc;
 }
 
-.material-link:hover,
-.notice-link:hover {
+.material_view:hover,
+.material_download:hover {
     background-color: #219653;
-}
-.report-button,
-.edit-button,
-.delete-button,
-.add-button {
-    display: inline-block;
-    padding: 8px 15px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    background-color: transparent; /* Remove black background */
-    border: 2px solid #f0f9fc; /* Add blue border */
-    color: #f0f9fc;
-}
-.add-button {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-.report-button:hover {
-    background-color: #4a1682;
-}
-.add-button:hover {
-    background-color: #96A0A9;
-}
-
-.edit-button:hover{
-    background-color: #579FE2;
-}
-
-.delete-button:hover{
-    background-color: #c82333;
-}
-
-.delete-button {
-    background-color: #8A6675;
-}
-.edit-button{
-    background-color: #483EA8;
-}
-.add-button{
-    background-color: #667A8A;
-}
-.report-button{
-    margin-top: 10px;
-    background-color: #44044f;
-
 }
 
 .search_bar_container {
@@ -194,81 +146,6 @@ body {
 }
 
 
-.sidebar {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    padding: 20px;
-    text-align: left;
-    width: 150px;
-    position: fixed;
-    top: 80px;
-    bottom: 0;
-    left: 0;
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-right: 20px;
-}
 
-header {
-    background-color: #2980b9;
-    color: #fff;
-    padding: 15px 20px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-}
 
-header img {
-    max-width: 50px;
-    height: auto;
-}
 
-.institute-name {
-    flex-grow: 1;
-    text-align: right;
-    margin-right: 20px;
-}
-.sidebar a {
-    color: #ecf0f1;
-    text-decoration: none;
-    padding: 15px;
-    margin: 5px 0;
-    border-bottom: 1px solid #34495e;
-    transition: background-color 0.3s, color 0.3s; /* Added color transition */
-    display: block;
-    font-size: 16px;
-    font-weight: bold;
-    box-sizing: border-box;
-    width: 100%; /* Make buttons full width */
-    
-}
-
-.box {
-    position: relative;
-    background: linear-gradient(to right, #243949 0%, #517fa4 100%);
-    border-radius: 10px;
-    padding: 20px;
-    color: #fff;
-    overflow: hidden; 
-}
-
-.content {
-    float: left;
-}
-
-.image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%; 
-    object-fit: cover; 
-}
-.inotice_topic {
-    color: black;
-}
