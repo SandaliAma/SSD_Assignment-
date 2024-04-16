@@ -250,7 +250,43 @@ const updateservicefeedbackid = (req, res) => {
 
 //-----------------------------------Manager side feedback(service feedback)------------------------------------
 //get not anwered service feedback 
+const servicefeedbackid = (req, res) => {
+    SFeedbackModel.find({reply: {$exists: false}}).select('-reply')
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
 
+//get not anwered service feedback 
+const giveresponse = (req, res) => {
+    const { id } = req.params;
+    SFeedbackModel.findById(id)
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//get not anwered service feedback 
+const gettoreply = (req, res) => {
+    const { id } = req.params;
+    const { reply } = req.body;
+    SFeedbackModel.findByIdAndUpdate(id, { reply }, { new: true })
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//show the reply in ManagerFeedback
+const showfeedback = (req, res) => {
+    SFeedbackModel.find({reply: {$exists: true}}).exec()
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//get reply to update
+const getreply = (req, res) => {
+    const id  = req.params.id;
+    SFeedbackModel.findById({_id:id})
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
 
 module.exports = {
     createque,
@@ -276,5 +312,10 @@ module.exports = {
     deleteteacherfeedbackid,
     getservicefeedbackid,
     deleteservicefeedbackid,
-    updateservicefeedbackid
+    updateservicefeedbackid,
+    servicefeedbackid,
+    giveresponse,
+    gettoreply,
+    showfeedback,
+    getreply
 }
