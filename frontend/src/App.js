@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import StudentLogin from './screen/Student/StudentLogin';
-import StudentRegister from './screen/Student/StudentRegister';
 import Portal from './screen/Portal';
 
-import StudentProfile from './screen/Student/StudentProfile';
-import StudentProfileEdit from './screen/Student/StudentProfieEdit';
-import StudentForgetPassword from './screen/Student/Forgetpasswordstudent';
+import StudentLogin from './screen/Student/User_Management/StudentLogin';
+import StudentRegister from './screen/Student/User_Management/StudentRegister';
+import StudentProfile from './screen/Student/User_Management/StudentProfile';
+import StudentProfileEdit from './screen/Student/User_Management/StudentProfieEdit';
+import StudentForgetPassword from './screen/Student/User_Management/Forgetpasswordstudent';
 import StudentDashboard from './screen/Student/Dashboard';
 import StudentTimetable from './screen/Student/Timetable';
 
