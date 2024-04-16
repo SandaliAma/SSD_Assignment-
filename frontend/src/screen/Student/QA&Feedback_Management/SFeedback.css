@@ -1,0 +1,154 @@
+.heading9{
+    position: absolute;
+    width: 968px;
+    height: 25px;
+    left: 336px;
+    top: 136px;
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28.8546px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #5D7285;
+    }
+    
+    .tt6{
+   /* Student ID */
+
+        position: absolute;
+        width: 338px;
+        height: 39px;
+        left: 342px;
+        top: 355px;
+
+        font-family: 'Epilogue';
+        font-style: normal;
+        font-weight: 200;
+        font-size: 29px;
+        line-height: 25px;
+        /* or 85% */
+        letter-spacing: 0.01em;
+
+        color: #000000;
+
+
+    }
+    
+    .tt7{
+    /* Feedback */
+
+        position: absolute;
+        width: 338px;
+        height: 39px;
+        left: 342px;
+        top: 510px;
+
+        font-family: 'Epilogue';
+        font-style: normal;
+        font-weight: 200;
+        font-size: 29px;
+        line-height: 25px;
+        /* or 85% */
+        letter-spacing: 0.01em;
+
+        color: #000000;
+
+
+    }
+    
+    .tt8{
+    /* Enter date */
+
+        position: absolute;
+        width: 338px;
+        height: 39px;
+        left: 342px;
+        top: 776px;
+
+        font-family: 'Epilogue';
+        font-style: normal;
+        font-weight: 200;
+        font-size: 29px;
+        line-height: 25px;
+        /* or 85% */
+        letter-spacing: 0.01em;
+
+        color: #000000;
+
+
+    }
+    
+    .sfet{
+    position: absolute;
+    width: 290px;
+    height: 31px;
+    left: 1195px;
+    top: 932px;
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 22px;
+    letter-spacing: 0.005em;
+    color: #FFFFFF;
+    }
+
+    .tv18{
+        /* Student ID */
+
+    position: absolute;
+    width: 338px;
+    height: 39px;
+    left: 342px;
+    top: 227px;
+
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 29px;
+    line-height: 25px;
+    /* or 85% */
+    letter-spacing: 0.01em;
+
+    color: #000000;
+
+
+
+    }
+
+    .uth2{
+        text-decoration:none;
+        color:black;
+        margin-left: 320px;
+        margin-top : 160px;
+        width: 1090px;
+        height: 800px;
+      background: #C9E8EA;
+      border-radius: 20px;
+      text-align: center;
+      border: 2px solid black;
+          
+      }
+
+      .buttonbb6{
+        color: black;
+        margin-left: 800px; /* Adjust the margin to control the space between buttons */
+        cursor: pointer;
+        background-color: #384D6C;
+        text-align: center;
+        border-radius: 12px;
+        padding: 11px 55px;
+        outline: none;
+        color: white;
+        transition: 0.25s;
+        font-size: 15px;
+        font-weight: bold;
+      margin-top:720px;
+    
+      }
+      
+      .buttonbb6:hover {
+        background: linear-gradient(to right, #25c481, #25b7c4);
+        transform: scale(1.06);
+    }

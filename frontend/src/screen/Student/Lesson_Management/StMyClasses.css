@@ -5,10 +5,11 @@ body {
 }
 
 .t_container {
-
+    
     width: 100%;
     max-width: 1200px;
     margin-left: 50px;
+    margin-right: 20px;
     overflow-x: hidden;
 }
 .t_container h2 {
@@ -17,13 +18,17 @@ body {
 
 
 .main-content {
+    padding: 20px;
+    margin-top: -25px;
+    margin-left: 220px;
     overflow-y: auto;
 }
 .class_details h2{
-    color: #060606;
+    color: #5D7285;
 }
 .class_details{
     background-color: #C9E8EA;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
@@ -36,6 +41,7 @@ body {
 
 .notices{
     background-color: #FFFFFF;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
@@ -44,6 +50,7 @@ body {
 
 .lesson-container {
     background-color: #fff;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
@@ -88,9 +95,8 @@ body {
     padding-bottom:10px;
 }
 
-
-.material_link,
-.notice_link {
+.material_download,
+.material_view {
     display: inline-block;
     padding: 8px 15px;
     background-color: #3EA87B; 
@@ -104,57 +110,9 @@ body {
     border: 2px solid #f0f9fc;
 }
 
-.material_link:hover,
-.notice_link:hover {
+.material_view:hover,
+.material_download:hover {
     background-color: #219653;
-}
-.report_button,
-.edit_button,
-.delete_button,
-.add_button {
-    display: inline-block;
-    padding: 8px 15px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    background-color: transparent;
-    border: 2px solid #f0f9fc;
-}
-.add_button {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-.report_button:hover {
-    background-color: #4a1682;
-}
-.add_button:hover {
-    background-color: #96A0A9;
-}
-
-.edit_button:hover{
-    background-color: #579FE2;
-}
-
-.delete_button:hover{
-    background-color: #c82333;
-}
-
-.delete_button {
-    background-color: #8A6675;
-}
-.edit_button{
-    background-color: #483EA8;
-}
-.add_button{
-    background-color: #667A8A;
-}
-.report_button{
-    margin-top: 10px;
-    background-color: #44044f;
-
 }
 
 .search_bar_container {
@@ -186,3 +144,8 @@ body {
     color: #777;
     font-size: 16px;
 }
+
+
+
+
+

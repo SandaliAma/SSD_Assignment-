@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Style2.css';
+import './AddMaterial.css';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -79,7 +79,7 @@ function AddMaterials() {
   };
 
   return (
-    <div className="lessoncontainer" >
+    <div className="adm_container" >
       <h2 className="form_topic">Lesson Material Upload</h2>
       <hr />
       <br />
@@ -87,9 +87,8 @@ function AddMaterials() {
       <div className="drop-area" onDragOver={handleDragOver} onDrop={handleDrop}>
         <h3>Drag and Drop Files Here</h3>
         <p>or</p>
-        <label htmlFor="fileInput" className="custom-file-input">
+        <label htmlFor="fileInput" className="file_input">
           <input
-            id="fileInput"
             type="file"
             accept=".pdf, .png, .jpg, .jpeg, .pptx, .doc"
             required
@@ -127,7 +126,7 @@ function AddMaterials() {
           <input type="hidden" name="class_id" value="" onChange={(e) => setClass_id(e.target.value)} />
           <input type="hidden" name="teacher_id" value="" onChange={(e) => setTeacher_id(e.target.value)} />
 
-          <div className="button-group">
+          <div className="ad_button_group">
             <button type="submit">Upload</button>
             <Link to="/myclasses" className="cancelbutton">
               Cancel

@@ -19,7 +19,19 @@ const { createque,
     createservicefeedback,
     getteacherfeedback,
     getservicefeedback,
-    getteacherfeedbackid
+    getteacherfeedbackid,
+    updateteacherfeedbackid,
+    deleteteacherfeedbackid,
+    getservicefeedbackid,
+    deleteservicefeedbackid,
+    updateservicefeedbackid,
+    servicefeedbackid,
+    giveresponse,
+    gettoreply,
+    showfeedback,
+    getreply,
+    updatereply,
+    deletereply
 } = require('../controllers/QA&FeedbackController');
 
 //middleware
@@ -50,5 +62,20 @@ router.post('/createSF', createservicefeedback)
 router.get('/MyTFeedbacks', getteacherfeedback)
 router.get('/MySFeedbacks', getservicefeedback)
 router.get('/getTFeedback/:id', getteacherfeedbackid)
+router.put('/updateTFeedback/:id', updateteacherfeedbackid)
+router.delete('/deleteTFeedback/:id', deleteteacherfeedbackid)
+router.get('/getSFeedback/:id', getservicefeedbackid)
+router.delete('/deleteSFeedback/:id', deleteservicefeedbackid)
+router.put('/updateSFeedback/:id', updateservicefeedbackid)
+router.get('/getMFeedbacks', servicefeedbackid)
+router.get('/giveToReply/:id', giveresponse)
+router.get('/getToReply/:id', gettoreply)
+router.get('/feedbacksShow', showfeedback)
+router.get('/getReply/:id', getreply)
+router.put('/updateReply/:id', updatereply)
+router.put('/deleteReply/:id', deletereply)
+
+
+
 
 module.exports = router;

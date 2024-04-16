@@ -79,11 +79,8 @@ body{
     background-color: #bbcad6;
 }
 
-form{
-    margin-left: 100px;
-}
 
-button{
+.btnloging{
     width: 300px;
     background: #667A8A;
     border-radius: 8px;
@@ -97,7 +94,7 @@ button{
     margin-right: 75px;
 }
 
-button:hover{
+.btnloging:hover{
     background: rgba(102, 122, 138, 0.534);
 }
 

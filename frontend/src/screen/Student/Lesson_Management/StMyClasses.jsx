@@ -3,7 +3,7 @@ import { Routes } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../photos/logofull.png'
 import userpng from '../photos/User.png'
-import './MyClasses.css';
+import './StMyClasses.css';
 import Nav from '../NavBar/Nav';
 
 function StMyClasses() {
@@ -75,7 +75,7 @@ function StMyClasses() {
     <>
     
       <div>
-        <Nav/>
+  <Nav/>
         <div className="container">          
           <div className="main-content">
           <table>
@@ -91,7 +91,7 @@ function StMyClasses() {
                         </td>
                     </tr>
                 </table>
-            <div className="class-details">
+            <div className="class_details">
               <h2>Class Details</h2>
               <div className="class-info">
                 <div className="class-title">History - Grade 10</div>
@@ -124,13 +124,13 @@ function StMyClasses() {
                   <div className="lesson-date">Date: {lesson.lesson_date}</div>
                   <div className="lesson-description">  {lesson.lesson_description}</div>
                   <button
-                    className="material-link"
+                    className="material_view"
                     onClick={() => showFile(lesson.lesson_Files)}
                   >
                     View Material
                   </button>
                   <button
-                    className="material-link"
+                    className="material_download"
                     onClick={() => downloadFile(lesson.lesson_Files)}
                   >
                     Download
