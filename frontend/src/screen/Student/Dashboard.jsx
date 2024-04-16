@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import logo from './photos/logofull.png'
-import userpng from './photos/User.png'
 import './Dashboard.css';
 import dashboard from './photos/dashboard.png';
-import Nav from './NavBar/Nav';
+import Head from './Header/Header';
 
 
 
@@ -43,22 +41,10 @@ function Dashboard() {
 
     return (
         <div>
-        <Nav/>
+        <Head/>
             <div className="d_container">           
                 <div className="main-content">
-                <table>
-                    <tr>
-                        <td className='tbllogo'>
-                            <img src={logo} alt='logo'/>
-                        </td>
-                        <td>
-                            <p class='hellotxt'><b>Hello, {name}</b><br/>Student</p>
-                        </td>
-                        <td>
-                            <img src={userpng} alt='logo' class='hellopic'/>
-                        </td>
-                    </tr>
-                </table>
+                
                     <div className="box" >
                     <p>{currentDate}</p>
                         <h1>Welcome Back , {name} !</h1>
