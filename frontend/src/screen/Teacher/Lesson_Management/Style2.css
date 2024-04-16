@@ -60,7 +60,7 @@ body {
   background-color: #ecf5fc;
   box-sizing: border-box;
   margin-bottom: 15px;
- 
+
 }
 
 
@@ -193,6 +193,7 @@ body {
 .custom-file-input span {
   font-size: 16px;
 }
+
 @media only screen and (max-width: 768px) {
   .lessoncontainer {
     margin: 100px auto;

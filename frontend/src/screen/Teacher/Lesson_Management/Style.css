@@ -2,8 +2,8 @@
 
 .Noticecontainer {
   max-width: 800px;
-  margin-top: 40px;
-  margin-left: 400px;
+  margin-top: 90px;
+  margin-left: auto;
   margin-right: auto;
   padding: 20px;
   background-color: #fff;
@@ -60,9 +60,7 @@
   box-sizing: border-box;
   margin-bottom: 15px;
   height: 60px;
-  /* Adjust the height as needed */
   resize: vertical;
-  /* Allow vertical resizing */
 }
 
 
@@ -71,8 +69,6 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
 }
 
 .Noticecontainer button {
@@ -88,11 +84,11 @@
 }
 
 
-.Noticecontainer button:hover {
+.addNoticebutton:hover {
   background-color: #0056b3;
 }
 
-.cancelbutton {
+.cancelbuttonN {
   background-color: #667A8A;
   transition: background-color 0.3s;
   padding: 10px 80px;
@@ -104,10 +100,25 @@
   transition: background-color 0.3s;
   border-radius: 20px;
   text-decoration: none;
+  
 }
 
 .cancelbutton:hover {
   background-color: #c82333;
+}
+
+.addNoticebutton {
+  background-color: #483EA8;
+  transition: background-color 0.3s;
+  padding: 10px 80px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 20px;
+  text-decoration: none;
+  margin-bottom: 10px;
 }
 
 .input_container {
@@ -126,15 +137,10 @@
 .input_col input[type="date"],
 .input_col select {
   width: calc(40% - 22px);
-  /* Adjust the width as needed */
-  /* Other existing styles */
 }
 
 .Noticecontainer hr {
   border-color: #E2E2E2;
-  /* Change to your desired color */
   margin-left: 40px;
-  /* Add margin on the left side */
   margin-right: 40px;
-  /* Add margin on the right side */
 }

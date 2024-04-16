@@ -1,4 +1,4 @@
-const UserModelLesson = require('../models/Lesson');
+
 const UserModel = require('../models/Notice');
 
 
@@ -48,54 +48,14 @@ const deletenotice = (req, res) => {
     .catch(err => res.json(err));
 }
 
-//get all Materials
-const showmaterial = (req, res) => {
-    UserModelLesson.find()
-    
-    .then(MyClasses => res.json(MyClasses))
-    .catch(err => res.json(err));
-}
 
-//Get Material by id
-const getmaterial = (req, res) => {
-    const id = req.params.id;
-    UserModelLesson.findById({_id:id})
-    .then(MyClasses => res.json(MyClasses))
 
-    .catch(err => res.json(err));
-}
-
-//update Material
-const updatematerial = (req, res) => {
-    const id = req.params.id;
-    UserModelLesson.findByIdAndUpdate({_id:id}, {
-        
-        lesson_topic: req.body.lesson_topic,
-        lesson_date: req.body.lesson_date,
-        lesson_fileType: req.body.lesson_fileType,
-        lesson_description: req.body.lesson_description,
-      
-    })
-    .then(MyClasses => res.json(MyClasses))
-    .catch(err => res.json(err));
-}
-
-//delete Material
-const deletematerial = (req, res) => {
-    const id = req.params.id;
-    UserModelLesson.findByIdAndDelete({_id:id})
-    .then(MyClasses => res.json(MyClasses))
-    .catch(err => res.json(err));
-}
 
 module.exports = {
     createnotice,
     viewnotice,
     getnotice,
     updatenotice,
-    deletenotice,
-    showmaterial,
-    getmaterial,
-    updatematerial,
-    deletematerial
+    deletenotice
+    
 }
