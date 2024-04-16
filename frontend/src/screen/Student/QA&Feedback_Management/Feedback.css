@@ -1,0 +1,56 @@
+.heading6{
+    position: absolute;
+    width: 386px;
+    height: 25px;
+    left: 336px;
+    top: 136px;
+    font-family: 'Epilogue';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28.8546px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #5D7285;
+    }
+    
+    .parag1{
+    position: absolute;
+    width: 1006px;
+    height: 80px;
+    left: 342px;
+    top: 197px;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    color: #151929;
+    }
+    
+    .bt3{
+    position: absolute;
+    width: 396px;
+    height: 51px;
+    left: 484px;
+    top: 444px;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 150%;
+    color: #000000;
+    }
+    
+    .bt4{
+    position: absolute;
+    width: 247px;
+    height: 48px;
+    left: 526px;
+    top: 648px;
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 150%;
+    color: #000000;
+    }

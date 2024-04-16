@@ -20,6 +20,19 @@ import EditBank from './screen/Student/Financial_Management/StEditBank';
 import CancelOnline from './screen/Student/Financial_Management/StCancelOnline';
 import CancelBank from './screen/Student/Financial_Management/StCancelBank';
 import Payment from './screen/Student/Financial_Management/StMain';
+import AddQuestion from './screen/Student/QA&Feedback_Management/AddQuestion';
+import FAskedQ from './screen/Student/QA&Feedback_Management/FAskedQ';
+import MyQuestions from './screen/Student/QA&Feedback_Management/MyQuestions';
+import Question from './screen/Student/QA&Feedback_Management/Question';
+import UpdateQuestion from './screen/Student/QA&Feedback_Management/UpdateQuestion';
+import Feedback from './screen/Student/QA&Feedback_Management/Feedback';
+import FeedbackType from './screen/Student/QA&Feedback_Management/FeedbackType';
+import MyFeedbacks from './screen/Student/QA&Feedback_Management/MyFeedbacks';
+import TFeedback from './screen/Student/QA&Feedback_Management/TFeedback';
+import SFeedback from './screen/Student/QA&Feedback_Management/SFeedback';
+import UpdateTeacherF from './screen/Student/QA&Feedback_Management/UpdateTeacherF';
+import UpdateSFeedback from './screen/Student/QA&Feedback_Management/UpdateSFeedback';
+
 
 
 import TeacherLogin from './screen/Teacher/TeacherLogin';
@@ -80,6 +93,9 @@ function App() {
       <Route path= '/editbank/:id' element = {<EditBank/>} />     
       <Route path= '/cancelonline/:id' element = {<CancelOnline/>} />
       <Route path= '/cancelbank/:id' element = {<CancelBank/>} /> 
+      <Route path='/AddQuestion' element={<AddQuestion/>}/>
+      <Route path='/FAskedQ' element={<FAskedQ/>}/>
+      <Route path='/MyQuestions' element={<MyQuestions/>}/>
 
       <Route path="/teacherlogin" element={<TeacherLogin />} />
       <Route path="/teacherprofile" element={<TeacherProfile />} />

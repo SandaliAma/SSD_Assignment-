@@ -6,6 +6,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Nav from '../NavBar/Nav';
 
 
 function StEditBank() {
@@ -119,6 +120,7 @@ function StEditBank() {
     
   return (
     <div>
+      <Nav/>
       <div>
       <Toaster/>
      <div className="bodyeba">

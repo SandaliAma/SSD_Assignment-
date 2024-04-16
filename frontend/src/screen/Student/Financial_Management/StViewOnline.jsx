@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Nav from '../NavBar/Nav';
 
 function StViewOnline() {
 
@@ -92,6 +93,7 @@ function StViewOnline() {
 
   return (
     <div>
+      <Nav/>
       <Toaster/>
       <div className='bodyvo'>
         <h1 className='h1vo'><br/>My Payments</h1>
@@ -140,7 +142,7 @@ function StViewOnline() {
                   <td className='tdvo'>{payment.discription}</td>
                   <td className='tdvo4'>{payment.date}</td>
                   <td className='tdvo5'>{payment.amount}</td>
-                  <td className='tdtv6' style={{ color: payment.status === 'Approved' ? 'green' : payment.status === 'Rejected' ? 'red' : payment.status === 'Pending' ? 'blue' : 'inherit' }}>{payment.status}</td>
+                  <td className='tdvo' style={{ color: payment.status === 'Approved' ? 'green' : payment.status === 'Rejected' ? 'red' : payment.status === 'Pending' ? 'blue' : 'inherit' }}>{payment.status}</td>
 
                  
                   <td className='tdvo'>

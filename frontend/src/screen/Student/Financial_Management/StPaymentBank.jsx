@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Nav from '../NavBar/Nav';
 
 
 function StPaymentBank() {
@@ -101,6 +102,7 @@ function StPaymentBank() {
 
   return (
     <div>
+      <Nav/>
       <Toaster/>
      <div className="bodyba">
             <h1 className="bah1"> <br></br>Payment Form</h1>

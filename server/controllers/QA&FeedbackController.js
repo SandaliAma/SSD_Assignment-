@@ -288,6 +288,22 @@ const getreply = (req, res) => {
     .catch(err => res.json(err));
 }
 
+//update reply
+const updatereply = (req, res) => {
+    const id  = req.params.id; 
+    SFeedbackModel.findByIdAndUpdate({_id:id}, { reply :req.body.reply})
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
+//delete reply
+const deletereply = (req, res) => {
+    const { id } = req.params;
+    SFeedbackModel.findByIdAndUpdate(id, { $unset: { reply: 1 } }, { new: true })
+    .then(feedbacks => res.json(feedbacks))
+    .catch(err => res.json(err));
+}
+
 module.exports = {
     createque,
     allque,
@@ -317,5 +333,7 @@ module.exports = {
     giveresponse,
     gettoreply,
     showfeedback,
-    getreply
+    getreply,
+    updatereply,
+    deletereply
 }

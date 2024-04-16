@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Nav from '../NavBar/Nav';
 
 function StViewCash() {
 
@@ -89,6 +90,7 @@ function StViewCash() {
 
   return (
     <div>
+      <Nav/>
       <Toaster/>
       <div className='bodyvc'>
       <h1 className='h1vc'><br/>My Payments</h1>
@@ -132,7 +134,7 @@ function StViewCash() {
               <td className='tdvc'>{cash.discription}</td>
               <td className='tdvc'>{cash.date}</td>
               <td className='tdvc'>{cash.amount}</td>
-              <td className='tdtv6' style={{ color: cash.status === 'Approved' ? 'green' : cash.status === 'Rejected' ? 'red' : cash.status === 'Pending' ? 'blue' : 'inherit' }}>{cash.status}</td>
+              <td className='tdvc' style={{ color: cash.status === 'Approved' ? 'green' : cash.status === 'Rejected' ? 'red' : cash.status === 'Pending' ? 'blue' : 'inherit' }}>{cash.status}</td>
 
               <td className='tdvc'>
                 <input className="buttonvc6" type="button" name="delete" value="Delete"   onClick={() => handleSubmit(cash._id)} />
