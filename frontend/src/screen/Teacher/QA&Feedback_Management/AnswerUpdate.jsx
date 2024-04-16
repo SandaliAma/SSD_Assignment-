@@ -26,7 +26,7 @@ function AnswerUpdate() {
             setAnswer(res.data.answer);
         })
         .catch((err) => console.error(err));
-    },[]); 
+    },[id]); 
 
     
 
