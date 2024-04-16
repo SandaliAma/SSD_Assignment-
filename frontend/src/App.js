@@ -101,10 +101,10 @@ function App() {
       <Route path="/searchusersadmin" element={<SearchusersAdmin />} />   
 
       <Route path="/myclasses" element={<MyClassess />} />
-        <Route path="/createnotice" element={<CreateNotice />} />
-        <Route path="/editnotice/:id" element={<EditNotice />} />
-        <Route path="/addmaterial" element={<AddMaterials />} />
-        <Route path="/editmaterial/:id" element={<EditMaterials />} />         
+      <Route path="/createnotice" element={<CreateNotice />} />
+      <Route path="/editnotice/:id" element={<EditNotice />} />
+      <Route path="/addmaterial" element={<AddMaterials />} />
+      <Route path="/editmaterial/:id" element={<EditMaterials />} />         
       
     </Routes>    
     </>
