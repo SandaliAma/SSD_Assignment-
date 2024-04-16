@@ -50,6 +50,7 @@ import AnswerUpdate from './screen/Teacher/QA&Feedback_Management/AnswerUpdate';
 import TeacherQuestion from './screen/Teacher/QA&Feedback_Management/TeacherQuestion';
 import THQuestion from './screen/Teacher/QA&Feedback_Management/THQuestion';
 import ViewTeacherFeedback from './screen/Teacher/QA&Feedback_Management/ViewTeacherFeedback';
+import Teacher from './screen/Teacher/Financial_Management/TeView';
 
 
 import AdminManagerLogin from './screen/AdminManagerLogin';
@@ -60,6 +61,10 @@ import ManagerFeedback from './screen/Manager/QA&Feedback_Management/ManagerFeed
 import ManagerNFeedback from './screen/Manager/QA&Feedback_Management/ManagerNFeedback';
 import ReplyF from './screen/Manager/QA&Feedback_Management/ReplyF';
 import MFeedbackUpdate from './screen/Manager/QA&Feedback_Management/MFeedbackUpdate';
+import EditManager from './screen/Manager/Financial_Management/Mgedit';
+import Manager from './screen/Manager/Financial_Management/MgMain';
+import MgPay from './screen/Manager/Financial_Management/MgPayment';
+import MgView from './screen/Manager/Financial_Management/MgView';
 
 import AdminLogin from './screen/Admin/AdminLogin';
 import AdminForgetPassword from './screen/Admin/Forgetpasswordadmin';
@@ -137,12 +142,17 @@ function App() {
       <Route path='/ManagerNFeedback' element={<ManagerNFeedback/>}/>
       <Route path='/ReplyF/:id' element={<ReplyF/>}/>
       <Route path='/MFeedbackUpdate/:id' element={<MFeedbackUpdate/>}/>
+      <Route path= '/teacherfinancial' element = {<Teacher/>} />
+      <Route path= '/editmanager/:id' element = {<EditManager/>} />
 
 
       <Route path="/adminmanagerlogin" element={<AdminManagerLogin />} />
       <Route path="/managerlogin" element={<ManagerLogin />} />
       <Route path='/managerforgetpassword' element={<ManagerForgetPassword/>}/>
       <Route path="/managerprofile" element={<ManagerProfile />} />
+      <Route path= '/managerfinancial' element = {<Manager/>} />
+      <Route path= '/mgpay' element = {<MgPay/>} />
+      <Route path= '/mgview' element = {<MgView/>} />
       
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>
