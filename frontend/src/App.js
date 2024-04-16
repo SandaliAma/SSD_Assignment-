@@ -56,8 +56,8 @@ import AdminManagerLogin from './screen/AdminManagerLogin';
 import ManagerLogin from './screen/Manager/ManagerLogin';
 import ManagerForgetPassword from './screen/Manager/Forgetpasswordmanager';
 import ManagerProfile from './screen/Manager/ManagerProfile';
-import ManagerFeedback from './screen/ManagerFeedback';
-import ManagerNFeedback from './screen/ManagerNFeedback';
+import ManagerFeedback from './screen/Manager/QA&Feedback_Management/ManagerFeedback';
+import ManagerNFeedback from './screen/Manager/QA&Feedback_Management/ManagerNFeedback';
 import ReplyF from './screen/Manager/QA&Feedback_Management/ReplyF';
 import MFeedbackUpdate from './screen/Manager/QA&Feedback_Management/MFeedbackUpdate';
 
