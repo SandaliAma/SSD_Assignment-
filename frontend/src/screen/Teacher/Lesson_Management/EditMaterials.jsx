@@ -94,8 +94,8 @@ function EditMaterials() {
           <textarea name="description" placeholder="Enter description" value={lesson_description} onChange={(l) => setLessonDescription(l.target.value)} />
 
           <div class="button-group">
-            <button type='submit'>Save Material</button>
-            <Link to="/myclasses" class="cancelbutton">Cancel</Link>
+            <button type='submit'>Save</button>
+            <Link to="/myclasses" class="cancelbutton_EM">Cancel</Link>
           </div>
         </form>
 

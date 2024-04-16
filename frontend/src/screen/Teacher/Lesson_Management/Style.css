@@ -67,9 +67,9 @@
 .button-group {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding-top: 20px;
 }
+
 
 .Noticecontainer button {
   padding: 10px 80px;
@@ -102,6 +102,34 @@
   text-decoration: none;
   
 }
+.cancelbutton_EN{
+  background-color: #667A8A;
+  transition: background-color 0.3s;
+  padding: 10px 80px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 20px;
+  text-decoration: none;
+  
+}
+.cancelbutton_CN{
+  background-color: #667A8A;
+  transition: background-color 0.3s;
+  padding: 10px 80px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 20px;
+  text-decoration: none;
+
+}
 
 .cancelbutton:hover {
   background-color: #c82333;
@@ -109,7 +137,6 @@
 
 .addNoticebutton {
   background-color: #483EA8;
-  transition: background-color 0.3s;
   padding: 10px 80px;
   color: #fff;
   border: none;
@@ -119,6 +146,7 @@
   border-radius: 20px;
   text-decoration: none;
   margin-bottom: 10px;
+  margin-right: 30px;
 }
 
 .input_container {

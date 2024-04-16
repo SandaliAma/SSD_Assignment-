@@ -147,22 +147,25 @@ function MyClasses() {
     window.open(`http://localhost:5000/files/${lesson_Files}`, "_blank", "noreferrer");
   };
 
-  //download file
   const downloadFile = async (lesson_Files) => {
     try {
-      const response = await axios.get(`http://localhost:5000/files/${lesson_Files}`, {
+      const url = `http://localhost:5000/files/${lesson_Files}`; // Hardcoded URL
+      const response = await axios.get(url, {
         responseType: 'blob'
       });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const file = new Blob([response.data]);
       const link = document.createElement('a');
-      link.href = url;
+      link.href = window.URL.createObjectURL(file);
       link.setAttribute('download', lesson_Files);
       document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
     } catch (error) {
       console.error('Error downloading file:', error);
     }
   };
+  
+
 
   const handleDeletetoken = () => {
     axios.get('/logout').then(res => {

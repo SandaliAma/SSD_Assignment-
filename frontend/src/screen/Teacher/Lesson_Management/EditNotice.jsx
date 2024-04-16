@@ -78,8 +78,8 @@ function EditNotice() {
                     <input type="text" name="description" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)} required />
 
                     <div class="button-group">
-                        <button type="submit">Edit Notice</button>
-                        <Link to="/myclasses" class="cancelbutton">Cancel</Link>
+                        <button type="submit">Edit</button>
+                        <Link to="/myclasses" class="cancelbutton_EN">Cancel</Link>
                     </div>
                 </form>
 

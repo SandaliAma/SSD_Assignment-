@@ -90,14 +90,7 @@ body {
   background-color: #0056b3;
 }
 
-.cancel-button {
-  background-color: #667A8A;
-  transition: background-color 0.3s;
-}
 
-.cancel-button:hover {
-  background-color: #c82333;
-}
 
 .lessoncontainer textarea {
   width: calc(100% - 22px);
@@ -110,7 +103,7 @@ body {
   resize: vertical;
   height: 150px;
   margin-bottom: 15px;
-  /* Added margin */
+ 
 }
 
 .input_container {
@@ -129,8 +122,6 @@ body {
 .input_col input[type="date"],
 .input_col select {
   width: calc(100% - 22px);
-  /* Adjust the width as needed */
-  /* Other existing styles */
 }
 
 .lessoncontainer hr {
@@ -193,6 +184,20 @@ body {
 .custom-file-input span {
   font-size: 16px;
 }
+
+.cancelbutton_EM{
+  background-color: #667A8A;
+  padding: 10px 80px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px;
+  text-decoration: none;
+  
+}
+
 
 @media only screen and (max-width: 768px) {
   .lessoncontainer {
