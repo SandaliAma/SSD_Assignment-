@@ -14,7 +14,7 @@ import wallet from '../navbar_images/Wallet.png'
 import logout from '../navbar_images/Logout.png'
 import logo from '../photos/logofull.png'
 import userpng from '../photos/User.png'
-import './MyClasses.css';
+import './StMyClasses.css';
 
 function StMyClasses() {
 

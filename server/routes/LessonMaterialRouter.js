@@ -6,11 +6,7 @@ const { createnotice ,
     viewnotice,
     getnotice,
     updatenotice,
-    deletenotice,
-    showmaterial,
-    getmaterial,
-    updatematerial,
-    deletematerial
+    deletenotice
     
 } = require('../controllers/lessonmaterialController');
 
@@ -28,9 +24,6 @@ router.get('/viewnotice', viewnotice)
 router.get('/getnotice/:id', getnotice)
 router.put('/updatenotice/:id', updatenotice)
 router.delete('/deletenotice/:id', deletenotice)
-router.get('/showmaterials', showmaterial)
-router.get('/getmaterial/:id', getmaterial)
-router.put('/updatematerial/:id', updatematerial)
-router.delete('/deletematerial/:id', deletematerial)
+
 
 module.exports = router;

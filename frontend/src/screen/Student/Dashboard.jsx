@@ -13,7 +13,7 @@ import wallet from './navbar_images/Wallet.png'
 import logout from './navbar_images/Logout.png'
 import logo from './photos/logofull.png'
 import userpng from './photos/User.png'
-import './MyClasses.css';
+import './Dashboard.css';
 import dashboard from './photos/dashboard.png';
 
 
@@ -108,7 +108,7 @@ function Dashboard() {
                     </li>
                 </ul>
             </div>
-            <div className="container">           
+            <div className="d_container">           
                 <div className="main-content">
                 <table>
                     <tr>
@@ -130,14 +130,14 @@ function Dashboard() {
                     </div>
                     
                  
-                    <div className="notices">
+                    <div className="Inotices">
                         <h2 className="inotice_topic" >Institute Notices & Messages</h2>  <hr />
                         {Institutenotices.length > 0 ? Institutenotices.map((Inotice, index) => (
-                            <div className="notice" key={index}>
+                            <div className="Inotice" key={index}>
                                 <label></label>
-                                <div className="notice-date">{Inotice.I_date}</div>
-                                <div className="notice-title">{Inotice.I_topic}</div>
-                                <div className="notice-description">{Inotice.I_description}</div>
+                                <div className="Inotice-date">{Inotice.I_date}</div>
+                                <div className="Inotice-title">{Inotice.I_topic}</div>
+                                <div className="Inotice-description">{Inotice.I_description}</div>
                             </div>
                         )) : <div>No notices available</div>}
                     </div>

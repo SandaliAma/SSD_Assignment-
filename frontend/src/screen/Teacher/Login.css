@@ -83,7 +83,7 @@ form{
     margin-left: 100px;
 }
 
-button{
+/* button{
     width: 300px;
     background: #667A8A;
     border-radius: 8px;
@@ -99,7 +99,7 @@ button{
 
 button:hover{
     background: rgba(102, 122, 138, 0.534);
-}
+} */
 
 .reset{    
     font-family: 'Bahnschrift';

@@ -78,7 +78,7 @@ function CreateNotice() {
                     <input type="hidden" name="teacher_id" value="value" onChange={(e) => setTeacher_id(e.target.value)} />
 
                     <div className="button-group">
-                        <button type="submit">Add Notice</button>
+                        <button className="addNoticebutton" type="submit">Create</button>
                         <Link to="/myclasses" className="cancelbutton">Cancel</Link>
                     </div>
                 </form>
