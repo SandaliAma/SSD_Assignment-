@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Link, useParams,useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Head from '../Header/Header';
 
 function UpdateSFeedback() {
 
@@ -114,6 +115,7 @@ function UpdateSFeedback() {
 
   return (
     <div className='uth2' >
+       <Head/>
        <Toaster/>
     <h1 className="heading9">We Want to Hear from You - Teacher Feedback</h1>
     <form onSubmit={handleSubmit}>

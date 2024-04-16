@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import './FAskedQ.css';
+import Head from '../Header/Header';
 
 function FAskedQ() {
   const [questions, setQuestions] = useState([]);
@@ -50,6 +51,7 @@ const handleSubjectChange = (event) => {
 
   return (
     <div>
+       <Head/>
         <h4 className="heading4">Connect With Your Teachers - FAQS</h4>
         
         <input type="text" onChange={handleGradeChange} name="grade" className="gi1" placeholder="Grade" />

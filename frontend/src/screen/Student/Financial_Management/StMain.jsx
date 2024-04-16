@@ -1,12 +1,13 @@
 import './stmain.css';
 import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-import Nav from '../NavBar/Nav';
+import { useNavigate} from 'react-router-dom';
+import React, { useState ,useEffect } from 'react';
+import Head from '../Header/Header';
 
 
 function StMain() {
   const navigator = useNavigate();
-
+ 
   const handleClick1 = () => {
     toast.loading('loading...', {
       style: {
@@ -46,7 +47,7 @@ function StMain() {
 
     
     <div>
-      <Nav/>
+      <Head/>
       <Toaster />
       <div className="bodyst">
         <form className="mainst">
@@ -69,6 +70,7 @@ function StMain() {
         </form>
       </div>
     </div>
+    
   );
 }
 

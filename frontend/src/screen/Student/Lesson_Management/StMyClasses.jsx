@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Routes } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../photos/logofull.png'
-import userpng from '../photos/User.png'
 import './StMyClasses.css';
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
 
 function StMyClasses() {
 
@@ -75,22 +73,9 @@ function StMyClasses() {
     <>
     
       <div>
-  <Nav/>
+  <Head/>
         <div className="container">          
           <div className="main-content">
-          <table>
-                    <tr>
-                        <td className='tbllogo'>
-                            <img src={logo} alt='logo'/>
-                        </td>
-                        <td>
-                            <p class='hellotxt'><b>Hello, {name}</b><br/>Student</p>
-                        </td>
-                        <td>
-                            <img src={userpng} alt='logo' class='hellopic'/>
-                        </td>
-                    </tr>
-                </table>
             <div className="class_details">
               <h2>Class Details</h2>
               <div className="class-info">

@@ -5,7 +5,8 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
+
 
 function StViewCash() {
 
@@ -90,7 +91,7 @@ function StViewCash() {
 
   return (
     <div>
-      <Nav/>
+      <Head/>
       <Toaster/>
       <div className='bodyvc'>
       <h1 className='h1vc'><br/>My Payments</h1>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './stwallet.css';
 import axios from 'axios';
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
+
 function StWallet() {
 
 
@@ -19,7 +20,7 @@ useEffect(()=>{
 
   return (
     <div>
-      <Nav/>
+      <Head/>
        <div className="bodywa">
             <h1 className="h1wa"><br/>My Wallet</h1>
 
