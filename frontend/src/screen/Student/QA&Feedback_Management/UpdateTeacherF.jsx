@@ -4,6 +4,7 @@ import axios from 'axios';
 import {useParams,useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Head from '../Header/Header';
 
 function UpdateTeacherF() {
 
@@ -119,6 +120,7 @@ function UpdateTeacherF() {
 
   return (
     <div className='uth1'>
+       <Head/>
       <Toaster/>
         <body >
       <h1 className="heading8">We Want to Hear from You - Teacher Feedback</h1>

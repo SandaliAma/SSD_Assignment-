@@ -6,7 +6,8 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
+
 
 
 function StCancelBank() {
@@ -22,6 +23,18 @@ function StCancelBank() {
     const [balance, setBalance] = useState();
     const [walletId] = useState('6615e90982b9dffcc59d079b'); // Set the wallet ID here
     const navigator = useNavigate();
+
+    const [name, setName] = useState();
+
+    useEffect(()=>{
+      axios.get('/studentprofile')
+      .then((res)=>{
+          setName(res.data.name);            
+      })
+      .catch((err)=>{
+          console.log(err);
+      })
+    },[])
   
     useEffect(() => {
       axios.get('http://Localhost:5000/getbank/' + id)
@@ -135,7 +148,8 @@ function StCancelBank() {
     
   return (
     <div>
-      <Nav/>
+      <Head/>
+    
       <div>
       <Toaster/>
      <div className="bodycba">

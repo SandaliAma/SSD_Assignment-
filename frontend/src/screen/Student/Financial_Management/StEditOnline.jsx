@@ -6,7 +6,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
 
 
 function StEditOnline() {
@@ -121,7 +121,7 @@ function StEditOnline() {
   
   return (
     <div>
-      <Nav/>
+     <Head/>
        <div>
        <Toaster/>
       <div className="bodyeon">
@@ -141,7 +141,7 @@ function StEditOnline() {
                     <input type="text" name="description" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="texteon7" value={discription} onChange={(e)=>setDiscription(e.target.value)}/><br /><br />
 
                     <label htmlFor="tda" className="labeleon2">Enter Date:</label><br />
-                    <input type="date" name="date" placeholder="(DD/MM/YYYY)"  required className="texteon5" value={date} onChange={(e)=>setDate(e.target.value)}/><br /><br />
+                    <input type="date" name="date" placeholder="(DD/MM/YYYY)"  readOnly className="texteon5" value={date} onChange={(e)=>setDate(e.target.value)}/><br /><br />
 
                     <label htmlFor="totalA" className="labeleon2">Enter Amount:</label><br />
                     <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="texteon6"  value={amount} onChange={(e)=>setAmount(e.target.value)}/><br /><br />

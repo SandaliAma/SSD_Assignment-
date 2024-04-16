@@ -6,6 +6,8 @@ import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
+import Head from '../Header/Header';
+
 function AddQuestion() {
 
   const [grade, setGrade] = useState();
@@ -99,6 +101,7 @@ function AddQuestion() {
   };
   return (
     <div className='uth4'>
+      <Head/>
     <Toaster/>
     <div  >
       <form onSubmit={handleSubmit}>

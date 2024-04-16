@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import{Link} from 'react-router-dom';
 import './stpaymentonline.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
+
 
 
 
@@ -26,6 +27,18 @@ function StPaymentOnline() {
   const[amount,setAmount] = useState();
   const navigator = useNavigate();
 
+  const [name, setName] = useState();
+
+  useEffect(()=>{
+    axios.get('/studentprofile')
+    .then((res)=>{
+        setName(res.data.name);            
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
 
   const submit = (e) => {
       e.preventDefault();
@@ -38,6 +51,19 @@ function StPaymentOnline() {
       })
       .catch(err => console.error(err));
   }
+
+  useEffect(() => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+
+    if (mm < 10) mm = '0' + mm;
+    if (dd < 10) dd = '0' + dd;
+
+    const formattedDate = yyyy + '-' + mm + '-' + dd;
+    setDate(formattedDate);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,7 +133,7 @@ function StPaymentOnline() {
 
   return (
     <div>
-      <Nav/>
+      <Head/>
        <Toaster/>
       <div className="bodypon">
         
@@ -132,7 +158,7 @@ function StPaymentOnline() {
                     <input type="text" name="description" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="texton7" onChange={(e)=>setDiscription(e.target.value)}/><br /><br />
 
                     <label htmlFor="tda" className="labelon2">Enter Date:</label><br />
-                    <input type="date" name="date" placeholder="(DD/MM/YYYY)"  required className="texton5"  onChange={(e)=>setDate(e.target.value)}/><br /><br />
+                    <input type="date" name="date" placeholder="(DD/MM/YYYY)"  value={date} readOnly className="texton5"  onChange={(e)=>setDate(e.target.value)}/><br /><br />
 
                     <label htmlFor="totalA" className="labelon2">Enter Amount:</label><br />
                     <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="texton6" onChange={(e)=>setAmount(e.target.value)}/><br /><br />

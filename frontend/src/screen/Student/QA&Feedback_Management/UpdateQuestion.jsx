@@ -4,6 +4,7 @@ import {Link, useParams,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Head from '../Header/Header';
 
 function UpdateQuestion() {
 
@@ -117,6 +118,7 @@ function UpdateQuestion() {
 
   return (
     <div className='uth1'>
+       <Head/>
       <Toaster/>
       <form onSubmit={handleSubmit}>
      

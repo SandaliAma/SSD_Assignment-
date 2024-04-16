@@ -5,7 +5,8 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
+
 
 function StViewOnline() {
 
@@ -93,7 +94,7 @@ function StViewOnline() {
 
   return (
     <div>
-      <Nav/>
+      <Head/>
       <Toaster/>
       <div className='bodyvo'>
         <h1 className='h1vo'><br/>My Payments</h1>

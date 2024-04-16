@@ -6,7 +6,8 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
-import Nav from '../NavBar/Nav';
+import Head from '../Header/Header';
+
 
 
 function StEditBank() {
@@ -120,7 +121,7 @@ function StEditBank() {
     
   return (
     <div>
-      <Nav/>
+     <Head/>
       <div>
       <Toaster/>
      <div className="bodyeba">
@@ -148,7 +149,7 @@ function StEditBank() {
                     <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="texteba7" value={discription} onChange={(e)=>setDiscription(e.target.value)}/><br /><br />
 
                     <label htmlFor="tda" className="labeleba1">Enter Date:</label><br/>
-                    <input type="date" name="dates" placeholder="(DD/MM/YY)"  required className="texteba5" value={date} onChange={(e)=>setDate(e.target.value)}/><br /><br />
+                    <input type="date" name="dates" placeholder="(DD/MM/YY)"  readOnly className="texteba5" value={date} onChange={(e)=>setDate(e.target.value)}/><br /><br />
 
                     <label htmlFor="totalA" className="labeleba1">Enter Amount:</label><br/>
                     <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="texteba6" value={amount} onChange={(e)=>setAmount(e.target.value)}/><br /><br />
