@@ -14,7 +14,7 @@ import feedback from './navbar_images/Feedback.png'
 import profile from './navbar_images/Profile.png'
 import wallet from './navbar_images/Wallet.png'
 import logout from './navbar_images/Logout.png'
-import './navbar.css'
+
 
 
 const TeacherWeekTimetable = () => {
