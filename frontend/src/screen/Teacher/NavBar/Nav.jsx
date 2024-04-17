@@ -35,10 +35,7 @@ function Nav() {
                         <img src={classes} alt='home' className='navimage'/>
                         <a href='/lessonmaterial'>My Classes</a>
                     </li>
-                    <li>
-                        <img src={classes} alt='home' className='navimage'/>
-                        <a href='/lessonmaterial'>Teacher</a>
-                    </li>
+                    
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
                         <a href='/payment'>Payment</a>
