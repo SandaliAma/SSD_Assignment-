@@ -53,8 +53,8 @@ a:hover{
 .logoutbtn{
     width: fit-content;
     background-color: transparent;
-    padding-top: 3px;   
-    padding-bottom: 3px;    
+    padding-top: 8px;   
+    padding-bottom: 8px;    
 }
 
 .logoutbtn:hover{
@@ -67,4 +67,12 @@ a:hover{
     background-color: #667A8A;
     display: flex;
     flex-direction: row;     
+}
+
+.logouttxt{
+    margin-left: 5px;
+    font-weight: 600;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    
 }
