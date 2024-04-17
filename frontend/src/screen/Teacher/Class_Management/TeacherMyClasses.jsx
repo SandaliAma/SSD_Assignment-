@@ -79,7 +79,7 @@ function TeacherMyClasses() {
                     ))}
                 </tbody>
             </table>
-            <button className="add-classes-button">Add Classes</button>
+            <Link to={'/addclasses'}><button className="add-classes-button">Add Classes</button></Link>
         </div>
         </div>
     );

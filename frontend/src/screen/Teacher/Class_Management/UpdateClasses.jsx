@@ -35,7 +35,7 @@ function UpdateClasses() {
         e.preventDefault();
         try {
             await axios.put(`http://localhost:5000/updateClass/${id}`, { teacher, classid, teacherid, subject,time, date, grade });
-            window.location.href = '/'; // Redirect to home page after update
+            window.location.href = '/viewclasses'; // Redirect to home page after update
         } catch (err) {
             console.error(err);
         }
