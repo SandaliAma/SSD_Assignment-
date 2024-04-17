@@ -29,16 +29,19 @@ function Nav() {
                 <ul className='sidenavbarul'>
                     <li>
                         <img src={home} alt='home' className='navimage'/>
-                        <a href='/studentdashboard'>Dashboard</a>
+                        <a href='/'>Dashboard</a>
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
-                        <a href='/lessonmaterial'>My Classes</a>
+                        <a href='/viewclasses'>My Classes</a>
                     </li>
-                    
+                    <li>
+                        <img src={classes} alt='home' className='navimage'/>
+                        <a href='/myclasses'>Lesson Material</a>
+                    </li>
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
-                        <a href='/payment'>Payment</a>
+                        <a href='/teacherfinancial'>Payment</a>
                     </li>
                     <li>
                         <img src={time} alt='home' className='navimage'/>
@@ -50,19 +53,19 @@ function Nav() {
                     </li>
                     <li>
                         <img src={qa} alt='home' className='navimage'/>
-                        <a href='/login'>Q&A</a>
+                        <a href='/THQuestion'>Q&A</a>
                     </li>
                     <li>
                         <img src={feedback} alt='home' className='navimage'/>
-                        <a href='/login'>Feedbacks</a>
+                        <a href='/ViewTeacherFeedback'>Feedbacks</a>
                     </li>
                     <li>
                         <img src={profile} alt='home' className='navimage'/>
-                        <a href='/studentprofile'>Profile</a>
+                        <a href='/teacherprofile'>Profile</a>
                     </li>
                     <li>
                         <img src={wallet} alt='home' className='navimage'/>
-                        <a href='/login'>Salary</a>
+                        <a href='/tesalaryview'>Salary</a>
                     </li>
                     <br/><br/><br/><br/>
                     <li className='logoutsq'>

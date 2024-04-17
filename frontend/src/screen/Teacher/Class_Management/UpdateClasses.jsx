@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './UpdateClasses.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Head from '../Header/Header';
 
 function UpdateClasses() {
     const { id } = useParams();
@@ -41,6 +42,8 @@ function UpdateClasses() {
     };
 
     return (
+        <div>
+             <Head/>
         <div className="update-classes-container">
             <h2 className="edit-class-title">Edit Class</h2>
             <div className="form-container">
@@ -89,6 +92,7 @@ function UpdateClasses() {
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     );
 }

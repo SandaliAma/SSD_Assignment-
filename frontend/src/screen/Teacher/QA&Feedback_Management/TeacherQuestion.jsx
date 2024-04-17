@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './TeacherQuestion.css';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
+import Head from '../Header/Header';
+
 
 function TeacherQuestion() {
 
@@ -17,6 +19,7 @@ function TeacherQuestion() {
 
   return (
     <div>
+       <Head/>
     <text className="heading3">Connect With Your Teachers - New Questions</text>
     <ul style={{listStyleType: 'none', position: 'absolute', left: '344px', top: '220px',  width: '864px', background: '#FFFFFF',  padding: '10px'}}>
     

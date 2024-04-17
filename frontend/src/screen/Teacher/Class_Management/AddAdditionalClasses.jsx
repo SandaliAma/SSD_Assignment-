@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddAdditionalClasses.css';
 import axios from 'axios';
+import Head from '../Header/Header';
 
 function AddAdditionalClasses() {
     const [teacher, setTeacher] = useState('');
@@ -32,6 +33,9 @@ function AddAdditionalClasses() {
     }
 
     return (
+        <div>
+            <Head/>
+        
         <div className="addadditional-classes-container">
             <h2 className="addadditional-class-title">Add Additional Classes</h2>
             <div className="form-container">
@@ -75,6 +79,7 @@ function AddAdditionalClasses() {
 
                 <button className="requestschedule-button">Request A Schedule</button>
             </div>
+        </div>
         </div>
     );
 }

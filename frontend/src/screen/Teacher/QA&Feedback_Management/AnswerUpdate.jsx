@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './AnswerQ.css';
 import axios from 'axios';
 import { useParams,useNavigate } from 'react-router-dom';
+import Head from '../Header/Header';
+
 
 
 function AnswerUpdate() {
@@ -46,6 +48,7 @@ function AnswerUpdate() {
 
   return (
     <div >
+       <Head/>
     <text className="heading12">Connect with your teachers </text>
     
     <form onSubmit={reply}> 

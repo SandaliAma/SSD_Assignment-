@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './MyFeedbacks.css';
 
 import axios from 'axios';
+import Head from '../Header/Header';
+
 
 function ViewTeacherFeedback() {
 
@@ -19,6 +21,7 @@ function ViewTeacherFeedback() {
 
   return (
     <div>
+       <Head/>
         <h2 className="heading10">We Want to Hear from You - My Feedbacks</h2>
 
 <ul style={{ position: 'absolute',listStyleType: 'none'}}>

@@ -29,15 +29,15 @@ function Nav() {
                 <ul className='sidenavbarul'>
                     <li>
                         <img src={home} alt='home' className='navimage'/>
-                        <a href='/studentdashboard'>Dashboard</a>
+                        <a href='/'>Dashboard</a>
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
-                        <a href='/lessonmaterial'>My Classes</a>
+                        <a href='/'>My Classes</a>
                     </li>
                     <li>
                         <img src={enroll} alt='home' className='navimage'/>
-                        <a href='/login'>Enrollments</a>
+                        <a href='/'>Enrollments</a>
                     </li>
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
@@ -45,27 +45,24 @@ function Nav() {
                     </li>
                     <li>
                         <img src={time} alt='home' className='navimage'/>
-                        <a href='/studenttimetable'>TimeTable</a>
+                        <a href='/'>TimeTable</a>
                     </li>
                     <li>
                         <img src={attendance} alt='home' className='navimage'/>
-                        <a href='/login'>Attendance</a>
+                        <a href='/'>Attendance</a>
                     </li>
-                    <li>
-                        <img src={qa} alt='home' className='navimage'/>
-                        <a href='/login'>Q&A</a>
-                    </li>
+                   
                     <li>
                         <img src={feedback} alt='home' className='navimage'/>
-                        <a href='/login'>Feedbacks</a>
+                        <a href='/ManagerFeedback'>Feedbacks</a>
                     </li>
                     <li>
                         <img src={profile} alt='home' className='navimage'/>
-                        <a href='/studentprofile'>Profile</a>
+                        <a href='/managerprofile'>Profile</a>
                     </li>
                     <li>
                         <img src={wallet} alt='home' className='navimage'/>
-                        <a href='/Wallet'>Wallet</a>
+                        <a href='/'>Salary</a>
                     </li>
                     <br/><br/><br/><br/>
                     <li className='logoutsq'>

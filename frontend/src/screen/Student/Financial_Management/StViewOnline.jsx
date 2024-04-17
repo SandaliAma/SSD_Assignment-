@@ -2,22 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './stviewonline.css';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import Head from '../Header/Header';
 
-
 function StViewOnline() {
-
   const [payments, setPayments] = useState([]);
-
   const navigator = useNavigate();
 
   useEffect(() => {
     axios.get('http://Localhost:5000/displayonline')
       .then((res) => {
-        setPayments(res.data);
+        // Filter payments to only include the ones with IT number 'IT12345678'
+        const filteredPayments = res.data.filter(payment => payment.itnumber === 'IT12345678');
+        setPayments(filteredPayments);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -25,7 +24,7 @@ function StViewOnline() {
   const handleDelete = (id) => {
     axios.delete('http://Localhost:5000/deletepayment/' + id)
       .then((res) => {
-       
+        // Handle success if needed
       })
       .catch((err) => console.error(err));
   }
@@ -56,50 +55,46 @@ function StViewOnline() {
       }
     });
   };
-  
 
   const handleClick2 = () => {
     toast.loading('Payment is Deleting...', {
       style: {
-        background: 'black', // Customize the background color
-        color: '#ffffff', // Customize the text color
-        borderRadius: '10px', // Add border radius
-        border: '2px solid #ffffff', // Add border
+        background: 'black',
+        color: '#ffffff',
+        borderRadius: '10px',
+        border: '2px solid #ffffff',
       },
     });
-  
+
     setTimeout(() => {
       toast.dismiss();
       setTimeout(() => {
         toast.success('Payment is Deleted!', {
           style: {
-            background: '#28a745', // Green background color
-            color: '#ffffff', // White text color
-            borderRadius: '10px', // Rounded corners
-            border: '2px solid #ffffff', // White border
+            background: '#28a745',
+            color: '#ffffff',
+            borderRadius: '10px',
+            border: '2px solid #ffffff',
           },
-          duration: 2000, // Display duration in milliseconds (3 seconds)
+          duration: 2000,
           iconTheme: {
-            primary: '#ffffff', // White icon color
-            secondary: '#28a745', // Green icon color
+            primary: '#ffffff',
+            secondary: '#28a745',
           },
         });
         setTimeout(() => {
           navigator('/payment');
-        }, 2500); // Wait for 2 seconds after displaying success toast before navigating
-      }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
-    }, 5000); // Wait for 5 seconds before dismissing loading toast
+        }, 2500);
+      }, 2500);
+    }, 5000);
   };
-
 
   return (
     <div>
-      <Head/>
-      <Toaster/>
+      <Head />
+      <Toaster />
       <div className='bodyvo'>
-        <h1 className='h1vo'><br/>My Payments</h1>
-
- 
+        <h1 className='h1vo'><br />My Payments</h1>
         <button type="submit" name="online" className="buttonvo1">Online</button> <br />
         <Link to={'/viewbank'} >
           <button type="submit" name="bank" className="buttonvo2">Bank</button>
@@ -132,7 +127,6 @@ function StViewOnline() {
         <div className="tbl-contentvo">
           <table className='tablevo'>
             <tbody>
-
               {payments.map((payment) => (
                 <tr key={payment._id}>
                   <td className='tdvo'>{payment.itnumber}</td>
@@ -144,23 +138,20 @@ function StViewOnline() {
                   <td className='tdvo4'>{payment.date}</td>
                   <td className='tdvo5'>{payment.amount}</td>
                   <td className='tdvo' style={{ color: payment.status === 'Approved' ? 'green' : payment.status === 'Rejected' ? 'red' : payment.status === 'Pending' ? 'blue' : 'inherit' }}>{payment.status}</td>
-
-                 
                   <td className='tdvo'>
-                  {payment.status !== 'Approved' && payment.status !== 'Rejected' ? (
-  <Link to={`/cancelonline/${payment._id}`} >
-    <input className="buttonvo4" type="button" name="cancel" value="Cancel" />
-  </Link>
-) : (
-  <input className="buttonvo7" type="button" name="cancel" value="Cancel" disabled />
-)}
-
-                  </td >
+                    {payment.status !== 'Approved' && payment.status !== 'Rejected' ? (
+                      <Link to={`/cancelonline/${payment._id}`} >
+                        <input className="buttonvo4" type="button" name="cancel" value="Cancel" />
+                      </Link>
+                    ) : (
+                      <input className="buttonvo7" type="button" name="cancel" value="Cancel" disabled />
+                    )}
+                  </td>
                   <td className='tdvo'>
                     <Link to={`/editonline/${payment._id}`} >
                       <input className="buttonvo5" type="button" name="edit" value="Edit" />
                     </Link>
-                  </td >
+                  </td>
                   <td className='tdvo'>
                     <input className="buttonvo6" type="button" name="delete" value="Delete" onClick={() => handleSubmit(payment._id)} />
                   </td>
@@ -171,7 +162,7 @@ function StViewOnline() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default StViewOnline;

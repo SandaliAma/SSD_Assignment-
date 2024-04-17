@@ -57,7 +57,7 @@ import AdditionalClasses from './screen/Teacher/Class_Management/AdditionalClass
 import AddAdditionalClasses from './screen/Teacher/Class_Management/AddAdditionalClasses';
 import RequestSchedule from './screen/Teacher/Class_Management/RequestSchedule';
 import AddClasses from './screen/Teacher/Class_Management/AddClasses';
-
+import TeacherView from './screen/Teacher/Salary_Management/TeacherView';
 
 import AdminManagerLogin from './screen/AdminManagerLogin';
 import ManagerLogin from './screen/Manager/ManagerLogin';
@@ -71,6 +71,7 @@ import EditManager from './screen/Manager/Financial_Management/Mgedit';
 import Manager from './screen/Manager/Financial_Management/MgMain';
 import MgPay from './screen/Manager/Financial_Management/MgPayment';
 import MgView from './screen/Manager/Financial_Management/MgView';
+
 
 import AdminLogin from './screen/Admin/AdminLogin';
 import AdminForgetPassword from './screen/Admin/Forgetpasswordadmin';
@@ -156,6 +157,7 @@ function App() {
       <Route path='/AddAdditionalClasses' element={<AddAdditionalClasses />} />
       <Route path='/requestschedule' element={<RequestSchedule />} />
       <Route path='/addclasses' element={<AddClasses/>} />
+      <Route path='/tesalaryview' element={<TeacherView/>} />
 
 
       <Route path="/adminmanagerlogin" element={<AdminManagerLogin />} />

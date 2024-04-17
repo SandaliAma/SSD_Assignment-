@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './AdditionalClass.css';
 import axios from 'axios';
+import Head from '../Header/Header';
 
 function AdditionalClasses() {
     const [requestedClasses, setRequestedClasses] = useState([]);
@@ -15,6 +16,8 @@ function AdditionalClasses() {
     }, []);
 
     return (
+        <div>
+             <Head/>
         <div className="additional-classes-container">
             <h2 className="additional-classes-title">Requested Additional Classes</h2>
             <table className="additionalclasses-table">
@@ -43,6 +46,7 @@ function AdditionalClasses() {
             </table>
             <button className="add-additional-button">Add Additional Class</button><br></br>
             <button className="myclasses-button">My Classes</button>
+        </div>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import Head from '../Header/Header';
 
 
 function TeacherView() {
@@ -18,6 +18,8 @@ function TeacherView() {
   
 
   return (
+    <div>
+      <Head/>
     <div className='bodyE'>
           <div>
       <label className="heading3A"> My Salary</label>
@@ -54,6 +56,7 @@ function TeacherView() {
 
     </div>
 
+    </div>
     </div>
 
   )

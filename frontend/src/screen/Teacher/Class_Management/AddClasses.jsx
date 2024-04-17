@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './AddClasses.css'; // Importing CSS file
 import axios from 'axios';
+import Head from '../Header/Header';
 
 function AddClasses() {
     const [teacher, setTeacher] = useState('');
@@ -36,6 +37,8 @@ function AddClasses() {
     }
 
     return (
+        <div>
+             <Head/>
         <div className="add-classes-container">
             <h2 className="add-class-title">Add Classes</h2>
             <div className="form-container">
@@ -87,6 +90,7 @@ function AddClasses() {
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     );
 }

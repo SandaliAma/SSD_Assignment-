@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react'
 import './THQuestion.css';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
+import Head from '../Header/Header';
+
 
 function THQuestion() {
 
@@ -32,6 +34,7 @@ function THQuestion() {
 
   return (
     <div>
+       <Head/>
         <text className="heading5">Connect With Your Teachers</text>
         <p className="parag2">Welcome to our online platform dedicated to supporting students' learning journey! Our platform is designed to enhance collaboration, engagement, and support within the educational community.</p>
         <Link to="/TeacherQuestion" style={{ textDecoration: 'none',color: '#000000' }}><button id="nQuestion" style={{ position: 'absolute', width: '592px', height: '86px', left: '336px', top: '323px', background: '#83B2CD', borderRadius: '20px' }} className="buttn3">NEW QUESTIONS</button></Link>

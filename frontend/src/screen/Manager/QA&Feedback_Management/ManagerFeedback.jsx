@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import './ManagerFeedback.css';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
+import Head from '../Header/Header'
 
 function ManagerFeedback() {
 
@@ -30,7 +31,7 @@ function ManagerFeedback() {
   };
   return (
     <div>
-        
+        <Head/>
       <text className="heading13">Over View of Feedbacks</text>
       <p className="pm">The goal is to turn data into information, and information into insight.</p>
       <Link to="/ManagerNFeedback" style={{ textDecoration: 'none',color: '#000000' }}><button id="vf" className="vft" style={{ position: 'absolute', width: '592px', height: '86px', left: '354px', top: '286px', background: '#83B2CD', borderRadius: '20px' }}>VIEW NEW FEEDBACKS</button></Link>

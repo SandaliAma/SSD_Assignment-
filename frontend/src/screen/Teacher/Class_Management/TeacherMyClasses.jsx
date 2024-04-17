@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './TeacherMyClasses.css';
 import axios from 'axios';
+import Head from '../Header/Header';
 
 function TeacherMyClasses() {
     const [addclasses, setAddclasses] = useState([]);
@@ -29,6 +30,8 @@ function TeacherMyClasses() {
     );
 
     return (
+        <div>
+             <Head/>
         <div className="my-classes-container">
             <h2 className="my-classes-title">My Classes</h2>
             <input
@@ -77,6 +80,7 @@ function TeacherMyClasses() {
                 </tbody>
             </table>
             <button className="add-classes-button">Add Classes</button>
+        </div>
         </div>
     );
 }

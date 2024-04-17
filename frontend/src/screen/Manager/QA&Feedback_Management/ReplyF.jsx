@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ReplyF.css';
 import axios from 'axios';
 import { useParams,useNavigate } from 'react-router-dom';
+import Head from '../Header/Header'
 
 function ReplyF() {
 
@@ -34,6 +35,7 @@ function ReplyF() {
 
   return (
     <div>
+       <Head/>
         <div>
       <text className="heading14">We Want to Hear from You - Service Feedabacks</text>
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ReplyF.css';
 import axios from 'axios';
 import { useParams,useNavigate } from 'react-router-dom';
+import Head from '../Header/Header'
 
 function MFeedbackUpdate() {
 
@@ -43,6 +44,7 @@ function MFeedbackUpdate() {
     
         
         <div>
+           <Head/>
       <text className="heading14">We Want to Hear from You - Service Feedabacks</text>
 
       <form onSubmit={replyM}>
