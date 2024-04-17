@@ -50,8 +50,13 @@ import AnswerUpdate from './screen/Teacher/QA&Feedback_Management/AnswerUpdate';
 import TeacherQuestion from './screen/Teacher/QA&Feedback_Management/TeacherQuestion';
 import THQuestion from './screen/Teacher/QA&Feedback_Management/THQuestion';
 import ViewTeacherFeedback from './screen/Teacher/QA&Feedback_Management/ViewTeacherFeedback';
-import Teacher from './screen/Teacher/Financial_Management/TeView';
-
+import TeacherViewPayment from './screen/Teacher/Financial_Management/TeView';
+import TeacherMyClasses from './screen/Teacher/Class_Management/TeacherMyClasses';
+import UpdateClasses from './screen/Teacher/Class_Management/UpdateClasses';
+import AdditionalClasses from './screen/Teacher/Class_Management/AdditionalClasses';
+import AddAdditionalClasses from './screen/Teacher/Class_Management/AddAdditionalClasses';
+import RequestSchedule from './screen/Teacher/Class_Management/RequestSchedule';
+import AddClasses from './screen/Teacher/Class_Management/AddClasses';
 
 import AdminManagerLogin from './screen/AdminManagerLogin';
 import ManagerLogin from './screen/Manager/ManagerLogin';
