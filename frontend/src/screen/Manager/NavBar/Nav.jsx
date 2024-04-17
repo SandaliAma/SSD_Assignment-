@@ -45,7 +45,7 @@ function Nav() {
                     </li>
                     <li>
                         <img src={time} alt='home' className='navimage'/>
-                        <a href='/'>TimeTable</a>
+                        <a href='/Manager/Timetable'>TimeTable</a>
                     </li>
                     <li>
                         <img src={attendance} alt='home' className='navimage'/>

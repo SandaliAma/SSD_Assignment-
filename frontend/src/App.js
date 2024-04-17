@@ -76,6 +76,9 @@ import MgView from './screen/Manager/Financial_Management/MgView';
 import ManagerSalary from './screen/Manager/Salary_Management/Manager';
 import ManagerView from './screen/Manager/Salary_Management/ManagerView';
 import UpdateManager from './screen/Manager/Salary_Management/UpdateManager';
+import ManagerTimetable from './screen/Manager/Timetable_management/Timetable';
+import AddNewClassForm from './screen/Manager/Timetable_management/AddnewClasstime';
+import ManagerUpdateTimetable from './screen/Manager/Timetable_management/UpdateTimetable';
 
 
 import AdminLogin from './screen/Admin/AdminLogin';
@@ -178,6 +181,9 @@ function App() {
       <Route path='/home' element={<ManagerView />} />
       <Route path='/managersalary' element={<ManagerSalary />} />
       <Route path='/update/:id' element={<UpdateManager />} />
+      <Route path="/Manager/Timetable" element={<ManagerTimetable/>} />
+      <Route path='/Manager/AddnewClasstime' element={<AddNewClassForm/>}/>
+      <Route path='/Manager/UpdateTimetable/:id' element={< ManagerUpdateTimetable/>}/>
   
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>
