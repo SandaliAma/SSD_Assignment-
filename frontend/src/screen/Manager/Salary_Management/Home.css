@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+}
+
+a{
+    font-family: inter,Arial, Helvetica, sans-serif;
+    font-weight: 500;
+}
+
+.bodyC{
+    font-family: inter,Arial, Helvetica, sans-serif;
+    min-height: 100%;
+    background-color:rgb(204, 201, 203);
+    margin: 0;
+	font-family: sans-serif;
+	font-weight: 100;
+	opacity:0.9;
+    body {font-family: Helvetica Neue, sans-serif;}
+}
+   
+
+
+
+
+
+
+.addsalary{
+   
+    padding: 10px 100px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #d8daea;
+    border-radius:10px;
+    box-sizing: border-box;
+    margin-left:80px;
+    color: rgb(214, 214, 227);
+    background-color: rgb(11, 53, 224);;
+
+ 
+  }
+
+  .ViewSalary{
+  
+    padding: 10px 100px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #b4b5c4;
+    border-radius:10px;
+    box-sizing: border-box;
+    margin-left:80px;
+    color: rgb(211, 211, 234);
+    background-color: rgb(11, 53, 224);
+  }
+
+  .generate{
+   
+    padding: 10px 100px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #eaebf9;
+    border-radius:10px;
+    box-sizing: border-box;
+    margin-left:80px;
+    color: rgb(222, 222, 240);
+    background-color: rgb(11, 53, 224);
+  }

@@ -71,6 +71,11 @@ import EditManager from './screen/Manager/Financial_Management/Mgedit';
 import Manager from './screen/Manager/Financial_Management/MgMain';
 import MgPay from './screen/Manager/Financial_Management/MgPayment';
 import MgView from './screen/Manager/Financial_Management/MgView';
+import CreateManager from './screen/Manager/Salary_Management/CreateManager';
+import Home from './screen/Manager/Salary_Management/Home';
+import ManagerSalary from './screen/Manager/Salary_Management/Manager';
+import ManagerView from './screen/Manager/Salary_Management/ManagerView';
+import UpdateManager from './screen/Manager/Salary_Management/UpdateManager';
 
 
 import AdminLogin from './screen/Admin/AdminLogin';
@@ -168,6 +173,11 @@ function App() {
       <Route path= '/mgpay' element = {<MgPay/>} />
       <Route path= '/mgview' element = {<MgView/>} />
       <Route path= '/editmanager/:id' element = {<EditManager/>} />
+      <Route path='/create' element={<CreateManager />} />
+      <Route path='/home' element={<Home />} />
+      <Route path='/home' element={<ManagerView />} />
+      <Route path='/managersalary' element={<ManagerSalary />} />
+      <Route path='/update/:id' element={<UpdateManager />} />
   
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>
