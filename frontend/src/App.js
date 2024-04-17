@@ -60,9 +60,9 @@ import AddClasses from './screen/Teacher/Class_Management/AddClasses';
 import TeacherView from './screen/Teacher/Salary_Management/TeacherView';
 
 import AdminManagerLogin from './screen/AdminManagerLogin';
-import ManagerLogin from './screen/Manager/ManagerLogin';
-import ManagerForgetPassword from './screen/Manager/Forgetpasswordmanager';
-import ManagerProfile from './screen/Manager/ManagerProfile';
+import ManagerLogin from './screen/Manager/User_Management/ManagerLogin';
+import ManagerForgetPassword from './screen/Manager/User_Management/Forgetpasswordmanager';
+import ManagerProfile from './screen/Manager/User_Management/ManagerProfile';
 import ManagerFeedback from './screen/Manager/QA&Feedback_Management/ManagerFeedback';
 import ManagerNFeedback from './screen/Manager/QA&Feedback_Management/ManagerNFeedback';
 import ReplyF from './screen/Manager/QA&Feedback_Management/ReplyF';
