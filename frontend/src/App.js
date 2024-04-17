@@ -35,10 +35,10 @@ import UpdateSFeedback from './screen/Student/QA&Feedback_Management/UpdateSFeed
 
 
 
-import TeacherLogin from './screen/Teacher/TeacherLogin';
-import TeacherProfile from './screen/Teacher/TeacherProfile';
-import TeacherProfileEdit from './screen/Teacher/TeacherProfileEdit';
-import TeacherForgetPassword from './screen/Teacher/Forgetpasswordteacher';
+import TeacherLogin from './screen/Teacher/User_Management/TeacherLogin';
+import TeacherProfile from './screen/Teacher/User_Management/TeacherProfile';
+import TeacherProfileEdit from './screen/Teacher/User_Management/TeacherProfileEdit';
+import TeacherForgetPassword from './screen/Teacher/User_Management/Forgetpasswordteacher';
 import TeacherTimetable from './screen/Teacher/Timetable';
 import MyClassess from './screen/Teacher/Lesson_Management/MyClasses';
 import CreateNotice from './screen/Teacher/Lesson_Management/CreateNotice';

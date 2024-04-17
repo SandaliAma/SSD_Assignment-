@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const { Studenttimetable
+const { createaddadditionalclass
 } = require('../controllers/classController');
 
 //middleware
@@ -13,7 +13,7 @@ router.use(
 )
 
 
-router.get('/Student/Timetable', Studenttimetable)
+router.post('/createaddadditionalclass', createaddadditionalclass)
 
 
 module.exports = router;
