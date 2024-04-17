@@ -1,0 +1,55 @@
+.additional-classes-container {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center; /* Center the content */
+  }
+  
+  .additional-classes-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .additionalclasses-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .additionalclasses-table th,
+  .additionalclasses-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .additionalclasses-table th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  .additionalclasses-table td {
+    color: #555;
+  }
+  
+  .add-additional-button,
+  .myclasses-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-additional-button:hover,
+  .myclasses-button:hover {
+    background-color: #0056b3;
+  }
+  

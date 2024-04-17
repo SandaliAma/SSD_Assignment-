@@ -1,0 +1,58 @@
+/* AddAdditionalClasses.css */
+
+.addadditional-classes-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.addadditional-class-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  width: 70%; /* Adjust the width of the form */
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-container input {
+  width: calc(100% - 20px); /* Adjust input width to fit within the container */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.button-container {
+  margin-top: 20px;
+  text-align: center; /* Center the buttons */
+}
+
+.cancel-button,
+.save-button,
+.requestschedule-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 5px; /* Add some space between buttons */
+}
+
+.cancel-button:hover,
+.save-button:hover,
+.requestschedule-button:hover {
+  background-color: #0056b3;
+}

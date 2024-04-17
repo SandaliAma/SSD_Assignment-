@@ -1,0 +1,83 @@
+/* TeacherMyClasses.css */
+
+.my-classes-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .my-classes-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+
+
+  }
+  
+  .search-grade-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .classes-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .classes-table th,
+  .classes-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .classes-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .delete-button,
+  .view-class-button,
+  .add-classes-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button {
+    background-color: #ff5555;
+    color: #fff;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff3333;
+  }
+  
+  .view-class-button {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .view-class-button:hover {
+    background-color: #45a049;
+  }
+  
+  .add-classes-button {
+    background-color: #2196f3;
+    color: #fff;
+    margin-top: 30px;
+    margin-left: 400px;
+
+    
+  }
+  
+  .add-classes-button:hover {
+    background-color: #0b7dda;
+    
+
+  }
+  
