@@ -122,9 +122,14 @@ function UpdateSFeedback() {
       <label htmlFor="grade" className="tt6">Select Grade</label>
       <select id="grade" name="dropdown" style={{ boxSizing: 'border-box', position: 'absolute', width: '920px', height: '53px', left: '436px', top: '268px', background: '#FFFFFF', border: '1px solid #000000' }} value={grade} onChange={(a)=> setGrade(a.target.value)}>
       <option value="" ></option>
+      <option value="Grade 4" >Grade 4</option>
+          <option value="Grade 5" >Grade 5</option>
+          <option value="Grade 6" >Grade 6</option>
+          <option value="Grade 7" >Grade 7</option>
+          <option value="Grade 8" >Grade 8</option>
           <option value="Grade 9" >Grade 9</option>
           <option value="Grade 10" >Grade 10</option>
-          <option value="Grade11" >Grade11</option>
+          <option value="Grade 11" >Grade11</option>
       </select>
       
 

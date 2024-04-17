@@ -1,9 +1,12 @@
 import React from 'react';
 // import './Home.css';
 import {Link } from 'react-router-dom';
+import Head from '../Header/Header'
 
 function Home() {
   return (
+    <div>
+    <Head/>
     <div className='bodyC'>
           <div className="nimanji1" className1="container5"><br />
  <Link to={'/create'}>
@@ -17,6 +20,7 @@ function Home() {
 </Link>
   </div>
 
+    </div>
     </div>
 
   )

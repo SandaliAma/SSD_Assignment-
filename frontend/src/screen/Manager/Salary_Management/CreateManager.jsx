@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import './CreateManager.css';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Head from '../Header/Header'
 
 function CreateManager() {
 
@@ -27,6 +28,11 @@ function CreateManager() {
           })
           .catch(err => console.error(err));
     }
+
+    const calculateMonthlySalary = () => {
+      const monthlySalary = (parseFloat(AttendStudents) * parseFloat(1000)) -(parseFloat(FreeCardAmount) + parseFloat(InstitutePayment) );
+      setEnterMonthelySalary(monthlySalary.toFixed(2));
+     };
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -96,6 +102,7 @@ function CreateManager() {
 
   return (
     <div>
+      <Head/>
     <Toaster/>
     <div className="bodyA">
       <h12 className="h12i">Make a Salary</h12>
@@ -123,7 +130,11 @@ function CreateManager() {
 
           <label id="totalA" name="totalA" className="labelA7">Enter Institute Payment :</label>
           <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="text1" onChange={(e)=>setEnterInstitutePayment(e.target.value)} /><br /><br />
-
+          <br/><br/>
+          <button type="submit" name="calculate" className="buttonA7" onClick={calculateMonthlySalary}>
+              Calculate
+            </button>
+          <br/><br/>
           <label id="totalA" name="totalA" className="labelA8">Enter Monthly Salary :</label>
           <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="text1" onChange={(e)=>setEnterMonthelySalary(e.target.value)} /><br /><br />
 

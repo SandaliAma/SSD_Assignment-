@@ -112,14 +112,23 @@ function TFeedback() {
         <label htmlFor="grade" className="tt1">Select Grade</label>
         <select id="grade" required name="dropdown" style={{ position: 'absolute', width: '337px', height: '37px', left: '632px', top: '200px', background: '#FFFFFF', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: '8px' }} onChange={(a)=> setGrade(a.target.value)}>
         <option value="" ></option>
+        <option value="Grade 4" >Grade 4</option>
+          <option value="Grade 5" >Grade 5</option>
+          <option value="Grade 6" >Grade 6</option>
+          <option value="Grade 7" >Grade 7</option>
+          <option value="Grade 8" >Grade 8</option>
           <option value="Grade 9" >Grade 9</option>
           <option value="Grade 10" >Grade 10</option>
-          <option value="Grade11" >Grade11</option>
+          <option value="Grade 11" >Grade11</option>
         </select>
         
         <label htmlFor="subject" className="tt2">Select Subject</label>
         <select id="subject" required name="dropdown" style={{ position: 'absolute', width: '337px', height: '37px', left: '632px', top: '264px', background: '#FFFFFF', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: '8px' }}  onChange={(a)=> setSubject(a.target.value)}>
         <option value="" ></option>
+        <option value="History" >History</option>
+          <option value="Sinhala" >Sinhala</option>
+          <option value="ICT" >ICT</option>
+          <option value="Music" >Music</option>
           <option value="Mathematics" >Mathematics</option>
           <option value="Science" >Science</option>
           <option value="English" >English</option>
@@ -128,9 +137,11 @@ function TFeedback() {
         <label htmlFor="teacher" className="tt3">Select Teacher</label>
         <select id="teacher" required name="dropdown" style={{ position: 'absolute', width: '337px', height: '37px', left: '632px', top: '346px', background: '#FFFFFF', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: '8px' }} onChange={(a)=> setTeacher(a.target.value)}>
         <option value="" ></option>
-          <option value="Mrs.Lakmali" >Mrs.Lakmali</option>
+          <option value="Mr.Amila" >Mr.Amila</option>
           <option value="Mrs.Nimal" >Mrs.Nimal</option>
           <option value="Mrs.Upul" >Mrs.Upul</option>
+          <option value="Mr.Senaka" >Mr.Senaka</option>
+          <option value="Mrs.Anne" >Mrs.Anne</option>
         </select>
         
         <label htmlFor="studentID" className="tt4">Student ID</label>

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Head from '../Header/Header'
 
 
 function UpdateManager() {
@@ -111,6 +112,8 @@ const handleSubmit = (e) => {
   };
 
   return (
+    <div>
+    <Head/>
 
     <div className="body">
       <Toaster/>
@@ -152,6 +155,7 @@ const handleSubmit = (e) => {
 
       </form>
     </div>
+  </div>
   </div>
   )
 }

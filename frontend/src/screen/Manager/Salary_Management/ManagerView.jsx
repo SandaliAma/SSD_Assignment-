@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import Manager from './Manager';
+import Head from '../Header/Header'
 
 const getFilteredItems = (query, items) => {
     if(!query){
@@ -17,6 +18,8 @@ export default function App(){
     const filteredItems = getFilteredItems(query, items);
 
     return (
+        <div>
+        <Head/>
         <div className="App">
             <label>Search</label>
             <input type="text" onChange={(e) => setQuery(e.target.value)}/>
@@ -26,6 +29,7 @@ export default function App(){
                 ))}
             </ul>
     
+        </div>
         </div>
      
       )

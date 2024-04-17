@@ -6,7 +6,6 @@ import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
-import Head from '../Header/Header';
 
 function AddQuestion() {
 
@@ -100,8 +99,10 @@ function AddQuestion() {
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
   return (
+    <div>
+      
     <div className='uth4'>
-      <Head/>
+      
     <Toaster/>
     <div  >
       <form onSubmit={handleSubmit}>
@@ -110,6 +111,11 @@ function AddQuestion() {
         <label htmlFor="dropdown1" className='t1'>Select Grade</label>
         <select id="dropdown1" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '205px', border: '1px solid #000000', borderRadius: '10px' }}  required onChange={(a)=> setGrade(a.target.value)}>
           <option value="" ></option>
+          <option value="Grade 4" >Grade 4</option>
+          <option value="Grade 5" >Grade 5</option>
+          <option value="Grade 6" >Grade 6</option>
+          <option value="Grade 7" >Grade 7</option>
+          <option value="Grade 8" >Grade 8</option>
           <option value="Grade 9" >Grade 9</option>
           <option value="Grade 10" >Grade 10</option>
           <option value="Grade 11" >Grade11</option>
@@ -118,6 +124,10 @@ function AddQuestion() {
         <label htmlFor="dropdown2" className='t2'>Select Subject</label>
         <select id="dropdown2" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '279px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setSubject(a.target.value)}>
           <option value="" ></option>
+          <option value="History" >History</option>
+          <option value="Sinhala" >Sinhala</option>
+          <option value="ICT" >ICT</option>
+          <option value="Music" >Music</option>
           <option value="Mathematics" >Mathematics</option>
           <option value="Science" >Science</option>
           <option value="English" >English</option>
@@ -126,9 +136,11 @@ function AddQuestion() {
         <label htmlFor="dropdown3" className='t3'>Select Teacher</label>
         <select id="dropdown3" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '360px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setTeacher(a.target.value)}>
           <option value="" ></option>
-          <option value="Mrs.Lakmali" >Mrs.Lakmali</option>
+          <option value="Mr.Amila" >Mr.Amila</option>
           <option value="Mrs.Nimal" >Mrs.Nimal</option>
           <option value="Mrs.Upul" >Mrs.Upul</option>
+          <option value="Mr.Senaka" >Mr.Senaka</option>
+          <option value="Mrs.Anne" >Mrs.Anne</option>
         </select>
         
         <text className='t5'>Student ID</text>
@@ -141,6 +153,7 @@ function AddQuestion() {
         <button name="qSubmit"  className="buttonbb1">Submit</button>
       
       </form> 
+    </div>
     </div>
     </div>
   )
