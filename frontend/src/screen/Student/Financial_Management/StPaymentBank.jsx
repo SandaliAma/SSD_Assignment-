@@ -165,11 +165,7 @@ function StPaymentBank() {
                     <br></br>
                     
                     
-                    <div className="payba2">
-                      <br/>
-                    <label htmlFor="file" className="labelba8">Upload a file:</label><br />
-                    <input type="file" id="file" name="file" className="textba8"  />
-                    </div>
+                   
                     
                     <div> <br/><br/>
                     <input type="checkbox" id="terms" name="terms" value="accepted" className="checkbox-textpa" required/>
