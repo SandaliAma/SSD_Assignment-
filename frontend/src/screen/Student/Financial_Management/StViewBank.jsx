@@ -119,7 +119,7 @@ function StViewBank() {
               <th className='thvb'>Description</th>
               <th className='thvb'>Date</th>
               <th className='thvb'>Amount</th>
-              <th className='thvb'>Slip</th>
+            
               <th className='thvb'>Status</th>
               <th className='thvb'>Action</th>
               <th className='thvb'></th>
@@ -142,7 +142,7 @@ function StViewBank() {
               <td className='tdvb'>{bank.discription}</td>
               <td className='tdvb'>{bank.date}</td>
               <td className='tdvb'>{bank.amount}</td>
-              <td className='tdvb'>view</td>
+          
               <td className='tdvb' style={{ color: bank.status === 'Approved' ? 'green' : bank.status === 'Rejected' ? 'red' : bank.status === 'Pending' ? 'blue' : 'inherit' }}>{bank.status}</td>
 
               <td className='tdvb'>
