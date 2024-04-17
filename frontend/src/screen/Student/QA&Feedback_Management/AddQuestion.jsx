@@ -94,7 +94,7 @@ function AddQuestion() {
           },
         });
         setTimeout(() => {
-          navigator('/');
+          navigator('/question');
         }, 2500); // Wait for 2 seconds after displaying success toast before navigating
       }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
     }, 5000); // Wait for 5 seconds before dismissing loading toast

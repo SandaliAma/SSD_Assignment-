@@ -165,7 +165,8 @@ function App() {
       <Route path= '/managerfinancial' element = {<Manager/>} />
       <Route path= '/mgpay' element = {<MgPay/>} />
       <Route path= '/mgview' element = {<MgView/>} />
-      
+      <Route path= '/editmanager/:id' element = {<EditManager/>} />
+  
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>
       <Route path="/adminprofile" element={<AdminProfile />} />

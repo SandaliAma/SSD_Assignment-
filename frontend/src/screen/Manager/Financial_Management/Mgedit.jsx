@@ -6,6 +6,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Head from '../Header/Header'
 
 
 
@@ -156,20 +157,21 @@ function Mgedit() {
               },
             });
             setTimeout(() => {
-              navigator('/manager');
+              navigator('/managerfinancial');
             }, 2500); // Wait for 2 seconds after displaying success toast before navigating
           }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
         }, 5000); // Wait for 5 seconds before dismissing loading toast
       };
     
       const handleCancel = () => {
-        navigator('/manager');
+        navigator('/managerfinancial');
       }
       
     
 
   return (
     <div>
+      <Head/>
       <Toaster/>
       <div className="bodymge">
                 <h1 className="h1mge"><br></br>Add a Payment</h1>
