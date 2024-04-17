@@ -50,7 +50,7 @@ import AnswerUpdate from './screen/Teacher/QA&Feedback_Management/AnswerUpdate';
 import TeacherQuestion from './screen/Teacher/QA&Feedback_Management/TeacherQuestion';
 import THQuestion from './screen/Teacher/QA&Feedback_Management/THQuestion';
 import ViewTeacherFeedback from './screen/Teacher/QA&Feedback_Management/ViewTeacherFeedback';
-import TeacherViewPayment from './screen/Teacher/Financial_Management/TeView';
+import Teacher from './screen/Teacher/Financial_Management/TeView';
 
 
 import AdminManagerLogin from './screen/AdminManagerLogin';
@@ -144,6 +144,12 @@ function App() {
       <Route path='/MFeedbackUpdate/:id' element={<MFeedbackUpdate/>}/>
       <Route path= '/teacherfinancial' element = {<TeacherViewPayment/>} />
       <Route path= '/editmanager/:id' element = {<EditManager/>} />
+      <Route path='/viewclasses' element={<TeacherMyClasses />} />
+      <Route path='/update/:id' element={<UpdateClasses />} />
+      <Route path='/additionalclasses' element={<AdditionalClasses/>} />
+      <Route path='/AddAdditionalClasses' element={<AddAdditionalClasses />} />
+      <Route path='/requestschedule' element={<RequestSchedule />} />
+      <Route path='/addclasses' element={<AddClasses/>} />
 
 
       <Route path="/adminmanagerlogin" element={<AdminManagerLogin />} />

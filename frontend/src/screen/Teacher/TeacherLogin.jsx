@@ -51,7 +51,7 @@ function TeacherLogin() {
             </div>           
             <a href='/teacherforgetpassword'><p class="forget">Forgot Password?<br/></p></a>          
             <button type="submit"  className='btnloging'>LOGIN</button>
-            <a href='/adminmanagerlogin'><p class="register">Manager/Admin Login</p></a>
+            <a href='/adminmanagerlogin'><div class="register">Manager/Admin Login</div></a>
           </form>
         </div>
       </div>

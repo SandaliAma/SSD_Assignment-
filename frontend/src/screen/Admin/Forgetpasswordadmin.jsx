@@ -69,7 +69,7 @@ function Forgetpasswordadmin() {
               <input type="password" id="repassword" name="repassword" placeholder="Enter your password again" class="loginbox" value={rePassword} onChange={(e) => setrePassword(e.target.value)}/>
             </div>
             <br/>
-            <button class="reset" type="submit">RESET YOUR PASSWORD</button>
+            <button class="reset" type="submit" className='btnloging'>RESET YOUR PASSWORD</button>
             <a href='/adminlogin'><p class="register">Already have an Account? <b>Log IN</b></p></a>
           </form>
 

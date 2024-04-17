@@ -74,7 +74,7 @@ function StudentRegister() {
               <input type="password" id="repassword" name="repassword" placeholder="Enter your password again" class="loginbox" value={data.repassword} onChange={(e) => setData({...data, repassword: e.target.value})}/>
             </div>
             <br/>
-            <button type="submit" > SIGN UP</button>
+            <button type="submit" className='btnloging'> SIGN UP</button>
             <a href='/login'><p class="register">Already have an Account? <b>Log IN</b></p></a>
           </form>
         </div>

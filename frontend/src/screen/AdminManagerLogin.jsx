@@ -16,9 +16,9 @@ function loginselection() {
           <p class="wel">Welcome to Royal Academy</p>          
           <br/><br/>
           <div className='adminmanagerbtn'>
-            <Link to={'/managerlogin'}><button type="submit">Manager Login</button> </Link>          
+            <Link to={'/managerlogin'}><button type="submit" className='btnloging'>Manager Login</button> </Link>          
           <br/><br/>             
-            <Link to={'/adminlogin'}><button type="submit">Admin Login</button>   </Link>               
+            <Link to={'/adminlogin'}><button type="submit" className='btnloging'>Admin Login</button>   </Link>               
           </div>
         </div>
       </div>
