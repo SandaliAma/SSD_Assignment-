@@ -65,7 +65,7 @@ function TeacherProfile() {
                     </li>
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
-                        <a href='/login'>Payment</a>
+                        <a href='/teacherfinancial'>Payment</a>
                     </li>
                     <li>
                         <img src={time} alt='home' className='navimage'/>

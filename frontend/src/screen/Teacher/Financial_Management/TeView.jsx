@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './teview.css';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import Head from '../Header/Header'
 
 function TeView() {
     const [allPayments, setAllPayments] = useState([]);
@@ -44,6 +45,7 @@ function TeView() {
 
     return (
         <div>
+            <Head/>
             <Toaster/>
        
         <div className='bodytv'>

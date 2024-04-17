@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Head from '../Header/Header'
 
 
 function MgView() {
@@ -95,7 +96,7 @@ function MgView() {
               },
             });
             setTimeout(() => {
-              navigator('/manager');
+              navigator('/managerfinancial');
             }, 2500); // Wait for 2 seconds after displaying success toast before navigating
           }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
         }, 5000); // Wait for 5 seconds before dismissing loading toast
@@ -105,6 +106,7 @@ function MgView() {
 
     return (
         <div>
+          <Head/>
             <Toaster/>
             <div className='bodymv'>
                 <h1 className='h1mv'><br/>Student Payments</h1>

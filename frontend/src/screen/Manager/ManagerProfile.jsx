@@ -64,7 +64,7 @@ function ManagerProfile() {
                     </li>
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
-                        <a href='/login'>Payment</a>
+                        <a href='/managerfinancial'>Payment</a>
                     </li>
                     <li>
                         <img src={time} alt='home' className='navimage'/>

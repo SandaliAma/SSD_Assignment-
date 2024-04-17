@@ -2,6 +2,7 @@ import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import './mgmain.css';
+import Head from '../Header/Header'
 
 function MgMain() {
 
@@ -44,6 +45,7 @@ function MgMain() {
 
   return (
     <div>
+      <Head/>
       <Toaster />
       <div class="bodymag">
         <form class="mainmag">
