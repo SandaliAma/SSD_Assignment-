@@ -9,7 +9,7 @@ function TeacherMyClasses() {
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:5001/teachermyclasses/addclasses')
+        axios.get('http://localhost:5000/teachermyclasses/addclasses')
             .then((res) => {
                 setAddclasses(res.data);
             })
@@ -18,7 +18,7 @@ function TeacherMyClasses() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5001/deleteClass/${id}`);
+            await axios.delete(`http://localhost:5000/deleteClass/${id}`);
             window.location.reload();
         } catch (err) {
             console.error(err);

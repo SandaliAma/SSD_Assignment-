@@ -8,7 +8,7 @@ function AdditionalClasses() {
 
     useEffect(() => {
         // Fetch requested additional classes
-        axios.get('http://localhost:5001/requestedadditionalclasses/additionalclasses')
+        axios.get('http://localhost:5000/requestedadditionalclasses/additionalclasses')
             .then((res) => {
                 setRequestedClasses(res.data);
             })

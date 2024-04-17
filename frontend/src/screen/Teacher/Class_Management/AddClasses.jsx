@@ -21,7 +21,7 @@ function AddClasses() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5001/addclass', {
+            const response = await axios.post('http://localhost:5000/addclass', {
                 teacher: teacher,
                 time: time,
                 date: date,

@@ -15,7 +15,7 @@ function AddAdditionalClasses() {
 
     const request = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5001/createaddadditionalclass', {
+        axios.post('http://localhost:5000/createaddadditionalclass', {
             teacher: teacher,
             date: date,
             grade: grade,

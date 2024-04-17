@@ -16,7 +16,7 @@ function UpdateClasses() {
     
 
     useEffect(() => {
-        axios.get(`http://localhost:5001/getClass/${id}`)
+        axios.get(`http://localhost:5000/getClass/${id}`)
             .then(res => {
                 const { teacher, classid, teacherid, subject,time, date, grade } = res.data;
 
@@ -34,7 +34,7 @@ function UpdateClasses() {
     const update = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5001/updateClass/${id}`, { teacher, classid, teacherid, subject,time, date, grade });
+            await axios.put(`http://localhost:5000/updateClass/${id}`, { teacher, classid, teacherid, subject,time, date, grade });
             window.location.href = '/'; // Redirect to home page after update
         } catch (err) {
             console.error(err);
