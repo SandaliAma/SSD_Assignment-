@@ -5,6 +5,7 @@ import './Manager.css';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import {useNavigate} from 'react-router-dom';
+import Head from '../Header/Header'
 
 function Manager() {
   const [users, setUsers] = useState([]);
@@ -97,6 +98,7 @@ function Manager() {
   };
   return (
     <div>
+      <Head/>
       <Toaster/>
     <div className='bodykn1'>
                 <h1 className='h1kn'><br></br>My Salary</h1>
