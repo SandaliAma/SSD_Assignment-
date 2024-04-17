@@ -4,6 +4,7 @@ import userpng from './photos/User.png'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
+import Head from '../Header/Header'
 // import toast from 'react-hot-toast';
 
 function TeacherProfileEdit() {
@@ -60,15 +61,10 @@ function TeacherProfileEdit() {
     }
 
 
-    const handleDeletetoken = () => {
-        axios.get('/logout').then(res => {
-            console.log(res);
-            window.location.href = '/';
-        }).catch(err => console.log(err));
-    }
-
+    
   return (
     <main>
+         <Head/>
         <div className='profilecontent'>
             
             <div>
