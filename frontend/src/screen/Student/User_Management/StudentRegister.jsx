@@ -92,9 +92,18 @@ function StudentRegister() {
               <input type="email" id="email" name="email" placeholder="Enter your email" className="loginbox" value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
             </div>
             <div className="username">
-              <label htmlFor="pnumber" className="logintxt">CONTACT NUMBER</label><br/>
-              <input type="number" id="contactnumber" name="contactnumber" placeholder="Enter your contact number" className="loginbox" value={data.contactnumber} onChange={(e) => setData({...data, contactnumber: e.target.value})}/>
-            </div>
+  <label htmlFor="grade" className="logintxt">GRADE</label><br/>
+  <select id="grade" name="grade" className="loginbox" value={data.grade} onChange={(e) => setData({...data, grade: e.target.value})}>
+    <option value="">Select Grade</option>
+    <option value="6">Grade 6</option>
+    <option value="7">Grade 7</option>
+    <option value="8">Grade 8</option>
+    <option value="9">Grade 9</option>
+    <option value="10">Grade 10</option>
+    <option value="11">Grade 11</option>
+  </select>
+</div>
+
             <div className="username">
               <label htmlFor="username" className="logintxt">USERNAME</label><br/>
               <input type="text" id="username" name="username" placeholder="Enter your username" className="loginbox" value={data.username} onChange={(e) => setData({...data, username: e.target.value})}/>
