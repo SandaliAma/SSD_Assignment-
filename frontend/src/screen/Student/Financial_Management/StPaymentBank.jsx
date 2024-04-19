@@ -23,17 +23,7 @@ function StPaymentBank() {
   const[amount,setAmount] = useState();
   const navigator = useNavigate();
 
-  const [name, setName] = useState();
 
-  useEffect(()=>{
-    axios.get('/studentprofile')
-    .then((res)=>{
-        setName(res.data.name);            
-    })
-    .catch((err)=>{
-        console.log(err);
-    })
-  },[])
 
 
   const submit = (e) => {
