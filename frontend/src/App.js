@@ -32,7 +32,7 @@ import TFeedback from './screen/Student/QA&Feedback_Management/TFeedback';
 import SFeedback from './screen/Student/QA&Feedback_Management/SFeedback';
 import UpdateTeacherF from './screen/Student/QA&Feedback_Management/UpdateTeacherF';
 import UpdateSFeedback from './screen/Student/QA&Feedback_Management/UpdateSFeedback';
-
+import Test from './screen/Student/Enroll_Mangement/Test';
 
 
 import TeacherLogin from './screen/Teacher/User_Management/TeacherLogin';
@@ -136,6 +136,7 @@ function App() {
       <Route path='/SFeedback' element={<SFeedback/>}/>
       <Route path='/UpdateTeacherF/:id' element={<UpdateTeacherF/>}/>
       <Route path='/UpdateSFeedback/:id' element={<UpdateSFeedback/>}/>
+      <Route path='/test' element={<Test/>}/>
 
 
       <Route path="/teacherlogin" element={<TeacherLogin />} />
