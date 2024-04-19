@@ -9,7 +9,7 @@ const subject = new mongoose.Schema({
     amount: {type: 'Number'}
 
 
-},{timestamps: true})
+});
 
 const Subject = mongoose.model('subject', subject);
 
