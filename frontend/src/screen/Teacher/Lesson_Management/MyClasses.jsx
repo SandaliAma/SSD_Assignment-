@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../photos/logofull.png'
-import userpng from '../photos/User.png'
 import Head from '../Header/Header'
 
 import Swal from 'sweetalert2';
@@ -25,7 +23,6 @@ function MyClasses() {
   const [notices, setNotices] = useState([]);
   const [materials, setMaterials] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [name, setName] = useState();
 
   useEffect(() => {
     //get notices and materials
@@ -42,16 +39,7 @@ function MyClasses() {
       .catch(err => console.error(err));
   }, []);
 
-  useEffect(()=>{
-    axios.get('/studentprofile')
-    .then((res)=>{
-        setName(res.data.name);            
-    })
-    .catch((err)=>{
-        console.log(err);
-    })
-  },[])
-
+ 
   //delete notice
   const handleDeleteNotice = (id) => {
     Swal.fire({
@@ -157,12 +145,6 @@ function MyClasses() {
   
 
 
-  const handleDeletetoken = () => {
-    axios.get('/logout').then(res => {
-        console.log(res);
-        window.location.href = '/';
-    }).catch(err => console.log(err));
-}
 
 
   return (
