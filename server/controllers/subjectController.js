@@ -10,7 +10,31 @@ const createSubject = (req, res) => {
     });
 }
 
+const getSubject = (req, res) => {
+    Subject.find()
+        .then(users => res.json(users))
+        .catch(err => {
+            console.error("Error fetching subject:", err);
+            res.status(500).json({ error: "An error occurred while fetching subject." });
+        });
+}
 
+const getSubjectid = (req, res) => {
+    const grade = req.params.id;
+    Subject.findOne(grade)
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({ error: "Subject not found." });
+            }
+            res.json(user);
+        })
+        .catch(err => {
+            console.error("Error fetching subject:", err);
+            res.status(500).json({ error: "An error occurred while fetching subject." });
+        });
+}
 module.exports = {
-    createSubject
+    createSubject,
+    getSubject,
+    getSubjectid
 }

@@ -31,18 +31,13 @@ function AddTeacher() {
 //     return Math.floor(1000 + Math.random() * 9000); // Generates a random 6-digit number
 //   }
 
-//   // Function to generate a student ID
-//   function generateStudentId() {
+//   // Function to generate a teacher ID
+//   function generateTeacherId() {
 //     const year = getCurrentYear(); // Get last two digits of the current year
 //     const randomNumber = generateRandomNumber(); // Get random 6-digit number
-//     return `SID${year}${randomNumber}`; // Concatenate SID, year, and random number
+//     return `TID${year}${randomNumber}`; // Concatenate SID, year, and random number
 //   }
 
-//    // Function to generate a wallet ID
-//    function generateWalletId() {   
-//     const randomNumber = generateRandomNumber(); // Get random 6-digit number
-//     return `WID${randomNumber}`; // Concatenate SID, year, and random number
-//   }
 
     const [data, setData] = useState({
         name: '',
