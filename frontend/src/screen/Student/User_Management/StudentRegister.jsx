@@ -27,8 +27,7 @@ function StudentRegister() {
   }
 
    // Function to generate a wallet ID
-   function generateWalletId() {
-    const year = getCurrentYear(); // Get last two digits of the current year
+   function generateWalletId() {   
     const randomNumber = generateRandomNumber(); // Get random 6-digit number
     return `WID${randomNumber}`; // Concatenate SID, year, and random number
   }
