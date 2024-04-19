@@ -20,6 +20,30 @@ import toast from 'react-hot-toast';
 
 function AddTeacher() {
     const navigate = useNavigate();
+
+//     // Function to get the current year
+//   function getCurrentYear() {
+//     return new Date().getFullYear().toString().slice(-2); // Get last two digits of the current year
+//   }
+
+//   // Function to generate a random 6-digit number
+//   function generateRandomNumber() {
+//     return Math.floor(1000 + Math.random() * 9000); // Generates a random 6-digit number
+//   }
+
+//   // Function to generate a student ID
+//   function generateStudentId() {
+//     const year = getCurrentYear(); // Get last two digits of the current year
+//     const randomNumber = generateRandomNumber(); // Get random 6-digit number
+//     return `SID${year}${randomNumber}`; // Concatenate SID, year, and random number
+//   }
+
+//    // Function to generate a wallet ID
+//    function generateWalletId() {   
+//     const randomNumber = generateRandomNumber(); // Get random 6-digit number
+//     return `WID${randomNumber}`; // Concatenate SID, year, and random number
+//   }
+
     const [data, setData] = useState({
         name: '',
         username: '',
