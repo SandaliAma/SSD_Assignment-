@@ -26,6 +26,13 @@ function StudentRegister() {
     return `SID${year}${randomNumber}`; // Concatenate SID, year, and random number
   }
 
+   // Function to generate a wallet ID
+   function generateWalletId() {
+    const year = getCurrentYear(); // Get last two digits of the current year
+    const randomNumber = generateRandomNumber(); // Get random 6-digit number
+    return `WID${randomNumber}`; // Concatenate SID, year, and random number
+  }
+
   const [data, setData] = useState({
     name: '',
     email: '',
@@ -34,7 +41,7 @@ function StudentRegister() {
     stdid: generateStudentId(), // Auto-generate studentId
     password: '',
     repassword: ''  ,
-    walletid: generateRandomNumber() // Auto-generate walletId 
+    walletid: generateWalletId() // Auto-generate walletId 
   });
 
   const registerStudent = async (e) => {
