@@ -20,8 +20,8 @@ const getSubject = (req, res) => {
 }
 
 const getSubjectid = (req, res) => {
-    const grade = req.params.id;
-    Subject.findOne(grade)
+    const grade = req.params.grade;
+    Subject.findOne({ grade: grade })
         .then(user => {
             if (!user) {
                 return res.status(404).json({ error: "Subject not found." });
