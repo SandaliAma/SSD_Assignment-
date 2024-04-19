@@ -12,7 +12,7 @@ router.use(
     })
 )
 
-router.get('/createSubject', createSubject)
+router.post('/createSubject', createSubject)
 
 
 module.exports = router;
