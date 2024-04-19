@@ -13,7 +13,7 @@ const test = (req, res) => {
 //Register a student
 const registerStudent = async(req, res) => {
     try {
-        const { name, email, contactnumber, username, stdid, password,walletid } = req.body;
+        const { name, email, grade, username, stdid, password,walletid } = req.body;
 
         if(!name){
             return res.json({
@@ -27,9 +27,9 @@ const registerStudent = async(req, res) => {
             })
         };
 
-        if(!contactnumber){
+        if(!grade){
             return res.json({
-                error: 'Phone number is required'
+                error: 'Grade is required'
             })
         };
 
@@ -77,7 +77,7 @@ const registerStudent = async(req, res) => {
         const user = await Student.create({
             name,
             email,
-            contactnumber,
+            grade,
             username,
             stdid,
             password: hashedPassword
