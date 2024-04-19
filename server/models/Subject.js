@@ -6,7 +6,7 @@ const subject = new mongoose.Schema({
     grade: {type: 'Number'},
     teid: {type: 'String'},
     teachername: {type: 'String'},
-    amount: {type: 'Number'}
+    amount: {type: 'String'}
 
 
 });
