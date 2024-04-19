@@ -16,12 +16,11 @@ function Test() {
         console.log(err);
     })
   },[])
-
   useEffect(() => {
     axios.get('/viewSubject')
       .then((res) => {
         // Filter subjects to only include the ones with grade 10
-        const grade10Subjects = res.data.filter(subject => subject.grade === setGrade);
+        const grade10Subjects = res.data.filter(subject => subject.grade === grade);
         setSubjects(grade10Subjects);
       })
       .catch((err) => {
@@ -42,6 +41,8 @@ function Test() {
               <tr>
                 <th className='thvc'>Subject Code</th>
                 <th className='thvc'>Subject Name</th>
+                <th className='thvc'>Actions</th>
+                <th></th>
               </tr>
             </thead>
           </table>
@@ -53,6 +54,8 @@ function Test() {
                 <tr key={subject._id}>
                   <td className='tdvc'>{subject.sbid}</td>
                   <td className='tdvc'>{subject.subjectname}</td>
+                  <td className='tdvc'> <input className="buttonvo5" type="button" name="edit" value="View Class" /></td>
+                  <td className='tdvc'> <input className="buttonvo5" type="button" name="edit" value="View schedule" /></td>
                 </tr>
               ))}
             </tbody>
