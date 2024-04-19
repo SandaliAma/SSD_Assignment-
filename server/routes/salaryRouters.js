@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const { createuser,
+const {
+   /*   createuser, */
     getusers,
     getusersid,
     updateuser,
@@ -16,11 +17,11 @@ router.use(
     })
 )
 
-router.post('/createUser', createuser)
+/* router.post('/createUser', createuser) */
 router.get('/users', getusers)
 router.get('/getUser/:id', getusersid)
 router.put('/updateUser/:id', updateuser)
-router.put('/deleteUser/:id', deleteuser)
+router.delete('/deleteUser/:id', deleteuser)
 
 
 module.exports = router;

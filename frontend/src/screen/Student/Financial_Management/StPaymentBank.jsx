@@ -83,7 +83,7 @@ function StPaymentBank() {
           title: "Payment is Canceled",
           icon: "error",
         });
-        // Call submit function even if result is canceled
+    
       }
     });
   };
@@ -286,7 +286,7 @@ function StPaymentBank() {
                   required
                   onChange={(e) => setUpload_Files(e.target.files[0])}
                 />
-                Choose File
+            
               </label>
               <br />
               <br />
