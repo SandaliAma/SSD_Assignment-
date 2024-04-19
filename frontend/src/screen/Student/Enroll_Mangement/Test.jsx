@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState ,useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
 import './Test.css';
+import axios from 'axios';
 
 function Test() {
+
+  const [grade, setGrade] = useState();
+  const [subject, setSubject] = useState();
+
+    useEffect(()=>{
+      axios.get('/studentprofile')
+      .then((res)=>{
+         setGrade(res.data.grade);           
+      })
+      .catch((err)=>{
+          console.log(err);
+      })
+    },[])
+
+    useEffect(()=>{
+      axios.get('/getSubject/:grade')
+      .then((res)=>{
+         setSubject(res.data.subjectname);           
+      })
+      .catch((err)=>{
+          console.log(err);
+      })
+    },[])
+
   return (
     <div>
       <div className="buttontest">
-        <h2>Sinhala</h2>
+        <h2>Sinhala Grade {grade}</h2>
         <Link to="/viewclass"><button className="button">View Class</button></Link> {/* Link to Sinhala class */}
         <Link to="/"><button className="button">View Schedule</button></Link> {/* Link to Sinhala schedule */}
         <br/><br/>
