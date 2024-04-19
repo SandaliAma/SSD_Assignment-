@@ -5,29 +5,32 @@ import axios from 'axios';
 
 function Test() {
   const [grade, setGrade] = useState('');
-  const [subjects, setSubjects] = useState([]);
+const [subjects, setSubjects] = useState([]);
 
-  useEffect(()=>{
-    axios.get('/studentprofile')
-    .then((res)=>{
-       setGrade(res.data.grade);           
+useEffect(() => {
+  axios.get('/studentprofile')
+    .then((res) => {
+      // Set the grade from the profile data
+      setGrade(res.data.grade);
+      
+      // Assign the target grade based on the profile grade
+      const targetGrade = res.data.grade; // Assuming profile grade is the target grade
+      
+      // Fetch subjects based on the target grade
+      axios.get('/viewSubject')
+        .then((res) => {
+          // Filter subjects to only include the ones with the target grade
+          const gradeSubjects = res.data.filter(subject => subject.grade === targetGrade);
+          setSubjects(gradeSubjects);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     })
-    .catch((err)=>{
-        console.log(err);
-    })
-  },[])
-  useEffect(() => {
-    axios.get('/viewSubject')
-      .then((res) => {
-        // Filter subjects to only include the ones with grade 10
-        const grade10Subjects = res.data.filter(subject => subject.grade === grade);
-        setSubjects(grade10Subjects);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-  
+    .catch((err) => {
+      console.log(err);
+    });
+}, []);
 
  
 
