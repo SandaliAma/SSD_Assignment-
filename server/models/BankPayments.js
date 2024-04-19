@@ -10,6 +10,8 @@ const BankSchema = new mongoose.Schema({
     amount: 'String',
     status : 'String',
     type : 'String',
+    upload_files: 'String',
+
 });
 
 const BankModel = mongoose.model('bankpayments' ,BankSchema)

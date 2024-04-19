@@ -6,7 +6,7 @@ const { createonline,
     getpayment,
     updateonline,
     deleteonline,
-    createbank,
+    /* createbank, */
     getbank,
     getbankid,
     updatebank,
@@ -38,7 +38,7 @@ router.get('/displayonline', getonline)
 router.get('/getpayment/:id', getpayment)
 router.put('/updatepayment/:id', updateonline)
 router.delete('/deletepayment/:id', deleteonline)
-router.post('/createbank', createbank)
+/* router.post('/createbank', createbank) */
 router.get('/displaybank', getbank)
 router.get('/getbank/:id', getbankid)
 router.put('/updatebank/:id', updatebank)
