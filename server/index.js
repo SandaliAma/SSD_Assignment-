@@ -7,6 +7,7 @@ const app = express();
 const multer = require('multer');
 const UserModelLesson = require('./models/Lesson');
 const BankModel = require('./models/BankPayments');
+const SalaryModel = require('./models/Salary');
 
 mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('MongoDB connected'))
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use("/files", express.static("files")); // Accessing files folder
 app.use("/files2", express.static("files2")); // Accessing files folder2
+app.use("/files3", express.static("files3")); // Accessing files folder3
 
 // Routes
 app.use('/', require('./routes/authRouters'));
@@ -134,7 +136,7 @@ app.post('/createbank', upload2.single('file'), (req, res) => {
 
   const { filename } = req.file;
 
-  // Create a new bank document in MongoDB
+  // Create a new bank document in MongoDB2
   BankModel.create({
     itnumber: req.body.itnumber,
     accountname: req.body.accountname,
@@ -154,6 +156,55 @@ app.post('/createbank', upload2.single('file'), (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     });
 });
+
+
+
+// Setup Multer for file uploads 3
+const storage3 = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./files3");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + file.originalname);
+  },
+});
+
+// Initialize multer middleware 3
+const upload3 = multer({ storage: storage3 });
+
+// Route to handle file uploads for bank payments
+app.post('/createSalary', upload3.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+
+  const { filename } = req.file;
+
+  // Create a new bank document in MongoDB 3
+  SalaryModel.create({
+
+    TeacherName:req.body.TeacherName,
+    TeacherID:req.body.TeacherID,
+    SubjectName:req.body.SubjectName,
+    Grade:req.body.Grade,
+    AttendStudents:req.body.AttendStudents,
+    FreeCardAmount:req.body.FreeCardAmount,
+    InstitutePayment:req.body.InstitutePayment,
+    MonthlySalary:req.body.MonthlySalary,
+    Date:req.body.Date,
+    upload_paymentFiles: filename
+    
+  })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: 'Internal server error' });
+    });
+});
+
+
 
 const port = 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

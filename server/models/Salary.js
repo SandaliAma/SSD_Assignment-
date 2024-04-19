@@ -9,10 +9,11 @@ const UserSchema = new mongoose.Schema({
     FreeCardAmount:'Number',
     InstitutePayment:'Number',
     MonthlySalary:'Number',
-    Date:'String'
-    
+    Date:'String',
+    upload_paymentFiles: 'String',
+
 });
 
-const UserModel = mongoose.model('salary',UserSchema);
+const SalaryModel = mongoose.model('salary',UserSchema);
 
-module.exports = UserModel;
+module.exports = SalaryModel;

@@ -1,8 +1,8 @@
-const UserModel = require('../models/Users');
+const SalaryModel = require('../models/Salary');
 
-// Create User
+/* // Create User
 const createuser = (req, res) => {
-    UserModel.create(req.body)
+    SalaryModel.create(req.body)
         .then((data) => {
             res.json(data);
         })
@@ -11,10 +11,10 @@ const createuser = (req, res) => {
             res.status(500).json({ error: "An error occurred while creating user." });
         });
 }
-
+ */
 // Get all users
 const getusers = (req, res) => {
-    UserModel.find()
+    SalaryModel.find()
         .then(users => res.json(users))
         .catch(err => {
             console.error("Error fetching users:", err);
@@ -25,7 +25,7 @@ const getusers = (req, res) => {
 // Get user by ID
 const getusersid = (req, res) => {
     const id = req.params.id;
-    UserModel.findById(id)
+    SalaryModel.findById(id)
         .then(user => {
             if (!user) {
                 return res.status(404).json({ error: "User not found." });
@@ -41,7 +41,7 @@ const getusersid = (req, res) => {
 // Update user
 const updateuser = (req, res) => {
     const id = req.params.id;
-    UserModel.findByIdAndUpdate(id, req.body, { new: true })
+    SalaryModel.findByIdAndUpdate(id, req.body, { new: true })
         .then(user => {
             if (!user) {
                 return res.status(404).json({ error: "User not found." });
@@ -57,7 +57,7 @@ const updateuser = (req, res) => {
 // Delete user
 const deleteuser = (req, res) => {
     const id = req.params.id;
-    UserModel.findByIdAndDelete(id)
+    SalaryModel.findByIdAndDelete(id)
         .then(user => {
             if (!user) {
                 return res.status(404).json({ error: "User not found." });
@@ -71,7 +71,7 @@ const deleteuser = (req, res) => {
 }
 
 module.exports = {   
-    createuser,
+   /*  createuser, */
     getusers,
     getusersid,
     updateuser,
