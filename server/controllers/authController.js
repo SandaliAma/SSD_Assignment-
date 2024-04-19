@@ -12,7 +12,7 @@ const test = (req, res) => {
 //Register a student
 const registerStudent = async(req, res) => {
     try {
-        const { name, email, contactnumber, username, password } = req.body;
+        const { name, email, contactnumber, username, stdid, password } = req.body;
 
         if(!name){
             return res.json({
@@ -36,7 +36,13 @@ const registerStudent = async(req, res) => {
             return res.json({
                 error: 'Username is required'
             })
-        };        
+        };  
+        
+        if(!stdid || stdid.length < 9 || stdid.length > 9){
+            return res.json({
+                error: 'Student id is required and should be minimum 8 characters long'
+            })
+        }; 
 
         if(!password || password.length < 6){
             return res.json({
@@ -58,6 +64,13 @@ const registerStudent = async(req, res) => {
             })
         };
 
+        const existstdid = await Student.findOne({stdid});
+        if(existstdid){
+            return res.json({
+                error: 'Student id is already in use'
+            })
+        };
+
         const hashedPassword = await hashPassword(password);
 
         const user = await Student.create({
@@ -65,6 +78,7 @@ const registerStudent = async(req, res) => {
             email,
             contactnumber,
             username,
+            stdid,
             password: hashedPassword
         });
 

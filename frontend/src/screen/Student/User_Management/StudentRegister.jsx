@@ -13,6 +13,7 @@ function StudentRegister() {
     email: '',
     contactnumber: '',
     username: '',
+    stdid: '',
     password: '',
     repassword: ''    
   })
@@ -23,9 +24,9 @@ function StudentRegister() {
       toast.error('Passwords do not match');
       return;
     }else{
-      const { name, email, contactnumber, username, password } = data;
+      const { name, email, contactnumber, username, stdid, password } = data;
     try {
-      const {data} = await axios.post('/register', {name, email, contactnumber, username, password});
+      const {data} = await axios.post('/register', {name, email, contactnumber, username, stdid, password});
       if(data.error){
         toast.error(data.error);
       }else{
@@ -63,8 +64,12 @@ function StudentRegister() {
             </div>
             <div class="username">
                 <label for="username" class="logintxt">USERNAME</label><br/>
-                <input type="text" id="username" name="username" placeholder="Enter your contact number" class="loginbox" value={data.username} onChange={(e) => setData({...data, username: e.target.value})}/>
-            </div>            
+                <input type="text" id="username" name="username" placeholder="Enter your username" class="loginbox" value={data.username} onChange={(e) => setData({...data, username: e.target.value})}/>
+            </div>      
+            <div class="username">
+                <label for="username" class="logintxt">STUDENT ID</label><br/>
+                <input type="text" id="stdid" name="stdid" placeholder="Enter your student id" class="loginbox" value={data.stdid} onChange={(e) => setData({...data, stdid: e.target.value})}/>
+            </div>         
             <div class="username">
                 <label for="password" class="logintxt">PASSWORD</label><br/>
                 <input type="password" id="password" name="password" placeholder="Enter your password" class="loginbox" value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
