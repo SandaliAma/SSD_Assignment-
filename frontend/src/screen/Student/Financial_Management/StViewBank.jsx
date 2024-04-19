@@ -91,6 +91,14 @@ function StViewBank() {
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
 
+
+    //show file
+    const showFile = (upload_files) => {
+      window.open(`http://localhost:5000/files2/${upload_files}`, "_blank", "noreferrer");
+    };
+
+
+
   return (
     <div>
       <Head/>
@@ -119,6 +127,7 @@ function StViewBank() {
               <th className='thvb'>Description</th>
               <th className='thvb'>Date</th>
               <th className='thvb'>Amount</th>
+              <th className='thvb'>View</th>
             
               <th className='thvb'>Status</th>
               <th className='thvb'>Action</th>
@@ -142,6 +151,7 @@ function StViewBank() {
               <td className='tdvb'>{bank.discription}</td>
               <td className='tdvb'>{bank.date}</td>
               <td className='tdvb'>{bank.amount}</td>
+              <td className='tdvb'>  <input className="buttonvb6" type="button" name="view" value="view"   onClick={() => showFile(bank.upload_files)}/></td>
           
               <td className='tdvb' style={{ color: bank.status === 'Approved' ? 'green' : bank.status === 'Rejected' ? 'red' : bank.status === 'Pending' ? 'blue' : 'inherit' }}>{bank.status}</td>
 

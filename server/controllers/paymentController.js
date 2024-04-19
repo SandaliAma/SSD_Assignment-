@@ -46,7 +46,7 @@ const deleteonline = (req, res) => {
     .then(Payments => res.json(Payments))
     .catch(err => res.json(err));
 }
-
+/* 
 //create Bank
 const createbank = (req, res) => {
     BankModel.create(req.body)
@@ -57,7 +57,7 @@ const createbank = (req, res) => {
         res.json(err);
     })
 }
-
+ */
 //all bank payments
 const getbank = (req, res) => {
     BankModel.find()
@@ -208,7 +208,7 @@ module.exports = {
     getpayment,
     updateonline,
     deleteonline,
-    createbank,
+    /* createbank, */
     getbank,
     getbankid,
     updatebank,
