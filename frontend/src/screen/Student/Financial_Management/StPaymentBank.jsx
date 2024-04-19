@@ -1,42 +1,63 @@
-import React, { useState ,useEffect } from 'react';
-import{Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './stpaymentbank.css';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import Head from '../Header/Header';
 
-
-
 function StPaymentBank() {
+  const status = 'Pending';
+  const type = 'Bank';
 
- const status = 'Pending';
- const type = 'Bank';
-
-  const[itnumber,setItnumber] = useState();
-  const[accountname,setAccountname] = useState();
-  const[accountnumber,setAccountnumber] = useState();
-  const[bankname,setBankname] = useState();
-  const[discription,setDiscription] = useState();
-  const[date,setDate] = useState();
-  const[amount,setAmount] = useState();
+  const [upload_files, setUpload_Files] = useState(null);
+  const [itnumber, setItnumber] = useState('');
+  const [accountname, setAccountname] = useState('');
+  const [accountnumber, setAccountnumber] = useState('');
+  const [bankname, setBankname] = useState('');
+  const [discription, setDiscription] = useState('');
+  const [date, setDate] = useState('');
+  const [amount, setAmount] = useState('');
   const navigator = useNavigate();
 
+  useEffect(() => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
 
+    if (mm < 10) mm = '0' + mm;
+    if (dd < 10) dd = '0' + dd;
 
+    const formattedDate = yyyy + '-' + mm + '-' + dd;
+    setDate(formattedDate);
+  }, []);
 
-  const submit = (e) => {
-      e.preventDefault();
-      axios.post('http://Localhost:5000/createbank',{itnumber:itnumber ,accountname:accountname, accountnumber:accountnumber, bankname:bankname,discription:discription,
-      date:date , amount:amount, status:status , type:type})
+  const submit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', upload_files);
+    formData.append('itnumber', itnumber);
+    formData.append('accountname', accountname);
+    formData.append('accountnumber', accountnumber);
+    formData.append('bankname', bankname);
+    formData.append('discription', discription);
+    formData.append('date', date);
+    formData.append('amount', amount);
+    formData.append('status', status);
+    formData.append('type', type);
 
-      .then(res=>{
-        console.log(res);
-        
-      })
-      .catch(err => console.error(err));
-  }
+    axios.post('http://localhost:5000/createbank', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.error(err));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,109 +87,218 @@ function StPaymentBank() {
       }
     });
   };
-  
-  
 
   const handleClick2 = () => {
     toast.loading('Payment is processing...', {
       style: {
-        background: 'black', // Customize the background color
-        color: '#ffffff', // Customize the text color
-        borderRadius: '10px', // Add border radius
-        border: '2px solid #ffffff', // Add border
+        background: 'black',
+        color: '#ffffff',
+        borderRadius: '10px',
+        border: '2px solid #ffffff',
       },
     });
-  
+
     setTimeout(() => {
       toast.dismiss();
       setTimeout(() => {
         toast.success('Payment is completed!', {
           style: {
-            background: '#28a745', // Green background color
-            color: '#ffffff', // White text color
-            borderRadius: '10px', // Rounded corners
-            border: '2px solid #ffffff', // White border
+            background: '#28a745',
+            color: '#ffffff',
+            borderRadius: '10px',
+            border: '2px solid #ffffff',
           },
-          duration: 2000, // Display duration in milliseconds (3 seconds)
+          duration: 2000,
           iconTheme: {
-            primary: '#ffffff', // White icon color
-            secondary: '#28a745', // Green icon color
+            primary: '#ffffff',
+            secondary: '#28a745',
           },
         });
         setTimeout(() => {
           navigator('/payment');
-        }, 2500); // Wait for 2 seconds after displaying success toast before navigating
-      }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
-    }, 5000); // Wait for 5 seconds before dismissing loading toast
+        }, 2500);
+      }, 2500);
+    }, 5000);
   };
-  
-  useEffect(() => {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    let mm = today.getMonth() + 1;
-    let dd = today.getDate();
-
-    if (mm < 10) mm = '0' + mm;
-    if (dd < 10) dd = '0' + dd;
-
-    const formattedDate = yyyy + '-' + mm + '-' + dd;
-    setDate(formattedDate);
-  }, []);
 
   return (
     <div>
-     <Head/>
-      <Toaster/>
-     <div className="bodyba">
-            <h1 className="bah1"> <br></br>Payment Form</h1>
+      <Head />
+      <Toaster />
+      <div className="bodyba">
+        <h1 className="bah1">
+          <br />
+          Payment Form
+        </h1>
 
-            <Link to = {'/payonline'} >
-            <button type="submit" name="makepayment" className="buttonba1">Online</button>
-            </Link>
-            <br></br>
-            <button type="submit" name="viewpayment" className="buttonba2">Bank Deposit</button>
+        <Link to={'/payonline'}>
+          <button type="submit" name="makepayment" className="buttonba1">
+            Online
+          </button>
+        </Link>
+        <br />
+        <button type="submit" name="viewpayment" className="buttonba2">
+          Bank Deposit
+        </button>
 
-            <div className="containerba">
-                <form className="payba" onSubmit={handleSubmit}>
-                <h2 className="onh2"><br></br>Payment Details</h2><br/>
+        <div className="containerba">
+          <form className="payba" onSubmit={handleSubmit}>
+            <h2 className="onh2">
+              <br />
+              Payment Details
+            </h2>
+            <br />
 
-                    <label htmlFor="cname" className="labelba1">Enter IT Number:</label><br/>
-                    <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$" required className="textba1" onChange={(e)=>setItnumber(e.target.value)}/><br /><br />
+            <label htmlFor="cname" className="labelba1">
+              Enter IT Number:
+            </label>
+            <br />
+            <input
+              type="text"
+              name="itnum"
+              placeholder="IT12345678"
+              pattern="^IT\d{8}$"
+              required
+              className="textba1"
+              onChange={(e) => setItnumber(e.target.value)}
+            />
+            <br />
+            <br />
 
-                    <label htmlFor="an" className="labelba1">Enter Account Name:</label><br/>
-                    <input type="text" name="acname" placeholder="Enter Name" pattern="[A-Za-z\s]+" required className="textba2" onChange={(e)=>setAccountname(e.target.value)}/> <br /><br />
+            <label htmlFor="an" className="labelba1">
+              Enter Account Name:
+            </label>
+            <br />
+            <input
+              type="text"
+              name="acname"
+              placeholder="Enter Name"
+              pattern="[A-Za-z\s]+"
+              required
+              className="textba2"
+              onChange={(e) => setAccountname(e.target.value)}
+            />{' '}
+            <br />
+            <br />
 
-                    <label htmlFor="an" className="labelba1">Enter Account Number:</label><br/>
-                    <input type="text" name="acnum" placeholder="xxxxxxxxxx" pattern="[0-9]+" required className="textba3" onChange={(e)=>setAccountnumber(e.target.value)}/> <br /><br />
+            <label htmlFor="an" className="labelba1">
+              Enter Account Number:
+            </label>
+            <br />
+            <input
+              type="text"
+              name="acnum"
+              placeholder="xxxxxxxxxx"
+              pattern="[0-9]+"
+              required
+              className="textba3"
+              onChange={(e) => setAccountnumber(e.target.value)}
+            />{' '}
+            <br />
+            <br />
 
-                    <label htmlFor="cno" className="labelba1">Enter Bank Name:</label><br/>
-                    <input type="text" name="bname" placeholder="Enter Bank Name" pattern="[A-Za-z\s]+" required className="textba4" onChange={(e)=>setBankname(e.target.value)}/><br /><br />
+            <label htmlFor="cno" className="labelba1">
+              Enter Bank Name:
+            </label>
+            <br />
+            <input
+              type="text"
+              name="bname"
+              placeholder="Enter Bank Name"
+              pattern="[A-Za-z\s]+"
+              required
+              className="textba4"
+              onChange={(e) => setBankname(e.target.value)}
+            />
+            <br />
+            <br />
 
-                    <label htmlFor="totalA" className="labelba1">Enter Description:</label><br/>
-                    <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="textba7" onChange={(e)=>setDiscription(e.target.value)}/><br /><br />
+            <label htmlFor="totalA" className="labelba1">
+              Enter Description:
+            </label>
+            <br />
+            <input
+              type="text"
+              name="descriptions"
+              placeholder="Class Name"
+              pattern="[A-Za-z\s]+"
+              required
+              className="textba7"
+              onChange={(e) => setDiscription(e.target.value)}
+            />
+            <br />
+            <br />
 
-                    <label htmlFor="tda" className="labelba1">Enter Date:</label><br/>
-                    <input type="date" name="dates" placeholder="(DD/MM/YY)"  value={date} readOnly className="textba5" onChange={(e)=>setDate(e.target.value)}/><br /><br />
+            <label htmlFor="tda" className="labelba1">
+              Enter Date:
+            </label>
+            <br />
+            <input
+              type="date"
+              name="dates"
+              placeholder="(DD/MM/YY)"
+              value={date}
+              readOnly
+              className="textba5"
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <br />
+            <br />
 
-                    <label htmlFor="totalA" className="labelba1">Enter Amount:</label><br/>
-                    <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="textba6" onChange={(e)=>setAmount(e.target.value)}/><br /><br />
-                    <br></br>
-                    
-                    
-                   
-                    
-                    <div> <br/><br/>
-                    <input type="checkbox" id="terms" name="terms" value="accepted" className="checkbox-textpa" required/>
-                    <label for="terms" className="checkbox-labelpa">I accept the terms and conditions</label>
-                    <br/><br/>
-                  
-                        <button type="submit" name="submit" className="buttonba3">Pay Now</button>
-                    </div>
-                </form>
+            <label htmlFor="totalA" className="labelba1">
+              Enter Amount:
+            </label>
+            <br />
+            <input
+              type="text"
+              name="amounts"
+              placeholder="00.00"
+              pattern="\d+(\.\d{2})?"
+              required
+              className="textba6"
+              onChange={(e) => setAmount(e.target.value)}
+            />
+            <br />
+            <br />
+            <br />
+
+            <div>
+              <br />
+              <br />
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                value="accepted"
+                className="checkbox-textpa"
+                required
+              />
+              <label htmlFor="terms" className="checkbox-labelpa">
+                I accept the terms and conditions
+              </label>
+              <br />
+              <br />
+              <label htmlFor="fileInput">
+                <input
+                  id="fileInput"
+                  type="file"
+                  accept=".pdf, .png, .jpg, .jpeg"
+                  required
+                  onChange={(e) => setUpload_Files(e.target.files[0])}
+                />
+                Choose File
+              </label>
+              <br />
+              <br />
+              <button type="submit" name="submit" className="buttonba3">
+                Pay Now
+              </button>
             </div>
+          </form>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default StPaymentBank
+export default StPaymentBank;
