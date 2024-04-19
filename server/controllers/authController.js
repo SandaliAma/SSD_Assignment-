@@ -2,6 +2,7 @@ const Student = require('../models/Students');
 const Teacher = require('../models/Teacher');
 const Manager = require('../models/Manager');
 const Admin = require('../models/Admin');
+const Wallet = require('../models/Wallets');
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
 
@@ -12,7 +13,7 @@ const test = (req, res) => {
 //Register a student
 const registerStudent = async(req, res) => {
     try {
-        const { name, email, contactnumber, username, stdid, password } = req.body;
+        const { name, email, contactnumber, username, stdid, password,walletid } = req.body;
 
         if(!name){
             return res.json({
@@ -82,8 +83,16 @@ const registerStudent = async(req, res) => {
             password: hashedPassword
         });
 
+        const wallet = await Wallet.create({
+            stdid,
+            studentname: name,
+            walletid,
+            balance: "0.00"
+        });
+
         return res.json({
-            user
+            user,
+            wallet
         })
 
     } catch (error) {

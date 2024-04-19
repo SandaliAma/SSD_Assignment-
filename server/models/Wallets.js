@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const WalletSchema = new mongoose.Schema({
-    itnumber:'String',
+    stdid:'String',
     studentname:'String',
     walletid: 'String',
-    balance: 'String',
+    balance: 'String' ,
 });
 
 const WalletModel = mongoose.model('wallets' ,WalletSchema)

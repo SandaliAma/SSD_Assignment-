@@ -33,7 +33,8 @@ function StudentRegister() {
     username: '',
     stdid: generateStudentId(), // Auto-generate studentId
     password: '',
-    repassword: ''    
+    repassword: ''  ,
+    walletid: generateRandomNumber() // Auto-generate walletId 
   });
 
   const registerStudent = async (e) => {
@@ -42,9 +43,9 @@ function StudentRegister() {
       toast.error('Passwords do not match');
       return;
     } else {
-      const { name, email, contactnumber, username, stdid, password } = data;
+      const { name, email, contactnumber, username, stdid, password, walletid } = data;
       try {
-        const response = await axios.post('/register', { name, email, contactnumber, username, stdid, password });
+        const response = await axios.post('/register', { name, email, contactnumber, username, stdid, password, walletid });
         if (response.data.error) {
           toast.error(response.data.error);
         } else {

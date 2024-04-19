@@ -32,7 +32,7 @@ useEffect(()=>{
                     <br /><br />
                     <label htmlFor="name" className="labelwa1">Student IT Number</label>
                     <br />
-                    <input type="text" id="name1" className="textwa1"value={wallet.itnumber} readOnly/>
+                    <input type="text" id="name1" className="textwa1"value={wallet.stdid} readOnly/>
 
                     <br /><br /><br />
                     <label htmlFor="itnum" className="labelwa1">Student Name</label>
