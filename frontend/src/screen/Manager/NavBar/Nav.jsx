@@ -62,7 +62,7 @@ function Nav() {
                     </li>
                     <li>
                         <img src={wallet} alt='home' className='navimage'/>
-                        <a href='/managersalary'>Salary</a>
+                        <a href='/homemain'>Salary</a>
                     </li>
                     <br/><br/><br/><br/>
                     <li className='logoutsq'>
