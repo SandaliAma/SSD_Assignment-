@@ -53,7 +53,7 @@ function StudentProfile() {
                             <p class='hellotxt'>{name}<br/>Student</p>
                         </td>
                         <td>          
-                            <Link to={'/studentprofileedit'}><button className='btnedit' type="submit">Edit Button</button> </Link>              
+                            <Link to={'/studentprofileedit'}><button className='btnedit' type="submit">Edit User Details</button> </Link>              
                                                       
                         </td>
                     </tr>

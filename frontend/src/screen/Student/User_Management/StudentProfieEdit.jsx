@@ -84,11 +84,11 @@ function StudentProfieEdit() {
                         </td>
                         <td>
                            <form > 
-                                <button className='btnup' type="submit">Upload New Photo </button>
+                                <button className='btnup' type="submit">Upload New Profile Photo </button>
                            </form>
                         </td>
                         <td>
-                            <button className='btnedit' type="submit">Delete</button>
+                            <button className='btnedit' type="submit">Delete Profile Photo</button>
                         </td>
                     </tr>
                 </table> 

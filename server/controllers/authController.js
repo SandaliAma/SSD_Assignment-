@@ -13,7 +13,7 @@ const test = (req, res) => {
 //Register a student
 const registerStudent = async(req, res) => {
     try {
-        const { name, email, grade, username, stdid, password,walletid } = req.body;
+        const { name, email, contactnumber, grade, username, stdid, password,walletid } = req.body;
 
         if(!name){
             return res.json({
@@ -24,6 +24,12 @@ const registerStudent = async(req, res) => {
         if(!email){
             return res.json({
                 error: 'Email is required'
+            })
+        };
+
+        if(!contactnumber){
+            return res.json({
+                error: 'Contact number is required'
             })
         };
 
@@ -77,6 +83,7 @@ const registerStudent = async(req, res) => {
         const user = await Student.create({
             name,
             email,
+            contactnumber,
             grade,
             username,
             stdid,

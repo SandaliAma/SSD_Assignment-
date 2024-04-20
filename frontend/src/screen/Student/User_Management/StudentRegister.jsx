@@ -35,6 +35,7 @@ function StudentRegister() {
   const [data, setData] = useState({
     name: '',
     email: '',
+    contactnumber: '',
     grade: '',
     username: '',
     stdid: generateStudentId(), // Auto-generate studentId
@@ -49,15 +50,16 @@ function StudentRegister() {
       toast.error('Passwords do not match');
       return;
     } else {
-      const { name, email, grade, username, stdid, password, walletid } = data;
+      const { name, email, contactnumber, grade, username, stdid, password, walletid } = data;
       try {
-        const response = await axios.post('/register', { name, email, grade, username, stdid, password, walletid });
+        const response = await axios.post('/register', { name, email, contactnumber, grade, username, stdid, password, walletid });
         if (response.data.error) {
           toast.error(response.data.error);
         } else {
           setData({
             name: '',
             email: '',
+            contactnumber: '',
             grade: '',
             username: '',
             stdid: generateStudentId(), // Auto-generate studentId for the next registration
@@ -90,6 +92,10 @@ function StudentRegister() {
             <div className="username">
               <label htmlFor="email" className="logintxt">EMAIL</label><br/>
               <input type="email" id="email" name="email" placeholder="Enter your email" className="loginbox" value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
+            </div>
+            <div className="username">
+              <label htmlFor="contactnumber" className="logintxt">Contact Number</label><br/>
+              <input type="number" id="contactnumber" name="contactnumber" placeholder="Enter your contact number" className="loginbox" value={data.contactnumber} onChange={(e) => setData({...data, contactnumber: e.target.value})} />
             </div>
             <div className="username">
               <label htmlFor="grade" className="logintxt">GRADE</label><br/>
