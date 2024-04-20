@@ -10,6 +10,7 @@ import Head from '../Header/Header';
 function StudentProfieEdit() {
     const navigate = useNavigate();    
     const [name, setName] = useState();
+    const [stdid, setstdid] = useState();
     const [username, setUsername] = useState();
     const [gender, setGender] = useState();
     const [email, setEmail] = useState();
@@ -24,6 +25,7 @@ function StudentProfieEdit() {
         axios.get('/getstudentprofileedit')
         .then((res)=>{
             setName(res.data.name);
+            setstdid(res.data.stdid);
             setUsername(res.data.username);            
             setEmail(res.data.email);
             setContactnumber(res.data.contactnumber);
@@ -80,7 +82,7 @@ function StudentProfieEdit() {
                             <img src={userpng} alt='logo'/>
                         </td>
                         <td>
-                            <p class='hellotxt'>{name}<br/>Student</p>
+                            <p class='hellotxt'>{name}<br/>{stdid}<br/>Student</p>
                         </td>
                         <td>
                            <form > 

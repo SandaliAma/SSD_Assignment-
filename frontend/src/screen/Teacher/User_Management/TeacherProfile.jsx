@@ -8,6 +8,7 @@ import Head from '../Header/Header'
 function TeacherProfile() {
 
     const [name, setName] = useState();
+    const [teid, setteid] = useState();
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [contactnumber, setContactnumber] = useState();
@@ -19,6 +20,7 @@ function TeacherProfile() {
         axios.get('/teacherprofile')
         .then((res)=>{
             setName(res.data.name);
+            setteid(res.data.teid);
             setUsername(res.data.username);
             setEmail(res.data.email);
             setContactnumber(res.data.contactnumber);
@@ -47,7 +49,7 @@ function TeacherProfile() {
                             <img src={user} alt='logo'/>
                         </td>
                         <td>
-                            <p class='hellotxt'>{name}<br/>Teacher</p>
+                            <p class='hellotxt'>{name}<br/>{teid}<br/>Teacher</p>
                         </td>
                         <td>
                              <Link to={'/teacherprofileedit'}><button className='btnedit' type="submit">Edit Button</button> </Link>
