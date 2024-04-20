@@ -21,27 +21,28 @@ import toast from 'react-hot-toast';
 function AddTeacher() {
     const navigate = useNavigate();
 
-//     // Function to get the current year
-//   function getCurrentYear() {
-//     return new Date().getFullYear().toString().slice(-2); // Get last two digits of the current year
-//   }
+    // Function to get the current year
+  function getCurrentYear() {
+    return new Date().getFullYear().toString().slice(-2); // Get last two digits of the current year
+  }
 
-//   // Function to generate a random 6-digit number
-//   function generateRandomNumber() {
-//     return Math.floor(1000 + Math.random() * 9000); // Generates a random 6-digit number
-//   }
+  // Function to generate a random 6-digit number
+  function generateRandomNumber() {
+    return Math.floor(1000 + Math.random() * 9000); // Generates a random 6-digit number
+  }
 
-//   // Function to generate a teacher ID
-//   function generateTeacherId() {
-//     const year = getCurrentYear(); // Get last two digits of the current year
-//     const randomNumber = generateRandomNumber(); // Get random 6-digit number
-//     return `TID${year}${randomNumber}`; // Concatenate SID, year, and random number
-//   }
+  // Function to generate a teacher ID
+  function generateTeacherId() {
+    const year = getCurrentYear(); // Get last two digits of the current year
+    const randomNumber = generateRandomNumber(); // Get random 6-digit number
+    return `TID${year}${randomNumber}`; // Concatenate SID, year, and random number
+  }
 
 
     const [data, setData] = useState({
         name: '',
         username: '',
+        teid: generateTeacherId(),
         gender: '',
         email: '',
         contactnumber: '',
@@ -57,9 +58,9 @@ function AddTeacher() {
           toast.error('Passwords do not match');
           return;
         }else{
-          const { name, username, gender, email, contactnumber, subject, SecAnswer, password } = data;
+          const { name, username, teid, gender, email, contactnumber, subject, SecAnswer, password } = data;
         try {
-          const {data} = await axios.post('/teacherregister', { name, email, contactnumber, username, password, gender, subject, SecAnswer });
+          const {data} = await axios.post('/teacherregister', { name, email, contactnumber, username, teid, password, gender, subject, SecAnswer });
           if(data.error){
             toast.error(data.error);
           }else{
@@ -153,17 +154,16 @@ function AddTeacher() {
                         </td>
                         <td>
                            <form > 
-                                <button className='btnup' type="submit">Upload New Photo </button>
+                                <button className='btnup' type="submit">Upload New Profile Photo </button>
                            </form>
-                        </td>
-                        <td>
-                            <button className='btnedit' type="submit">Delete</button>
-                        </td>
+                        </td>                        
                     </tr>
                 </table> 
                 <div class="updateform">
                 <form onSubmit={addTeacher}>
                     <div class="line"></div>   
+                    <p class='userprofiletxt'>Teacher ID</p>  
+                    <input type="text" id="name" name="name" class="profileboxshow" value={data.teid} onChange={(e) => setData({...data, teid: e.target.value})} readOnly/>
                     <p class='userprofiletxt'>Full name</p>  
                     <input type="text" id="name" name="name" class="profileboxshow" value={data.name} onChange={(e) => setData({...data, name: e.target.value})} />  
                     <p class='userprofiletxt'>Username</p>  
