@@ -115,7 +115,7 @@ function StPaymentBank() {
           },
         });
         setTimeout(() => {
-          navigator('/payment');
+          navigator('/test');
         }, 2500);
       }, 2500);
     }, 5000);

@@ -3,31 +3,10 @@ import { Link } from 'react-router-dom';
 import './Test.css';
 import axios from 'axios';
 
-function Test() {
- 
-  const [subjects, setSubjects] = useState([]);
-
-  useEffect(() => {
-    axios.get('/studentprofile')
-      .then((res) => {
-     
-        const targetGrade = res.data.grade;
-        axios.get('/viewSubject')
-          .then((res) => {
-            const gradeSubjects = res.data.filter(subject => subject.grade === targetGrade);
-            setSubjects(gradeSubjects);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+function Enrolled() {
   return (
     <div>
+      <div>
       <div className='bodyvc'>
         <h1 className='h1vc'><br />My Subjects</h1>
         <div className="tbl-headervc">
@@ -45,32 +24,30 @@ function Test() {
         <div className="tbl-contentvc">
           <table className='tabletc'>
             <tbody>
-              {subjects.map((subject) => (
-                <tr key={subject._id}>
-                  <td className='tdvc'>{subject.sbid}</td>
-                  <td className='tdvc'>{subject.subjectname}</td>
+              <tr>
+                  <td className='tdvc'></td>
+                  <td className='tdvc'></td>
                   <td className='tdvc'>
-                    <Link to={`/viewclass/${subject.sbid}`}>
+                    <Link to="/viewclass">
                       <input className="buttonvo5" type="button" name="edit" value="View Class" />
                     </Link>
                   </td>
                   <td className='tdvc'>
-                    <Link to={`/viewschedule/${subject.subjectname}`}>
+                    <Link to="/viewschedule">
                       <input className="buttonvo5" type="button" name="edit" value="View schedule" />
                     </Link>
                   </td>
                 </tr>
-              ))}
+              
             </tbody>
           </table>
           
         </div>
       </div>
-      <Link to="/enrolled">
-      <input className="buttonvo5" type="button" name="edit" value="Enrolled" />
-      </Link>
+      
     </div>
-  );
+    </div>
+  )
 }
 
-export default Test;
+export default Enrolled

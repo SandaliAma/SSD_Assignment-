@@ -34,6 +34,7 @@ import UpdateTeacherF from './screen/Student/QA&Feedback_Management/UpdateTeache
 import UpdateSFeedback from './screen/Student/QA&Feedback_Management/UpdateSFeedback';
 import Test from './screen/Student/Enroll_Mangement/Test';
 import ViewClass from './screen/Student/Enroll_Mangement/ViewClass';
+import Enrolled from './screen/Student/Enroll_Mangement/Enrolled';
 
 
 import TeacherLogin from './screen/Teacher/User_Management/TeacherLogin';
@@ -139,6 +140,7 @@ function App() {
       <Route path='/UpdateSFeedback/:id' element={<UpdateSFeedback/>}/>
       <Route path='/test' element={<Test/>}/>
       <Route path='/viewclass/:subid' element={<ViewClass />} />
+      <Route path='/enrolled' element={<Enrolled />} />
 
 
 
