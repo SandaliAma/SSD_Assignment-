@@ -105,6 +105,18 @@
     padding-bottom: 8px;   
     border-radius: 10px;
 }
+.btnsp{
+    width: 100px;
+    margin-top: 0px;
+    color: white;
+    font-family: 'Bahnschrift';    
+    font-weight: 800;
+    font-size: 18px;
+    background-color: #5D7285;
+    padding-top: 8px;   
+    padding-bottom: 8px;   
+    border-radius: 10px;
+}
 
 .btnup:hover{
     background-color: rgba(102, 122, 138, 0.534);

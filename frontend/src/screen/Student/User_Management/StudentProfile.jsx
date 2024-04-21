@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './profile.css'
-import userpng from './photos/User.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Head from '../Header/Header';
@@ -15,6 +14,8 @@ function StudentProfile() {
     const [parentname, setParentName] = useState();
     const [parentphonenumber, setParentPhonenumber] = useState();
     const [secanswer, setSecAnswer] = useState();
+    const [show_profile_photo, setProfilePhotoView] = useState(null);
+
     
     useEffect(()=>{
         axios.get('/studentprofile')
@@ -33,6 +34,21 @@ function StudentProfile() {
         })
     },[])
 
+    
+    useEffect(() => {
+        getImage();
+    }, []);
+
+
+    const getImage = async () => {
+        try {
+            const result = await axios.get('/getimage');
+            setProfilePhotoView(result.data.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     
   return (
@@ -47,7 +63,17 @@ function StudentProfile() {
                 <table>
                     <tr>
                         <td>
-                            <img src={userpng} alt='logo'/>
+                        {show_profile_photo === null
+                                            ? ""
+                                            : show_profile_photo.map((data, index) => (
+                                                <img
+                                                    key={index}
+                                                    src={`http://localhost:5000/profilephotos/${data.profile_photo}`}
+                                                    height={100}
+                                                    width={100}
+                                                    alt="profile"
+                                                />
+                                            ))}
                         </td>
                         <td>
                             <p class='hellotxt'>{name}<br/>Student</p>
