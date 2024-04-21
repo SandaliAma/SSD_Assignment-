@@ -4,9 +4,31 @@ import './Test.css';
 import axios from 'axios';
 
 function Enrolled() {
+  const [idnumber, setIdNumber] = useState('');
+  const [payments, setPayments] = useState([]);
+
+  useEffect(() => {
+    axios.get('/studentprofile')
+      .then((res) => {
+        setIdNumber(res.data.stdid);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/displayonline')
+      .then((res) => {
+        // Filter payments to only include the ones with IT number 'IT12345678'
+        const filteredPayments = res.data.filter(payment => payment.itnumber === idnumber);
+        setPayments(filteredPayments);
+      })
+      .catch((err) => console.error(err));
+  }, [idnumber]);
+
   return (
     <div>
-      <div>
       <div className='bodyvc'>
         <h1 className='h1vc'><br />My Subjects</h1>
         <div className="tbl-headervc">
@@ -24,9 +46,10 @@ function Enrolled() {
         <div className="tbl-contentvc">
           <table className='tabletc'>
             <tbody>
-              <tr>
-                  <td className='tdvc'></td>
-                  <td className='tdvc'></td>
+              {payments.map((payment) => (
+                <tr key={payment.subjectcode}>
+                  <td className='tdvc'>{payment.subjectcode}</td>
+                  <td className='tdvc'>{payment.subjectname}</td>
                   <td className='tdvc'>
                     <Link to="/viewclass">
                       <input className="buttonvo5" type="button" name="edit" value="View Class" />
@@ -38,16 +61,13 @@ function Enrolled() {
                     </Link>
                   </td>
                 </tr>
-              
+              ))}
             </tbody>
           </table>
-          
         </div>
       </div>
-      
     </div>
-    </div>
-  )
+  );
 }
 
-export default Enrolled
+export default Enrolled;
