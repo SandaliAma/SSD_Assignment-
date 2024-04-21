@@ -16,7 +16,7 @@ router.use(
 
 router.post('/createSubject', createSubject)
 router.get('/viewSubject', getSubject)
-router.get('/getSubject/:grade', getSubjectid)
+router.get('/getSubject/:id', getSubjectid)
 
 
 module.exports = router;

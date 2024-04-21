@@ -20,19 +20,14 @@ const getSubject = (req, res) => {
 }
 
 const getSubjectid = (req, res) => {
-    const grade = req.params.grade;
-    Subject.find({ grade: grade })
-        .then(user => {
-            if (!user) {
-                return res.status(404).json({ error: "Subject not found." });
-            }
-            res.json(user);
-        })
-        .catch(err => {
-            console.error("Error fetching subject:", err);
-            res.status(500).json({ error: "An error occurred while fetching subject." });
-        });
+    const id = req.params.id;
+    Subject.findOne({sbid:id})
+    .then(id => res.json(id))
+    .catch(err => res.json(err));
 }
+
+
+
 module.exports = {
     createSubject,
     getSubject,
