@@ -26,10 +26,18 @@ const getSubjectid = (req, res) => {
     .catch(err => res.json(err));
 }
 
+const getSubjectname = (req, res) => {
+    const name = req.params.name;
+    Subject.find({subjectname:name})
+    .then(id => res.json(id))
+    .catch(err => res.json(err));
+}
+
 
 
 module.exports = {
     createSubject,
     getSubject,
-    getSubjectid
+    getSubjectid,
+    getSubjectname
 }
