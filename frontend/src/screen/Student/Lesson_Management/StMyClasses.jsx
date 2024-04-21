@@ -18,13 +18,8 @@ function StMyClasses() {
         setNotices(res.data);
       })
       .catch(err => console.error(err));
-
-    axios.get('http://localhost:5000/showmaterials')
-      .then(res => {
-        setMaterials(res.data);
-      })
-      .catch(err => console.error(err));
   }, []);
+
 
   useEffect(()=>{
     axios.get('/studentprofile')
@@ -72,18 +67,31 @@ function StMyClasses() {
   
   const { description } = useParams(); 
 
-  const [grade, setgrade] = useState();
+  
+  const [grade, setGrade] = useState();
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get('/studentprofile')
-    .then((res)=>{
-      setgrade(res.data.grade);         
-    })
-    .catch((err)=>{
+      .then((res) => {
+        setGrade(res.data.grade);
+      })
+      .catch((err) => {
         console.log(err);
-    })
-  },[])
-
+      });
+  }, []);
+  
+  useEffect(() => {
+    if (grade) {
+      axios.get('http://localhost:5000/showmaterials')
+        .then(res => {
+          const filteredMaterials = res.data.filter(material =>
+            material.subject_name === description && material.grade === grade
+          );
+          setMaterials(filteredMaterials);
+        })
+        .catch(err => console.error(err));
+    }
+  }, [grade]);
   
 
   return (
