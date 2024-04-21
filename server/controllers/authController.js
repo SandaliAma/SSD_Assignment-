@@ -13,7 +13,7 @@ const test = (req, res) => {
 //Register a student
 const registerStudent = async(req, res) => {
     try {
-        const { name, email, grade, username, stdid, password,walletid } = req.body;
+        const { name, email, contactnumber, grade, username, stdid, password,walletid } = req.body;
 
         if(!name){
             return res.json({
@@ -24,6 +24,12 @@ const registerStudent = async(req, res) => {
         if(!email){
             return res.json({
                 error: 'Email is required'
+            })
+        };
+
+        if(!contactnumber){
+            return res.json({
+                error: 'Contact number is required'
             })
         };
 
@@ -77,6 +83,7 @@ const registerStudent = async(req, res) => {
         const user = await Student.create({
             name,
             email,
+            contactnumber,
             grade,
             username,
             stdid,
@@ -253,13 +260,55 @@ const logout = (req, res) => {
 //Register a teacher
 const registerTeacher = async(req, res) => {
     try {
-        const { name, email, contactnumber, username, password, gender, subject, SecAnswer } = req.body;
+        const { name, email, contactnumber, teid, username, password, gender, subject, SecAnswer } = req.body;
 
         if(!name){
             return res.json({
                 error: 'Name is required'
             })
-        };        
+        };   
+        
+        if(!email){
+            return res.json({
+                error: 'Email is required'
+            })
+        };
+
+        if(!username){
+            return res.json({
+                error: 'Username is required'
+            })
+        };
+
+        if(!contactnumber){
+            return res.json({
+                error: 'Contact is required'
+            })
+        };
+
+        if(!gender){
+            return res.json({
+                error: 'Gender is required'
+            })
+        };
+
+        if(!subject){
+            return res.json({
+                error: 'Subject is required'
+            })
+        };
+
+        if(!SecAnswer){
+            return res.json({
+                error: 'Security answer is required'
+            })
+        };
+
+        if(!password || password.length < 6){
+            return res.json({
+                error: 'Password is required and should be minimum 6 characters long'
+            })
+        };
 
         const existemail = await Teacher.findOne({email});
         if(existemail){
@@ -275,6 +324,13 @@ const registerTeacher = async(req, res) => {
             })
         };
 
+        const existteid = await Teacher.findOne({teid});
+        if(existteid){
+            return res.json({
+                error: 'Teacher id is already in use'
+            })
+        };
+
         const hashedPassword = await hashPassword(password);
 
         const user = await Teacher.create({
@@ -282,6 +338,7 @@ const registerTeacher = async(req, res) => {
             email,
             contactnumber,
             username,
+            teid,
             password: hashedPassword,
             gender,           
             subject,

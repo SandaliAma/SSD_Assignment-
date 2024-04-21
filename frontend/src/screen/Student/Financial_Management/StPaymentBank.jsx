@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect  } from 'react';
+import { Link , useParams} from 'react-router-dom';
 import './stpaymentbank.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -12,13 +12,13 @@ function StPaymentBank() {
   const type = 'Bank';
 
   const [upload_files, setUpload_Files] = useState(null);
-  const [itnumber, setItnumber] = useState('');
+  const [, setItnumber] = useState('');
   const [accountname, setAccountname] = useState('');
   const [accountnumber, setAccountnumber] = useState('');
   const [bankname, setBankname] = useState('');
-  const [discription, setDiscription] = useState('');
+  const [, setDescription] = useState('');
   const [date, setDate] = useState('');
-  const [amount, setAmount] = useState('');
+  const [, setAmount] = useState('');
   const navigator = useNavigate();
 
   useEffect(() => {
@@ -38,13 +38,13 @@ function StPaymentBank() {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', upload_files);
-    formData.append('itnumber', itnumber);
+    formData.append('itnumber', idnumber);
     formData.append('accountname', accountname);
     formData.append('accountnumber', accountnumber);
     formData.append('bankname', bankname);
-    formData.append('discription', discription);
+    formData.append('description', subname);
     formData.append('date', date);
-    formData.append('amount', amount);
+    formData.append('amount', subamount);
     formData.append('status', status);
     formData.append('type', type);
 
@@ -115,11 +115,39 @@ function StPaymentBank() {
           },
         });
         setTimeout(() => {
-          navigator('/payment');
+          navigator('/test');
         }, 2500);
       }, 2500);
     }, 5000);
   };
+
+  const [idnumber, setName] = useState();
+
+  useEffect(()=>{
+    axios.get('/studentprofile')
+    .then((res)=>{
+        setName(res.data.stdid);         
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
+
+  const [subname, setSubName] = useState('');
+  const [subamount, setSubAmount] = useState('');
+  const { subid } = useParams(); // Get the subid from the URL params
+
+  useEffect(() => {
+    axios.get(`/getSubject/${subid}`)
+      .then((res) => {
+        setSubName(res.data.subjectname);
+        setSubAmount(res.data.amount);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [subid]); // Include subid in the dependency array
 
   return (
     <div>
@@ -158,7 +186,8 @@ function StPaymentBank() {
               name="itnum"
               placeholder="IT12345678"
               pattern="^IT\d{8}$"
-              required
+              value={idnumber}
+            readOnly
               className="textba1"
               onChange={(e) => setItnumber(e.target.value)}
             />
@@ -222,9 +251,10 @@ function StPaymentBank() {
               name="descriptions"
               placeholder="Class Name"
               pattern="[A-Za-z\s]+"
-              required
+              value={subname}
+              readOnly
               className="textba7"
-              onChange={(e) => setDiscription(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
             />
             <br />
             <br />
@@ -254,7 +284,8 @@ function StPaymentBank() {
               name="amounts"
               placeholder="00.00"
               pattern="\d+(\.\d{2})?"
-              required
+              value={subamount}
+              readOnly
               className="textba6"
               onChange={(e) => setAmount(e.target.value)}
             />

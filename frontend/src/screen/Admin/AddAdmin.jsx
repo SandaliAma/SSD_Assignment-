@@ -134,12 +134,9 @@ function AddAdmin() {
                         </td>
                         <td>
                            <form > 
-                                <button className='btnup' type="submit">Upload New Photo </button>
+                                <button className='btnup' type="submit">Upload New Profile Photo </button>
                            </form>
-                        </td>
-                        <td>
-                            <button className='btnedit' type="submit">Delete</button>
-                        </td>
+                        </td>  
                     </tr>
                 </table> 
                 <div class="updateform">

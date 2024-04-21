@@ -70,7 +70,7 @@ function Nav() {
                     <br/><br/><br/><br/>
                     <li className='logoutsq'>
                         <img src={logout} alt='home' className='navimage'/>
-                        <button className='logoutbtn' onClick={handleDeletetoken}>Logout</button>
+                        <div className='logoutbtn' onClick={handleDeletetoken}><div className='logouttxt'>Logout</div></div>
                     </li>
                 </ul>
             </div>

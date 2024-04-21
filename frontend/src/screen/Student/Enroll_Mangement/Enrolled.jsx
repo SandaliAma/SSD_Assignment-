@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom';
 import './Test.css';
 import axios from 'axios';
 
-function Test() {
- 
-  const [subjects, setSubjects] = useState([]);
+function Enrolled() {
+  const [payments, setPayments] = useState([]);
 
   useEffect(() => {
     axios.get('/studentprofile')
       .then((res) => {
-        const targetGrade = res.data.grade;
-        axios.get('/viewSubject')
+        const itnum = res.data.stdid;
+        axios.get('/displaybank')
           .then((res) => {
-            const gradeSubjects = res.data.filter(subject => subject.grade === targetGrade);
-            setSubjects(gradeSubjects);
+            const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum && payment.status === 'Approved');
+            setPayments(paymentitnumber);
           })
           .catch((err) => {
             console.log(err);
@@ -44,17 +43,17 @@ function Test() {
         <div className="tbl-contentvc">
           <table className='tabletc'>
             <tbody>
-              {subjects.map((subject) => (
-                <tr key={subject._id}>
-                  <td className='tdvc'>{subject.sbid}</td>
-                  <td className='tdvc'>{subject.subjectname}</td>
+              {payments.map((payment) => (
+                <tr key={payment.subjectcode}>
+                  <td className='tdvc'>{payment.description}</td>
+                  <td className='tdvc'>{payment.subjectname}</td>
                   <td className='tdvc'>
-                    <Link to={`/viewclass/${subject.sbid}`}>
+                    <Link to="/viewclass">
                       <input className="buttonvo5" type="button" name="edit" value="View Class" />
                     </Link>
                   </td>
                   <td className='tdvc'>
-                    <Link to={`/viewschedule/${subject.subjectname}`}>
+                    <Link to="/viewschedule">
                       <input className="buttonvo5" type="button" name="edit" value="View schedule" />
                     </Link>
                   </td>
@@ -62,14 +61,10 @@ function Test() {
               ))}
             </tbody>
           </table>
-          
         </div>
       </div>
-      <Link to="/enrolled">
-      <input className="buttonvo5" type="button" name="edit" value="Enrolled" />
-      </Link>
     </div>
   );
 }
 
-export default Test;
+export default Enrolled;

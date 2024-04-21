@@ -10,6 +10,7 @@ import Head from '../Header/Header'
 function TeacherProfileEdit() {
     const navigate = useNavigate();    
     const [name, setName] = useState();
+    const [teid, setteid] = useState();
     const [username, setUsername] = useState();
     const [gender, setGender] = useState();
     const [email, setEmail] = useState();
@@ -23,6 +24,7 @@ function TeacherProfileEdit() {
         axios.get('/getteacherprofileedit')
         .then((res)=>{
             setName(res.data.name);
+            setteid(res.data.teid);
             setUsername(res.data.username);            
             setEmail(res.data.email);
             setContactnumber(res.data.contactnumber);
@@ -77,15 +79,15 @@ function TeacherProfileEdit() {
                             <img src={userpng} alt='logo'/>
                         </td>
                         <td>
-                            <p class='hellotxt'>{name}<br/>Teacher</p>
+                            <p class='hellotxt'>{name}<br/>{teid}<br/>Teacher</p>
                         </td>
                         <td>
                            <form > 
-                                <button className='btnup' type="submit">Upload New Photo </button>
+                                <button className='btnup' type="submit">Upload New Profile Photo </button>
                            </form>
                         </td>
                         <td>
-                            <button className='btnedit' type="submit">Delete</button>
+                            <button className='btnedit' type="submit">Delete Profile Photo</button>
                         </td>
                     </tr>
                 </table> 
