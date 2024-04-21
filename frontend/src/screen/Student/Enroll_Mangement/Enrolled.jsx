@@ -12,7 +12,7 @@ function Enrolled() {
         const itnum = res.data.stdid;
         axios.get('/displaybank')
           .then((res) => {
-            const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum && payment.status === 'Approved');
+            const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum && payment.status === 'Approved' );
             setPayments(paymentitnumber);
           })
           .catch((err) => {

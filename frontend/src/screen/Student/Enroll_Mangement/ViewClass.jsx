@@ -16,6 +16,8 @@ function ViewClass() {
       });
   }, [subid]); // Include subid in the dependency array
 
+  
+
   return (
     <div>
       <h2>PayNow</h2>
