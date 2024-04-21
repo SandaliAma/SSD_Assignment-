@@ -70,7 +70,20 @@ function StMyClasses() {
   };
 
   
- 
+  const { description } = useParams(); 
+
+  const [grade, setgrade] = useState();
+
+  useEffect(()=>{
+    axios.get('/studentprofile')
+    .then((res)=>{
+      setgrade(res.data.grade);         
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
   
 
   return (
@@ -83,7 +96,7 @@ function StMyClasses() {
             <div className="class_details">
               <h2>Class Details</h2>
               <div className="class-info">
-                <div className="class-title"> - Grade 10</div>
+                <div className="class-title">{description} - Grade {grade}</div>
                 <div className="class-detail">Teacher: Mr. Smith</div>
               </div>
             </div>
