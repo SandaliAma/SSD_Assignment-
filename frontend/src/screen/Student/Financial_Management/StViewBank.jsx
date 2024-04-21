@@ -148,7 +148,7 @@ function StViewBank() {
                   <td className='tdvb3'>{bank.accountname}</td>
                   <td className='tdvb'>{bank.accountnumber}</td>
                   <td className='tdvb'>{bank.bankname}</td>
-                  <td className='tdvb'>{bank.discription}</td>
+                  <td className='tdvb'>{bank.description}</td>
                   <td className='tdvb'>{bank.date}</td>
                   <td className='tdvb'>{bank.amount}</td>
                   <td className='tdvb'>  <input className="buttonvb6" type="button" name="view" value="view" onClick={() => showFile(bank.upload_files)} /></td>
