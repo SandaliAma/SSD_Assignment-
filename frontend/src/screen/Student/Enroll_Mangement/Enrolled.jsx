@@ -15,6 +15,7 @@ function Enrolled() {
             const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum && payment.status === 'Approved' );
             setPayments(paymentitnumber);
           })
+          
           .catch((err) => {
             console.log(err);
           });
@@ -48,7 +49,7 @@ function Enrolled() {
                   <td className='tdvc'>{payment.description}</td>
                   <td className='tdvc'>{payment.subjectname}</td>
                   <td className='tdvc'>
-                    <Link to="/viewclass">
+                    <Link to="/lessonmaterial">
                       <input className="buttonvo5" type="button" name="edit" value="View Class" />
                     </Link>
                   </td>
