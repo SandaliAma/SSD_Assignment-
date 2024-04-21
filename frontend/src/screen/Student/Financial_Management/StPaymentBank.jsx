@@ -12,13 +12,13 @@ function StPaymentBank() {
   const type = 'Bank';
 
   const [upload_files, setUpload_Files] = useState(null);
-  const [itnumber, setItnumber] = useState('');
+  const [, setItnumber] = useState('');
   const [accountname, setAccountname] = useState('');
   const [accountnumber, setAccountnumber] = useState('');
   const [bankname, setBankname] = useState('');
-  const [discription, setDiscription] = useState('');
+  const [, setDescription] = useState('');
   const [date, setDate] = useState('');
-  const [amount, setAmount] = useState('');
+  const [, setAmount] = useState('');
   const navigator = useNavigate();
 
   useEffect(() => {
@@ -38,13 +38,13 @@ function StPaymentBank() {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', upload_files);
-    formData.append('itnumber', itnumber);
+    formData.append('itnumber', idnumber);
     formData.append('accountname', accountname);
     formData.append('accountnumber', accountnumber);
     formData.append('bankname', bankname);
-    formData.append('discription', discription);
+    formData.append('description', subname);
     formData.append('date', date);
-    formData.append('amount', amount);
+    formData.append('amount', subamount);
     formData.append('status', status);
     formData.append('type', type);
 
@@ -254,7 +254,7 @@ function StPaymentBank() {
               value={subname}
               readOnly
               className="textba7"
-              onChange={(e) => setDiscription(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
             />
             <br />
             <br />
