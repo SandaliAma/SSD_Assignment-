@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Head from '../Header/Header';
 import Swal from 'sweetalert2';
 
+<<<<<<< HEAD
 function StudentProfileEdit() {
     const navigate = useNavigate();
     const [name, setName] = useState('');
@@ -19,9 +20,25 @@ function StudentProfileEdit() {
     const [profile_photo, setProfilePhoto] = useState(null);
     const [show_profile_photo, setProfilePhotoView] = useState(null);
     const [student_id, setStudent_id] = useState('');
+=======
+function StudentProfieEdit() {
+    const navigate = useNavigate();    
+    const [name, setName] = useState();
+    const [stdid, setstdid] = useState();
+    const [username, setUsername] = useState();
+    const [gender, setGender] = useState();
+    const [email, setEmail] = useState();
+    const [contactnumber, setContactnumber] = useState();
+    const [parentname, setParentName] = useState();
+    const [parentphonenumber, setParentPhonenumber] = useState();
+    const [secanswer, setSecAnswer] = useState();
+    // const [password, setPassword] = useState();
+    // const [repassword, setRepassword] = useState();
+>>>>>>> 9b8514e2c1beb16e85c3c8c875bc4040dbf7e164
 
     useEffect(() => {
         axios.get('/getstudentprofileedit')
+<<<<<<< HEAD
             .then((res) => {
                 setName(res.data.name);
                 setUsername(res.data.username);
@@ -71,6 +88,22 @@ function StudentProfileEdit() {
         });
     }
     
+=======
+        .then((res)=>{
+            setName(res.data.name);
+            setstdid(res.data.stdid);
+            setUsername(res.data.username);            
+            setEmail(res.data.email);
+            setContactnumber(res.data.contactnumber);
+            setParentName(res.data.parentname);
+            setParentPhonenumber(res.data.parentphonenumber);
+            setSecAnswer(res.data.SecAnswer);  
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    },[])
+>>>>>>> 9b8514e2c1beb16e85c3c8c875bc4040dbf7e164
 
     const updateStudent = (e) => {
         e.preventDefault();
@@ -142,6 +175,7 @@ function StudentProfileEdit() {
         getImage();
     }, []);
 
+<<<<<<< HEAD
     const getImage = async () => {
         try {
             const result = await axios.get('/getimage');
@@ -158,6 +192,60 @@ function StudentProfileEdit() {
                 <div>
                     <p className='usertxt'>User Profile</p>
                     <div className="line1"></div>
+=======
+  return (
+    <main>
+        <Head/>
+        <div className='profilecontent'>
+           
+            <div>
+                
+                <p class='usertxt'>User Profile</p> 
+                <div class="line1"></div>  
+                <table>
+                    <tr>
+                        <td>
+                            <img src={userpng} alt='logo'/>
+                        </td>
+                        <td>
+                            <p class='hellotxt'>{name}<br/>{stdid}<br/>Student</p>
+                        </td>
+                        <td>
+                           <form > 
+                                <button className='btnup' type="submit">Upload New Profile Photo </button>
+                           </form>
+                        </td>
+                        <td>
+                            <button className='btnedit' type="submit">Delete Profile Photo</button>
+                        </td>
+                    </tr>
+                </table> 
+                <div class="updateform">
+                <form onSubmit={updateStudent}>
+                    <div class="line"></div>   
+                    <p class='userprofiletxt'>Full name</p>  
+                    <input type="text" id="name" name="name" class="profileboxshow" value={name} onChange={(e) => setName(e.target.value)} />  
+                    <p class='userprofiletxt'>Username</p>  
+                    <input type="text" id="username" name="username" class="profileboxshow" value={username} onChange={(e) => setUsername(e.target.value)}/> 
+                    <p class='userprofiletxt'>Gender</p>  
+                    <table class='gendertbl'>
+                        <tr>
+                            <td>
+                                <input type="radio" id="gender" name="gender" value="Male" onChange={(e) => setGender(e.target.value)}/>
+                            </td>
+                            <td>
+                                <p class='gendertxt'>Male</p>
+                            </td>  
+                            <td>
+                                <input type="radio" id="gender" name="gender" value="Female" onChange={(e) => setGender(e.target.value)}/>
+                            </td>
+                            <td>
+                                <p class='gendertxt'>Female</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="line"></div>
+>>>>>>> 9b8514e2c1beb16e85c3c8c875bc4040dbf7e164
                     <table>
                         <tbody>
                             <tr>
