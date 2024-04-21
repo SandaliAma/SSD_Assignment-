@@ -8,7 +8,7 @@ function ViewClass() {
   return (
     <div>
       <h2>PayNow</h2>
-      <Link to="/viewonline">
+      <Link to={`/paybank/${subjectName}`}>
         <button className="button">PayNow</button>
       </Link>
       <h3>Subject Name: {subjectName}</h3> {/* Display the subject name */}

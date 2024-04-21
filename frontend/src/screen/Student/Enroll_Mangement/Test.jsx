@@ -4,13 +4,13 @@ import './Test.css';
 import axios from 'axios';
 
 function Test() {
-  const [grade, setGrade] = useState('');
+ 
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
     axios.get('/studentprofile')
       .then((res) => {
-        setGrade(res.data.grade);
+     
         const targetGrade = res.data.grade;
         axios.get('/viewSubject')
           .then((res) => {

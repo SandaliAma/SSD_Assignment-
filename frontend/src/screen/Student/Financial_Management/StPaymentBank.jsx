@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect  } from 'react';
+import { Link , useParams} from 'react-router-dom';
 import './stpaymentbank.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -121,6 +121,33 @@ function StPaymentBank() {
     }, 5000);
   };
 
+  const { subjectName } = useParams();
+  const [idnumber, setName] = useState();
+
+  useEffect(()=>{
+    axios.get('/studentprofile')
+    .then((res)=>{
+        setName(res.data.stdid);         
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
+
+  
+  const [subamount, setSubAmount] = useState([]);
+
+  useEffect(() => {
+        axios.get('/viewSubject')
+          .then((res) => {
+            setSubAmount(res.data.grade);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+  }, []);
+
   return (
     <div>
       <Head />
@@ -158,7 +185,8 @@ function StPaymentBank() {
               name="itnum"
               placeholder="IT12345678"
               pattern="^IT\d{8}$"
-              required
+              value={idnumber}
+            readOnly
               className="textba1"
               onChange={(e) => setItnumber(e.target.value)}
             />
@@ -222,7 +250,8 @@ function StPaymentBank() {
               name="descriptions"
               placeholder="Class Name"
               pattern="[A-Za-z\s]+"
-              required
+              value={subjectName}
+              readOnly
               className="textba7"
               onChange={(e) => setDiscription(e.target.value)}
             />
@@ -254,7 +283,8 @@ function StPaymentBank() {
               name="amounts"
               placeholder="00.00"
               pattern="\d+(\.\d{2})?"
-              required
+              value={subamount}
+              readOnly
               className="textba6"
               onChange={(e) => setAmount(e.target.value)}
             />
