@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes } from 'react-router-dom';
+import { Routes ,useParams } from 'react-router-dom';
 import axios from 'axios';
 import './StMyClasses.css';
 import Head from '../Header/Header';
@@ -69,6 +69,10 @@ function StMyClasses() {
     }
   };
 
+  
+ 
+  
+
   return (
     <>
     
@@ -79,7 +83,7 @@ function StMyClasses() {
             <div className="class_details">
               <h2>Class Details</h2>
               <div className="class-info">
-                <div className="class-title">History - Grade 10</div>
+                <div className="class-title"> - Grade 10</div>
                 <div className="class-detail">Teacher: Mr. Smith</div>
               </div>
             </div>

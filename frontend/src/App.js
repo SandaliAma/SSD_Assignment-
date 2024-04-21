@@ -114,7 +114,7 @@ function App() {
       <Route path='/studentforgetpassword' element={<StudentForgetPassword/>}/>
       <Route path="/studentdashboard" element={<StudentDashboard />} />
       <Route path="/studenttimetable" element={<StudentTimetable />} />
-      <Route path="/lessonmaterial" element={<LessonMaterial />} />
+      <Route path="/lessonmaterial/:description" element={<LessonMaterial />} />
       <Route path= '/payment' element = {<Payment/>} />
       <Route path= '/payonline' element = {<PayOnline/>} />
       <Route path= '/viewonline' element = {<ViewOnline/>} />

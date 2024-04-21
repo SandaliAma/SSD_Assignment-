@@ -49,7 +49,7 @@ function Enrolled() {
                   <td className='tdvc'>{payment.description}</td>
                   <td className='tdvc'>{payment.subjectname}</td>
                   <td className='tdvc'>
-                    <Link to="/lessonmaterial">
+                  <Link to={`/lessonmaterial/${payment.description}`}>
                       <input className="buttonvo5" type="button" name="edit" value="View Class" />
                     </Link>
                   </td>
