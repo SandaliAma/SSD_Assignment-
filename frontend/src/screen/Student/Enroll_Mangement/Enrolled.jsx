@@ -4,8 +4,10 @@ import './Test.css';
 import axios from 'axios';
 
 function Enrolled() {
-  const [idnumber, setIdNumber] = useState('');
+  
   const [payments, setPayments] = useState([]);
+
+  const [idnumber, setIdNumber] = useState();
 
   useEffect(() => {
     axios.get('/studentprofile')

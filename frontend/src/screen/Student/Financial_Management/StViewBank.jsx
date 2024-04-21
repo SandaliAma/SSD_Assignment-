@@ -13,13 +13,7 @@ function StViewBank() {
   const [bankpayments, setBankPayments] = useState([]);
   const navigator = useNavigate();
 
-  useEffect(() => {
-    axios.get('http://Localhost:5000/displaybank')
-      .then((res) => {
-        setBankPayments(res.data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+ 
 
   const handleDelete = (id) => {
     axios.delete('http://Localhost:5000/deletebank/' + id)
@@ -98,6 +92,24 @@ function StViewBank() {
   };
 
 
+
+  useEffect(() => {
+    axios.get('/studentprofile')
+      .then((res) => {
+        const itnum = res.data.stdid;
+        axios.get('/displaybank')
+          .then((res) => {
+            const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum );
+            setBankPayments(paymentitnumber);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>

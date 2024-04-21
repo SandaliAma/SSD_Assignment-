@@ -10,7 +10,6 @@ function Test() {
   useEffect(() => {
     axios.get('/studentprofile')
       .then((res) => {
-     
         const targetGrade = res.data.grade;
         axios.get('/viewSubject')
           .then((res) => {
