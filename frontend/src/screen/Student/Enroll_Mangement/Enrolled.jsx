@@ -4,28 +4,25 @@ import './Test.css';
 import axios from 'axios';
 
 function Enrolled() {
-  const [idnumber, setIdNumber] = useState('');
   const [payments, setPayments] = useState([]);
 
   useEffect(() => {
     axios.get('/studentprofile')
       .then((res) => {
-        setIdNumber(res.data.stdid);
+        const itnum = res.data.stdid;
+        axios.get('/displaybank')
+          .then((res) => {
+            const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum && payment.status === 'Approved');
+            setPayments(paymentitnumber);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/displayonline')
-      .then((res) => {
-        // Filter payments to only include the ones with IT number 'IT12345678'
-        const filteredPayments = res.data.filter(payment => payment.itnumber === idnumber);
-        setPayments(filteredPayments);
-      })
-      .catch((err) => console.error(err));
-  }, [idnumber]);
 
   return (
     <div>
@@ -48,7 +45,7 @@ function Enrolled() {
             <tbody>
               {payments.map((payment) => (
                 <tr key={payment.subjectcode}>
-                  <td className='tdvc'>{payment.subjectcode}</td>
+                  <td className='tdvc'>{payment.description}</td>
                   <td className='tdvc'>{payment.subjectname}</td>
                   <td className='tdvc'>
                     <Link to="/viewclass">
