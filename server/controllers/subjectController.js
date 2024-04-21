@@ -28,7 +28,8 @@ const getSubjectid = (req, res) => {
 
 const getSubjectname = (req, res) => {
     const name = req.params.name;
-    Subject.find({subjectname:name})
+    const grade = req.params.grade;
+    Subject.find({subjectname:name, grade:grade})    
     .then(id => res.json(id))
     .catch(err => res.json(err));
 }
