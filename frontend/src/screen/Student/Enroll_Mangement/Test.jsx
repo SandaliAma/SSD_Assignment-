@@ -57,7 +57,9 @@ useEffect(() => {
                 <tr key={subject._id}>
                   <td className='tdvc'>{subject.sbid}</td>
                   <td className='tdvc'>{subject.subjectname}</td>
+                  <Link to="/viewclass">
                   <td className='tdvc'> <input className="buttonvo5" type="button" name="edit" value="View Class" /></td>
+                  </Link>
                   <td className='tdvc'> <input className="buttonvo5" type="button" name="edit" value="View schedule" /></td>
                 </tr>
               ))}
