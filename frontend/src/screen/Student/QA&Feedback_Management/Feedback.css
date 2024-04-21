@@ -3,7 +3,7 @@
     width: 386px;
     height: 25px;
     left: 336px;
-    top: 136px;
+    top: 180px;
     font-family: 'Epilogue';
     font-style: normal;
     font-weight: 600;
@@ -29,28 +29,38 @@
     
     .bt3{
     position: absolute;
-    width: 396px;
-    height: 51px;
-    left: 484px;
-    top: 444px;
+    width: 500px;
+    height: 86px;
+    left: 500px;
+    top: 300px;
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 150%;
+    background: #83B2CD;
     color: #000000;
+    }
+
+    .bt3:hover{
+        background: #65899e;
     }
     
     .bt4{
     position: absolute;
-    width: 247px;
-    height: 48px;
-    left: 526px;
-    top: 648px;
+    width: 500px;
+    height: 86px;
+    left: 500px;
+    top: 400px;
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 150%;
+    background: #83B2CD;
     color: #000000;
+    }
+
+    .bt4:hover{
+        background: #65899e;
     }
