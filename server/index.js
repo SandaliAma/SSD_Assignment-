@@ -69,7 +69,8 @@ app.post('/addmaterial', upload.single('file'), (req, res) => {
     lesson_fileType: req.body.lesson_fileType,
     lesson_date: req.body.lesson_date,
     lesson_description: req.body.lesson_description,
-    class_id: req.body.class_id,
+    subject_name: req.body.subject_name,
+    grade: req.body.grade,
     teacher_id: req.body.teacher_id
   })
     .then((data) => {

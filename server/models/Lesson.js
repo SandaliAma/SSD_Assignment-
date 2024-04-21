@@ -7,7 +7,8 @@ const LessonSchema = new mongoose.Schema({
     lesson_fileType: 'String',
     lesson_date: 'String',
     lesson_description: 'String',
-    class_id: 'String',
+    subject_name: 'String',
+    grade: 'Number',
     teacher_id: 'String'
 
 });

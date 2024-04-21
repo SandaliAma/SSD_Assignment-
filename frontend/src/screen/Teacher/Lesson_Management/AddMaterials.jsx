@@ -12,7 +12,8 @@ function AddMaterials() {
   const [lesson_date, setLessonDate] = useState('');
   const [lesson_fileType, setLessonFileType] = useState('');
   const [lesson_description, setLessonDescription] = useState('');
-  const [class_id, setClass_id] = useState('qwer12');
+  const [subject_name, setClass_id] = useState('History');
+  const [grade, setGrade] = useState(11);
   const [teacher_id, setTeacher_id] = useState('1234q');
 
   const navigate = useNavigate();
@@ -39,7 +40,8 @@ function AddMaterials() {
     formData.append('lesson_date', lesson_date);
     formData.append('lesson_fileType', lesson_fileType);
     formData.append('lesson_description', lesson_description);
-    formData.append('class_id', class_id);
+    formData.append('subject_name', subject_name);
+    formData.append('grade', grade);
     formData.append('teacher_id', teacher_id);
   
     try {
