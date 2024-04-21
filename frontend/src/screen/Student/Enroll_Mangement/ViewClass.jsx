@@ -1,14 +1,19 @@
-import React from 'react'
-import { Link } from 'react-router-dom'; // Import Link from React Router
+// ViewClass.js
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 function ViewClass() {
+  const { subjectName } = useParams(); // Retrieve the subjectName parameter from the URL
+
   return (
     <div>
-     <h2>PayNow</h2>
-        <Link to="/viewonline"><button className="button">PayNow</button></Link> {/* Link to Maths class */}
-        <h3>Class Name</h3>
+      <h2>PayNow</h2>
+      <Link to="/viewonline">
+        <button className="button">PayNow</button>
+      </Link>
+      <h3>Subject Name: {subjectName}</h3> {/* Display the subject name */}
     </div>
-  )
+  );
 }
 
-export default ViewClass
+export default ViewClass;
