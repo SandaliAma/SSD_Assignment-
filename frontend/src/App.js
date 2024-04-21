@@ -117,7 +117,7 @@ function App() {
       <Route path= '/payment' element = {<Payment/>} />
       <Route path= '/payonline' element = {<PayOnline/>} />
       <Route path= '/viewonline' element = {<ViewOnline/>} />
-      <Route path= '/paybank/:subjectName' element = {<PayBank/>} />      
+      <Route path= '/paybank' element = {<PayBank/>} />      
       <Route path= '/viewbank' element = {<ViewBank/>} />
       <Route path= '/viewcash' element = {<ViewCash/>} />      
       <Route path= '/editonline/:id' element = {<EditOnline/>} />

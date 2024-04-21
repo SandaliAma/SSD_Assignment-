@@ -1,30 +1,29 @@
-// ViewClass.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect ,useState } from 'react';
 
 function ViewClass() {
+  const [subname, setSubName] = useState('');
+  const { subjectid } = useParams();
+  const subid = 'SB0210';
 
-  const [subname, setsubName] = useState();
-  const { subid } = useParams();
-
-  useEffect(()=>{
-    axios.get('/getSubject:'+subid)
-    .then((res)=>{
-      setsubName(res.data.subjectname);         
-    })
-    .catch((err)=>{
+  useEffect(() => {
+    axios.get(`/getSubject/${subid}`)
+      .then((res) => {
+        setSubName(res.data.subjectname);
+      })
+      .catch((err) => {
         console.log(err);
-    })
-  },[])
+      });
+  }, [subid]); // Include subid in the dependency array
+
   return (
     <div>
       <h2>PayNow</h2>
       <Link to="/paybank">
         <button className="button">PayNow</button>
       </Link>
-      <h3>Subject Name: {subname}</h3> {/* Display the subject name */}
+      <h3>Subject: {subname}</h3>
     </div>
   );
 }
