@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import './AddQuestion.css';
 
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import Head from '../Header/Header';
 
 
 function AddQuestion() {
@@ -98,9 +99,25 @@ function AddQuestion() {
       }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
+
+  
+  const [idnumber, setName] = useState();
+  const [sgrade, setgrade] = useState();
+
+  useEffect(()=>{
+    axios.get('/studentprofile')
+    .then((res)=>{
+        setName(res.data.stdid);   
+        setgrade(res.data.grade);       
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
   return (
     <div>
-      
+      <Head/>
     <div className='uth4'>
       
     <Toaster/>
@@ -109,17 +126,10 @@ function AddQuestion() {
       <text className='heading2'>Connect with your teachers - Add Your Question</text>
         
         <label htmlFor="dropdown1" className='t1'>Select Grade</label>
-        <select id="dropdown1" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '205px', border: '1px solid #000000', borderRadius: '10px' }}  required onChange={(a)=> setGrade(a.target.value)}>
-          <option value="" ></option>
-          <option value="Grade 4" >Grade 4</option>
-          <option value="Grade 5" >Grade 5</option>
-          <option value="Grade 6" >Grade 6</option>
-          <option value="Grade 7" >Grade 7</option>
-          <option value="Grade 8" >Grade 8</option>
-          <option value="Grade 9" >Grade 9</option>
-          <option value="Grade 10" >Grade 10</option>
-          <option value="Grade 11" >Grade11</option>
-        </select>
+        <input id="dropdown1" name="dropdown" value={sgrade}
+        style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '205px', border: '1px solid #000000', borderRadius: '10px' }}  required onChange={(a)=> setGrade(a.target.value)}/>
+          
+      
         
         <label htmlFor="dropdown2" className='t2'>Select Subject</label>
         <select id="dropdown2" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '279px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setSubject(a.target.value)}>
@@ -144,7 +154,7 @@ function AddQuestion() {
         </select>
         
         <text className='t5'>Student ID</text>
-        <input type="text" name="sSID" pattern="^SD\d{3}$" title="Please enter 'SD001'" style={{ boxSizing: 'border-box', position: 'absolute', width: '351px', height: '53px', left: '636px', top: '451px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required placeholder='SD001' onChange={(a)=> setSid(a.target.value)}/>
+        <input type="text" name="sSID" pattern="^SD\d{3}$" title="Please enter 'SD001'" value={idnumber} style={{ boxSizing: 'border-box', position: 'absolute', width: '351px', height: '53px', left: '636px', top: '451px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required placeholder='SD001' onChange={(a)=> setSid(a.target.value)}/>
 
         
         <text className='t6'>Question</text>
