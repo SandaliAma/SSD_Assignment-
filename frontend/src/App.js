@@ -138,7 +138,7 @@ function App() {
       <Route path='/UpdateTeacherF/:id' element={<UpdateTeacherF/>}/>
       <Route path='/UpdateSFeedback/:id' element={<UpdateSFeedback/>}/>
       <Route path='/test' element={<Test/>}/>
-      <Route path='/viewclass/:subjectName' element={<ViewClass />} />
+      <Route path='/viewclass/:sbid' element={<ViewClass />} />
 
 
 

@@ -50,7 +50,7 @@ function Test() {
                   <td className='tdvc'>{subject.sbid}</td>
                   <td className='tdvc'>{subject.subjectname}</td>
                   <td className='tdvc'>
-                    <Link to={`/viewclass/${subject.subjectname}`}>
+                    <Link to={`/viewclass/${subject.sbid}`}>
                       <input className="buttonvo5" type="button" name="edit" value="View Class" />
                     </Link>
                   </td>
