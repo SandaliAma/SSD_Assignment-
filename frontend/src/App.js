@@ -34,6 +34,7 @@ import UpdateTeacherF from './screen/Student/QA&Feedback_Management/UpdateTeache
 import UpdateSFeedback from './screen/Student/QA&Feedback_Management/UpdateSFeedback';
 import Test from './screen/Student/Enroll_Mangement/Test';
 import ViewClass from './screen/Student/Enroll_Mangement/ViewClass';
+import Enrolled from './screen/Student/Enroll_Mangement/Enrolled';
 
 
 import TeacherLogin from './screen/Teacher/User_Management/TeacherLogin';
@@ -117,7 +118,7 @@ function App() {
       <Route path= '/payment' element = {<Payment/>} />
       <Route path= '/payonline' element = {<PayOnline/>} />
       <Route path= '/viewonline' element = {<ViewOnline/>} />
-      <Route path= '/paybank' element = {<PayBank/>} />      
+      <Route path= '/paybank/:subid' element = {<PayBank/>} />      
       <Route path= '/viewbank' element = {<ViewBank/>} />
       <Route path= '/viewcash' element = {<ViewCash/>} />      
       <Route path= '/editonline/:id' element = {<EditOnline/>} />
@@ -138,7 +139,9 @@ function App() {
       <Route path='/UpdateTeacherF/:id' element={<UpdateTeacherF/>}/>
       <Route path='/UpdateSFeedback/:id' element={<UpdateSFeedback/>}/>
       <Route path='/test' element={<Test/>}/>
-      <Route path='/viewclass' element={<ViewClass/>}/>
+      <Route path='/viewclass/:subid' element={<ViewClass />} />
+      <Route path='/enrolled' element={<Enrolled />} />
+
 
 
       <Route path="/teacherlogin" element={<TeacherLogin />} />
