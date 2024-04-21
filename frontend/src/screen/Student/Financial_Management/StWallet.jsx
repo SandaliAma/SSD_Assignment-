@@ -6,17 +6,35 @@ import Head from '../Header/Header';
 function StWallet() {
 
 
-    const[wallets , setwallet] = useState([]);
+  const[wallets , setwallet] = useState([]);
 
-useEffect(()=>{
-  axios.get('http://Localhost:5000/displaywallet')
-  .then((res)=> {
-    setwallet(res.data);
-  })
-  .catch((err) => console.error(err));
-},[]);
+  // useEffect(()=>{
+  //   axios.get('http://Localhost:5000/displaywallet')
+  //   .then((res)=> {
+  //     setwallet(res.data);
+  //   })
+  //   .catch((err) => console.error(err));
+  // },[]);
 
+  // const [subjects, setSubjects] = useState([]);
 
+  useEffect(() => {
+    axios.get('/studentprofile')
+      .then((res) => {
+        const stdid = res.data.stdid;
+        axios.get('/displaywallet')
+          .then((res) => {
+            const walletid = res.data.filter(wallet => wallet.stdid === stdid);
+            setwallet(walletid);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
@@ -30,7 +48,7 @@ useEffect(()=>{
 
                 <form className="paywa">
                     <br /><br />
-                    <label htmlFor="name" className="labelwa1">Student IT Number</label>
+                    <label htmlFor="name" className="labelwa1">Student ID Number</label>
                     <br />
                     <input type="text" id="name1" className="textwa1"value={wallet.stdid} readOnly/>
 
