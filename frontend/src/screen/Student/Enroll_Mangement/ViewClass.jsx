@@ -6,7 +6,7 @@ function ViewClass() {
     <div>
      <h2>PayNow</h2>
         <Link to="/viewonline"><button className="button">PayNow</button></Link> {/* Link to Maths class */}
-
+        <h3>Class Name</h3>
     </div>
   )
 }

@@ -5,34 +5,26 @@ import axios from 'axios';
 
 function Test() {
   const [grade, setGrade] = useState('');
-const [subjects, setSubjects] = useState([]);
+  const [subjects, setSubjects] = useState([]);
 
-useEffect(() => {
-  axios.get('/studentprofile')
-    .then((res) => {
-      // Set the grade from the profile data
-      setGrade(res.data.grade);
-      
-      // Assign the target grade based on the profile grade
-      const targetGrade = res.data.grade; // Assuming profile grade is the target grade
-      
-      // Fetch subjects based on the target grade
-      axios.get('/viewSubject')
-        .then((res) => {
-          // Filter subjects to only include the ones with the target grade
-          const gradeSubjects = res.data.filter(subject => subject.grade === targetGrade);
-          setSubjects(gradeSubjects);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}, []);
-
- 
+  useEffect(() => {
+    axios.get('/studentprofile')
+      .then((res) => {
+        setGrade(res.data.grade);
+        const targetGrade = res.data.grade;
+        axios.get('/viewSubject')
+          .then((res) => {
+            const gradeSubjects = res.data.filter(subject => subject.grade === targetGrade);
+            setSubjects(gradeSubjects);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
@@ -57,10 +49,16 @@ useEffect(() => {
                 <tr key={subject._id}>
                   <td className='tdvc'>{subject.sbid}</td>
                   <td className='tdvc'>{subject.subjectname}</td>
-                  <Link to="/viewclass">
-                  <td className='tdvc'> <input className="buttonvo5" type="button" name="edit" value="View Class" /></td>
-                  </Link>
-                  <td className='tdvc'> <input className="buttonvo5" type="button" name="edit" value="View schedule" /></td>
+                  <td className='tdvc'>
+                    <Link to={`/viewclass/${subject.subjectname}`}>
+                      <input className="buttonvo5" type="button" name="edit" value="View Class" />
+                    </Link>
+                  </td>
+                  <td className='tdvc'>
+                    <Link to={`/viewschedule/${subject.subjectname}`}>
+                      <input className="buttonvo5" type="button" name="edit" value="View schedule" />
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
