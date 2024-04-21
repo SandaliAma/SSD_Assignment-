@@ -8,6 +8,7 @@ const multer = require('multer');
 const UserModelLesson = require('./models/Lesson');
 const BankModel = require('./models/BankPayments');
 const SalaryModel = require('./models/Salary');
+const PhotoModel = require('./models/ProfilePhoto');
 
 mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('MongoDB connected'))
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/files", express.static("files")); // Accessing files folder
 app.use("/files2", express.static("files2")); // Accessing files folder2
 app.use("/files3", express.static("files3")); // Accessing files folder3
+app.use("/ProfilePhotos", express.static("ProfilePhotos")); // Accessing files folder
 
 // Routes
 app.use('/', require('./routes/authRouters'));
@@ -184,17 +186,17 @@ app.post('/createSalary', upload3.single('file'), (req, res) => {
   // Create a new bank document in MongoDB 3
   SalaryModel.create({
 
-    TeacherName:req.body.TeacherName,
-    TeacherID:req.body.TeacherID,
-    SubjectName:req.body.SubjectName,
-    Grade:req.body.Grade,
-    AttendStudents:req.body.AttendStudents,
-    FreeCardAmount:req.body.FreeCardAmount,
-    InstitutePayment:req.body.InstitutePayment,
-    MonthlySalary:req.body.MonthlySalary,
-    Date:req.body.Date,
+    TeacherName: req.body.TeacherName,
+    TeacherID: req.body.TeacherID,
+    SubjectName: req.body.SubjectName,
+    Grade: req.body.Grade,
+    AttendStudents: req.body.AttendStudents,
+    FreeCardAmount: req.body.FreeCardAmount,
+    InstitutePayment: req.body.InstitutePayment,
+    MonthlySalary: req.body.MonthlySalary,
+    Date: req.body.Date,
     upload_paymentFiles: filename
-    
+
   })
     .then((data) => {
       res.json(data);
@@ -202,6 +204,68 @@ app.post('/createSalary', upload3.single('file'), (req, res) => {
     .catch((err) => {
       res.status(500).json({ error: 'Internal server error' });
     });
+});
+
+
+
+// Setup Multer for profile photo uploads
+const storage4 = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./ProfilePhotos");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + file.originalname);
+  },
+});
+
+// Initialize multer middleware for photo uploads
+const upload4 = multer({ storage: storage4 });
+
+// Route to handle file uploads for profile photo
+app.post('/addphoto', upload4.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+
+  const { filename } = req.file;
+
+  // Create a profile photo in MongoDB 
+  PhotoModel.create({
+
+    profile_photo: filename,
+    student_id: req.body.student_id
+
+  })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: 'Internal server error' });
+    });
+});
+
+app.get("/getimage", async (req, res) => {
+  try {
+    PhotoModel.find({}).then((data) => {
+      res.send({ status: "ok", data: data });
+    });
+  } catch (error) {
+    res.json({ status: error });
+  }
+});
+
+// Route to delete Photo
+app.delete('/deletephoto/:id', (req, res) => {
+  const id = req.params.id;
+  PhotoModel.findByIdAndDelete({ _id: id })
+      .then(() => {
+          res.status(200).json({ message: 'Photo deleted successfully' });
+      })
+      .catch(err => {
+          console.error(err);
+          res.status(500).json({ error: 'Internal server error' });
+      });
 });
 
 
