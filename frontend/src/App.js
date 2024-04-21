@@ -117,7 +117,7 @@ function App() {
       <Route path= '/payment' element = {<Payment/>} />
       <Route path= '/payonline' element = {<PayOnline/>} />
       <Route path= '/viewonline' element = {<ViewOnline/>} />
-      <Route path= '/paybank' element = {<PayBank/>} />      
+      <Route path= '/paybank/:subid' element = {<PayBank/>} />      
       <Route path= '/viewbank' element = {<ViewBank/>} />
       <Route path= '/viewcash' element = {<ViewCash/>} />      
       <Route path= '/editonline/:id' element = {<EditOnline/>} />
@@ -138,7 +138,7 @@ function App() {
       <Route path='/UpdateTeacherF/:id' element={<UpdateTeacherF/>}/>
       <Route path='/UpdateSFeedback/:id' element={<UpdateSFeedback/>}/>
       <Route path='/test' element={<Test/>}/>
-      <Route path='/viewclass/:sbid' element={<ViewClass />} />
+      <Route path='/viewclass/:subid' element={<ViewClass />} />
 
 
 

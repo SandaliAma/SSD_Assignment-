@@ -4,8 +4,7 @@ import axios from 'axios';
 
 function ViewClass() {
   const [subname, setSubName] = useState('');
-  const { subjectid } = useParams();
-  const subid = 'SB0210';
+  const { subid } = useParams(); // Get the subid from the URL params
 
   useEffect(() => {
     axios.get(`/getSubject/${subid}`)
@@ -20,7 +19,7 @@ function ViewClass() {
   return (
     <div>
       <h2>PayNow</h2>
-      <Link to="/paybank">
+      <Link to={`/paybank/${subid}`}>
         <button className="button">PayNow</button>
       </Link>
       <h3>Subject: {subname}</h3>

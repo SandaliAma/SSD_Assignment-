@@ -121,7 +121,6 @@ function StPaymentBank() {
     }, 5000);
   };
 
-  const { subjectName } = useParams();
   const [idnumber, setName] = useState();
 
   useEffect(()=>{
@@ -135,18 +134,20 @@ function StPaymentBank() {
   },[])
 
 
-  
-  const [subamount, setSubAmount] = useState([]);
+  const [subname, setSubName] = useState('');
+  const [subamount, setSubAmount] = useState('');
+  const { subid } = useParams(); // Get the subid from the URL params
 
   useEffect(() => {
-        axios.get('/viewSubject')
-          .then((res) => {
-            setSubAmount(res.data.grade);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-  }, []);
+    axios.get(`/getSubject/${subid}`)
+      .then((res) => {
+        setSubName(res.data.subjectname);
+        setSubAmount(res.data.amount);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [subid]); // Include subid in the dependency array
 
   return (
     <div>
@@ -250,7 +251,7 @@ function StPaymentBank() {
               name="descriptions"
               placeholder="Class Name"
               pattern="[A-Za-z\s]+"
-              value={subjectName}
+              value={subname}
               readOnly
               className="textba7"
               onChange={(e) => setDiscription(e.target.value)}
