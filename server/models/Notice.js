@@ -5,7 +5,8 @@ const NoticeSchema = new mongoose.Schema({
     topic: 'String',
     date: 'String',
     description: 'String',
-    class_id: 'String',
+    subject_name: { type: 'String', default: 'Commerce' },
+    grade: { type: 'Number', default: 10 },
     teacher_id: 'String'
 });
 
