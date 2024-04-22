@@ -7,15 +7,39 @@ import Head from '../Header/Header';
 function MyQuestions() {
 
   const[questions,setQuestions] = useState([]);
+  const [name, setName] = useState();
+
+  useEffect(()=>{
+    axios.get('/studentprofile')
+    .then((res)=>{
+        setName(res.data.stdid);            
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:5000/MyQuestions')
+  //   .then((res) =>{
+  //     setQuestions(res.data);
+  //   })
+  //   .catch((err) => console.error(err));
+  // },[]);
 
   useEffect(() => {
+    //get notices and materials
+    if (name) {
     axios.get('http://localhost:5000/MyQuestions')
-    .then((res) =>{
-      setQuestions(res.data);
-    })
-    .catch((err) => console.error(err));
-  },[]);
-
+      .then(res => {
+        const FilterQuestions = res.data.filter(question =>
+          question.sid === name
+        );
+        setQuestions(FilterQuestions);
+      })
+      .catch(err => console.error(err));
+    }
+  }, [name]);
 
   const handleDelete = (id) =>{
     axios.delete('http://localhost:5000/deleteQuestion/' + id)
