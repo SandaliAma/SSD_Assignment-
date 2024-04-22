@@ -1,6 +1,5 @@
 import React, { useState , useEffect } from 'react'
 import './AddQuestion.css';
-
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
@@ -34,15 +33,6 @@ function AddQuestion() {
     .catch(err => console.error(err));
 
   }
-
-  /*const[questions,setQuestions] = useState([]);
-  useEffect(() => {
-    axios.get('http://localhost:5000/MyQuestions')
-    .then((res) =>{
-      setQuestions(res.data);
-    })
-    .catch((err) => console.error(err));
-  },[]);*/
 
   const handleSubmit = (a) => {
     a.preventDefault();

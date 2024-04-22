@@ -17,18 +17,10 @@ function MyQuestions() {
     .catch((err)=>{
         console.log(err);
     })
-  },[])
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000/MyQuestions')
-  //   .then((res) =>{
-  //     setQuestions(res.data);
-  //   })
-  //   .catch((err) => console.error(err));
-  // },[]);
+  },[]) 
 
   useEffect(() => {
-    //get notices and materials
+   
     if (name) {
     axios.get('http://localhost:5000/MyQuestions')
       .then(res => {
