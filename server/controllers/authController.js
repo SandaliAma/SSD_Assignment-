@@ -453,6 +453,14 @@ const getTeacherProfile = async (req, res) =>{
     }        
 }
 
+//view all profile teacher
+const getTeacherall = async (req, res) =>{
+    Teacher.find()
+    .then(teacher => res.json(teacher))
+    .catch(err => res.json(err));
+     
+}
+
 //update get profile teacher
 const getteacherupdateProfile = (req, res) =>{
 
@@ -886,6 +894,7 @@ module.exports = {
     loginTeacher,
     forgotPasswordteacher,
     getTeacherProfile,
+    getTeacherall,
     getteacherupdateProfile,
     updateteacherProfile,
     registerManager,
