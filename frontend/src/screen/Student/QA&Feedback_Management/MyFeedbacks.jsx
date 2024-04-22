@@ -9,24 +9,45 @@ function MyFeedbacks() {
 
     const[tfeedbacks,setTFeedbacks] = useState([]);
     const[sfeedbacks,setSFeedbacks] = useState([]);
-    
+    const [name, setName] = useState();
+
+    useEffect(()=>{
+      axios.get('/studentprofile')
+      .then((res)=>{
+          setName(res.data.stdid);            
+      })
+      .catch((err)=>{
+          console.log(err);
+      })
+    },[]) 
 
     useEffect(() => {
-        //get teacher feedback
+    
+      if (name) {
       axios.get('http://localhost:5000/MyTFeedbacks')
-      .then((res) =>{
-        setTFeedbacks(res.data);
-      })
-      .catch((err) => console.error(err));
+        .then(res => {
+          const FilterTFeedback = res.data.filter(question =>
+            question.sid === name
+          );
+          setTFeedbacks(FilterTFeedback);
+        })
+        .catch(err => console.error(err));
+      }
+    }, [name]);
 
-      //get service feedback
+    useEffect(() => {
+    
+      if (name) {
       axios.get('http://localhost:5000/MySFeedbacks')
-      .then((res) =>{
-        setSFeedbacks(res.data);
-      })
-      .catch((err) => console.error(err));
-
-    },[]);
+        .then(res => {
+          const FilterSFeedback = res.data.filter(question =>
+            question.sid === name
+          );
+          setSFeedbacks(FilterSFeedback);
+        })
+        .catch(err => console.error(err));
+      }
+    }, [name]);   
 
     const handleDeleteT = (id) =>{
       axios.delete('http://localhost:5000/deleteTFeedback/' + id)
