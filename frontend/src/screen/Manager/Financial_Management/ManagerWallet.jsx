@@ -9,29 +9,12 @@ import { useEffect } from 'react';
 
 function ManagerWallet() {
     const [itnumber, setItnumber] = useState('');
-    const [walletId, setWalletId] = useState('');
+    const [walletId, setWalletId] = useState([]);
     const [date, setDate] = useState('');
     const [amount, setAmount] = useState('');
     const navigator = useNavigate();
 
-
-    const submit = (e) => {
-        e.preventDefault();
-        axios.post('http://localhost:5000/createwallet', {
-            itnumber: itnumber,
-            walletId: walletId,
-            date: date,
-            amount: amount
-        })
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.error(err);
-            // Handle error properly, such as showing a toast or error message
-        });
-    };
-
+  
     const handleSubmit = (e) => {
         e.preventDefault();
         Swal.fire({
@@ -45,7 +28,7 @@ function ManagerWallet() {
             cancelButtonText: "Cancel",
         }).then((result) => {
             if (result.isConfirmed) {
-                submit(e);
+                //submit(e);
                 Swal.fire({
                     title: "Wallet is Created",
                     icon: "success",
@@ -58,7 +41,21 @@ function ManagerWallet() {
                 });
             }
         });
+
+       
     };
+
+    useEffect(() => {        
+        axios.get('http://localhost:5000/displaywallet')
+          .then(res => {
+            const wallet = res.data.filter(wallet =>
+                wallet.stdid === "SID241890" 
+            );
+            setWalletId(wallet);
+          })
+          .catch(err => console.error(err));
+        
+      }, []);
 
     const handleClick2 = () => {
         toast.loading('Wallet is processing...', {
@@ -119,11 +116,17 @@ function ManagerWallet() {
                 <label htmlFor="cname" className="labelmgpa1">Enter IT Number:</label><br />
                 <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$" required className="textmgpa1" onChange={(e) => setItnumber(e.target.value)} /><br /><br />
                 <label htmlFor="an" className="labelmgpa1">Enter wallet Id:</label><br />
-                <input type="text" name="sname" placeholder="Enter Name" required className="textmgpa1" onChange={(e) => setWalletId(e.target.value)} /><br /><br />
-                <label htmlFor="tda" className="labelmgpa1">Enter Date:</label><br />
-                <input type="date" name="dates" placeholder="(DD/MM/YY)" value={date} readOnly className="textmgpa4" onChange={(e) => setDate(e.target.value)} /><br /><br />
-                <label id="totalA" name="totalA" className="labelmgpa1">Enter Amount:</label><br />
-                <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="textmgpa5" onChange={(e) => setAmount(e.target.value)} /><br /><br />
+
+                {walletId.map((wall) => (
+                <div key={wall._id}>
+                    <input type="text" name="sname" placeholder="Enter Name" required className="textmgpa1" value={wall.walletid} readOnly/><br /><br />
+                    <label htmlFor="tda" className="labelmgpa1">Enter Date:</label><br />
+                    <input type="date" name="dates" placeholder="(DD/MM/YY)" value={date} readOnly className="textmgpa4" /><br /><br />
+                    <label id="totalA" name="totalA" className="labelmgpa1">Enter Amount:</label><br />
+                    <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="textmgpa5" value={wall.balance} readOnly /><br /><br />
+                    
+                </div>
+                ))}
                 <div className="containermgpa4">
                     <button type="submit" name="submit" className="buttonmgpa3">Confirm</button>
                 </div>
