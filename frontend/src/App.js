@@ -81,6 +81,7 @@ import UpdateManager from './screen/Manager/Salary_Management/UpdateManager';
 import ManagerTimetable from './screen/Manager/Timetable_management/Timetable';
 import AddNewClassForm from './screen/Manager/Timetable_management/AddnewClasstime';
 import ManagerUpdateTimetable from './screen/Manager/Timetable_management/UpdateTimetable';
+import ManagerWallet from './screen/Manager/Financial_Management/ManagerWallet';
 
 
 import AdminLogin from './screen/Admin/AdminLogin';
@@ -190,6 +191,8 @@ function App() {
       <Route path="/Manager/Timetable" element={<ManagerTimetable/>} />
       <Route path='/Manager/AddnewClasstime' element={<AddNewClassForm/>}/>
       <Route path='/Manager/UpdateTimetable/:id' element={< ManagerUpdateTimetable/>}/>
+      <Route path='/ManagerWallet' element={<ManagerWallet/>}/>
+     
   
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>

@@ -43,6 +43,23 @@ function MgMain() {
     }, 2000);
   };
 
+  const handleClick3 = () => {
+    toast.loading('loading...', {
+      style: {
+        background: 'black', // Customize the background color
+        color: '#ffffff', // Customize the text color
+        borderRadius: '10px', // Add border radius
+        border: '2px solid #ffffff', // Add border
+      },
+    });
+    setTimeout(() => {
+      toast.dismiss();
+      setTimeout(() => {
+        navigator('/ManagerWallet');
+      }, ); // Wait for 2 seconds before navigating
+    }, 1000);
+  };
+
   return (
     <div>
       <Head/>
@@ -65,6 +82,13 @@ function MgMain() {
           
             View Payments
           </button>
+
+          <button
+            type="button"
+            className="buttonmag"
+            onClick={handleClick3}
+          >Add a Payment</button>
+
  
         </form>
       </div>
