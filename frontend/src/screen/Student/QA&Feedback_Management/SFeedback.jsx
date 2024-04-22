@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './SFeedback.css';
-import {Link } from 'react-router-dom';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
@@ -92,6 +91,17 @@ function SFeedback() {
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
 
+  useEffect(() => {
+    axios.get('/studentprofile')
+      .then((res) => {
+        setSid(res.data.stdid);
+        setGrade(res.data.grade);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   /*const[questions,setQuestions] = useState([]);
   useEffect(() => {
     axios.get('http://localhost:5000/MyQuestions')
@@ -102,33 +112,23 @@ function SFeedback() {
   },[]);*/
 
   return (
+    <>
+    <Head/>
     <div className='uth2' >
-        <Head/>
+        
       <Toaster/>
     <h1 className="heading9">We Want to Hear from You - Teacher Feedback</h1>
     <form onSubmit={handleSubmit}>
 
     <label htmlFor="sid1" className="tv18">Student ID</label>
     <input
-        id="sid1"
-        pattern="^SD\d{3}$"
-       style={{boxSizing: 'border-box',position: 'absolute',width: '920px',height: '53px',left: '431px',top: '262px',background: '#FFFFFF',border: '1px solid #000000'}} 
-        type="text" required
-        onChange={(a)=> setSid(a.target.value)}
-      />
+        id="sid1" style={{boxSizing: 'border-box',position: 'absolute',width: '920px',height: '53px',left: '431px',top: '262px',background: '#FFFFFF',border: '1px solid #000000'}} 
+        type="text" value={sid} readOnly/>
 
       <label htmlFor="grade" className="tt6">Select Grade</label>
-      <select id="grade" name="dropdown" required style={{boxSizing: 'border-box',position: 'absolute',width: '920px',height: '53px',left: '431px',top: '406px',background: '#FFFFFF',border: '1px solid #000000'}} onChange={(a)=> setGrade(a.target.value)}>
-      <option value="" ></option>
-      <option value="Grade 4" >Grade 4</option>
-          <option value="Grade 5" >Grade 5</option>
-          <option value="Grade 6" >Grade 6</option>
-          <option value="Grade 7" >Grade 7</option>
-          <option value="Grade 8" >Grade 8</option>
-          <option value="Grade 9" >Grade 9</option>
-          <option value="Grade 10" >Grade 10</option>
-          <option value="Grade 11" >Grade11</option>
-      </select>
+      <input
+        id="sid1" style={{boxSizing: 'border-box',position: 'absolute',width: '920px',height: '53px',left: '431px',top: '406px',background: '#FFFFFF',border: '1px solid #000000'}} 
+        type="text" value={grade} readOnly/>
       
 
       <label htmlFor="feedback" className="tt7">Feedback</label>
@@ -155,7 +155,8 @@ function SFeedback() {
         Submit
       </button>
     </form>
-  </div>
+  </div>  
+  </>
   )
 }
 
