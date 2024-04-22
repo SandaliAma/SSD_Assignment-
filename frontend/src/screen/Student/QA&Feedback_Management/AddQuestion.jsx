@@ -10,16 +10,24 @@ import Head from '../Header/Header';
 
 function AddQuestion() {
 
-  const [grade] = useState();
-  
+
   const [teacher, setTeacher] = useState();
-  const [sid] = useState();
   const [question, setQuestion] = useState();
+  const [idnumber, setName] = useState();
+  const [teacherid, setteacherid] = useState([]);
+  const [subject, setSubject] = useState('');
+  const [sgrade, setgrade] = useState();
   const navigator = useNavigate();
 
   const submit = (a) =>{
     a.preventDefault();
-    axios.post('http://localhost:5000/createQ', {grade:grade,subject:subject,teacher:teacher,sid:sid,question:question})
+    axios.post('http://localhost:5000/createQ', {
+      grade:sgrade,
+      subject:subject,
+      teacher:teacher,
+      sid:idnumber,
+      question:question
+    })
     .then(res =>{
       console.log(res);
     })
@@ -101,8 +109,7 @@ function AddQuestion() {
   };
 
   
-  const [idnumber, setName] = useState();
-  const [sgrade, setgrade] = useState();
+  
 
   useEffect(()=>{
     axios.get('/studentprofile')
@@ -115,8 +122,7 @@ function AddQuestion() {
     })
   },[])
 
-  const [teacherid, setteacherid] = useState([]);
-
+  
   useEffect(()=>{
     axios.get('/teacherprofileall')
     .then((res)=>{
@@ -127,8 +133,7 @@ function AddQuestion() {
     })
   },[])
 
-  const [subject, setSubject] = useState('');
-  
+    
   useEffect(() => {
     if (teacher) {
       axios.get('/teacherprofileall')
