@@ -27,6 +27,7 @@ function StudentProfileEdit() {
                 setUsername(res.data.username);
                 setEmail(res.data.email);
                 setContactnumber(res.data.contactnumber);
+                setGender(res.data.gender);
                 setParentName(res.data.parentname);
                 setParentPhonenumber(res.data.parentphonenumber);
                 setSecAnswer(res.data.SecAnswer);
@@ -209,13 +210,13 @@ function StudentProfileEdit() {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input type="radio" id="gender" name="gender" value="Male" onChange={(e) => setGender(e.target.value)} />
+                                            <input type="radio" id="gender" name="gender" value="Male" checked={gender === 'Male'} onChange={(e) => setGender(e.target.value)} />
                                         </td>
                                         <td>
                                             <p className='gendertxt'>Male</p>
                                         </td>
                                         <td>
-                                            <input type="radio" id="gender" name="gender" value="Female" onChange={(e) => setGender(e.target.value)} />
+                                            <input type="radio" id="gender" name="gender" value="Female" checked={gender === 'Female'} onChange={(e) => setGender(e.target.value)} />
                                         </td>
                                         <td>
                                             <p className='gendertxt'>Female</p>

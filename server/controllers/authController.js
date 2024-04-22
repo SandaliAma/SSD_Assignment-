@@ -240,7 +240,7 @@ const updateProfile = async(req, res) =>{
                 username: req.body.username,
                 parentname: req.body.parentname,
                 parentphonenumber: req.body.parentphonenumber,
-                SecAnswer: req.body.SecAnswer
+                SecAnswer: req.body.secanswer
             })
             .then(student => res.json(student))
             .catch(err => res.json(err));
