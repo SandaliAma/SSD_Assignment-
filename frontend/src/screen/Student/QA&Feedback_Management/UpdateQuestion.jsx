@@ -16,6 +16,7 @@ function UpdateQuestion() {
   const [sid, setSid] = useState();
   const [question, setQuestion] = useState();
   const navigator = useNavigate();  
+  const [teacherid, setteacherid] = useState([]);
 
   useEffect(() =>{
     axios.get('http://localhost:5000/getQuestion/' + id)
@@ -105,6 +106,29 @@ function UpdateQuestion() {
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
 
+  useEffect(()=>{
+    axios.get('/teacherprofileall')
+    .then((res)=>{
+        setteacherid(res.data);             
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
+  useEffect(() => {
+    if (teacher) {
+      axios.get('/teacherprofileall')
+        .then(res => {
+          const selectedTeacher = res.data.find(t => t.name === teacher);
+          if (selectedTeacher) {
+            setSubject(selectedTeacher.subject);
+          }
+        })
+        .catch(err => console.error(err));
+    }
+  }, [teacher]);
+
 
   /*const[questions,setQuestions] = useState([]);
   useEffect(() => {
@@ -131,8 +155,13 @@ function UpdateQuestion() {
         style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '205px', border: '1px solid #000000', borderRadius: '10px' }}  readOnly/>
           
           <label htmlFor="dropdown3" className='t2'>Select Teacher</label>
-        <input id="dropdown1" name="dropdown" value={teacher}
-        style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '279px', border: '1px solid #000000', borderRadius: '10px' }}  readOnly/>
+          <select id="dropdown3" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '279px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required value={teacher} onChange={(a)=> setTeacher(a.target.value)}>
+         
+         <option value=""></option>
+         {teacherid.map((teacher, index) => (
+           <option key={index} value={teacher.name}>{teacher.name}</option>
+         ))}
+         </select>
         
         <label htmlFor="dropdown2" className='t3'>Select Subject</label>
         <input id="dropdown1" name="dropdown" value={subject} style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '360px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }}   readOnly/>
