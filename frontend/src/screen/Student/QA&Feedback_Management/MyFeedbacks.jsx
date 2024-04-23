@@ -77,7 +77,7 @@ function MyFeedbacks() {
   <ul style={{ position: 'absolute',listStyleType: 'none'}}>
     {tfeedbacks.map((tfeedback, index) => (
       <li key={index} style={{ position: 'relative', marginBottom: '20px' }}>
-        <label className="tt9">Feedback</label>
+        <label className="tt9">Teacher<br/>Feedback</label>
         <ul style={{ listStyleType: 'none' ,boxSizing: 'border-box', position: 'absolute', height: '165px', width: '830px', left: '537px', top: '224px', background: '#FFFFFF', border: '1px solid #000000' }}>
           <li><strong>Grade:</strong> {tfeedback.grade}</li><br/>
           <li><strong>Subject:</strong> {tfeedback.subject}</li><br/>
@@ -101,11 +101,11 @@ function MyFeedbacks() {
       </li>
     ))}
   </ul>
-
+  
   <ul style={{ listStyleType: 'none',position: 'absolute', top: `${totalTeacherFeedbackHeight }px`,marginTop: '35%'}}>
   {sfeedbacks.map((sfeedback, index) => (
     <li key={index} style={{ marginBottom: '20px', position: 'relative' }}>
-      <label className="tt9" style={{  top: '45px' }}>Feedback</label>
+      <label className="tt9" style={{  top: '45px' }}>Service<br/>Feedback</label>
       <ul style={{listStyleType: 'none', boxSizing: 'border-box', position: 'absolute', height: '163px', width: '830px', left: '537px', background: '#FFFFFF', border: '1px solid #000000', padding: '10px' }}>
         <li><strong>Grade:</strong> {sfeedback.grade}</li><br/><br/>
         <li><strong>Feedback:</strong> {sfeedback.feedback}</li><br/><br/>
