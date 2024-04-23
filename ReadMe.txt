@@ -10,6 +10,7 @@ npm install mongoose@^8.3.1
 npm install nodemon@^3.1.0
 npm i multer
 npm i react-pdf
+npm i path
 
 Frontend
 
