@@ -15,6 +15,8 @@ function UpdateTeacherF() {
   const [sid, setSid] = useState();
   const [tfeedback, setTFeedback] = useState();
   const navigator = useNavigate();
+  const [teacherid, setteacherid] = useState([]);
+
   
   useEffect(() =>{
     //get teacher feedback
@@ -28,13 +30,19 @@ function UpdateTeacherF() {
     })
     .catch((err) => console.error(err));
 
-  },[]);
+  },[id]);
 
   
   const update = (a) =>{
     a.preventDefault();
   
-  axios.put('http://localhost:5000/updateTFeedback/'+ id, {grade:grade,subject:subject,teacher:teacher,sid:sid,tfeedback:tfeedback})
+  axios.put('http://localhost:5000/updateTFeedback/'+ id, {
+    grade:grade,
+    subject:subject,
+    teacher:teacher,
+    sid:sid,
+    tfeedback:tfeedback
+  })
     .then(res =>{
       
       
@@ -117,58 +125,58 @@ function UpdateTeacherF() {
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
 
+  useEffect(()=>{
+    axios.get('/teacherprofileall')
+    .then((res)=>{
+        setteacherid(res.data);             
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
+  useEffect(() => {
+    if (teacher) {
+      axios.get('/teacherprofileall')
+        .then(res => {
+          const selectedTeacher = res.data.find(t => t.name === teacher);
+          if (selectedTeacher) {
+            setSubject(selectedTeacher.subject);
+          }
+        })
+        .catch(err => console.error(err));
+    }
+  }, [teacher]);
+
 
   return (
+    <>
+    <Head/>
     <div className='uth1'>
-       <Head/>
+       
       <Toaster/>
         <body >
       <h1 className="heading8">We Want to Hear from You - Teacher Feedback</h1>
       <form onSubmit={handleSubmit}>
         
         <label htmlFor="grade1" className="tt1">Select Grade</label>
-        <select id="grade1" name="dropdown" style={{ position: 'absolute', width: '337px', height: '37px', left: '632px', top: '200px', background: '#FFFFFF', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: '8px' }} value={grade} onChange={(a)=> setGrade(a.target.value)}>
-        <option value="" ></option>
-        <option value="Grade 4" >Grade 4</option>
-          <option value="Grade 5" >Grade 5</option>
-          <option value="Grade 6" >Grade 6</option>
-          <option value="Grade 7" >Grade 7</option>
-          <option value="Grade 8" >Grade 8</option>
-          <option value="Grade 9" >Grade 9</option>
-          <option value="Grade 10" >Grade 10</option>
-          <option value="Grade 11" >Grade11</option>
-        </select>
+        <input id="dropdown1" name="dropdown" value={grade}
+        style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '200px', border: '1px solid #000000', borderRadius: '10px' }}  readOnly/>
         
-        <label htmlFor="subject1" className="tt2">Select Subject</label>
-        <select id="subject1" name="dropdown" style={{ position: 'absolute', width: '337px', height: '37px', left: '632px', top: '264px', background: '#FFFFFF', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: '8px' }} value={subject} onChange={(a)=> setSubject(a.target.value)}>
-        <option value="" ></option>
-        <option value="History" >History</option>
-          <option value="Sinhala" >Sinhala</option>
-          <option value="ICT" >ICT</option>
-          <option value="Music" >Music</option>
-          <option value="Mathematics" >Mathematics</option>
-          <option value="Science" >Science</option>
-          <option value="English" >English</option>
-        </select>
+        <label htmlFor="teacher1" className="tt2">Select Teacher</label>
+        <select id="dropdown3" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '270px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required value={teacher} onChange={(a)=> setTeacher(a.target.value)}>
+         
+         <option value=""></option>
+         {teacherid.map((teacher, index) => (
+           <option key={index} value={teacher.name}>{teacher.name}</option>
+         ))}
+         </select>
         
-        <label htmlFor="teacher1" className="tt3">Select Teacher</label>
-        <select id="teacher1" name="dropdown" style={{ position: 'absolute', width: '337px', height: '37px', left: '632px', top: '346px', background: '#FFFFFF', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: '8px' }} value={teacher} onChange={(a)=> setTeacher(a.target.value)}>
-        <option value="" ></option>
-        <option value="Mr.Amila" >Mr.Amila</option>
-          <option value="Mrs.Nimal" >Mrs.Nimal</option>
-          <option value="Mrs.Upul" >Mrs.Upul</option>
-          <option value="Mr.Senaka" >Mr.Senaka</option>
-          <option value="Mrs.Anne" >Mrs.Anne</option>
-        </select>
+        <label htmlFor="subject1" className="tt3">Select Subject</label>
+        <input id="dropdown1" name="dropdown" value={subject} style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '350px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }}   readOnly/>
         
         <label htmlFor="studentID1" className="tt4">Student ID</label>
-        <input
-          id="studentID1"
-          style={{ boxSizing: 'border-box', position: 'absolute', width: '337px', height: '53px', left: '632px', top: '448px', background: '#FFFFFF', border: '1px solid #000000' }}
-          type="text"
-          value={sid}
-          onChange={(a)=> setSid(a.target.value)}
-        />
+        <input type="text" name="sSID" pattern="^SD\d{3}$" title="Please enter 'SD001'" value={sid} style={{ boxSizing: 'border-box', position: 'absolute', width: '351px', height: '53px', left: '636px', top: '440px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} readOnly/>
         <label htmlFor="feedback1" className="tt5">Feedback</label>
         <textarea
           id="feedback1"
@@ -186,6 +194,7 @@ function UpdateTeacherF() {
       </form>
     </body>
     </div>
+    </>
   )
 }
 
