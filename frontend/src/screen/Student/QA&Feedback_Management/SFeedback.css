@@ -34,6 +34,28 @@
 
 
     }
+
+    .tt61{
+        /* Student ID */
+     
+             position: absolute;
+             width: 338px;
+             height: 39px;
+             left: 342px;
+             top: 370px;
+     
+             font-family: 'Epilogue';
+             font-style: normal;
+             font-weight: 200;
+             font-size: 29px;
+             line-height: 25px;
+             /* or 85% */
+             letter-spacing: 0.01em;
+     
+             color: #000000;
+     
+     
+         }
     
     .tt7{
     /* Feedback */
@@ -56,6 +78,29 @@
 
 
     }
+
+    .tt71{
+        /* Feedback */
+    
+            position: absolute;
+            width: 338px;
+            height: 39px;
+            left: 342px;
+            top: 520px;
+    
+            font-family: 'Epilogue';
+            font-style: normal;
+            font-weight: 200;
+            font-size: 29px;
+            line-height: 25px;
+            /* or 85% */
+            letter-spacing: 0.01em;
+    
+            color: #000000;
+    
+    
+        }
+        
     
     .tt8{
     /* Enter date */
@@ -78,6 +123,28 @@
 
 
     }
+
+    .tt81{
+        /* Enter date */
+    
+            position: absolute;
+            width: 338px;
+            height: 39px;
+            left: 342px;
+            top: 780px;
+    
+            font-family: 'Epilogue';
+            font-style: normal;
+            font-weight: 200;
+            font-size: 29px;
+            line-height: 25px;
+            /* or 85% */
+            letter-spacing: 0.01em;
+    
+            color: #000000;
+    
+    
+        }
     
     .sfet{
     position: absolute;
