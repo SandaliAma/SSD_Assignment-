@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const app = express();
-const path = require('path');
+// const path = require('path');
 const multer = require('multer');
 const UserModelLesson = require('./models/Lesson');
 const BankModel = require('./models/BankPayments');
@@ -270,12 +270,12 @@ app.delete('/deletephoto/:id', (req, res) => {
       });
 });
 
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'frontend', 'build')));
-  app.get('*', (req, res) =>{
-      res.sendFile(path.join(__dirname,"frontend","build","index.html"));
-  });
-}
+// if(process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+//   app.get('*', (req, res) =>{
+//       res.sendFile(path.join(__dirname,"frontend","build","index.html"));
+//   });
+// }
  
 
 const port = process.env.PORT || 5000;
