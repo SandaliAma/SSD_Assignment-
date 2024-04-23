@@ -8,7 +8,7 @@ function FAskedQ() {
   const [grade, setGrade] = useState();
   const [subject, setSubject] = useState();
 
-
+//fasked get
 
 useEffect(() => {
     axios.get('http://localhost:5000/fAskQs')
