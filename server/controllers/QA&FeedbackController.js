@@ -235,7 +235,7 @@ const getservicefeedbackid = (req, res) => {
 //delete service feedback
 const deleteservicefeedbackid = (req, res) => {
     const id = req.params.id;
-    SFeedbackModel.findById({_id:id})
+    SFeedbackModel.findByIdAndDelete({_id:id})
     .then(feedbacks => res.json(feedbacks))
     .catch(err => res.json(err));
 }
