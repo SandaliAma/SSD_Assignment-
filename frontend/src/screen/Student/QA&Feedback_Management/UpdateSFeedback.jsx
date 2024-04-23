@@ -104,6 +104,16 @@ function UpdateSFeedback() {
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
 
+  useEffect(()=>{
+    axios.get('/studentprofile')
+    .then((res)=>{         
+      setGrade(res.data.grade);       
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
   /*const[questions,setQuestions] = useState([]);
   useEffect(() => {
     axios.get('http://localhost:5000/MyQuestions')
@@ -114,24 +124,16 @@ function UpdateSFeedback() {
   },[]);*/
 
   return (
+    <>   
+    <Head/>
     <div className='uth2' >
-       <Head/>
+       
        <Toaster/>
     <h1 className="heading9">We Want to Hear from You - Teacher Feedback</h1>
     <form onSubmit={handleSubmit}>
       <label htmlFor="grade" className="tt6">Select Grade</label>
-      <select id="grade" name="dropdown" style={{ boxSizing: 'border-box', position: 'absolute', width: '920px', height: '53px', left: '436px', top: '268px', background: '#FFFFFF', border: '1px solid #000000' }} value={grade} onChange={(a)=> setGrade(a.target.value)}>
-      <option value="" ></option>
-      <option value="Grade 4" >Grade 4</option>
-          <option value="Grade 5" >Grade 5</option>
-          <option value="Grade 6" >Grade 6</option>
-          <option value="Grade 7" >Grade 7</option>
-          <option value="Grade 8" >Grade 8</option>
-          <option value="Grade 9" >Grade 9</option>
-          <option value="Grade 10" >Grade 10</option>
-          <option value="Grade 11" >Grade11</option>
-      </select>
-      
+      <input id="dropdown1" name="dropdown" value={grade}
+        style={{ position: 'absolute', width: '920px', height: '40px', left: '436px', top: '268px', border: '1px solid #000000', borderRadius: '10px' }}  readOnly/>
 
       <label htmlFor="feedback" className="tt7">Feedback</label>
       <textarea
@@ -151,12 +153,13 @@ function UpdateSFeedback() {
       <button
         id="sfeed"
         className="sfet"
-        style={{ position: 'absolute', width: '334px', height: '77px', left: '1079px', top: '906px', background: '#6C9DE2', borderRadius: '20px' }}
+        style={{ position: 'absolute', width: '334px', height: '77px', left: '1020px', top: '850px', background: '#6C9DE2', borderRadius: '20px' }}
       >
         Submit
       </button>
     </form>
   </div>
+  </>
   )
 }
 
