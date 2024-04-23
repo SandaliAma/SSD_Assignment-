@@ -271,24 +271,24 @@ app.delete('/deletephoto/:id', (req, res) => {
 });
 
 
-// if(process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, 'client', 'build')));
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-//   });
-// }
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
-app.use(express.static(path.join(__dirname, "./frontend/build")));
+// app.use(express.static(path.join(__dirname, "./frontend/build")));
 
-app.get("*", function (_, res) {
-  res.sendFile(path.join(__dirname, "./frontend/build/index.html"),
-    function (err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    }
-  );
-});
+// app.get("*", function (_, res) {
+//   res.sendFile(path.join(__dirname, "./frontend/build/index.html"),
+//     function (err) {
+//       if (err) {
+//         res.status(500).send(err);
+//       }
+//     }
+//   );
+// });
  
 
 const port = 5000;
