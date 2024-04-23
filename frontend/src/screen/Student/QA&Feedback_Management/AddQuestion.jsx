@@ -18,6 +18,7 @@ function AddQuestion() {
   const [sgrade, setgrade] = useState();
   const navigator = useNavigate();
 
+//button function
   const submit = (a) =>{
     a.preventDefault();
     axios.post('http://localhost:5000/createQ', {
