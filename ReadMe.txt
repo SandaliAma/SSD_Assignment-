@@ -37,3 +37,7 @@ npm install sweetalert2
 npm i react-toastify
 npm i react-transition-group
 
+Main File
+
+npm i concurrently
+
