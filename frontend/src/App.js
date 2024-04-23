@@ -143,8 +143,6 @@ function App() {
       <Route path='/viewclass/:subid' element={<ViewClass />} />
       <Route path='/enrolled' element={<Enrolled />} />
 
-
-
       <Route path="/teacherlogin" element={<TeacherLogin />} />
       <Route path="/teacherprofile" element={<TeacherProfile />} />
       <Route path='/teacherprofileedit' element={<TeacherProfileEdit/>}/>
@@ -154,18 +152,13 @@ function App() {
       <Route path="/createnotice" element={<CreateNotice />} />
       <Route path="/editnotice/:id" element={<EditNotice />} />
       <Route path="/addmaterial" element={<AddMaterials />} />
-      <Route path="/editmaterial/:id" element={<EditMaterials />} /> 
+      <Route path="/editmaterial/:id" element={<EditMaterials />} />   
       <Route path='/AnswerQ/:id' element={<AnswerQ/>}/>
-      <Route path='/AnswerUpdate/:id' element={<AnswerUpdate/>}/>
+      <Route path='/AnswerUpdate/:id' element={<AnswerUpdate/>}/>         
       <Route path='/THQuestion' element={<THQuestion/>}/>
       <Route path='/ViewTeacherFeedback' element={<ViewTeacherFeedback/>}/>   
-      <Route path='/TeacherQuestion' element={<TeacherQuestion/>}/>   
-      <Route path='/ManagerFeedback' element={<ManagerFeedback/>}/>
-      <Route path='/ManagerNFeedback' element={<ManagerNFeedback/>}/>
-      <Route path='/ReplyF/:id' element={<ReplyF/>}/>
-      <Route path='/MFeedbackUpdate/:id' element={<MFeedbackUpdate/>}/>
+      <Route path='/TeacherQuestion' element={<TeacherQuestion/>}/>     
       <Route path= '/teacherfinancial' element = {<TeacherViewPayment/>} />
-      <Route path= '/editmanager/:id' element = {<EditManager/>} />
       <Route path='/viewclasses' element={<TeacherMyClasses />} />
       <Route path='/update/:id' element={<UpdateClasses />} />
       <Route path='/additionalclasses' element={<AdditionalClasses/>} />
@@ -173,36 +166,36 @@ function App() {
       <Route path='/requestschedule' element={<RequestSchedule />} />
       <Route path='/addclasses' element={<AddClasses/>} />
       <Route path='/tesalaryview' element={<TeacherView/>} />
-
-
+      
       <Route path="/adminmanagerlogin" element={<AdminManagerLogin />} />
       <Route path="/managerlogin" element={<ManagerLogin />} />
       <Route path='/managerforgetpassword' element={<ManagerForgetPassword/>}/>
       <Route path="/managerprofile" element={<ManagerProfile />} />
+      <Route path='/ManagerFeedback' element={<ManagerFeedback/>}/>
+      <Route path='/ManagerNFeedback' element={<ManagerNFeedback/>}/>
+      <Route path='/ReplyF/:id' element={<ReplyF/>}/>
+      <Route path='/MFeedbackUpdate/:id' element={<MFeedbackUpdate/>}/>     
+      <Route path= '/editmanager/:id' element = {<EditManager/>} /> 
       <Route path= '/managerfinancial' element = {<Manager/>} />
       <Route path= '/mgpay' element = {<MgPay/>} />
       <Route path= '/mgview' element = {<MgView/>} />
-      <Route path= '/editmanager/:id' element = {<EditManager/>} />
-       <Route path='/create' element={<CreateManager />} />
-      <Route path='/homemain' element={<Home />} />
-      <Route path='/home' element={<ManagerView />} />
+      <Route path='/create' element={<CreateManager />} />
+      <Route path='/homemain' element={<Home />} />      
       <Route path='/managersalary' element={<ManagerSalary />} />
+      <Route path='/home' element={<ManagerView />} />
       <Route path='/update/:id' element={<UpdateManager />} />
       <Route path="/Manager/Timetable" element={<ManagerTimetable/>} />
       <Route path='/Manager/AddnewClasstime' element={<AddNewClassForm/>}/>
       <Route path='/Manager/UpdateTimetable/:id' element={< ManagerUpdateTimetable/>}/>
       <Route path='/ManagerWallet' element={<ManagerWallet/>}/>
-     
-  
+
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>
       <Route path="/adminprofile" element={<AdminProfile />} />
       <Route path="/addteacher" element={<AddTeacher />} />
       <Route path="/addmanager" element={<AddManager />} />
       <Route path="/addadmin" element={<AddAdmin />} />
-      <Route path="/searchusersadmin" element={<SearchusersAdmin />} />   
-
-      
+      <Route path="/searchusersadmin" element={<SearchusersAdmin />} />  
               
       
     </Routes>    
