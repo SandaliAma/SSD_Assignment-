@@ -25,7 +25,8 @@ function TeacherProfileEdit() {
         .then((res)=>{
             setName(res.data.name);
             setteid(res.data.teid);
-            setUsername(res.data.username);            
+            setUsername(res.data.username);    
+            setGender(res.data.gender);        
             setEmail(res.data.email);
             setContactnumber(res.data.contactnumber);
             setSubject(res.data.subject);
@@ -102,13 +103,13 @@ function TeacherProfileEdit() {
                     <table class='gendertbl'>
                         <tr>
                             <td>
-                                <input type="radio" id="gender" name="gender" value="Male" onChange={(e) => setGender(e.target.value)}/>
+                            <input type="radio" id="gender" name="gender" value="Male" checked={gender === 'Male'} onChange={(e) => setGender(e.target.value)} />
                             </td>
                             <td>
                                 <p class='gendertxt'>Male</p>
                             </td>  
                             <td>
-                                <input type="radio" id="gender" name="gender" value="Female" onChange={(e) => setGender(e.target.value)}/>
+                            <input type="radio" id="gender" name="gender" value="Female" checked={gender === 'Female'} onChange={(e) => setGender(e.target.value)} />
                             </td>
                             <td>
                                 <p class='gendertxt'>Female</p>
