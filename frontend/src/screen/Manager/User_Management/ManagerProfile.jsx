@@ -47,7 +47,7 @@ function ManagerProfile() {
                             <p class='hellotxt'>{name}<br/>Manager</p>
                         </td>
                         <td>          
-                            <Link to={'/'}><button className='btnedit' type="submit">Search users</button> </Link>              
+                            <Link to={'/searchusersmanager'}><button className='btnedit' type="submit">Search users</button> </Link>              
                                                       
                         </td>
                     </tr>
