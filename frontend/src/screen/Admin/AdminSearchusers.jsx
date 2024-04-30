@@ -185,6 +185,7 @@ function AdminSearchusers() {
                                 <td className='searchtable'>{student.parentname}</td>
                                 <td className='searchtable'>{student.parentphonenumber}</td>
                                 <td className='searchtable'>{student.SecAnswer}</td>
+                                <td><button className='btnupdate' >Update</button></td>
                                 <td><button className='btndelete' onClick={(e) => studentDelete(student._id)}>Delete</button></td>
                             </tr>
                         ))}
@@ -229,6 +230,7 @@ function AdminSearchusers() {
                                 <td className='searchtable'>{teacher.gender}</td>  
                                 <td className='searchtable'>{teacher.subject}</td>                                
                                 <td className='searchtable'>{teacher.SecAnswer}</td>
+                                <td><button className='btnupdate' >Update</button></td>
                                 <td><button className='btndelete' onClick={(e) => teacherDelete(teacher._id)}>Delete</button></td>
                             </tr>
                         ))}

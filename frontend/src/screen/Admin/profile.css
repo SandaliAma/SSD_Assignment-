@@ -136,6 +136,21 @@ a:hover{
     background-color: #e24848;    
 }
 
+.btnupdate{
+    width: 70px;
+    margin-left: 20px;
+    color: white;
+    font-family: 'Bahnschrift';    
+    font-weight: 800;
+    font-size: 18px;
+    background-color: #667A8A;
+    border-radius: 10%;
+}
+
+.btnupdate:hover{  
+    background-color: #8A8A8A;    
+}
+
 .userprofiletxt{
     font-family: 'Bahnschrift';    
     font-weight: 800;
