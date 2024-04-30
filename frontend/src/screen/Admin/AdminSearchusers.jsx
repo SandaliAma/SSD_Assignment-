@@ -160,9 +160,11 @@ function AdminSearchusers() {
                     <br/>
                     <table className='searchtablemain'>
                         <tr>
-                            <th  className='searchtable'>Student Name</th>
+                            <th className='searchtable'>Student ID</th>
+                            <th className='searchtable'>Student Name</th>
                             <th className='searchtable'>Email</th>
                             <th className='searchtable'>Phone</th>
+                            <th className='searchtable'>Grade</th>
                             <th className='searchtable'>Username</th>
                             <th className='searchtable'>Gender</th>
                             <th className='searchtable'>Parent name</th>
@@ -173,15 +175,17 @@ function AdminSearchusers() {
                             return searchstudent.toLowerCase() === '' ? student : student.name.toLowerCase().includes(searchstudent)
                         }).map((student) => (
                             <tr>
+                                <td className='searchtable'>{student.stdid}</td>
                                 <td className='searchtable'>{student.name}</td>
                                 <td className='searchtable'>{student.email}</td>
                                 <td className='searchtable'>{student.contactnumber}</td>
+                                <td className='searchtable'>{student.grade}</td>
                                 <td className='searchtable'>{student.username}</td>
                                 <td className='searchtable'>{student.gender}</td>
                                 <td className='searchtable'>{student.parentname}</td>
                                 <td className='searchtable'>{student.parentphonenumber}</td>
                                 <td className='searchtable'>{student.SecAnswer}</td>
-                                <td><button className='btnedit' onClick={(e) => studentDelete(student._id)}>Delete</button></td>
+                                <td><button className='btndelete' onClick={(e) => studentDelete(student._id)}>Delete</button></td>
                             </tr>
                         ))}
 
@@ -204,7 +208,8 @@ function AdminSearchusers() {
                     <br/>
                     <table className='searchtablemain'>
                         <tr>
-                            <th  className='searchtable'>Teacher Name</th>
+                        <th className='searchtable'>Teacher ID</th>
+                            <th className='searchtable'>Teacher Name</th>
                             <th className='searchtable'>Email</th>
                             <th className='searchtable'>Phone</th>
                             <th className='searchtable'>Username</th>
@@ -216,6 +221,7 @@ function AdminSearchusers() {
                             return searchteacher.toLowerCase() === '' ? teacher : teacher.name.toLowerCase().includes(searchteacher)
                         }).map((teacher) => (
                             <tr>
+                                <td className='searchtable'>{teacher.teid}</td>
                                 <td className='searchtable'>{teacher.name}</td>
                                 <td className='searchtable'>{teacher.email}</td>
                                 <td className='searchtable'>{teacher.contactnumber}</td>
@@ -223,7 +229,7 @@ function AdminSearchusers() {
                                 <td className='searchtable'>{teacher.gender}</td>  
                                 <td className='searchtable'>{teacher.subject}</td>                                
                                 <td className='searchtable'>{teacher.SecAnswer}</td>
-                                <td><button className='btnedit' onClick={(e) => teacherDelete(teacher._id)}>Delete</button></td>
+                                <td><button className='btndelete' onClick={(e) => teacherDelete(teacher._id)}>Delete</button></td>
                             </tr>
                         ))}
 

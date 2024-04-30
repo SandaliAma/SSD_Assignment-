@@ -73,8 +73,7 @@ function ManagerSearchusers() {
                                 <td className='searchtable'>{student.gender}</td>
                                 <td className='searchtable'>{student.parentname}</td>
                                 <td className='searchtable'>{student.parentphonenumber}</td>
-                                <td className='searchtable'>{student.SecAnswer}</td>
-                                
+                                <td className='searchtable'>{student.SecAnswer}</td>                                
                             </tr>
                         ))}
 
