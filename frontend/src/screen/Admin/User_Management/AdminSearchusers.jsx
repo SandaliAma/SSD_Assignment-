@@ -151,7 +151,7 @@ function AdminSearchusers() {
                     <table>
                         <tr>
                             <td class="searchbarcol">
-                                <input type="text" id="search" name="search" placeholder="Search..." class="searchbar" onChange={(e)=> setSearchStudent(e.target.value)}/>
+                                <input type="text" id="search" name="search" placeholder="Search student name..." class="searchbar" onChange={(e)=> setSearchStudent(e.target.value)}/>
                             </td>
                             {/* <td>
                             <button className='btnedit' type="submit">Search</button>
@@ -187,7 +187,7 @@ function AdminSearchusers() {
                                 <td className='searchtable'>{student.parentphonenumber}</td>
                                 <td className='searchtable'>{student.SecAnswer}</td>
                                 <td>
-                                    <Link to={`/viewclass/${student.stdid}`}>
+                                    <Link to={`/updatestudent/${student.stdid}`}>
                                         <button className='btnupdate' >Update</button>                                       
                                     </Link>
                                 </td>
@@ -204,7 +204,7 @@ function AdminSearchusers() {
                     <table>
                         <tr>
                             <td class="searchbarcol">
-                                <input type="text" id="search" name="search" placeholder="Search..." class="searchbar" onChange={(e)=> setSearchTeacher(e.target.value)}/>
+                                <input type="text" id="search" name="search" placeholder="Search teacher name..." class="searchbar" onChange={(e)=> setSearchTeacher(e.target.value)}/>
                             </td>
                             {/* <td>
                             <button className='btnedit' type="submit">Search</button>

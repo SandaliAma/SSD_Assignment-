@@ -206,6 +206,14 @@ const getProfile = async (req, res) =>{
     }        
 }
 
+//view profile student by id
+const getProfileid = (req, res) => {
+    const id = req.params.id;
+    Student.findOne({stdid:id})
+    .then(id => res.json(id))
+    .catch(err => res.json(err));
+}
+
 //update get profile student
 const getupdateProfile = (req, res) =>{
 
@@ -220,6 +228,23 @@ const getupdateProfile = (req, res) =>{
     }else{
         res.json(null);
     }       
+}
+
+//update profile student by id
+const updateProfileid = (req, res) => {
+    const id = req.params.id;
+    Student.findByIdAndUpdate({stdid:id},{
+        name: req.body.name,
+        email: req.body.email,
+        gender: req.body.gender,
+        contactnumber: req.body.contactnumber,
+        username: req.body.username,
+        parentname: req.body.parentname,
+        parentphonenumber: req.body.parentphonenumber,
+        SecAnswer: req.body.secanswer
+    })
+    .then(student => res.json(student))
+    .catch(err => res.json(err));
 }
 
 //update profile student
@@ -888,8 +913,10 @@ module.exports = {
     loginStudent,
     forgotPasswordstudent,
     getProfile,
+    getProfileid,
     getupdateProfile,
     updateProfile,
+    updateProfileid,
     registerTeacher,
     loginTeacher,
     forgotPasswordteacher,

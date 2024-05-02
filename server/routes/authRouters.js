@@ -6,8 +6,10 @@ const { test,
     loginStudent,
     forgotPasswordstudent,
     getProfile,
+    getProfileid,
     getupdateProfile,
     updateProfile,
+    updateProfileid,
     registerTeacher,
     loginTeacher,
     forgotPasswordteacher,
@@ -44,8 +46,10 @@ router.post('/register', registerStudent)
 router.post('/login', loginStudent)
 router.post('/forgotpassword', forgotPasswordstudent)
 router.get('/studentprofile', getProfile)
+router.get('/studentprofileid/:id', getProfileid)
 router.get('/getstudentprofileedit', getupdateProfile)
 router.put('/studentprofileedit', updateProfile)
+router.put('/studentprofileeditid/:id', updateProfileid)
 
 router.post('/teacherregister', registerTeacher)
 router.post('/teacherlogin', loginTeacher)
