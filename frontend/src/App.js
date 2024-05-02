@@ -84,13 +84,13 @@ import ManagerUpdateTimetable from './screen/Manager/Timetable_management/Update
 import ManagerWallet from './screen/Manager/Financial_Management/ManagerWallet';
 import SearchusersManager from './screen/Manager/User_Management/ManagerSearchusers';
 
-import AdminLogin from './screen/Admin/AdminLogin';
-import AdminForgetPassword from './screen/Admin/Forgetpasswordadmin';
-import AdminProfile from './screen/Admin/AdminProfile';
-import AddTeacher from './screen/Admin/AddTeacher';
-import AddManager from './screen/Admin/AddManager';
-import AddAdmin from './screen/Admin/AddAdmin';
-import SearchusersAdmin from './screen/Admin/AdminSearchusers';
+import AdminLogin from './screen/Admin/User_Management/AdminLogin';
+import AdminForgetPassword from './screen/Admin/User_Management/Forgetpasswordadmin';
+import AdminProfile from './screen/Admin/User_Management/AdminProfile';
+import AddTeacher from './screen/Admin/User_Management/AddTeacher';
+import AddManager from './screen/Admin/User_Management/AddManager';
+import AddAdmin from './screen/Admin/User_Management/AddAdmin';
+import SearchusersAdmin from './screen/Admin/User_Management/AdminSearchusers';
 
 
 

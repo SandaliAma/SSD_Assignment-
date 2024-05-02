@@ -14,6 +14,7 @@ import logout from './navbar_images/Logout.png'
 import logo from './photos/logofull.png'
 import userpng from './photos/User.png'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 
 
@@ -185,7 +186,11 @@ function AdminSearchusers() {
                                 <td className='searchtable'>{student.parentname}</td>
                                 <td className='searchtable'>{student.parentphonenumber}</td>
                                 <td className='searchtable'>{student.SecAnswer}</td>
-                                <td><button className='btnupdate' >Update</button></td>
+                                <td>
+                                    <Link to={`/viewclass/${student.stdid}`}>
+                                        <button className='btnupdate' >Update</button>                                       
+                                    </Link>
+                                </td>
                                 <td><button className='btndelete' onClick={(e) => studentDelete(student._id)}>Delete</button></td>
                             </tr>
                         ))}
