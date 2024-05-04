@@ -18,6 +18,27 @@ function TeacherMyClasses() {
             .catch((err) => console.error(err));
     }, []);
 
+    
+
+      useEffect(() => {
+        axios.get('/teacherprofile')
+          .then((res) => {
+            const tid = res.data.teid;
+            axios.get('/teachermyclasses/addclasses')
+              .then((res) => {
+                const viewteclass = res.data.filter(viewclasses => viewclasses.teacherid === tid );
+                setAddclasses(viewteclass);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, []);
+
+
     const handleDelete = async (id) => {
         try {
             const result = await Swal.fire({
