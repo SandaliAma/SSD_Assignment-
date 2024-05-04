@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react';
-import{Link} from 'react-router-dom';
+import { Link , useParams} from 'react-router-dom';
 import './stpaymentonline.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
@@ -22,7 +22,7 @@ function StPaymentOnline() {
   // const[cardnumber,setCardnumber] = useState();
   // const[securitycode,setSecuritycode] = useState();
   // const[expiredate,setExpiredate] = useState();
-  const[discription,setDiscription] = useState();
+  const[discription,setDescription] = useState();
   const[date,setDate] = useState();
   const[amount,setAmount] = useState();
   const navigator = useNavigate();
@@ -127,7 +127,23 @@ function StPaymentOnline() {
       }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
+
   
+  
+  const [subname, setSubName] = useState('');
+  const [subamount, setSubAmount] = useState('');
+  const { subid } = useParams(); // Get the subid from the URL params
+
+  useEffect(() => {
+    axios.get(`/getSubject/${subid}`)
+      .then((res) => {
+        setSubName(res.data.subjectname);
+        setSubAmount(res.data.amount);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [subid]); // Include subid in the dependency array
 
 
   return (
@@ -139,7 +155,7 @@ function StPaymentOnline() {
             <h1 className="onh1"><br></br>Payment Form</h1>
 
             <button type="submit" name="online" className="buttonon1">Online</button><br></br>
-            <Link to = {'/paybank'} >
+            <Link to = {`/paybank/${subid}`} >
             <button type="submit" name="bank" className="buttonon2">Bank Deposit</button>
     </Link>
 
@@ -150,17 +166,40 @@ function StPaymentOnline() {
 
                     <h2 className="onh2"><br></br>Payment Details</h2><br/>
                     <label className="labelon1"> Enter IT Number :</label><br/>
-                    <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$"   required className="texton1" onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
-
+                    <input
+              type="text"
+              name="itnum"
+              placeholder="IT12345678"
+              pattern="^IT\d{8}$"
+              value={itnumber}
+            readOnly
+              className="textba1"
+              onChange={(e) => setItnumber(e.target.value)}
+            />
 
                     <label htmlFor="totalA" className="labelon1">Enter Description:</label><br />
-                    <input type="text" name="description" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="texton7" onChange={(e)=>setDiscription(e.target.value)}/><br /><br />
-
+                    <input
+              type="text"
+              name="descriptions"
+              placeholder="Class Name"
+              pattern="[A-Za-z\s]+"
+              value={subname}
+              readOnly
+              className="textba7"
+              onChange={(e) => setDescription(e.target.value)}
+            />
                     <label htmlFor="tda" className="labelon2">Enter Date:</label><br />
                     <input type="date" name="date" placeholder="(DD/MM/YYYY)"  value={date} readOnly className="texton5"  onChange={(e)=>setDate(e.target.value)}/><br /><br />
 
                     <label htmlFor="totalA" className="labelon2">Enter Amount:</label><br />
-                    <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="texton6" onChange={(e)=>setAmount(e.target.value)}/><br /><br />
+                    < input type="text"
+              name="amounts"
+              placeholder="00.00"
+              pattern="\d+(\.\d{2})?"
+              value={subamount}
+              readOnly
+              className="textba6"
+              onChange={(e) => setAmount(e.target.value)}/><br /><br />
                     
                     {/* <div className="paypon2" > */}
                       {/* <h2 className="onh2"><br></br>Card Details</h2><br/>

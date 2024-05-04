@@ -119,7 +119,7 @@ function App() {
       <Route path="/studenttimetable" element={<StudentTimetable />} />
       <Route path="/lessonmaterial/:description" element={<LessonMaterial />} />
       <Route path= '/payment' element = {<Payment/>} />
-      <Route path= '/payonline' element = {<PayOnline/>} />
+      <Route path= '/payonline/:subid' element = {<PayOnline/>} />
       <Route path= '/viewonline' element = {<ViewOnline/>} />
       <Route path= '/paybank/:subid' element = {<PayBank/>} />      
       <Route path= '/viewbank' element = {<ViewBank/>} />
