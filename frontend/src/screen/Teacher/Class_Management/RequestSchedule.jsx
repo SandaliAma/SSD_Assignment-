@@ -140,7 +140,7 @@ function RequestSchedule() {
                     <form onSubmit={request}>
                         <div className="input-container">
                             <label htmlFor="teacherInput">Teacher</label>
-                            <input type="text" id="teacherInput" pattern="[A-Za-z\s]+" required value={teacher} onChange={(e) => setTeacher(e.target.value)}/>
+                            <input type="text" id="teacherInput" pattern="[A-Za-z\s]+" required value={teacher} onChange={(e) => setTeacher(e.target.value)} readOnly/>
                         </div>
                         <div className="input-container">
                             <label htmlFor="classidInput">Class Id</label>
@@ -148,7 +148,7 @@ function RequestSchedule() {
                         </div>
                         <div className="input-container">
                             <label htmlFor="teacheridInput">Teacher Id</label>
-                            <input type="text" id="teacheridInput" required value={teacherid} onChange={(e) => setTeacherId(e.target.value)} />
+                            <input type="text" id="teacheridInput" required value={teacherid} onChange={(e) => setTeacherId(e.target.value)} readOnly/>
                         </div>
                         <div className="input-container">
                             <label htmlFor="gradeInput">Grade</label>
@@ -172,7 +172,7 @@ function RequestSchedule() {
                         </div>
                         <div className="input-container">
                             <label htmlFor="subjectInput">Subject</label>
-                            <input type="text" id="subjectInput" pattern="[A-Za-z\s]+" required value={subject} onChange={(e) => setSubject(e.target.value)}/>
+                            <input type="text" id="subjectInput" pattern="[A-Za-z\s]+" required value={subject} onChange={(e) => setSubject(e.target.value)} readOnly/>
                         </div>
                         <div className="button-container">
                             <button className="cancel-button" type="button" onClick={clearForm}>Cancel</button>
