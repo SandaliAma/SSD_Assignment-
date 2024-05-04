@@ -96,6 +96,10 @@ import AddAdmin from './screen/Admin/User_Management/AddAdmin';
 import SearchusersAdmin from './screen/Admin/User_Management/AdminSearchusers';
 import UpdateStudent from './screen/Admin/User_Management/UpdateStudent';
 
+import AdMain from './screen/Admin/Financial_Management/AdMain'
+import AdGenerate from './screen/Admin/Financial_Management/AdGenerate'
+import AdReport from './screen/Admin/Financial_Management/AdReport'
+
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
 
@@ -203,7 +207,10 @@ function App() {
       <Route path="/addadmin" element={<AddAdmin />} />
       <Route path="/searchusersadmin" element={<SearchusersAdmin />} />  
       <Route path="/updatestudent/:id" element={<UpdateStudent />} />  
-              
+
+      <Route path="/admain" element={<AdMain />} />  
+      <Route path="/adgenrate" element={<AdGenerate />} />  
+      <Route path="/adreport" element={<AdReport />} />          
       
     </Routes>    
     </>
