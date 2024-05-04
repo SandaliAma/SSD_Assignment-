@@ -33,7 +33,7 @@ function Nav() {
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
-                        <a href='/MyClass'>My Classes</a>
+                        <a href='/test'>My Classes</a>
                     </li>
                     {/* <li>
                         <img src={classes} alt='home' className='navimage'/>
@@ -41,7 +41,7 @@ function Nav() {
                     </li> */}
                     <li>
                         <img src={enroll} alt='home' className='navimage'/>
-                        <a href='/Enrollments'>Enrollments</a>
+                        <a href='/login'>Enrollments</a>
                     </li>
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
