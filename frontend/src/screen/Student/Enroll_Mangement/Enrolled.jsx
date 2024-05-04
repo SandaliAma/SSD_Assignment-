@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Test.css';
 import axios from 'axios';
+import Head from '../Header/Header';
 
 function Enrolled() {
   const [payments, setPayments] = useState([]);
@@ -29,6 +30,7 @@ function Enrolled() {
   
   return (
     <div>
+      <Head/>
       <div className='bodyvc'>
         <h1 className='h1vc'><br />My Subjects</h1>
         <div className="tbl-headervc">

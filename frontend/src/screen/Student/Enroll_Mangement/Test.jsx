@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Test.css';
 import axios from 'axios';
+import Head from '../Header/Header';
 
 function Test() {
  
@@ -27,6 +28,7 @@ function Test() {
 
   return (
     <div>
+      <Head/>
       <div className='bodyvc'>
         <h1 className='h1vc'><br />My Subjects</h1>
         <div className="tbl-headervc">
@@ -66,7 +68,7 @@ function Test() {
         </div>
       </div>
       <Link to="/enrolled">
-      <input className="buttonvo5" type="button" name="edit" value="Enrolled" />
+      <input className="buttonte5" type="button" name="edit" value="Enrolled" />
       </Link>
     </div>
   );
