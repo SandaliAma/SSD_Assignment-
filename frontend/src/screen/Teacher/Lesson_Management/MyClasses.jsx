@@ -23,6 +23,8 @@ function MyClasses() {
   const [notices, setNotices] = useState([]);
   const [materials, setMaterials] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [teacher, setTeacher] = useState('');  
+  const [subject, setSubject] = useState('');
 
   useEffect(() => {
     //get notices and materials
@@ -144,6 +146,16 @@ function MyClasses() {
   };
   
 
+  useEffect(()=>{
+    axios.get('/teacherprofile')
+    .then((res)=>{
+        setTeacher(res.data.name);            
+        setSubject(res.data.subject);           
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
 
 
 
@@ -162,9 +174,9 @@ function MyClasses() {
 
               <h2>Class Details</h2>
               <div className="class-info">
-                <div className="class-title">History - Grade 10</div>
+                <div className="class-title">{subject}</div>
                 <i class="fa-solid fa-cloud-arrow-down"></i>
-                <div className="class-detail">Teacher: Mr. Smith</div>
+                <div className="class-detail">Teacher: {teacher}</div>
               </div>
             </div>
             <div className="notices">
