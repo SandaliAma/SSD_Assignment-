@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddAdditionalClasses.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -98,6 +98,19 @@ function AddAdditionalClasses() {
             }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
         }, 5000); // Wait for 5 seconds before dismissing loading toast
     };
+
+    useEffect(()=>{
+        axios.get('/teacherprofile')
+        .then((res)=>{
+            setTeacher(res.data.name);    
+            setTeacherId(res.data.teid);  
+            setSubject(res.data.subject);           
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+      },[])
+
 
     return (
         <div>
