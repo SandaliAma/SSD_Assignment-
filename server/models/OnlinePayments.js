@@ -6,7 +6,7 @@ const OnlineSchema = new mongoose.Schema({
     // cardnumber: 'Number',
     // securitycode: 'Number',
     // expiredate: 'String',    
-    discription: 'String',
+    description: 'String',
     date: 'String',
     amount: 'String',
     status : 'String',

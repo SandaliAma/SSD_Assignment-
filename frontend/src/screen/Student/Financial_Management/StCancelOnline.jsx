@@ -43,7 +43,7 @@ function StCancelOnline() {
           setCardnumber(res.data.cardnumber);
           setSecuritycode(res.data.securitycode);
           setExpiredate(res.data.expiredate);
-          setDiscription(res.data.discription);
+          setDiscription(res.data.description);
           setDate(res.data.date);
           setAmount(res.data.amount);
         })

@@ -33,7 +33,7 @@ const getpayment = (req, res) => {
 //update online
 const updateonline = (req, res) => {
     const id = req.params.id;
-    OnlineModel.findByIdAndUpdate({_id:id},{itnumber:req.body.itnumber ,discription:req.body.discription,date:req.body.date,amount:req.body.amount, })
+    OnlineModel.findByIdAndUpdate({_id:id},{itnumber:req.body.itnumber ,description:req.body.description,date:req.body.date,amount:req.body.amount, })
     .then(Payments => res.json(Payments))
     .catch(err => res.json(err));
 }
@@ -177,7 +177,7 @@ const allpayments = (req, res) => {
 const manageronline = (req, res) => {
     const id = req.params.id;
     OnlineModel.findByIdAndUpdate({_id:id},{itnumber:req.body.itnumber ,
-        discription:req.body.discription,date:req.body.date,amount:req.body.amount,type:req.body.type,status:req.body.status,  })
+        description:req.body.description,date:req.body.date,amount:req.body.amount,type:req.body.type,status:req.body.status,  })
     .then(Payments => res.json(Payments))
     .catch(err => res.json(err));
 }

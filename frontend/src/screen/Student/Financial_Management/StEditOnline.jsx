@@ -31,7 +31,7 @@ function StEditOnline() {
         setCardnumber(res.data.cardnumber);
         setSecuritycode(res.data.securitycode);
         setExpiredate(res.data.expiredate);
-        setDiscription(res.data.discription);
+        setDiscription(res.data.description);
         setDate(res.data.date);
         setAmount(res.data.amount);
 
@@ -42,7 +42,7 @@ function StEditOnline() {
 
   const update = (e) =>{
     e.preventDefault();
-    axios.put('http://Localhost:5000/updatepayment/'+id,{itnumber:itnumber ,cardname:cardname, cardnumber:cardnumber, securitycode:securitycode,expiredate:expiredate, discription:discription,
+    axios.put('http://Localhost:5000/updatepayment/'+id,{itnumber:itnumber ,cardname:cardname, cardnumber:cardnumber, securitycode:securitycode,expiredate:expiredate, description:discription,
     date:date , amount:amount})
 
     .then(res=>{

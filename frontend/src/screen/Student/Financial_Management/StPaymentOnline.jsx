@@ -42,7 +42,7 @@ function StPaymentOnline() {
 
   const submit = (e) => {
       e.preventDefault();
-      axios.post('http://Localhost:5000/createonline',{itnumber:stuid , discription:subname, date:date , amount:subamount ,status:status ,type:type })
+      axios.post('http://Localhost:5000/createonline',{itnumber:stuid , description:subname, date:date , amount:subamount ,status:status ,type:type })
 
       .then(res=>{
         console.log(res);

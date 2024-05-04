@@ -133,7 +133,7 @@ function MgView() {
                             {allmpayments.map((allmpayment) => (
                                 <tr key={allmpayment._id}>
                                     <td className='tdmv'>{allmpayment.itnumber}</td>
-                                    <td className='tdmv'>{allmpayment.discription}</td>
+                                    <td className='tdmv'>{allmpayment.description}</td>
                                     <td className='tdmv'>{allmpayment.date}</td>
                                     <td className='tdmv'>{allmpayment.amount}</td>
                                     <td className='tdmv'>{allmpayment.type}</td>

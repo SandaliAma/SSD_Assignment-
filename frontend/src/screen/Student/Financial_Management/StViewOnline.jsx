@@ -144,7 +144,7 @@ function StViewOnline() {
               {payments.map((payment) => (
                 <tr key={payment._id}>
                   <td className='tdvo'>{payment.itnumber}</td>                  
-                  <td className='tdvo'>{payment.discription}</td>
+                  <td className='tdvo'>{payment.description}</td>
                   <td className='tdvo4'>{payment.date}</td>
                   <td className='tdvo5'>{payment.amount}</td>
                   <td className='tdvo' style={{ color: payment.status === 'Approved' ? 'green' : payment.status === 'Rejected' ? 'red' : payment.status === 'Pending' ? 'blue' : 'inherit' }}>{payment.status}</td>
