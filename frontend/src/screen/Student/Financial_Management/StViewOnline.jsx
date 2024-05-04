@@ -11,6 +11,8 @@ function StViewOnline() {
   const [payments, setPayments] = useState([]);
   const navigator = useNavigate();
 
+  
+
   useEffect(() => {
     axios.get('http://Localhost:5000/displayonline')
       .then((res) => {
@@ -108,11 +110,7 @@ function StViewOnline() {
           <table className='tablevo'>
             <thead>
               <tr>
-                <th className='thvo'>Transactions ID</th>
-                <th className='thvo1'>Card Name</th>
-                <th className='thvo'>Card Number</th>
-                <th className='thvo2'>Security Code</th>
-                <th className='thvo3'>Expire Date</th>
+                <th className='thvo'>Transactions ID</th>                
                 <th className='thvo'>Description</th>
                 <th className='thvo'>Date</th>
                 <th className='thvo'>Amount</th>
@@ -129,11 +127,7 @@ function StViewOnline() {
             <tbody>
               {payments.map((payment) => (
                 <tr key={payment._id}>
-                  <td className='tdvo'>{payment.itnumber}</td>
-                  <td className='tdvo1'>{payment.cardname}</td>
-                  <td className='tdvo'>{payment.cardnumber}</td>
-                  <td className='tdvo2'>{payment.securitycode}</td>
-                  <td className='tdvo3'>{payment.expiredate}</td>
+                  <td className='tdvo'>{payment.itnumber}</td>                  
                   <td className='tdvo'>{payment.discription}</td>
                   <td className='tdvo4'>{payment.date}</td>
                   <td className='tdvo5'>{payment.amount}</td>
