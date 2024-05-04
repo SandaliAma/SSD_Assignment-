@@ -31,6 +31,18 @@ function AddMaterials() {
     setLessonDate(formattedDate);
   }, []);
 
+  useEffect(()=>{
+    axios.get('/teacherprofile')
+    .then((res)=>{
+      setTeacher_id(res.data.teid);
+      setClass_id(res.data.subject);            
+        
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+},[])
+
   const submitFile = async (e) => {
     e.preventDefault();
   
