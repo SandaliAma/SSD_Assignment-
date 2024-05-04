@@ -4,6 +4,7 @@ import './TeacherMyClasses.css';
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Import Swal
 import { toast } from 'react-toastify'; // Import toast
+import Head from '../Header/Header';
 
 function TeacherMyClasses() {
     const [addclasses, setAddclasses] = useState([]);
@@ -52,6 +53,9 @@ function TeacherMyClasses() {
     );
 
     return (
+        <div>
+            <Head/>
+       
         <div className="my-classes-container">
             <h2 className="my-classes-title">My Classes</h2>
             <input
@@ -98,6 +102,7 @@ function TeacherMyClasses() {
             <br/>
             <Link to="/addclasses" className="add-classes-button">Add Classes</Link><br/><br/>
             <Link to="/additionalclasses" className="viewadditional-classes-button">View Additional classes</Link>
+        </div>
         </div>
     );
 }

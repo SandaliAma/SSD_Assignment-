@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Import Swal
 import { toast } from 'react-toastify'; // Import toast
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS
+import Head from '../Header/Header';
 
 function RequestSchedule() {
     const [teacher, setTeacher] = useState('');
@@ -117,6 +118,9 @@ function RequestSchedule() {
     };
 
     return (
+        <div>
+            <Head/>
+    
         <div className="request-schedule-container">
             <div className="request-schedule-box">
                 <h2 className="request-schedule-title">Request A Schedule</h2>
@@ -163,6 +167,7 @@ function RequestSchedule() {
                             <button className="save-button" type="submit">Request</button>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>

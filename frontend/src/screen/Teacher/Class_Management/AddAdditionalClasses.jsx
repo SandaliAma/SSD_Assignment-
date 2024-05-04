@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Import Swal
 import { toast } from 'react-toastify'; // Import toast
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS
+import Head from '../Header/Header';
 
 function AddAdditionalClasses() {
     const [teacher, setTeacher] = useState('');
@@ -99,6 +100,8 @@ function AddAdditionalClasses() {
     };
 
     return (
+        <div>
+            <Head/>
         <div className="addadditional-classes-container">
             <h2 className="addadditional-class-title">Add Additional Classes</h2>
             <div className="form-container">
@@ -134,6 +137,7 @@ function AddAdditionalClasses() {
                 </form>
                 <br></br>
                 <Link to="/requestschedule" className="requestschedule-button">Request A Schedule</Link>
+            </div>
             </div>
         </div>
     );
