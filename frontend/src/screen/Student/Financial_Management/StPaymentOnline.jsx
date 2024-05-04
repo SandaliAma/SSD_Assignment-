@@ -27,12 +27,12 @@ function StPaymentOnline() {
   const[amount,setAmount] = useState();
   const navigator = useNavigate();
 
-  const [name, setName] = useState();
+  const [stuid, setStudentid] = useState();
 
   useEffect(()=>{
     axios.get('/studentprofile')
     .then((res)=>{
-        setName(res.data.name);            
+        setStudentid(res.data.stdid);            
     })
     .catch((err)=>{
         console.log(err);
@@ -146,6 +146,7 @@ function StPaymentOnline() {
   }, [subid]); // Include subid in the dependency array
 
 
+
   return (
     <div>
       <Head/>
@@ -171,7 +172,7 @@ function StPaymentOnline() {
               name="itnum"
               placeholder="IT12345678"
               pattern="^IT\d{8}$"
-              value={itnumber}
+              value={stuid}
             readOnly
               className="textba1"
               onChange={(e) => setItnumber(e.target.value)}
