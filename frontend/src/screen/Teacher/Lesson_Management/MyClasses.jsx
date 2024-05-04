@@ -41,7 +41,34 @@ function MyClasses() {
       .catch(err => console.error(err));
   }, []);
 
- 
+  useEffect(() => {
+    axios.get('/teacherprofile')
+      .then((res) => {
+        const tid= res.data.teid;
+        
+        axios.get('/viewnotice')
+          .then((noticeRes) => {
+            const viewnotice = noticeRes.data.filter(viewnotices => viewnotices.teacher_id === tid);
+            setNotices(viewnotice);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
+        axios.get('/showmaterials')
+          .then((materialsRes) => {
+            const viewmaterials = materialsRes.data.filter(viewmaterials => viewmaterials.teacher_id === tid);
+            setMaterials(viewmaterials);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   //delete notice
   const handleDeleteNotice = (id) => {
     Swal.fire({

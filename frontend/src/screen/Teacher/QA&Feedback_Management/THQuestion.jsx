@@ -20,6 +20,26 @@ function THQuestion() {
       });
   }, []);
 
+  useEffect(() => {
+    axios.get('/teacherprofile')
+      .then((res) => {
+        const tsub= res.data.subject;
+        axios.get('/questionsShow')
+          .then((res) => {
+            const tequestion = res.data.filter(tequestions => tequestions.subject === tsub );
+            setQuestions(tequestion);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+
   const handleDeleteA = (id) => {
     axios.put(`http://localhost:5000/deleteAnswer/${id}`)
       .then(res => {

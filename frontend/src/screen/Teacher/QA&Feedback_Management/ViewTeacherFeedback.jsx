@@ -19,6 +19,24 @@ function ViewTeacherFeedback() {
 
     },[]);
 
+    useEffect(() => {
+      axios.get('/teacherprofile')
+        .then((res) => {
+          const tsub= res.data.subject;
+          axios.get('/MyTFeedbacks')
+            .then((res) => {
+              const feedback = res.data.filter(feedbacks => feedbacks.subject === tsub );
+              setTFeedbacks(feedback);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
+
   return (
     <div>
        <Head/>

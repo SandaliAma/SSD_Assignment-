@@ -17,6 +17,23 @@ function TeacherQuestion() {
         .catch((err) => console.error(err));
     },[]);
 
+    useEffect(() => {
+      axios.get('/teacherprofile')
+        .then((res) => {
+          const tsub= res.data.subject;
+          axios.get('/getTQuestions')
+            .then((res) => {
+              const getequestion = res.data.filter(getequestions => getequestions.subject === tsub );
+              setQuestions(getequestion);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
   return (
     <div>
        <Head/>
