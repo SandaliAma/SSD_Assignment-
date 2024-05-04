@@ -17,14 +17,14 @@ function StPaymentOnline() {
   const status = 'Pending';
   const type = 'Online';
 
-  const[itnumber,setItnumber] = useState();
+  // const[itnumber,setItnumber] = useState();
   // const[cardname,setCardname] = useState();
   // const[cardnumber,setCardnumber] = useState();
   // const[securitycode,setSecuritycode] = useState();
   // const[expiredate,setExpiredate] = useState();
-  const[discription,setDescription] = useState();
+  // const[discription,setDescription] = useState();
   const[date,setDate] = useState();
-  const[amount,setAmount] = useState();
+  // const[amount,setAmount] = useState();
   const navigator = useNavigate();
 
   const [stuid, setStudentid] = useState();
@@ -42,7 +42,7 @@ function StPaymentOnline() {
 
   const submit = (e) => {
       e.preventDefault();
-      axios.post('http://Localhost:5000/createonline',{itnumber:itnumber , discription:discription, date:date , amount:amount ,status:status ,type:type })
+      axios.post('http://Localhost:5000/createonline',{itnumber:stuid , discription:subname, date:date , amount:subamount ,status:status ,type:type })
 
       .then(res=>{
         console.log(res);
@@ -175,7 +175,7 @@ function StPaymentOnline() {
               value={stuid}
             readOnly
               className="textba1"
-              onChange={(e) => setItnumber(e.target.value)}
+              onChange={(e) => setStudentid(e.target.value)}
             />
 
                     <label htmlFor="totalA" className="labelon1">Enter Description:</label><br />
@@ -187,7 +187,7 @@ function StPaymentOnline() {
               value={subname}
               readOnly
               className="textba7"
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => setSubName(e.target.value)}
             />
                     <label htmlFor="tda" className="labelon2">Enter Date:</label><br />
                     <input type="date" name="date" placeholder="(DD/MM/YYYY)"  value={date} readOnly className="texton5"  onChange={(e)=>setDate(e.target.value)}/><br /><br />
@@ -200,7 +200,7 @@ function StPaymentOnline() {
               value={subamount}
               readOnly
               className="textba6"
-              onChange={(e) => setAmount(e.target.value)}/><br /><br />
+              onChange={(e) => setSubAmount(e.target.value)}/><br /><br />
                     
                     {/* <div className="paypon2" > */}
                       {/* <h2 className="onh2"><br></br>Card Details</h2><br/>

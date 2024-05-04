@@ -11,17 +11,33 @@ function StViewOnline() {
   const [payments, setPayments] = useState([]);
   const navigator = useNavigate();
 
-  
-
   useEffect(() => {
-    axios.get('http://Localhost:5000/displayonline')
+    axios.get('/studentprofile')
       .then((res) => {
-        // Filter payments to only include the ones with IT number 'IT12345678'
-        const filteredPayments = res.data.filter(payment => payment.itnumber === 'IT12345678');
-        setPayments(filteredPayments);
+        const itnum = res.data.stdid;
+        axios.get('/displayonline')
+          .then((res) => {
+            const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum );
+            setPayments(paymentitnumber);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+
+  // useEffect(() => {
+  //   axios.get('http://Localhost:5000/displayonline')
+  //     .then((res) => {
+  //       // Filter payments to only include the ones with IT number 'IT12345678'
+  //       const filteredPayments = res.data.filter(payment => payment.itnumber === 'IT12345678');
+  //       setPayments(filteredPayments);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
 
   const handleDelete = (id) => {
     axios.delete('http://Localhost:5000/deletepayment/' + id)
