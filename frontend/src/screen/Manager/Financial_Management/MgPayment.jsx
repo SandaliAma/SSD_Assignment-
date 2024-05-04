@@ -124,7 +124,7 @@ function MgPayment() {
                     <form className="paymgpa" onSubmit={handleSubmit} >
                         <br />
                         <label htmlFor="cname" className="labelmgpa1">Enter IT Number:</label><br/>
-                        <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$" required className="textmgpa1" onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
+                        <input type="text" name="itnum" placeholder="IT12345678"  required className="textmgpa1" onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
 
                         <label htmlFor="an" className="labelmgpa1">Enter Student Name:</label><br/>
                         <input type="text" name="sname" placeholder="Enter Name" pattern="[A-Za-z\s]+" required className="textmgpa1" onChange={(e)=>setStudentname(e.target.value)}/><br /><br />

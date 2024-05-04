@@ -13,13 +13,31 @@ function StViewCash() {
   const[cashpayments , setCashPayments] = useState([]);
   const navigator = useNavigate();
 
-  useEffect(()=>{
-    axios.get('http://Localhost:5000/displaycash')
-    .then((res)=> {
-          setCashPayments(res.data);
-    })
-    .catch((err) => console.error(err));
-  },[]);
+  useEffect(() => {
+    axios.get('/studentprofile')
+      .then((res) => {
+        const itnum = res.data.stdid;
+        axios.get('/displaycash')
+          .then((res) => {
+            const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum );
+            setCashPayments(paymentitnumber);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  // useEffect(()=>{
+  //   axios.get('http://Localhost:5000/displaycash')
+  //   .then((res)=> {
+  //         setCashPayments(res.data);
+  //   })
+  //   .catch((err) => console.error(err));
+  // },[]);
 
   const handleDelete = (id) => {
     axios.delete('http://Localhost:5000/deletecash/' + id)
