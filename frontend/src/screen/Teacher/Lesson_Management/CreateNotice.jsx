@@ -10,6 +10,7 @@ function CreateNotice() {
     const [description, setDescription] = useState('');
     const [class_id, setClass_id] = useState('');
     const [teacher_id, setTeacher_id] = useState('');
+    const [subject_name, setsubject_name] = useState('');
     const navigate = useNavigate();
 
 
@@ -31,6 +32,17 @@ function CreateNotice() {
         setDate(formattedDate);
     }, []);
 
+    useEffect(()=>{
+        axios.get('/teacherprofile')
+        .then((res)=>{
+            setTeacher_id(res.data.teid);
+            setsubject_name(res.data.subject) ;            
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    },[])
+
     const submit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:5000/createnotice', {
@@ -38,7 +50,8 @@ function CreateNotice() {
             date: date,
             description: description,
             class_id: class_id,
-            teacher_id: teacher_id
+            teacher_id: teacher_id,
+            subject_name : subject_name
         }).then(res => {
             console.log('Success');
             Swal.fire(
