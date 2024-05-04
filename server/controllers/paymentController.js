@@ -33,8 +33,7 @@ const getpayment = (req, res) => {
 //update online
 const updateonline = (req, res) => {
     const id = req.params.id;
-    OnlineModel.findByIdAndUpdate({_id:id},{itnumber:req.body.itnumber ,cardname:req.body.cardname,cardnumber:req.body.cardnumber,securitycode:req.body.securitycode,
-        expiredate:req.body.expiredate,discription:req.body.discription,date:req.body.date,amount:req.body.amount, })
+    OnlineModel.findByIdAndUpdate({_id:id},{itnumber:req.body.itnumber ,discription:req.body.discription,date:req.body.date,amount:req.body.amount, })
     .then(Payments => res.json(Payments))
     .catch(err => res.json(err));
 }

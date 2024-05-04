@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const OnlineSchema = new mongoose.Schema({
     itnumber:'String',
-    cardname:'String',
-    cardnumber: 'Number',
-    securitycode: 'Number',
-    expiredate: 'String',
+    // cardname:'String',
+    // cardnumber: 'Number',
+    // securitycode: 'Number',
+    // expiredate: 'String',    
     discription: 'String',
     date: 'String',
     amount: 'String',

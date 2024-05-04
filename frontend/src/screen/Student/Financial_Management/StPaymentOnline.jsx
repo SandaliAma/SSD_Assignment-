@@ -18,10 +18,10 @@ function StPaymentOnline() {
   const type = 'Online';
 
   const[itnumber,setItnumber] = useState();
-  const[cardname,setCardname] = useState();
-  const[cardnumber,setCardnumber] = useState();
-  const[securitycode,setSecuritycode] = useState();
-  const[expiredate,setExpiredate] = useState();
+  // const[cardname,setCardname] = useState();
+  // const[cardnumber,setCardnumber] = useState();
+  // const[securitycode,setSecuritycode] = useState();
+  // const[expiredate,setExpiredate] = useState();
   const[discription,setDiscription] = useState();
   const[date,setDate] = useState();
   const[amount,setAmount] = useState();
@@ -42,8 +42,7 @@ function StPaymentOnline() {
 
   const submit = (e) => {
       e.preventDefault();
-      axios.post('http://Localhost:5000/createonline',{itnumber:itnumber ,cardname:cardname, cardnumber:cardnumber, securitycode:securitycode,expiredate:expiredate, discription:discription,
-      date:date , amount:amount ,status:status ,type:type })
+      axios.post('http://Localhost:5000/createonline',{itnumber:itnumber , discription:discription, date:date , amount:amount ,status:status ,type:type })
 
       .then(res=>{
         console.log(res);
@@ -163,8 +162,8 @@ function StPaymentOnline() {
                     <label htmlFor="totalA" className="labelon2">Enter Amount:</label><br />
                     <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="texton6" onChange={(e)=>setAmount(e.target.value)}/><br /><br />
                     
-                    <div className="paypon2" >
-                      <h2 className="onh2"><br></br>Card Details</h2><br/>
+                    {/* <div className="paypon2" > */}
+                      {/* <h2 className="onh2"><br></br>Card Details</h2><br/>
                     <label htmlFor="an" className="labelon2">Name On the Card</label>
                     <input type="text" name="cname" placeholder="Enter Name" pattern="[A-Za-z\s]+" required className="texton2" onChange={(e)=>setCardname(e.target.value)}/> <br /><br />
 
@@ -176,7 +175,7 @@ function StPaymentOnline() {
                     <input type="text" name="exdate" placeholder="(MM/YY)" pattern="(0[1-9]|1[0-2])\/\d{2}" required className="texton8" onChange={(e)=>setExpiredate(e.target.value)}/>
                     <input type="text" name="scode" placeholder="***" pattern="^\d{3}$" required className="texton4" onChange={(e)=>setSecuritycode(e.target.value)} /><br /><br />
 
-                   
+                    */}
 
                
                     <div className="containeron4"> 
@@ -187,7 +186,7 @@ function StPaymentOnline() {
                         <button type="submit" name="submit" className="buttonon3">Pay Now</button>
                     </div>
 
-                    </div>
+                    {/* </div> */}
                 </form>
             </div>
         </div>
