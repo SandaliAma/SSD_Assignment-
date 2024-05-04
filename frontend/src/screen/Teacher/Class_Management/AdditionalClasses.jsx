@@ -7,14 +7,25 @@ import Head from '../Header/Header';
 function AdditionalClasses() {
     const [requestedClasses, setRequestedClasses] = useState([]);
 
+  
+
     useEffect(() => {
-        // Fetch requested additional classes
-        axios.get('http://localhost:5000/requestedadditionalclasses/additionalclasses')
-            .then((res) => {
-                setRequestedClasses(res.data);
-            })
-            .catch((err) => console.error(err));
-    }, []);
+        axios.get('/teacherprofile')
+          .then((res) => {
+            const tname = res.data.name;
+            axios.get('/requestedadditionalclasses/additionalclasses')
+              .then((res) => {
+                const viewteclass = res.data.filter(viewclasses => viewclasses.teacher === tname );
+                setRequestedClasses(viewteclass);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, []);
 
     return (
         <div>

@@ -10,15 +10,7 @@ function TeacherMyClasses() {
     const [addclasses, setAddclasses] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
-    useEffect(() => {
-        axios.get('http://localhost:5000/teachermyclasses/addclasses')
-            .then((res) => {
-                setAddclasses(res.data);
-            })
-            .catch((err) => console.error(err));
-    }, []);
-
-    
+  
 
       useEffect(() => {
         axios.get('/teacherprofile')
