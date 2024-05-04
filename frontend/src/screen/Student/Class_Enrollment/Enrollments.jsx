@@ -6,16 +6,8 @@ import Head from '../Header/Header';
 import { toast } from 'react-hot-toast';
 
 function Enrollments() {
-    const [classes, setClasses] = useState([]);
-    const [name, setName] = useState();
-    const [username, setUsername] = useState();
-    const [email, setEmail] = useState();
-    const [contactnumber, setContactnumber] = useState();
-    const [gender, setGender] = useState();
-    const [parentname, setParentName] = useState();
-    const [parentphonenumber, setParentPhonenumber] = useState();
-    const [secanswer, setSecAnswer] = useState();
-    const [enrollmentAlert, setEnrollmentAlert] = useState(null);
+    const [, setUsername] = useState();    
+    const [, setEnrollmentAlert] = useState(null);
     const [subjects, setSubjects] = useState([]);
 
     useEffect(() => {
@@ -26,17 +18,10 @@ function Enrollments() {
     useEffect(()=>{
 
     axios.get('/studentprofile')
-            .then((res) => {
-        setName(res.data.name);
-        setUsername(res.data.username);
-        setEmail(res.data.email);
-        setContactnumber(res.data.contactnumber);
-        setGender(res.data.gender);
-        setParentName(res.data.parentname);
-        setParentPhonenumber(res.data.parentphonenumber);
-        setSecAnswer(res.data.SecAnswer);  
+            .then((res) => {        
+        setUsername(res.data.username);        
 
-        const studentId = res.data.username; 
+        // const studentId = res.data.username; 
         console.log('Student enrolled successfully:', res.data);
     })
     .catch((err) => {
@@ -58,30 +43,13 @@ function Enrollments() {
 
 
 
-
-
-
-
-
-
-
     const enrollStudent = (classId , teacherid , subject , time , grade) => {
          //const studentId = sid; 
 
          axios.get('/studentprofile')
          .then((res) => {
-             setName(res.data.name);
              setUsername(res.data.username);
-             setEmail(res.data.email);
-             setContactnumber(res.data.contactnumber);
-             setGender(res.data.gender);
-             setParentName(res.data.parentname);
-             setParentPhonenumber(res.data.parentphonenumber);
-             setSecAnswer(res.data.SecAnswer);  
-
-
-
-
+             
 
         console.log(`Enrolling student in class with ID ${classId} ,${teacherid},${subject},${time},${grade}`);
 

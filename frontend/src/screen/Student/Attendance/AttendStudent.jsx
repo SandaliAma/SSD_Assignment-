@@ -51,21 +51,21 @@ function AttendStudent() {
         }
     };
 
-    const markAttendance = async (enrollment) => {
-        try {
-            await axios.post('/attendancemark', {
-                studentId: enrollment.studentId,
-                classId: enrollment.classId,
-                teacherId: enrollment.teacherid,
-                subject: enrollment.subject
-            });
-            toast.success('Attendance marked successfully');
-            fetchAttendances(); // Update attendance after marking
-        } catch (error) {
-            console.error('Error marking attendance:', error);
-            toast.error('Failed to mark attendance');
-        }
-    };
+    // const markAttendance = async (enrollment) => {
+    //     try {
+    //         await axios.post('/attendancemark', {
+    //             studentId: enrollment.studentId,
+    //             classId: enrollment.classId,
+    //             teacherId: enrollment.teacherid,
+    //             subject: enrollment.subject
+    //         });
+    //         toast.success('Attendance marked successfully');
+    //         fetchAttendances(); // Update attendance after marking
+    //     } catch (error) {
+    //         console.error('Error marking attendance:', error);
+    //         toast.error('Failed to mark attendance');
+    //     }
+    // };
 
     const fetchAttendances = async () => {
         try {
@@ -95,17 +95,17 @@ function AttendStudent() {
         attendance.studentId === studentId && (classFilter ? attendance.classId.includes(classFilter) : true)
     );
 
-    const handleClearAttendance = async () => {
-        try {
-            await axios.delete('/attendancemark/all');
-            setAttendances([]);
-            toast.success('Attendance cleared successfully');
-            fetchAttendances(); // Update attendance after clearing
-        } catch (error) {
-            console.error('Error clearing attendance:', error);
-            toast.error('Failed to clear attendance');
-        }
-    };
+    // const handleClearAttendance = async () => {
+    //     try {
+    //         await axios.delete('/attendancemark/all');
+    //         setAttendances([]);
+    //         toast.success('Attendance cleared successfully');
+    //         fetchAttendances(); // Update attendance after clearing
+    //     } catch (error) {
+    //         console.error('Error clearing attendance:', error);
+    //         toast.error('Failed to clear attendance');
+    //     }
+    // };
 
     return (
         <main>

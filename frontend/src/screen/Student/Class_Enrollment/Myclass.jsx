@@ -4,32 +4,17 @@ import Head from '../Header/Header';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../../../styles/Sasi.css';
 import { toast } from 'react-hot-toast';
-import {useNavigate} from 'react-router-dom';
+// import {useNavigate} from 'react-router-dom';
 
 function MyClass() {
     const [enrolledClasses, setEnrolledClasses] = useState([]);
-    const [name, setName] = useState();
-    const [username, setUsername] = useState();
-    const [email, setEmail] = useState();
-    const [contactnumber, setContactnumber] = useState();
-    const [gender, setGender] = useState();
-    const [parentname, setParentName] = useState();
-    const [parentphonenumber, setParentPhonenumber] = useState();
-    const [secanswer, setSecAnswer] = useState();
-    const [enrollmentAlert, setEnrollmentAlert] = useState(null);
-
+    const [, setUsername] = useState();
+   
     useEffect(() => {
         axios.get('/studentprofile')
             .then((res) => {
-                setName(res.data.name);
                 setUsername(res.data.username);
-                setEmail(res.data.email);
-                setContactnumber(res.data.contactnumber);
-                setGender(res.data.gender);
-                setParentName(res.data.parentname);
-                setParentPhonenumber(res.data.parentphonenumber);
-                setSecAnswer(res.data.SecAnswer);  
-
+                
                 const studentId = res.data.username; 
                 console.log('Student enrolled successfully:', res.data);
                 fetchEnrolledClasses(studentId);
