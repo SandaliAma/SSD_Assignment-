@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './AdditionalClass.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Head from '../Header/Header';
 
 function AdditionalClasses() {
     const [requestedClasses, setRequestedClasses] = useState([]);
@@ -16,6 +17,8 @@ function AdditionalClasses() {
     }, []);
 
     return (
+        <div>
+            <Head/>        
         <div className="additional-classes-container">
             <h2 className="additional-classes-title">View Additional Classes</h2><br/>
             <table className="additionalclasses-table">
@@ -48,6 +51,7 @@ function AdditionalClasses() {
             </table><br/><br/>
             <Link to="/AddAdditionalClasses" className="add-additional-button">Add Additional Class</Link><br/> <br/><br/>
             <Link to="/viewclasses" className="myclasses-button">My Classes</Link>
+        </div>
         </div>
     );
 }
