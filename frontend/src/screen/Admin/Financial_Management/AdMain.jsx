@@ -19,7 +19,7 @@ function AdMain() {
     setTimeout(() => {
       toast.dismiss();
       setTimeout(() => {
-        navigator('/generatereport');
+        navigator('/adgenrate');
       }, ); // Wait for 2 seconds before navigating
     }, 2000);
   };
