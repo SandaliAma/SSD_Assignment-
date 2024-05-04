@@ -40,6 +40,8 @@ app.use('/', require('./routes/QA&FeedbackRouter'));
 app.use('/', require('./routes/salaryRouters'));
 app.use('/', require('./routes/classRouter'));
 app.use('/', require('./routes/subjectRouter'));
+app.use('/', require('./routes/attendanceRouters'));
+app.use('/', require('./routes/EnrollmentsRouter'));
 
 // Setup Multer for file uploads
 const storage = multer.diskStorage({
