@@ -24,9 +24,11 @@ function TeView() {
         .catch((err) => console.error(err));
     }, []);
 
-    const filteredPayments = allPayments.filter(payment => {
-        return payment.itnumber.includes(searchQuery);
-    });
+  const filteredPayments = allPayments.filter(payment => {
+    // Check if payment.itnumber exists and is not undefined before calling includes()
+    return payment.itnumber && payment.itnumber.includes(searchQuery);
+});
+
 
     useEffect(() => {
         if (searchQuery && filteredPayments.length === 0) {
@@ -89,7 +91,7 @@ function TeView() {
                                 <td className='tdtv'>{payment.itnumber}</td>
                                 <td className='tdtv2'>{payment.date}</td>
                                 <td className='tdtv3'>{payment.amount}</td>
-                                <td className='tdtv'>{payment.discription}</td>
+                                <td className='tdtv'>{payment.description}</td>
                                 <td className='tdtv'>{payment.type}</td>
                                 <td className='tdtv6' style={{ color: payment.status === 'Approved' ? 'green' : payment.status === 'Rejected' ? 'red' : payment.status === 'Pending' ? 'blue' : 'inherit' }}>{payment.status}</td>
 
