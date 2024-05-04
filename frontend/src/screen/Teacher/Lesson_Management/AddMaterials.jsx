@@ -12,9 +12,9 @@ function AddMaterials() {
   const [lesson_date, setLessonDate] = useState('');
   const [lesson_fileType, setLessonFileType] = useState('');
   const [lesson_description, setLessonDescription] = useState('');
-  const [subject_name, setClass_id] = useState('History');
+  const [subject_name, setClass_id] = useState('');
   const [grade, setGrade] = useState(11);
-  const [teacher_id, setTeacher_id] = useState('1234q');
+  const [teacher_id, setTeacher_id] = useState('');
 
   const navigate = useNavigate();
 
