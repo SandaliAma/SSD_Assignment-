@@ -28,7 +28,7 @@ function AdGenerate() {
               required
             />
           </div>
-          <Link to={`/AdReport?month=${selectedMonth}`}>
+          <Link to={`/adreport?month=${selectedMonth}`}>
             <input type="submit" value="Generate" className="button7gr" />
           </Link>
         </form>

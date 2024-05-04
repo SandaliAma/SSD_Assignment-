@@ -3,6 +3,7 @@ import './profile.css'
 import userpng from './photos/User.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Head from '../Header/Header';
 
 
 function AdminProfile() {
@@ -29,6 +30,8 @@ function AdminProfile() {
     
   return (
     <main>
+        <div>
+            <Head/>
         <div className='profilecontent'>        
             
             <div>                
@@ -81,7 +84,7 @@ function AdminProfile() {
                 <div className='profilebox'>{secanswer}</div> 
                 <br/>
                 <div class="line"></div>               
-                
+                </div>
             </div>            
         </div>
     </main>
