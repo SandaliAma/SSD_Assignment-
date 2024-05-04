@@ -68,9 +68,12 @@
 
 .teacher{
     position: absolute;
-    width: 163px;    
+    width: fit-content;    
+    height: 50px;
     right: 50px;
     top: 630px;
+    border: 1px solid #000000;
+    border-radius: 15px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
@@ -78,8 +81,12 @@
     line-height: 20px;
     display: flex;
     align-items: center;
-    text-align: center;
-    text-decoration-line: underline;
+    text-align: center;    
     color: #ffffff;
-    text-shadow: 0px 8px 8px rgba(0, 0, 0, 100), 0px 8px 8px rgba(0, 0, 0, 100);
+    background-color: #005a8d;    
+}
+
+
+.teacher:hover {
+    background-color: #004171;
 }
