@@ -1,60 +1,73 @@
-/* RequestSchedule.css */
-
 .request-schedule-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
-
-.request-schedule-box {
-    width: 400px;
-    padding: 20px;
-    border: 1px solid #ccc;
+  }
+  
+  .request-schedule-box {
+    background-color: #f9f9f9;
     border-radius: 5px;
-}
-
-.request-schedule-title {
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .request-schedule-title {
+    font-size: 24px;
     text-align: center;
-}
-
-.form-container {
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
     margin-top: 20px;
-}
-
-.input-container {
+  }
+  
+  .input-container {
     margin-bottom: 15px;
-}
-
-.input-container label {
+  }
+  
+  .input-container label {
     display: block;
     margin-bottom: 5px;
-}
-
-.input-container input {
+  }
+  
+  .input-container input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  
+  .button-container {
     margin-top: 20px;
-}
-
-.cancel-button,
-.save-button {
+    text-align: center;
+  }
+  
+  .cancel-button,
+  .save-button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.cancel-button:hover,
-.save-button:hover {
+  }
+  
+  .cancel-button {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .save-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .cancel-button:hover {
+    background-color: #c82333;
+  }
+  
+  .save-button:hover {
     background-color: #0056b3;
-}
+  }
+  

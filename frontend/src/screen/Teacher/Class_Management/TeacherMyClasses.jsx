@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './TeacherMyClasses.css';
 import axios from 'axios';
-import Head from '../Header/Header';
+import Swal from 'sweetalert2'; // Import Swal
+import { toast } from 'react-toastify'; // Import toast
 
 function TeacherMyClasses() {
     const [addclasses, setAddclasses] = useState([]);
@@ -18,10 +19,31 @@ function TeacherMyClasses() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/deleteClass/${id}`);
-            window.location.reload();
+            const result = await Swal.fire({
+                title: "Delete Class",
+                text: "Are you sure you want to proceed with the Class?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, proceed!",
+                cancelButtonText: "Cancel",
+            });
+            if (result.isConfirmed) {
+                await axios.delete(`http://localhost:5001/deleteClass/${id}`);
+                toast.success('Class is Deleted!');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2500); // Wait for 2.5 seconds before reloading
+            } else {
+                Swal.fire({
+                    title: "Class is Not Deleted",
+                    icon: "error",
+                });
+            }
         } catch (err) {
             console.error(err);
+            toast.error('Failed to delete class. Please try again.');
         }
     };
 
@@ -30,8 +52,6 @@ function TeacherMyClasses() {
     );
 
     return (
-        <div>
-             <Head/>
         <div className="my-classes-container">
             <h2 className="my-classes-title">My Classes</h2>
             <input
@@ -58,7 +78,6 @@ function TeacherMyClasses() {
                 <tbody>
                     {filteredClasses.map((addclass) => (
                         <tr key={addclass._id}>
-                            
                             <td>{addclass.teacher}</td>
                             <td>{addclass.classid}</td>
                             <td>{addclass.teacherid}</td>
@@ -67,20 +86,18 @@ function TeacherMyClasses() {
                             <td>{addclass.date}</td>
                             <td>{addclass.grade}</td>
                             <td>
-                                <Link to={`/update/${addclass._id}`}>Edit</Link>
+                                <Link to={`/update/${addclass._id}`} className="edit-classes-button">Edit</Link>
                             </td>
                             <td>
                                 <button className="delete-button" onClick={() => handleDelete(addclass._id)}>Delete</button>
-                            </td>
-                            <td>
-                                <button className="view-class-button">View Additional Classes</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <Link to={'/addclasses'}><button className="add-classes-button">Add Classes</button></Link>
-        </div>
+            <br/>
+            <Link to="/addclasses" className="add-classes-button">Add Classes</Link><br/><br/>
+            <Link to="/additionalclasses" className="viewadditional-classes-button">View Additional classes</Link>
         </div>
     );
 }
