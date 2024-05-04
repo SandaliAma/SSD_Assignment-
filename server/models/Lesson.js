@@ -9,7 +9,8 @@ const LessonSchema = new mongoose.Schema({
     lesson_description: 'String',
     subject_name: 'String',
     grade: 'Number',
-    teacher_id: 'String'
+    teacher_id: 'String',
+    teachername: 'String'
 
 });
 

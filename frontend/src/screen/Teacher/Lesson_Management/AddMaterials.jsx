@@ -15,6 +15,7 @@ function AddMaterials() {
   const [subject_name, setClass_id] = useState('');
   const [grade, setGrade] = useState(11);
   const [teacher_id, setTeacher_id] = useState('');
+  const [teachername, setTeachername] = useState('');
 
   const navigate = useNavigate();
 
@@ -35,7 +36,8 @@ function AddMaterials() {
     axios.get('/teacherprofile')
     .then((res)=>{
       setTeacher_id(res.data.teid);
-      setClass_id(res.data.subject);            
+      setClass_id(res.data.subject);    
+      setTeachername(res.data.name);       
         
     })
     .catch((err)=>{
@@ -55,6 +57,7 @@ function AddMaterials() {
     formData.append('subject_name', subject_name);
     formData.append('grade', grade);
     formData.append('teacher_id', teacher_id);
+    formData.append('teachername', teachername);
   
     try {
       await axios.post('http://localhost:5000/addmaterial', formData, {
