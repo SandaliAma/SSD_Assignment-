@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddClasses.css'; // Importing CSS file
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -90,6 +90,18 @@ function AddClasses() {
         }, 5000); // Wait for 5 seconds before dismissing loading toast
     };
 
+    useEffect(()=>{
+        axios.get('/teacherprofile')
+        .then((res)=>{
+            setTeacher(res.data.name);    
+            setTeacherId(res.data.teid);  
+            setSubject(res.data.subject);           
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+      },[])
+
     return (
         <div className="add-classes-container">
             <h2 className="add-class-title">Add Classes</h2>
@@ -97,7 +109,7 @@ function AddClasses() {
                 <form onSubmit={handleSubmit}>
                     <div className="input-container">
                         <label htmlFor="teacherInput">Teacher</label>
-                        <input type="text" id="teacherInput" pattern="[A-Za-z\s]+" required value={teacher} onChange={(e) => setTeacher(e.target.value)} />
+                        <input type="text" id="teacherInput" pattern="[A-Za-z\s]+" required value={teacher} onChange={(e) => setTeacher(e.target.value)} readOnly/>
                     </div>
                     <div className="input-container">
                         <label htmlFor="classidInput">Class Id</label>
@@ -105,11 +117,11 @@ function AddClasses() {
                     </div>
                     <div className="input-container">
                         <label htmlFor="teacheridInput">Teacher Id</label>
-                        <input type="text" id="teacheridInput" required value={teacherid} onChange={(e) => setTeacherId(e.target.value)} />
+                        <input type="text" id="teacheridInput" required value={teacherid} onChange={(e) => setTeacherId(e.target.value)} readOnly/>
                     </div>
                     <div className="input-container">
                         <label htmlFor="subjectInput">Subject</label>
-                        <input type="text" id="subjectInput" required value={subject} onChange={(e) => setSubject(e.target.value)} />
+                        <input type="text" id="subjectInput" required value={subject} onChange={(e) => setSubject(e.target.value)} readOnly/>
                     </div>
                     <div className="input-container">
                         <label htmlFor="timeInput">Time</label>
