@@ -11,20 +11,25 @@ function Enrolled() {
     axios.get('/studentprofile')
       .then((res) => {
         const itnum = res.data.stdid;
-        axios.get('/displaybank')
-          .then((res) => {
-            const paymentitnumber = res.data.filter(payment => payment.itnumber === itnum && payment.status === 'Approved' );
-            setPayments(paymentitnumber);
-          })
-          
-          .catch((err) => {
-            console.log(err);
-          });
+        axios.all([
+          axios.get('/displaybank'),
+          axios.get('/displayonline')
+        ])
+        .then(axios.spread((bankRes, onlineRes) => {
+          const bankPayments = bankRes.data.filter(payment => payment.itnumber === itnum && payment.status === 'Approved');
+          const onlinePayments = onlineRes.data.filter(payment => payment.itnumber === itnum && payment.status === 'Approved');
+          const allPayments = [...bankPayments, ...onlinePayments];
+          setPayments(allPayments);
+        }))
+        .catch((err) => {
+          console.log(err);
+        });
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
 
   
   
