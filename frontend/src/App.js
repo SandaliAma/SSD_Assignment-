@@ -35,6 +35,9 @@ import UpdateSFeedback from './screen/Student/QA&Feedback_Management/UpdateSFeed
 import Test from './screen/Student/Enroll_Mangement/Test';
 import ViewClass from './screen/Student/Enroll_Mangement/ViewClass';
 import Enrolled from './screen/Student/Enroll_Mangement/Enrolled';
+import Enrollments from './screen/Student/Class_Enrollment/Enrollments';
+import MyClass from './screen/Student/Class_Enrollment/Myclass';
+import AttendStudent from './screen/Student/Attendance/AttendStudent';
 
 
 import TeacherLogin from './screen/Teacher/User_Management/TeacherLogin';
@@ -141,6 +144,9 @@ function App() {
       <Route path='/test' element={<Test/>}/>
       <Route path='/viewclass/:subid' element={<ViewClass />} />
       <Route path='/enrolled' element={<Enrolled />} />
+      <Route path="/Enrollments" element={<Enrollments />} />     
+      <Route path="/MyClass" element={<MyClass />} />  
+      <Route path='/AttendStudent' element={<AttendStudent/>}/>
 
       <Route path="/teacherlogin" element={<TeacherLogin />} />
       <Route path="/teacherprofile" element={<TeacherProfile />} />

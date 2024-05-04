@@ -35,10 +35,10 @@ function Nav() {
                         <img src={classes} alt='home' className='navimage'/>
                         <a href='/test'>My Classes</a>
                     </li>
-                    <li>
+                    {/* <li>
                         <img src={classes} alt='home' className='navimage'/>
                         <a href='/lessonmaterial'>Lesson Material</a>
-                    </li>
+                    </li> */}
                     <li>
                         <img src={enroll} alt='home' className='navimage'/>
                         <a href='/login'>Enrollments</a>
