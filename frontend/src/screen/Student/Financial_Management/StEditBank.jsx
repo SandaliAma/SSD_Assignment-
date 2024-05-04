@@ -17,7 +17,7 @@ function StEditBank() {
     const[accountname,setAccountname] = useState();
     const[accountnumber,setAccountnumber] = useState();
     const[bankname,setBankname] = useState();
-    const[discription,setDiscription] = useState();
+    const[description,setDescription] = useState();
     const[date,setDate] = useState();
     const[amount,setAmount] = useState();
     const navigator = useNavigate();
@@ -30,7 +30,7 @@ function StEditBank() {
           setAccountname(res.data.accountname);
           setAccountnumber(res.data.accountnumber);
           setBankname(res.data.bankname);
-          setDiscription(res.data.discription);
+          setDescription(res.data.description);
           setDate(res.data.date);
           setAmount(res.data.amount);
   
@@ -41,7 +41,7 @@ function StEditBank() {
   
     const updatebank = (e) =>{
       e.preventDefault();
-      axios.put('http://Localhost:5000/updatebank/'+id,{itnumber:itnumber ,accountname:accountname, accountnumber:accountnumber, bankname:bankname,discription:discription,
+      axios.put('http://Localhost:5000/updatebank/'+id,{itnumber:itnumber ,accountname:accountname, accountnumber:accountnumber, bankname:bankname,description:description,
       date:date , amount:amount})
   
       .then(res=>{
@@ -146,7 +146,7 @@ function StEditBank() {
                     <input type="text" name="bname" placeholder="Enter Bank Name" pattern="[A-Za-z\s]+" required className="texteba4" value={bankname} onChange={(e)=>setBankname(e.target.value)}/><br /><br />
 
                     <label htmlFor="totalA" className="labeleba1">Enter Description:</label><br/>
-                    <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="texteba7" value={discription} onChange={(e)=>setDiscription(e.target.value)}/><br /><br />
+                    <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="texteba7" value={description} onChange={(e)=>setDescription(e.target.value)}/><br /><br />
 
                     <label htmlFor="tda" className="labeleba1">Enter Date:</label><br/>
                     <input type="date" name="dates" placeholder="(DD/MM/YY)"  readOnly className="texteba5" value={date} onChange={(e)=>setDate(e.target.value)}/><br /><br />
