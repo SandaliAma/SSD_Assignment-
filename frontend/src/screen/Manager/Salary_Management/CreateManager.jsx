@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './CreateManager.css';
@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import Head from '../Header/Header';
 
 function CreateManager() {
-  const [TeacherName, setTeacherName] = useState('');
+  // const [TeacherName, setTeacherName] = useState('');
   const [TeacherID, setTeacherID] = useState('');
   const [SubjectName, setSubjectName] = useState('');
   const [Grade, setGrade] = useState('');
@@ -24,7 +24,7 @@ function CreateManager() {
 
     const formData = new FormData();
     formData.append('file', uploadPaymentFiles);
-    formData.append('TeacherName', TeacherName);
+    formData.append('TeacherName', teacher);
     formData.append('TeacherID', TeacherID);
     formData.append('SubjectName', SubjectName);
     formData.append('Grade', Grade);
@@ -94,6 +94,36 @@ function CreateManager() {
     }, 5000);
   };
 
+  const [teacheridd, setteacheridd] = useState([]);
+  const [teacher, setTeacher] = useState();
+
+  useEffect(()=>{
+    axios.get('/teacherprofileall')
+    .then((res)=>{
+        setteacheridd(res.data);             
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+  },[])
+
+
+  useEffect(() => {
+    if (teacher) {
+      axios.get('/teacherprofileall')
+        .then(res => {
+          const selectedTeacher = res.data.find(t => t.name === teacher);
+          if (selectedTeacher) {
+            setSubjectName(selectedTeacher.subject);
+            setTeacherID(selectedTeacher.teid);
+          }
+        })
+        .catch(err => console.error(err));
+    }
+  }, [teacher]);
+
+  
+
   return (
     <div>
       <Head />
@@ -105,13 +135,21 @@ function CreateManager() {
         <div className="container">
           <form onSubmit={handleSubmit} className="AddSalary"><br />
             <label htmlFor="teacherName" className="labelA1">Enter Teacher Name:</label>
-            <input type="text" id="teacherName" name="teacherName" placeholder="Enter Name" required className="text1" onChange={(e) => setTeacherName(e.target.value)} /><br /><br />
+            {/* <input type="text" id="teacherName" name="teacherName" placeholder="Enter Name" required className="text1" onChange={(e) => setTeacherName(e.target.value)} /> */}
+            <select id="dropdown3" name="dropdown" style={{ width: '250px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setTeacher(a.target.value)}>
+              <option value=""></option>
+              {teacheridd.map((teacher, index) => (
+                <option key={index} value={teacher.name}>{teacher.name}</option>
+              ))}
+            </select>
+            
+            <br /><br />
 
             <label htmlFor="teacherID" className="labelA2">Enter Teacher ID:</label>
-            <input type="text" id="teacherID" name="teacherID" placeholder="Enter ID" required className="text1" onChange={(e) => setTeacherID(e.target.value)} /><br /><br />
+            <input type="text" id="teacherID" name="teacherID" placeholder="Enter ID" required className="text1" value={TeacherID} onChange={(e) => setTeacherID(e.target.value)} /><br /><br />
 
             <label htmlFor="subjectName" className="labelA3">Enter Subject Name:</label>
-            <input type="text" id="subjectName" name="subjectName" placeholder="Enter Subject" required className="text1" onChange={(e) => setSubjectName(e.target.value)} /><br /><br />
+            <input type="text" id="subjectName" name="subjectName" placeholder="Enter Subject" required className="text1" value={SubjectName} onChange={(e) => setSubjectName(e.target.value)} /><br /><br />
 
             <label htmlFor="grade" className="labelA4">Enter Grade:</label>
             <input type="text" id="grade" name="grade" placeholder="Grade" required className="text1" onChange={(e) => setGrade(e.target.value)} /><br /><br />
