@@ -8,9 +8,10 @@ function CreateNotice() {
     const [topic, setTopic] = useState('');
     const [date, setDate] = useState('');
     const [description, setDescription] = useState('');
-    const [class_id, setClass_id] = useState('');
+    // const [class_id, setClass_id] = useState('');
     const [teacher_id, setTeacher_id] = useState('');
     const [subject_name, setsubject_name] = useState('');
+    const [grade, setGrade] = useState('');
     const navigate = useNavigate();
 
 
@@ -48,10 +49,10 @@ function CreateNotice() {
         axios.post('http://localhost:5000/createnotice', {
             topic: topic,
             date: date,
-            description: description,
-            class_id: class_id,
+            description: description,            
             teacher_id: teacher_id,
-            subject_name : subject_name
+            subject_name : subject_name,
+            grade: grade
         }).then(res => {
             console.log('Success');
             Swal.fire(
@@ -87,7 +88,18 @@ function CreateNotice() {
                     <label htmlFor="description">Description:</label>
                     <input type="text" name="description" placeholder="Enter description" onChange={(e) => setDescription(e.target.value)} required />
 
-                    <input type="hidden" name="class_id" value="value" onChange={(e) => setClass_id(e.target.value)} />
+                    <label htmlFor="grade" className="labelA4">Enter Grade:</label>            
+                    <select id="grade" name="grade" style={{ width: '250px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setGrade(a.target.value)}>
+                        <option value=""></option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+
+                    {/* <input type="hidden" name="class_id" value="value" onChange={(e) => setClass_id(e.target.value)} /> */}
                     <input type="hidden" name="teacher_id" value="value" onChange={(e) => setTeacher_id(e.target.value)} />
 
                     <div className="button-group">
