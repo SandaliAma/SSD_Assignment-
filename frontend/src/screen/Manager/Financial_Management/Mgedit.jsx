@@ -14,7 +14,7 @@ function Mgedit() {
 
     const {id} = useParams();
     const[itnumber,setItnumber] = useState();
-    const[discription,setDiscription] = useState();
+    const[description,setDescription] = useState();
     const[date,setDate] = useState();
     const[amount,setAmount] = useState();
     const[type,setType] = useState();
@@ -25,7 +25,7 @@ function Mgedit() {
         axios.get('http://Localhost:5000/getpayment/' +id)
         .then((res)=>{
           setItnumber(res.data.itnumber);
-          setDiscription(res.data.discription);
+          setDescription(res.data.description);
           setDate(res.data.date);
           setAmount(res.data.amount);
           setType(res.data.type);
@@ -39,7 +39,7 @@ function Mgedit() {
         axios.get('http://Localhost:5000/getbank/' +id)
         .then((res)=>{
           setItnumber(res.data.itnumber);
-          setDiscription(res.data.discription);
+          setDescription(res.data.description);
           setDate(res.data.date);
           setAmount(res.data.amount);
           setType(res.data.type);
@@ -53,7 +53,7 @@ function Mgedit() {
         axios.get('http://Localhost:5000/getcash/' +id)
         .then((res)=>{
           setItnumber(res.data.itnumber);
-          setDiscription(res.data.discription);
+          setDescription(res.data.description);
           setDate(res.data.date);
           setAmount(res.data.amount);
           setType(res.data.type);
@@ -64,7 +64,7 @@ function Mgedit() {
     },[id]);
 
     const update = () =>{
-        axios.put('http://Localhost:5000/updateonlinemg/'+id,{itnumber:itnumber , discription:discription,
+        axios.put('http://Localhost:5000/updateonlinemg/'+id,{itnumber:itnumber , description:description,
         date:date , amount:amount, type:type, status:status })
       
         .then(res=>{
@@ -75,7 +75,7 @@ function Mgedit() {
       }
       
       const updatebank = () =>{
-        axios.put('http://Localhost:5000/updatebankmg/'+id,{itnumber:itnumber , discription:discription,
+        axios.put('http://Localhost:5000/updatebankmg/'+id,{itnumber:itnumber , description:description,
         date:date , amount:amount, type:type, status:status })
       
         .then(res=>{
@@ -86,7 +86,7 @@ function Mgedit() {
       }
       
       const updatecash = () =>{
-        axios.put('http://Localhost:5000/updatecashmg/'+id,{itnumber:itnumber , discription:discription,
+        axios.put('http://Localhost:5000/updatecashmg/'+id,{itnumber:itnumber , description:description,
         date:date , amount:amount, type:type, status:status })
       
         .then(res=>{
@@ -180,11 +180,11 @@ function Mgedit() {
                     <form className="paymge" onSubmit={(e) => handleSubmit(e)}>
                         <br />
                         <label htmlFor="cname" className="labelmge1">IT Number:</label>
-                        <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$" required className="textmge1" value={itnumber} onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
+                        <input type="text" name="itnum" placeholder="IT12345678"  required className="textmge1" value={itnumber} onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
 
 
                         <label id="totalA" name="totalA" className="labelmge1">Description:</label>
-                        <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="textmge3" value={discription} onChange={(e)=>setDiscription(e.target.value)}/><br /><br />
+                        <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="textmge3" value={description} onChange={(e)=>setDescription(e.target.value)}/><br /><br />
 
                         <label htmlFor="tda" className="labelmge1">Date:</label>
                         <input type="date" name="dates" placeholder="(DD/MM/YY)" value={date} required className="textmge4" onChange={(e)=>setDate(e.target.value)}/><br /><br />

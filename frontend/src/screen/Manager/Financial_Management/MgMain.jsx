@@ -87,7 +87,7 @@ function MgMain() {
             type="button"
             className="buttonmag"
             onClick={handleClick3}
-          >Add a Payment</button>
+          >Top up Wallet</button>
 
  
         </form>
