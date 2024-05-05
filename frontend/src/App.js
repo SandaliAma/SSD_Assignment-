@@ -205,7 +205,7 @@ function App() {
       <Route path='/homemain' element={<Home />} />      
       <Route path='/managersalary' element={<ManagerSalary />} />
       <Route path='/home' element={<ManagerView />} />
-      <Route path='/update/:id' element={<UpdateManager />} />
+      <Route path='/updatesal/:id' element={<UpdateManager />} />
       <Route path="/Manager/Timetable" element={<ManagerTimetable/>} />
       <Route path='/Manager/AddnewClasstime' element={<AddNewClassForm/>}/>
       <Route path='/Manager/UpdateTimetable/:id' element={< ManagerUpdateTimetable/>}/>

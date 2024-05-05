@@ -160,7 +160,7 @@ function Manager() {
                   <td className='tdkn'>{salary.MonthlySalary}</td>
                   <td className='tdkn'>{salary.Date}</td>
                   <td className='tdkn'>
-                    <Link to={`/update/${salary._id}`}>
+                    <Link to={`/updatesal/${salary._id}`}>
                       <button className='buttonkn4'>Update</button>
                     </Link>
                   </td>
