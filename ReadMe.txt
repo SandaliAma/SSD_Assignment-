@@ -37,6 +37,7 @@ npm i react-to-print
 npm install sweetalert2
 npm i react-toastify
 npm i react-transition-group
+npm install @react-pdf/renderer
 
 Main File
 
