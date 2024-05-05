@@ -12,6 +12,7 @@ function CreateManager() {
   const [SubjectName, setSubjectName] = useState('');
   const [Grade, setGrade] = useState('');
   const [AttendStudents, setAttendStudents] = useState('');
+  const [subjectfee, setSubjectfee] = useState('');
   const [FreeCardAmount, setFreeCardAmount] = useState('');
   const [InstitutePayment, setInstitutePayment] = useState('');
   const [MonthlySalary, setMonthlySalary] = useState('');
@@ -123,6 +124,21 @@ function CreateManager() {
     }
   }, [teacher]);
 
+  const [subject, setSubject] = useState([]);
+
+  useEffect(() => {
+    
+        axios.get('/getSubject')
+          .then((res) => {
+            const viewgrade = res.data.filter(viewgrade => viewgrade.grade === Grade && viewgrade.subjectname === SubjectName);
+            setSubject(viewgrade);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    
+      
+  }, []);
   
 
   return (
@@ -152,8 +168,21 @@ function CreateManager() {
             <label htmlFor="subjectName" className="labelA3">Enter Subject Name:</label>
             <input type="text" id="subjectName" name="subjectName" placeholder="Enter Subject" required className="text1" value={SubjectName} onChange={(e) => setSubjectName(e.target.value)} /><br /><br />
 
-            <label htmlFor="grade" className="labelA4">Enter Grade:</label>
-            <input type="text" id="grade" name="grade" placeholder="Grade" required className="text1" onChange={(e) => setGrade(e.target.value)} /><br /><br />
+            <label htmlFor="grade" className="labelA4">Enter Grade:</label>            
+            <select id="grade" name="grade" style={{ width: '250px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setGrade(a.target.value)}>
+              <option value=""></option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+            </select>
+
+            <br /><br />
+
+            <label htmlFor="grade" className="labelA4">Enter Subject Fee:</label>
+            <input type="text" id="subfee" name="subfee" placeholder="Subject fee" required className="text1" value={subject.amount} onChange={(e) => setSubjectfee(e.target.value)} /><br /><br />
 
             <label htmlFor="attendStudents" className="labelA5">Enter Attend Students:</label>
             <input type="text" id="attendStudents" name="attendStudents" placeholder="Students" required className="text1" onChange={(e) => setAttendStudents(e.target.value)} /><br /><br />
