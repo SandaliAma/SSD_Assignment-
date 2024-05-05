@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Head from '../Header/Header'
 
 const AddClassForm = ({ onSubmit }) => {
   const [date, setDate] = useState('');
@@ -75,6 +76,8 @@ const AddClassForm = ({ onSubmit }) => {
     setEndTime(e.target.value);
   };
   return (
+    <div>
+      <Head/>
   <div className=' flex p-2 h-screen 'style={{ width: '1020px'}}> 
       
         <br></br>
@@ -169,6 +172,7 @@ const AddClassForm = ({ onSubmit }) => {
         <br></br> <br></br><center>
       <button type="submit" className='m-3' style={{ backgroundColor:'#0087FF',width:'180px',display: 'inline-block', padding: '0.2rem 1rem', textAlign: 'center', borderRadius: '0.25rem', color: 'whiite', textDecoration: 'none'  }}>Add Class</button></center>
     </form></div> </div>
+    </div>
   );
 };
 
