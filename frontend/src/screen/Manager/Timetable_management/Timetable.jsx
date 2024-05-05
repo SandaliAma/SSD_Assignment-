@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import 'tailwindcss/tailwind.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import Head from '../Header/Header'
 
 
 
@@ -126,6 +127,8 @@ function ManagerTimetable  (){
     { value: '12', name: 'December' },
   ];
   return (
+    <div>
+      <Head/>
     <div className="mt-4">
       
       <h2 className="text-lg font-bold mb-2">Timetable Data</h2>
@@ -204,6 +207,7 @@ function ManagerTimetable  (){
       <button onClick={generatePDF} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"style={{ width: '1100px', marginLeft:'300px'}}>
         Generate PDF
       </button>
+    </div>
     </div>
     </div>
   );
