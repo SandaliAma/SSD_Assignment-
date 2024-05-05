@@ -39,6 +39,10 @@ function Nav() {
                         <a href='/ManagerEnroll'>Enrollments</a>
                     </li>
                     <li>
+                        <img src={classes} alt='home' className='navimage'/>
+                        <a href='/SubjectView'>Subject</a>
+                    </li>
+                    <li>
                         <img src={pay} alt='home' className='navimage'/>
                         <a href='/managerfinancial'>Payment</a>
                     </li>
