@@ -89,6 +89,10 @@ import ManagerWallet from './screen/Manager/Financial_Management/ManagerWallet';
 import SearchusersManager from './screen/Manager/User_Management/ManagerSearchusers';
 import RequestedAdditionalClasses from './screen/Manager/Class_Management/RequestedAdditionalclasses';
 import ApprovalClasses from './screen/Manager/Class_Management/ApprovalClasses';
+import ManagerEnroll from './screen/Manager/Enroll_Management/ManagerEnroll';
+import EnrollmentForm from './screen/Manager/Enroll_Management/EnrollmentForm';
+import Attend from './screen/Manager/Attendance/Attend';
+import SubjectView from './screen/Manager/Attendance/SubjectView';
 
 import AdminLogin from './screen/Admin/User_Management/AdminLogin';
 import AdminForgetPassword from './screen/Admin/User_Management/Forgetpasswordadmin';
@@ -209,6 +213,10 @@ function App() {
       <Route path='/searchusersmanager' element={<SearchusersManager/>}/>
       <Route path='/requestedadditionalclasses' element={<RequestedAdditionalClasses/>}/>
       <Route path='/approvalclasses/:id' element={<ApprovalClasses/>}/>
+      <Route path='/ManagerEnroll' element={<ManagerEnroll/>}/>
+      <Route path='/EnrollmentForm' element={<EnrollmentForm/>}/>
+      <Route path='/Attend' element={<Attend/>}/>
+      <Route path='/SubjectView' element={<SubjectView/>}/>
 
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path='/adminforgetpassword' element={<AdminForgetPassword/>}/>
