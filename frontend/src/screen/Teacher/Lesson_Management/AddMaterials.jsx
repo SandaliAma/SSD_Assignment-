@@ -13,7 +13,7 @@ function AddMaterials() {
   const [lesson_fileType, setLessonFileType] = useState('');
   const [lesson_description, setLessonDescription] = useState('');
   const [subject_name, setClass_id] = useState('');
-  const [grade, setGrade] = useState(11);
+  const [grade, setGrade] = useState('');
   const [teacher_id, setTeacher_id] = useState('');
   const [teachername, setTeachername] = useState('');
 
@@ -137,6 +137,18 @@ function AddMaterials() {
               </select>
             </div>
           </div>
+
+          <label htmlFor="grade" className="labelA4">Enter Grade:</label>            
+            <select id="grade" name="grade" style={{ width: '250px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setGrade(a.target.value)}>
+              <option value=""></option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+            </select>
+
           <label htmlFor="description">Description:</label>
           <textarea name="description" placeholder="Enter description" onChange={(e) => setLessonDescription(e.target.value)} required></textarea>
 
