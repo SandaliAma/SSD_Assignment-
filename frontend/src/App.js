@@ -99,9 +99,14 @@ import UpdateStudent from './screen/Admin/User_Management/UpdateStudent';
 import AdMain from './screen/Admin/Financial_Management/AdMain'
 import AdGenerate from './screen/Admin/Financial_Management/AdGenerate'
 import AdReport from './screen/Admin/Financial_Management/AdReport'
+import AdminLessonReport from './screen/Admin/Lesson_Management/AdminLessonReport'
+import ReportMonth from './screen/Admin/Lesson_Management/ReportMonth';
+import LessonReport from './screen/Admin/Lesson_Management/LessonReport';
 
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
+
+
 
 
 axios.defaults.baseURL = 'http://localhost:5000';
@@ -210,7 +215,10 @@ function App() {
 
       <Route path="/admain" element={<AdMain />} />  
       <Route path="/adgenrate" element={<AdGenerate />} />  
-      <Route path="/adreport" element={<AdReport />} />          
+      <Route path="/adreport" element={<AdReport />} />
+      <Route path="/adlessonreport" element={<AdminLessonReport/>} />   
+      <Route path="/adgenratelesson" element={<ReportMonth />} />  
+      <Route path="/lessonReport" element={<LessonReport />} /> 
       
     </Routes>    
     </>
