@@ -2,7 +2,6 @@ import React from 'react';
 import './navbar.css'
 import home from './navbar_images/Home.png'
 import classes from './navbar_images/Class.png'
-import enroll from './navbar_images/Enroll.png'
 import pay from './navbar_images/Pay.png'
 import time from './navbar_images/Time.png'
 import attendance from './navbar_images/Attendance.png'
@@ -45,11 +44,11 @@ function Nav() {
                     </li>
                     <li>
                         <img src={time} alt='home' className='navimage'/>
-                        <a href='/studenttimetable'>TimeTable</a>
+                        <a href='/login'>TimeTable</a>
                     </li>
                     <li>
                         <img src={attendance} alt='home' className='navimage'/>
-                        <a href='/login'>Attendance</a>
+                        <a href='/AttendTeacher'>Attendance</a>
                     </li>
                     <li>
                         <img src={qa} alt='home' className='navimage'/>

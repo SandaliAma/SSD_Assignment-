@@ -82,14 +82,14 @@ function TeacherProfileEdit() {
                         <td>
                             <p class='hellotxt'>{name}<br/>{teid}<br/>Teacher</p>
                         </td>
-                        <td>
+                        {/* <td>
                            <form > 
                                 <button className='btnup' type="submit">Upload New Profile Photo </button>
                            </form>
                         </td>
                         <td>
                             <button className='btnedit' type="submit">Delete Profile Photo</button>
-                        </td>
+                        </td> */}
                     </tr>
                 </table> 
                 <div class="updateform">

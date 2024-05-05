@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './RequestSchedule.css'; // Importing CSS file
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Import Swal
 import { toast } from 'react-toastify'; // Import toast
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS
+import Head from '../Header/Header';
 
 function RequestSchedule() {
     const [teacher, setTeacher] = useState('');
@@ -115,8 +116,23 @@ function RequestSchedule() {
             }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
         }, 5000); // Wait for 5 seconds before dismissing loading toast
     };
+    useEffect(()=>{
+        axios.get('/teacherprofile')
+        .then((res)=>{
+            setTeacher(res.data.name);    
+            setTeacherId(res.data.teid);  
+            setSubject(res.data.subject);           
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+      },[])
+
 
     return (
+        <div>
+            <Head/>
+    
         <div className="request-schedule-container">
             <div className="request-schedule-box">
                 <h2 className="request-schedule-title">Request A Schedule</h2>
@@ -124,7 +140,7 @@ function RequestSchedule() {
                     <form onSubmit={request}>
                         <div className="input-container">
                             <label htmlFor="teacherInput">Teacher</label>
-                            <input type="text" id="teacherInput" pattern="[A-Za-z\s]+" required value={teacher} onChange={(e) => setTeacher(e.target.value)}/>
+                            <input type="text" id="teacherInput" pattern="[A-Za-z\s]+" required value={teacher} onChange={(e) => setTeacher(e.target.value)} readOnly/>
                         </div>
                         <div className="input-container">
                             <label htmlFor="classidInput">Class Id</label>
@@ -132,7 +148,7 @@ function RequestSchedule() {
                         </div>
                         <div className="input-container">
                             <label htmlFor="teacheridInput">Teacher Id</label>
-                            <input type="text" id="teacheridInput" required value={teacherid} onChange={(e) => setTeacherId(e.target.value)} />
+                            <input type="text" id="teacheridInput" required value={teacherid} onChange={(e) => setTeacherId(e.target.value)} readOnly/>
                         </div>
                         <div className="input-container">
                             <label htmlFor="gradeInput">Grade</label>
@@ -156,13 +172,14 @@ function RequestSchedule() {
                         </div>
                         <div className="input-container">
                             <label htmlFor="subjectInput">Subject</label>
-                            <input type="text" id="subjectInput" pattern="[A-Za-z\s]+" required value={subject} onChange={(e) => setSubject(e.target.value)}/>
+                            <input type="text" id="subjectInput" pattern="[A-Za-z\s]+" required value={subject} onChange={(e) => setSubject(e.target.value)} readOnly/>
                         </div>
                         <div className="button-container">
                             <button className="cancel-button" type="button" onClick={clearForm}>Cancel</button>
                             <button className="save-button" type="submit">Request</button>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>

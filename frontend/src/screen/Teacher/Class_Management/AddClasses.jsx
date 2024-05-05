@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Import Swal
 import { toast } from 'react-toastify'; // Import toast
+import Head from '../Header/Header';
 
 function AddClasses() {
     const [teacher, setTeacher] = useState('');
@@ -103,6 +104,9 @@ function AddClasses() {
       },[])
 
     return (
+        <div>
+            <Head/>
+     
         <div className="add-classes-container">
             <h2 className="add-class-title">Add Classes</h2>
             <div className="form-container">
@@ -141,6 +145,7 @@ function AddClasses() {
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     );
 }

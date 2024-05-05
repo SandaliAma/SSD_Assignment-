@@ -7,15 +7,25 @@ function TeacherView() {
 
   const [teachers, setTeachers] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://Localhost:5000/users')
-      .then((res) => {
-        setTeachers(res.data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
 
-  
+
+  useEffect(() => {
+    axios.get('/teacherprofile')
+      .then((res) => {
+        const tid= res.data.teid;
+        axios.get('/users')
+          .then((res) => {
+            const viewsalary = res.data.filter(viewsalarys => viewsalarys.TeacherID === tid );
+            setTeachers(viewsalary);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>

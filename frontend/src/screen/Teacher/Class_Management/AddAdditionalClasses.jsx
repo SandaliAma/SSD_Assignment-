@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddAdditionalClasses.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Import Swal
 import { toast } from 'react-toastify'; // Import toast
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS
+import Head from '../Header/Header';
 
 function AddAdditionalClasses() {
     const [teacher, setTeacher] = useState('');
@@ -98,14 +99,28 @@ function AddAdditionalClasses() {
         }, 5000); // Wait for 5 seconds before dismissing loading toast
     };
 
+    useEffect(()=>{
+        axios.get('/teacherprofile')
+        .then((res)=>{
+            setTeacher(res.data.name);    
+            setTeacherId(res.data.teid);  
+            setSubject(res.data.subject);           
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+      },[])
+
     return (
+        <div>
+            <Head/>
         <div className="addadditional-classes-container">
             <h2 className="addadditional-class-title">Add Additional Classes</h2>
             <div className="form-container">
                 <form onSubmit={request}>
                     <div className="input-container">
                         <label htmlFor="teacherInput">Teacher</label>
-                        <input type="text" id="teacherInput" pattern="[A-Za-z\s]+" required value={teacher} onChange={(e) => setTeacher(e.target.value)} />
+                        <input type="text" id="teacherInput" pattern="[A-Za-z\s]+" required value={teacher} onChange={(e) => setTeacher(e.target.value)} readOnly/>
                     </div>
                     <div className="input-container">
                         <label htmlFor="classidInput">Class Id</label>
@@ -113,7 +128,7 @@ function AddAdditionalClasses() {
                     </div>
                     <div className="input-container">
                         <label htmlFor="teacheridInput">Teacher Id</label>
-                        <input type="text" id="teacheridInput" required value={teacherid} onChange={(e) => setTeacherId(e.target.value)} />
+                        <input type="text" id="teacheridInput" required value={teacherid} onChange={(e) => setTeacherId(e.target.value)} readOnly/>
                     </div>
                     <div className="input-container">
                         <label htmlFor="gradeInput">Grade</label>
@@ -125,7 +140,7 @@ function AddAdditionalClasses() {
                     </div>
                     <div className="input-container">
                         <label htmlFor="subjectInput">Subject</label>
-                        <input type="text" id="subjectInput" pattern="[A-Za-z\s]+" required value={subject} onChange={(e) => setSubject(e.target.value)} />
+                        <input type="text" id="subjectInput" pattern="[A-Za-z\s]+" required value={subject} onChange={(e) => setSubject(e.target.value)} readOnly/>
                     </div>
                     <div className="button-container">
                         <Link to="/additionalclasses" className="cancel-button">Cancel</Link>
@@ -134,6 +149,7 @@ function AddAdditionalClasses() {
                 </form>
                 <br></br>
                 <Link to="/requestschedule" className="requestschedule-button">Request A Schedule</Link>
+            </div>
             </div>
         </div>
     );

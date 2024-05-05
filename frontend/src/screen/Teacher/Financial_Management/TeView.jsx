@@ -24,6 +24,37 @@ function TeView() {
         .catch((err) => console.error(err));
     }, []);
 
+
+    
+    useEffect(() => {
+        axios.get('/teacherprofile')
+          .then((res) => {
+            const tsubject = res.data.subject;
+            
+            Promise.all([
+              axios.get('/displayonline'),
+              axios.get('/displaybank'),
+              axios.get('/displaycash')
+            ])
+            .then(([onlineRes, bankRes, cashRes]) => {
+              const onlinePayments = onlineRes.data;
+              const bankPayments = bankRes.data;
+              const cashPayments = cashRes.data;
+              
+              // Filter payments based on teacher's subject
+              const tepayment = [...onlinePayments, ...bankPayments, ...cashPayments].filter(tepayment => tepayment.description === tsubject);
+              setAllPayments(tepayment);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, []);
+    
+
   const filteredPayments = allPayments.filter(payment => {
     // Check if payment.itnumber exists and is not undefined before calling includes()
     return payment.itnumber && payment.itnumber.includes(searchQuery);
