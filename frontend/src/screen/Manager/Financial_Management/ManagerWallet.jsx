@@ -11,7 +11,7 @@ function ManagerWallet() {
     const [itnumber, setItnumber] = useState('');
     const [walletId, setWalletId] = useState([]);
     const [date, setDate] = useState('');
-    const [amount, setAmount] = useState('');
+    // const [amount, setAmount] = useState('');
     const navigator = useNavigate();
 
   
@@ -45,17 +45,19 @@ function ManagerWallet() {
        
     };
 
-    useEffect(() => {        
-        axios.get('http://localhost:5000/displaywallet')
-          .then(res => {
+    const handlesearch = (e) => {
+        e.preventDefault();
+       
+            axios.get('http://localhost:5000/displaywallet')
+              .then(res => {
             const wallet = res.data.filter(wallet =>
-                wallet.stdid === "SID241890" 
+                wallet.stdid === itnumber
             );
             setWalletId(wallet);
-          })
-          .catch(err => console.error(err));
-        
-      }, []);
+              })
+              .catch(err => console.error(err));
+           
+    }    
 
     const handleClick2 = () => {
         toast.loading('Wallet is processing...', {
@@ -111,26 +113,33 @@ function ManagerWallet() {
     <div className="bodymgpa">
         <h1 className="h1mgpa"><br />Wallet</h1>
         <div className="containermgpa">
-            <form className="paymgpa" onSubmit={handleSubmit} >
-                <br />
-                <label htmlFor="cname" className="labelmgpa1">Enter IT Number:</label><br />
-                <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$" required className="textmgpa1" onChange={(e) => setItnumber(e.target.value)} /><br /><br />
-                <label htmlFor="an" className="labelmgpa1">Enter wallet Id:</label><br />
 
+            <form onSubmit={handlesearch}>
+                <label htmlFor="cname" className="labelmgpa1">Enter IT Number:</label><br />
+                <input type="text" name="itnum" placeholder="IT12345678" required className="textmgpa1" onChange={(e) => setItnumber(e.target.value)} />
+                <button type="submit" name="submit" className="buttonmgpa3">Search</button>
+            </form>
+
+                         
+              
                 {walletId.map((wall) => (
                 <div key={wall._id}>
+                    <form className="paymgpa" onSubmit={handleSubmit} >
+                         <br />  
+                    <label htmlFor="an" className="labelmgpa1">Enter wallet Id:</label><br />
                     <input type="text" name="sname" placeholder="Enter Name" required className="textmgpa1" value={wall.walletid} readOnly/><br /><br />
                     <label htmlFor="tda" className="labelmgpa1">Enter Date:</label><br />
                     <input type="date" name="dates" placeholder="(DD/MM/YY)" value={date} readOnly className="textmgpa4" /><br /><br />
                     <label id="totalA" name="totalA" className="labelmgpa1">Enter Amount:</label><br />
                     <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="textmgpa5" value={wall.balance} readOnly /><br /><br />
-                    
+                    <div className="containermgpa4">
+                    <button type="submit" name="submit" className="buttonmgpa3">Confirm</button>
+                    </div>
+                    </form>
                 </div>
                 ))}
-                <div className="containermgpa4">
-                    <button type="submit" name="submit" className="buttonmgpa3">Confirm</button>
-                </div>
-            </form>
+                
+            
         </div>
     </div>
 </div>
