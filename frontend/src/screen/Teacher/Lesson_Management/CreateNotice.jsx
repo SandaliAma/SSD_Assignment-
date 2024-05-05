@@ -33,25 +33,25 @@ function CreateNotice() {
         setDate(formattedDate);
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('/teacherprofile')
-        .then((res)=>{
-            setTeacher_id(res.data.teid);
-            setsubject_name(res.data.subject) ;            
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    },[])
+            .then((res) => {
+                setTeacher_id(res.data.teid);
+                setsubject_name(res.data.subject);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
 
     const submit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:5000/createnotice', {
             topic: topic,
             date: date,
-            description: description,            
+            description: description,
             teacher_id: teacher_id,
-            subject_name : subject_name,
+            subject_name: subject_name,
             grade: grade
         }).then(res => {
             console.log('Success');
@@ -77,6 +77,19 @@ function CreateNotice() {
             <h2 class="form_topic">Add Notice</h2>
             <div className="input_container">
                 <form onSubmit={submit}>
+
+                    <label htmlFor="grade" className="input_col">Enter Grade:</label>
+                    <select id="grade" name="grade" required onChange={(a) => setGrade(a.target.value)}>
+                        <option value="">Select</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+
+
                     <label htmlFor="topic">Notice Topic:</label>
                     <input type="text" name="topic" placeholder="Enter topic" onChange={(e) => setTopic(e.target.value)} required />
                     <div className="input_group">
@@ -88,16 +101,7 @@ function CreateNotice() {
                     <label htmlFor="description">Description:</label>
                     <input type="text" name="description" placeholder="Enter description" onChange={(e) => setDescription(e.target.value)} required />
 
-                    <label htmlFor="grade" className="labelA4">Enter Grade:</label>            
-                    <select id="grade" name="grade" style={{ width: '250px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setGrade(a.target.value)}>
-                        <option value=""></option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>
+
 
                     {/* <input type="hidden" name="class_id" value="value" onChange={(e) => setClass_id(e.target.value)} /> */}
                     <input type="hidden" name="teacher_id" value="value" onChange={(e) => setTeacher_id(e.target.value)} />

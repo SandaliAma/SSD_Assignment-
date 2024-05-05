@@ -23,7 +23,7 @@ function MyClasses() {
   const [notices, setNotices] = useState([]);
   const [materials, setMaterials] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [teacher, setTeacher] = useState('');  
+  const [teacher, setTeacher] = useState('');
   const [subject, setSubject] = useState('');
 
   useEffect(() => {
@@ -44,8 +44,8 @@ function MyClasses() {
   useEffect(() => {
     axios.get('/teacherprofile')
       .then((res) => {
-        const tid= res.data.teid;
-        
+        const tid = res.data.teid;
+
         axios.get('/viewnotice')
           .then((noticeRes) => {
             const viewnotice = noticeRes.data.filter(viewnotices => viewnotices.teacher_id === tid);
@@ -171,24 +171,24 @@ function MyClasses() {
       console.error('Error downloading file:', error);
     }
   };
-  
 
-  useEffect(()=>{
+
+  useEffect(() => {
     axios.get('/teacherprofile')
-    .then((res)=>{
-        setTeacher(res.data.name);            
-        setSubject(res.data.subject);           
-    })
-    .catch((err)=>{
+      .then((res) => {
+        setTeacher(res.data.name);
+        setSubject(res.data.subject);
+      })
+      .catch((err) => {
         console.log(err);
-    })
-  },[])
+      })
+  }, [])
 
 
 
   return (
     <div>
-     <Head/>
+      <Head />
       <div>
 
         <div className="container">
@@ -196,7 +196,7 @@ function MyClasses() {
 
 
           <div className="main-content">
-          
+
             <div className="class_details">
 
               <h2>Class Details</h2>
@@ -210,11 +210,13 @@ function MyClasses() {
               <h2>Notices</h2>
               <Link to="/createnotice" className="add_button ">Add New Notice <IoIosAddCircle style={{ marginTop: '5px', marginLeft: '2px', fontSize: '13px' }} /></Link>
               {notices.map((notice) => (
+
                 <div className="notice" key={notice._id}>
+                  <div className="lesson-grade">Grade: {notice.grade}</div>
                   <div className="notice-date">{notice.date}</div>
                   <div className="notice-title">{notice.topic}</div>
                   <div className="notice-description">{notice.description}</div>
-        
+
                   <Link to={`/editnotice/${notice._id}`} className="edit_button">Edit Notice <FaEdit style={{ marginTop: '5px', marginLeft: '2px', fontSize: '13px' }} /></Link>
                   <button className="delete_button" onClick={(e) => handleDeleteNotice(notice._id)}>Delete Notice <MdDelete style={{ marginTop: '5px', marginLeft: '2px', fontSize: '13px' }} /> </button>
 
@@ -228,11 +230,13 @@ function MyClasses() {
               <div className="search_bar_container">
                 <input type="search" className="search_input" placeholder="Search Materials..." value={searchTerm} onChange={handleSearchChange} />
               </div>
-              <div className="month">Materials for March 2024</div>
+
               {filteredMaterials.map((lesson) => (
                 <div className="lesson" key={lesson._id}>
+                  <div className="lesson-grade">Grade: {lesson.grade}</div>
                   <div className="lesson-title">{lesson.lesson_topic}</div>
                   <div className="lesson-date">Date: {lesson.lesson_date}</div>
+                  <br />
                   <div className="lesson-description">  {lesson.lesson_description}</div>
                   <button className="material_link" onClick={() => showFile(lesson.lesson_Files)}>View Material <IoIosArrowDroprightCircle style={{ marginTop: '5px', marginLeft: '2px', fontSize: '12px' }} />
                   </button>
@@ -248,7 +252,7 @@ function MyClasses() {
         </div>
       </div>
 
-     
+
     </div>
   );
 }

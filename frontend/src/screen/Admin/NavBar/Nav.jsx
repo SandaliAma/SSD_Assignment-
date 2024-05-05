@@ -36,6 +36,10 @@ function Nav() {
                         <a href='/lessonmaterial'>My Classes</a>
                     </li>
                     <li>
+                        <img src={classes} alt='home' className='navimage'/>
+                        <a href='/adgenratelesson'>Lesson Materials</a>
+                    </li>
+                    <li>
                         <img src={enroll} alt='home' className='navimage'/>
                         <a href='/login'>Enrollments</a>
                     </li>
