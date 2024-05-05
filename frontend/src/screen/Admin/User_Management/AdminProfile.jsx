@@ -30,7 +30,7 @@ function AdminProfile() {
     
   return (
     <main>
-        <div>
+
             <Head/>
         <div className='profilecontent'>        
             
@@ -86,7 +86,7 @@ function AdminProfile() {
                 <div class="line"></div>               
                 </div>
             </div>            
-        </div>
+      
     </main>
   )
 }

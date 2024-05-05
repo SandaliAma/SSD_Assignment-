@@ -61,7 +61,7 @@ function Nav() {
                     </li>
                     <li>
                         <img src={profile} alt='home' className='navimage'/>
-                        <a href='/studentprofile'>Profile</a>
+                        <a href='/adminprofile'>Profile</a>
                     </li>
                     <li>
                         <img src={wallet} alt='home' className='navimage'/>

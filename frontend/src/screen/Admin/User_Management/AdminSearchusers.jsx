@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './profile.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-// import { Link } from 'react-router-dom'
-
+import Head from '../Header/Header';
 
 function AdminSearchusers() {
     const [, setName] = useState();    
@@ -61,6 +60,7 @@ function AdminSearchusers() {
     
   return (
     <main>
+        <Head/>
         <div className='profilecontent'>        
            
             <div>                
@@ -79,33 +79,33 @@ function AdminSearchusers() {
                         </tr>
                     </table>   
                     <br/>
-                    <table className='searchtablemain'>
-                        <tr>
-                            <th className='searchtable'>Student ID</th>
-                            <th className='searchtable'>Student Name</th>
-                            <th className='searchtable'>Email</th>
-                            <th className='searchtable'>Phone</th>
-                            <th className='searchtable'>Grade</th>
-                            <th className='searchtable'>Username</th>
-                            <th className='searchtable'>Gender</th>
-                            <th className='searchtable'>Parent name</th>
-                            <th className='searchtable'>Parent phonenumber</th>
-                            <th className='searchtable'>Security Answer</th>
+                    <table className='searchtablemainmanager'>
+                        <tr className='searchtablemainmanagerheader'>
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Grade</th>
+                            <th>Username</th>
+                            <th>Gender</th>
+                            <th>Parent name</th>
+                            <th>Parent phonenumber</th>
+                            <th>Security Answer</th>
                         </tr>
                         {student.filter((student) => {
                             return searchstudent.toLowerCase() === '' ? student : student.name.toLowerCase().includes(searchstudent)
                         }).map((student) => (
-                            <tr>
-                                <td className='searchtable'>{student.stdid}</td>
-                                <td className='searchtable'>{student.name}</td>
-                                <td className='searchtable'>{student.email}</td>
-                                <td className='searchtable'>{student.contactnumber}</td>
-                                <td className='searchtable'>{student.grade}</td>
-                                <td className='searchtable'>{student.username}</td>
-                                <td className='searchtable'>{student.gender}</td>
-                                <td className='searchtable'>{student.parentname}</td>
-                                <td className='searchtable'>{student.parentphonenumber}</td>
-                                <td className='searchtable'>{student.SecAnswer}</td>
+                            <tr className='searchtablemainadmindata'>
+                                <td className='searchtabledata'>{student.stdid}</td>
+                                <td className='searchtabledata'>{student.name}</td>
+                                <td className='searchtabledata'>{student.email}</td>
+                                <td className='searchtabledata'>{student.contactnumber}</td>
+                                <td className='searchtabledata'>{student.grade}</td>
+                                <td className='searchtabledata'>{student.username}</td>
+                                <td className='searchtabledata'>{student.gender}</td>
+                                <td className='searchtabledata'>{student.parentname}</td>
+                                <td className='searchtabledata'>{student.parentphonenumber}</td>
+                                <td className='searchtabledata'>{student.SecAnswer}</td>
                                 <td>
                                     <Link to={`/updatestudent/${student.stdid}`}>
                                         <button className='btnupdate' >Update</button>                                       
@@ -132,29 +132,29 @@ function AdminSearchusers() {
                         </tr>
                     </table>   
                     <br/>
-                    <table className='searchtablemain'>
-                        <tr>
-                        <th className='searchtable'>Teacher ID</th>
-                            <th className='searchtable'>Teacher Name</th>
-                            <th className='searchtable'>Email</th>
-                            <th className='searchtable'>Phone</th>
-                            <th className='searchtable'>Username</th>
-                            <th className='searchtable'>Gender</th>  
-                            <th className='searchtable'>Subject</th>                            
-                            <th className='searchtable'>Security Answer</th>
+                    <table className='searchtablemainmanager'>
+                        <tr className='searchtablemainmanagerheader'>
+                            <th>Teacher ID</th>
+                            <th>Teacher Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Username</th>
+                            <th>Gender</th>  
+                            <th>Subject</th>                            
+                            <th>Security Answer</th>
                         </tr>
                         {teacher.filter((teacher) => {
                             return searchteacher.toLowerCase() === '' ? teacher : teacher.name.toLowerCase().includes(searchteacher)
                         }).map((teacher) => (
-                            <tr>
-                                <td className='searchtable'>{teacher.teid}</td>
-                                <td className='searchtable'>{teacher.name}</td>
-                                <td className='searchtable'>{teacher.email}</td>
-                                <td className='searchtable'>{teacher.contactnumber}</td>
-                                <td className='searchtable'>{teacher.username}</td>
-                                <td className='searchtable'>{teacher.gender}</td>  
-                                <td className='searchtable'>{teacher.subject}</td>                                
-                                <td className='searchtable'>{teacher.SecAnswer}</td>
+                            <tr className='searchtablemainadmindata'>
+                                <td className='searchtabledata'>{teacher.teid}</td>
+                                <td className='searchtabledata'>{teacher.name}</td>
+                                <td className='searchtabledata'>{teacher.email}</td>
+                                <td className='searchtabledata'>{teacher.contactnumber}</td>
+                                <td className='searchtabledata'>{teacher.username}</td>
+                                <td className='searchtabledata'>{teacher.gender}</td>  
+                                <td className='searchtabledata'>{teacher.subject}</td>                                
+                                <td className='searchtabledata'>{teacher.SecAnswer}</td>
                                 <td><button className='btnupdate' >Update</button></td>
                                 <td><button className='btndelete' onClick={(e) => teacherDelete(teacher._id)}>Delete</button></td>
                             </tr>

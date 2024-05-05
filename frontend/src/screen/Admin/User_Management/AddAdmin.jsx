@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast';
+import Head from '../Header/Header';
 
 function AddAdmin() {
     const navigate = useNavigate();
@@ -45,6 +46,7 @@ function AddAdmin() {
    
   return (
     <main>
+         <Head/>
         <div className='profilecontent'>            
             <div>                  
                 <p class='usertxt'>Add Admin</p> 
@@ -57,11 +59,11 @@ function AddAdmin() {
                         <td>
                             <p class='hellotxt'>Admin</p>
                         </td>
-                        <td>
+                        {/* <td>
                            <form > 
                                 <button className='btnup' type="submit">Upload New Profile Photo </button>
                            </form>
-                        </td>  
+                        </td>   */}
                     </tr>
                 </table> 
                 <div class="updateform">

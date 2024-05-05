@@ -226,10 +226,37 @@ a:hover{
     margin-left: -90px;
 }
 
-.searchtable{
-    border: 1px solid rgb(7, 0, 102);    
+.searchtablerow{
+    border-bottom: #000000;   
 }
 
 .searchtablemain{
     width: 98%;
+}
+
+.searchtablemainmanager{
+    width: 90%;         
+}
+
+.searchtablemainmanagerheader{
+    font-family: 'Bahnschrift';  
+    font-size: 18px;      
+    color: #384D6C;
+    height: 35px;
+    background-color: white;       
+}
+
+.searchtablemainmanagerheader th {
+    padding: 10px;
+    border-bottom: 1px solid rgb(7, 0, 102);
+}
+
+.searchtablemainadmindata{
+    height: 35px;  
+}
+
+.searchtabledata{
+    height: 35px;   
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background-color: #ffffff;
 }

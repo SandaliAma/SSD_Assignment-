@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast';
+import Head from '../Header/Header';
 
 function AddTeacher() {
     const navigate = useNavigate();
@@ -65,6 +66,7 @@ function AddTeacher() {
     
   return (
     <main>
+        <Head/>
         <div className='profilecontent'>            
             <div>                
                 <p class='usertxt'>Add Teacher</p> 
@@ -77,11 +79,11 @@ function AddTeacher() {
                         <td>
                             <p class='hellotxt'>Teacher</p>
                         </td>
-                        <td>
+                        {/* <td>
                            <form > 
                                 <button className='btnup' type="submit">Upload New Profile Photo </button>
                            </form>
-                        </td>                        
+                        </td>                         */}
                     </tr>
                 </table> 
                 <div class="updateform">

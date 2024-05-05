@@ -197,5 +197,28 @@ a:hover{
 }
 
 .searchtablemainmanager{
-    width: 90%;
+    width: 90%;        
+}
+
+.searchtablemainmanagerheader{
+    font-family: 'Bahnschrift';  
+    font-size: 18px;      
+    color: #384D6C;
+    height: 35px;
+    background-color: white;       
+}
+
+.searchtablemainmanagerheader th {
+    padding: 10px;
+    border-bottom: 1px solid rgb(7, 0, 102);
+}
+
+.searchtablemainadmindata{
+    height: 35px;  
+}
+
+.searchtabledata{
+    height: 35px;   
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background-color: #ffffff;
 }

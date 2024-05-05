@@ -6,14 +6,11 @@ import axios from 'axios';
 
 function Header() {
 
-    const [name, setName] = useState();
-    const [grade, setGrade] = useState();
-
+    const [name, setName] = useState();    
     useEffect(()=>{
-      axios.get('/studentprofile')
+      axios.get('/adminprofile')
       .then((res)=>{
-          setName(res.data.name);  
-          setGrade(res.data.grade);           
+          setName(res.data.name);             
       })
       .catch((err)=>{
           console.log(err);
@@ -32,7 +29,7 @@ function Header() {
                             <img src={logo} alt='logo'/>
                         </td>
                         <td>
-                            <p class='hellotxt'><b>Hello, {name}<br/>Grade {grade}</b><br/>Student</p>
+                            <p class='hellotxt'><b>Hello, {name}</b><br/>Admin</p>
                         </td>
                         <td>
                             <img src={userpng} alt='logo' class='hellopic'/>
