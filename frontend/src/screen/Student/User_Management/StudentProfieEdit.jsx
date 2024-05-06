@@ -73,24 +73,38 @@ function StudentProfileEdit() {
     }
     
 
-    const updateStudent = (e) => {
+    const updateStudent = async (e) => {
         e.preventDefault();
-        axios.put('/studentprofileedit', {
-            name,
-            username,
-            gender,
-            email,
-            contactnumber,
-            parentname,
-            parentphonenumber,
-            secanswer
-        })
-            .then((res) => {
-                navigate('/studentprofile');
+
+        try {
+            await axios.put('/studentprofileedit', {
+                name,
+                username,
+                gender,
+                email,
+                contactnumber,
+                parentname,
+                parentphonenumber,
+                secanswer
             })
-            .catch((err) => {
-                console.log(err);
+      
+            await Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'Student details updated successfully!',
+              confirmButtonText: 'OK'
             });
+            navigate('/studentprofile');
+          } catch (error) {
+            console.error(error);
+      
+            await Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'An error occurred while adding student details. Please try again later.',
+              confirmButtonText: 'OK'
+            });
+          }
     };
 
     const onInputChange = (e) => {
