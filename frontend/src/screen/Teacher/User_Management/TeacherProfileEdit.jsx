@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import Head from '../Header/Header'
+import Swal from 'sweetalert2';
 // import toast from 'react-hot-toast';
 
 function TeacherProfileEdit() {
@@ -37,14 +38,11 @@ function TeacherProfileEdit() {
         })
     },[])
 
-    const updateStudent = (e) => {
+    const updateStudent = async (e) => {
         e.preventDefault();
-        // if (password !== repassword) {
-        //     toast.error('Passwords do not match');
-        //     return;
-        // }
-        // else{
-            axios.put('/teacherprofileedit', {
+       
+        try {
+            await axios.put('/teacherprofileedit', {
                 name: name,
                 username: username,
                 gender: gender,
@@ -52,15 +50,26 @@ function TeacherProfileEdit() {
                 contactnumber: contactnumber,
                 subject: subject,
                 SecAnswer: secanswer,
-                // password: password
             })
-            .then((res)=>{
-                navigate('/teacherprofile');
-            })
-            .catch((err)=>{
-                console.log(err);
-            })
-        // }
+      
+            await Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'Teacher details updated successfully!',
+              confirmButtonText: 'OK'
+            });
+            navigate('/teacherprofile');
+          } catch (error) {
+            console.error(error);
+      
+            await Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'An error occurred while adding teacher details. Please try again later.',
+              confirmButtonText: 'OK'
+            });
+          }
+
     }
 
 
