@@ -57,6 +57,9 @@ function AdminSearchusers() {
         })
     }
 
+    const studentrowCount = student.length;
+
+    const teacherrowCount = teacher.length;
     
   return (
     <main>
@@ -65,7 +68,8 @@ function AdminSearchusers() {
            
             <div>                
                 <br/>
-                <p class='usertxt'>Student Details</p> 
+                <p class='usertxt'>Student Details</p>
+                <p class='usertxt'>Student count: {studentrowCount}</p>
                 <div class="line1"></div>  
                 <div>
                     <table>
@@ -79,6 +83,7 @@ function AdminSearchusers() {
                         </tr>
                     </table>   
                     <br/>
+                    <div style={{ maxHeight: '220px', overflowY: 'scroll' }}>
                     <table className='searchtablemainmanager'>
                         <tr className='searchtablemainmanagerheader'>
                             <th>Student ID</th>
@@ -115,10 +120,12 @@ function AdminSearchusers() {
                             </tr>
                         ))}
 
-                    </table>                 
+                    </table>    
+                    </div>             
                 </div>
                 <br/>
                 <p class='usertxt'>Teacher Details</p> 
+                <p class='usertxt'>Teacher count: {teacherrowCount}</p>
                 <div class="line1"></div> 
                 <div>
                     <table>
@@ -132,6 +139,7 @@ function AdminSearchusers() {
                         </tr>
                     </table>   
                     <br/>
+                    <div style={{ maxHeight: '220px', overflowY: 'scroll' }}>
                     <table className='searchtablemainmanager'>
                         <tr className='searchtablemainmanagerheader'>
                             <th>Teacher ID</th>
@@ -160,7 +168,8 @@ function AdminSearchusers() {
                             </tr>
                         ))}
 
-                    </table>                 
+                    </table> 
+                    </div>                
                 </div>
                 <br/><br/>
             </div>            
