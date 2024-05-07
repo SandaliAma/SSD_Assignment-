@@ -3,6 +3,7 @@ import './profile.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Head from '../Header/Header';
+import Swal from 'sweetalert2';
 
 function AdminSearchusers() {
     const [, setName] = useState();    
@@ -37,24 +38,72 @@ function AdminSearchusers() {
         })
     },[])
 
-    const studentDelete = (id) =>{
-        axios.delete('/deletestudent/'+id)
-        .then((res)=>{
-            window.location.reload();        
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+    const studentDelete = (id) =>{        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Are you sure you want to delete this user?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete('/deletestudent/'+id)
+                .then((res) => {
+                  console.log('success');
+                  Swal.fire(
+                    'Deleted!',
+                    'User has been removed.',
+                    'success'
+                  ).then(() => {
+                    window.location.reload(); // Reload the page after successful deletion
+                  });
+                })
+                .catch((err) => {
+                  console.error(err);
+                  Swal.fire(
+                    'Error!',
+                    'An error occurred while deleting this user.',
+                    'error'
+                  );
+                });
+            }
+          });
     }
 
     const teacherDelete = (id) =>{
-        axios.delete('/deleteteacher/'+id)
-        .then((res)=>{
-            window.location.reload();        
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Are you sure you want to delete this user?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete('/deleteteacher/'+id)
+                .then((res) => {
+                  console.log('success');
+                  Swal.fire(
+                    'Deleted!',
+                    'User has been removed.',
+                    'success'
+                  ).then(() => {
+                    window.location.reload(); // Reload the page after successful deletion
+                  });
+                })
+                .catch((err) => {
+                  console.error(err);
+                  Swal.fire(
+                    'Error!',
+                    'An error occurred while deleting this user.',
+                    'error'
+                  );
+                });
+            }
+          });
     }
 
     const studentrowCount = student.length;
