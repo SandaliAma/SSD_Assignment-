@@ -232,8 +232,8 @@ const getupdateProfile = (req, res) =>{
 
 //update profile student by id
 const updateProfileid = (req, res) => {
-    const id = req.params.id;
-    Student.findByIdAndUpdate({stdid:id},{
+    const id = req.params.sid;
+    Student.findByIdAndUpdate({_id:id},{
         name: req.body.name,
         email: req.body.email,
         gender: req.body.gender,
