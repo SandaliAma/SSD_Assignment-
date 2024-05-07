@@ -212,7 +212,11 @@ function AdminSearchusers() {
                                 <td className='searchtabledata'>{teacher.gender}</td>  
                                 <td className='searchtabledata'>{teacher.subject}</td>                                
                                 <td className='searchtabledata'>{teacher.SecAnswer}</td>
-                                <td><button className='btnupdate' >Update</button></td>
+                                <td>
+                                    <Link to={`/updateteacher/${teacher.teid}`}>
+                                        <button className='btnupdate' >Update</button>                                       
+                                    </Link>
+                                </td>
                                 <td><button className='btndelete' onClick={(e) => teacherDelete(teacher._id)}>Delete</button></td>
                             </tr>
                         ))}

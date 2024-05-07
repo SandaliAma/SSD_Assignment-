@@ -15,6 +15,8 @@ const { test,
     forgotPasswordteacher,
     getTeacherProfile,
     getteacherupdateProfile,
+    getteacherProfileid,
+    updateteacherProfileid,
     updateteacherProfile,
     registerManager,
     loginManager,
@@ -58,6 +60,8 @@ router.get('/teacherprofile', getTeacherProfile)
 router.get('/teacherprofileall', getTeacherall)
 router.get('/getteacherprofileedit', getteacherupdateProfile)
 router.put('/teacherprofileedit', updateteacherProfile)
+router.get('/teacherprofileid/:id', getteacherProfileid)
+router.put('/teacherprofileeditid/:tid', updateteacherProfileid)
 
 router.post('/managerregister', registerManager)
 router.post('/managerlogin', loginManager)
