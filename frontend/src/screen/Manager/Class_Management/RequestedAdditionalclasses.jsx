@@ -69,7 +69,7 @@ function RequestedAdditionalClasses() {
                             <td>{addAdditionalClass.teacher}</td>
                             <td>{addAdditionalClass.grade}</td>
                             <td>{addAdditionalClass.subject}</td>
-                            <td>{addAdditionalClass.date1}</td>
+                            <td>{addAdditionalClass.date}</td>
                             <td>{addAdditionalClass.date2}</td>
                             <td>{addAdditionalClass.date3}</td>
                             <td>{addAdditionalClass.date4}</td>

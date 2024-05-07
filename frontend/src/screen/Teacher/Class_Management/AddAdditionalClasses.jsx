@@ -45,7 +45,7 @@ function AddAdditionalClasses() {
     const submitRequest = () => {
         axios.post('http://localhost:5000/createaddadditionalclass', {
             teacher: teacher,
-            date1: date1,
+            date: date1,
             grade: grade,
             subject: subject,
             classid: classid,
