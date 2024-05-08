@@ -3,14 +3,14 @@
     width: 968px;
     height: 25px;
     left: 336px;
-    top: 136px;
+    top: 130px;
     font-family: 'Epilogue';
     font-style: normal;
     font-weight: 600;
     font-size: 28.8546px;
     line-height: 25px;
     letter-spacing: 0.01em;
-    color: #5D7285;
+    color: #063a67;
     }
     
     .tt6{
@@ -19,7 +19,7 @@
         position: absolute;
         width: 338px;
         height: 39px;
-        left: 342px;
+        left: 320px;
         top: 220px;
 
         font-family: 'Epilogue';
@@ -41,7 +41,7 @@
              position: absolute;
              width: 338px;
              height: 39px;
-             left: 342px;
+             left: 300px;
              top: 370px;
      
              font-family: 'Epilogue';
@@ -63,7 +63,7 @@
         position: absolute;
         width: 338px;
         height: 39px;
-        left: 342px;
+        left: 338px;
         top: 400px;
 
         font-family: 'Epilogue';
@@ -85,7 +85,7 @@
             position: absolute;
             width: 338px;
             height: 39px;
-            left: 342px;
+            left: 325px;
             top: 520px;
     
             font-family: 'Epilogue';
@@ -108,7 +108,7 @@
         position: absolute;
         width: 338px;
         height: 39px;
-        left: 342px;
+        left: 325px;
         top: 700px;
 
         font-family: 'Epilogue';
@@ -130,7 +130,7 @@
             position: absolute;
             width: 338px;
             height: 39px;
-            left: 342px;
+            left: 300px;
             top: 780px;
     
             font-family: 'Epilogue';
@@ -167,7 +167,7 @@
     position: absolute;
     width: 338px;
     height: 39px;
-    left: 342px;
+    left: 330px;
     top: 227px;
 
     font-family: 'Epilogue';
@@ -186,15 +186,18 @@
 
     .uth2{
         text-decoration:none;
-        color:black;
-        margin-left: 320px;
-        
-        width: 1090px;
-        height: 800px;
-      background: #C9E8EA;
+      color:black;
+      margin-left: 300px;
+      width: max-content;
+      height: max-content;
+      padding-right: 100px;
+      padding-bottom: 20px;
+      
+      background: #a7cced;
       border-radius: 20px;
       text-align: center;
       border: 2px solid black;
+      margin-top: 50px;
           
       }
 
