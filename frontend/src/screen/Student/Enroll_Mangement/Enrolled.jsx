@@ -42,8 +42,11 @@ function Enrolled() {
           <table className='tabletc'>
             <thead>
               <tr>
-                <th className='thvc'>Subject Code</th>
+                
                 <th className='thvc'>Subject Name</th>
+                <th></th>
+                <th></th>
+                <th></th>
                 <th className='thvc'>Actions</th>
                 <th></th>
               </tr>
@@ -62,11 +65,7 @@ function Enrolled() {
                       <input className="buttonvo5" type="button" name="edit" value="View Class" />
                     </Link>
                   </td>
-                  <td className='tdvc'>
-                    <Link to="/viewschedule">
-                      <input className="buttonvo5" type="button" name="edit" value="View schedule" />
-                    </Link>
-                  </td>
+                  
                 </tr>
               ))}
             </tbody>

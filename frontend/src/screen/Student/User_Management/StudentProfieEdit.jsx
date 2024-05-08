@@ -96,24 +96,24 @@ function StudentProfileEdit() {
                 parentphonenumber,
                 secanswer
             })
-      
+
             await Swal.fire({
-              icon: 'success',
-              title: 'Success',
-              text: 'Student details updated successfully!',
-              confirmButtonText: 'OK'
+                icon: 'success',
+                title: 'Success',
+                text: 'Student details updated successfully!',
+                confirmButtonText: 'OK'
             });
             navigate('/studentprofile');
-          } catch (error) {
+        } catch (error) {
             console.error(error);
-      
+
             await Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'An error occurred while adding student details. Please try again later.',
-              confirmButtonText: 'OK'
+                icon: 'error',
+                title: 'Error',
+                text: 'An error occurred while adding student details. Please try again later.',
+                confirmButtonText: 'OK'
             });
-          }
+        }
     };
 
     const onInputChange = (e) => {
@@ -122,35 +122,35 @@ function StudentProfileEdit() {
 
     const submitImage = async (e) => {
         e.preventDefault();
-    
+
         if (!profile_photo) {
             console.error('No file selected');
             return;
         }
-    
+
         const formData = new FormData();
         formData.append('file', profile_photo);
         formData.append('student_id', student_id); // Pass the student ID
-    
+
         try {
             await axios.post('/addphoto', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-    
+
             await Swal.fire({
                 icon: 'success',
                 title: 'Success',
                 text: 'Photo added successfully!',
                 confirmButtonText: 'OK'
             });
-    
+
             // Refresh the profile photo
             fetchProfilePhoto(student_id);
         } catch (error) {
             console.error(error);
-    
+
             await Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -159,7 +159,7 @@ function StudentProfileEdit() {
             });
         }
     };
-    
+
 
     return (
         <main>
@@ -173,22 +173,22 @@ function StudentProfileEdit() {
                             <tr>
                                 <td>
 
-                                {show_profile_photo.length > 0 ? (
-    show_profile_photo.map((data, index) => (
-        <div key={index}>
-            <img
-                src={`http://localhost:5000/profilephotos/${data.profile_photo}`}
-                height={100}
-                width={100}
-                alt="profile"
-            />
-            <br />
-            <button className='btnsp' onClick={() => handleDeletePhoto(data._id)}>Delete</button>
-        </div>
-    ))
-) : (
-    <p>No profile photo available</p>
-)}
+                                    {show_profile_photo.length > 0 ? (
+                                        show_profile_photo.map((data, index) => (
+                                            <div key={index}>
+                                                <img
+                                                    src={`http://localhost:5000/profilephotos/${data.profile_photo}`}
+                                                    height={100}
+                                                    width={100}
+                                                    alt="profile"
+                                                />
+                                                <br />
+                                                <button className='btnsp' onClick={() => handleDeletePhoto(data._id)}>Delete</button>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>No profile photo available</p>
+                                    )}
 
 
                                 </td>
@@ -196,11 +196,16 @@ function StudentProfileEdit() {
                                     <p className='hellotxt'>{name}<br />Student</p>
                                 </td>
                                 <td>
-                                    <div>
+                                    <div >
                                         <form onSubmit={submitImage}>
-                                            <input type="file" accept="image/*" onChange={onInputChange} />
-                                            <button className='btnsp' type="submit">Submit</button>
+                                            <label htmlFor="fileInputq" class="custom_file_input">
+                                                <input type="file" accept="image/*" onChange={onInputChange} />
+                                                Choose File
+                                            </label>
+                                            <div>
+                                            <button class='custom_submit_btn' type="submit">Submit</button></div>
                                         </form>
+
                                     </div>
                                 </td>
                             </tr>

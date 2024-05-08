@@ -152,3 +152,55 @@
 .updateform{
     margin-left: -90px;
 }
+.btnspq{
+    width: 100px;
+    color: white;
+    font-family: 'Bahnschrift';    
+    font-weight: 800;
+    font-size: 18px;
+    background-color: #5D7285;
+    padding-top: 8px;   
+    padding-bottom: 8px;   
+    border-radius: 10px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+}
+
+.custom_file_input {
+    margin-left: 10px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #b8c9db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom_file_input input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom_submit_btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #5D7285;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.custom_submit_btn:hover {
+    background-color: #5D7285;
+}
+
