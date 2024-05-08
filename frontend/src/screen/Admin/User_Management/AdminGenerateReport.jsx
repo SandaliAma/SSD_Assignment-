@@ -30,6 +30,10 @@ const UserReport = () => {
     }, [selectedMonth]);
 
 
+    const usercounts = {
+        totalcounts: allusers.length,
+    };
+
 
     const styles = StyleSheet.create({
         page: {
@@ -156,7 +160,9 @@ return (
                     </tbody>
                 </table>
             </div>
-            
+            <div >
+                <p  className='static1'>Total Users: {usercounts.totalcounts}</p>
+                </div>
         </div>
     </div>
 );

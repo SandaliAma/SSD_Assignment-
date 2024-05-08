@@ -159,7 +159,7 @@ return (
                 </table>
             </div>
             <div >
-                <p  className='static1'>Total Classes: {feedbackcounts.totalfeedbacks}</p>
+                <p  className='static1'>Total Feedbacks: {feedbackcounts.totalfeedbacks}</p>
                 </div>
         </div>
     </div>

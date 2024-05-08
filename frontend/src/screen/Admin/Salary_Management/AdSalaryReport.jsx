@@ -30,6 +30,11 @@ const SalaryReport = () => {
     }, [selectedMonth]);
 
 
+    const salrycounts = {
+        totalcounts: allSalary.length,
+    };
+    
+    const totalAmount = allSalary.reduce((total, salary) => total + parseFloat(salary.FreeCardAmount), 0);
 
     const styles = StyleSheet.create({
         page: {
@@ -164,7 +169,10 @@ return (
                     </tbody>
                 </table>
             </div>
-            
+            <div >
+                <p  className='static1'>Total Users: {salrycounts.totalcounts}</p>
+                <p className='static1'>Total Free Card Amount: {totalAmount.toFixed(2)}</p>
+                </div>
         </div>
     </div>
 );
