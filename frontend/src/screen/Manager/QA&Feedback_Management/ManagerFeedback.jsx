@@ -32,17 +32,16 @@ function ManagerFeedback() {
   return (
     <div>
         <Head/>
-      <text className="heading13">Over View of Feedbacks</text>
+      <text className="heading131">Over View of Feedbacks</text>
       <p className="pm">The goal is to turn data into information, and information into insight.</p>
-      <Link to="/ManagerNFeedback" style={{ textDecoration: 'none',color: '#000000' }}><button id="vf" className="vft" style={{ position: 'absolute', width: '592px', height: '86px', left: '354px', top: '286px', background: '#83B2CD', borderRadius: '20px' }}>VIEW NEW FEEDBACKS</button></Link>
+      <Link to="/ManagerNFeedback" style={{ textDecoration: 'none',color: '#000000' }}><button id="vf" className="vft" style={{ position: 'absolute', width: '350px', height: '60px', left: '354px', top: '286px', background: '#063a67', borderRadius: '20px' }}>VIEW NEW FEEDBACKS</button></Link>
       <text className="ttt8">Feedbacks</text>
-      <Link to="/managerfeedbackgenrate">
-      <button id="gf" className="gft" style={{ position: 'absolute', width: '482.67px', height: '70px', left: '910px', top: '462px', background: '#6C9DE2', borderRadius: '20px' }}>Generate Feedback Report</button>
-      </Link>
+      <button id="gf" className="gft" style={{ position: 'absolute', width: '400px', height: '70px', left: '910px', top: '440px', background: '#063a67', borderRadius: '20px' }}>Generate Feedback Report</button>
+      
       <ul style={{listStyleType: 'none'}}>
         {feedbacks.map((feedback, index) => (
           <li key={index} >
-            <div style={{boxSizing: "border-box", position: "relative", width: "995px", height: "217px", left: "347px", top: "535px", background: "#FFFFFF", border: "1px solid #000000"}}>
+            <div style={{boxSizing: "border-box", position: "relative", width: "995px", height: "217px", left: "347px", top: "450px", background: "#FFFFFF", border: "2px solid #000000",borderRadius:'10px'}}>
               
               <strong>Grade: </strong>{feedback.grade}<br/><br/>
               <strong>Feedback: </strong>{feedback.feedback}<br/><br/><br/>
@@ -52,8 +51,8 @@ function ManagerFeedback() {
             
             <div >
             <Link to={`/MFeedbackUpdate/${feedback._id}`} style={{ textDecoration: 'none', color: '#FFFFFF' }}>
-              <button id={`edit${index + 1}`} style={{ position: 'relative', width: '182px', height: '70px', left: '900px', top:'450px', background: '#6C9DE2', borderRadius: '20px' }} className="bt1">Edit</button></Link>
-              <button onClick={() => handleDeleteA(feedback._id)} id={`delete${index + 1}` } style={{ position: 'relative', width: '182px', height: '70px', left: '950px', top:'450px', background: '#6C9DE2', borderRadius: '20px' }} className="bt2">Delete</button>
+              <button id={`edit${index + 1}`} style={{ position: 'relative', width: '140px', height: '40px', left: '1040px', top:'470px', background: '#136845', borderRadius: '20px' }} className="bt1">Edit</button></Link>
+              <button onClick={() => handleDeleteA(feedback._id)} id={`delete${index + 1}` } style={{ position: 'relative', width: '140px', height: '40px', left: '1050px', top:'470px', background: '#4a2032', borderRadius: '20px' }} className="bt2">Delete</button>
             </div>
           </li>
         ))}

@@ -20,11 +20,11 @@ function ManagerNFeedback() {
   return (
     <div>
        <Head/>
-    <text className="heading3">Connect With Your Teachers - New Questions</text>
+    <text className="heading300">Connect With Your Teachers - New Questions</text>
     <ul style={{listStyleType: 'none', position: 'absolute', left: '344px', top: '220px',  width: '864px', background: '#FFFFFF',  padding: '10px'}}>
     
       {feedbacks.map((feedback, index) => (
-        <li key={index} style={{ marginBottom: '20px',listStyleType: 'none',boxSizing: 'border-box', position: 'relative', width: '864px', height: '200px',  background: '#FFFFFF', border: '1px solid #000000' }}>
+        <li key={index} style={{ marginBottom: '20px',listStyleType: 'none',boxSizing: 'border-box', position: 'relative', width: '864px', height: '200px',  background: '#FFFFFF', border: '2px solid #000000',borderRadius:'10px' }}>
          
             <br/><strong>Grade:</strong>{feedback.grade}<br/><br/><br/><br/>
             <strong>Feedback:</strong>{feedback.feedback} <br/><br/>
@@ -33,8 +33,8 @@ function ManagerNFeedback() {
           <Link to = {`/ReplyF/${feedback._id}`} style={{ textDecoration: 'none', color: '#FFFFFF' }}>  
           <button
             name="edit"
-            style={{ position: 'absolute', width: '182px', left: '900px', height: '70px', top:'40%', background: '#6C9DE2', borderRadius: '20px' }}
-            className="buttn1"
+            style={{ position: 'absolute', width: '140px', left: '900px', height: '40px', top:'40%', background: '#063a67', borderRadius: '20px' }}
+            className="buttn1k"
           >
             Reply
           </button></Link>
