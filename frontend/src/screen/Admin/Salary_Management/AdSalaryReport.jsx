@@ -34,8 +34,11 @@ const SalaryReport = () => {
         totalcounts: allSalary.length,
     };
     
-    const totalAmount = allSalary.reduce((total, salary) => total + parseFloat(salary.FreeCardAmount), 0);
-
+    const totalstudents = allSalary.reduce((total, salary) => total + parseFloat(salary.AttendStudents), 0);
+    const totalfreecardAmount = allSalary.reduce((total, salary) => total + parseFloat(salary.FreeCardAmount), 0);
+    const totalinstutitepayment = allSalary.reduce((total, salary) => total + parseFloat(salary.InstitutePayment), 0);
+    const totalmothlysalry = allSalary.reduce((total, salary) => total + parseFloat(salary.MonthlySalary), 0);
+    
     const styles = StyleSheet.create({
         page: {
             padding: 40,
@@ -171,7 +174,10 @@ return (
             </div>
             <div >
                 <p  className='static1'>Total Users: {salrycounts.totalcounts}</p>
-                <p className='static1'>Total Free Card Amount: {totalAmount.toFixed(2)}</p>
+                <p className='static1'>Total Students: {totalstudents}</p>
+                <p className='static1'>Total Free Card Amount: {totalfreecardAmount.toFixed(2)}</p>
+                <p className='static1'>Total Instutite Amount: {totalinstutitepayment.toFixed(2)}</p>
+                <p className='static1'>Total Salary Amount: {totalmothlysalry.toFixed(2)}</p>
                 </div>
         </div>
     </div>
