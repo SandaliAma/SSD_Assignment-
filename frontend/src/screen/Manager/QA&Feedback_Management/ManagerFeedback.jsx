@@ -36,8 +36,12 @@ function ManagerFeedback() {
       <p className="pm">The goal is to turn data into information, and information into insight.</p>
       <Link to="/ManagerNFeedback" style={{ textDecoration: 'none',color: '#000000' }}><button id="vf" className="vft" style={{ position: 'absolute', width: '350px', height: '60px', left: '354px', top: '286px', background: '#063a67', borderRadius: '20px' }}>VIEW NEW FEEDBACKS</button></Link>
       <text className="ttt8">Feedbacks</text>
-      <button id="gf" className="gft" style={{ position: 'absolute', width: '400px', height: '70px', left: '910px', top: '440px', background: '#063a67', borderRadius: '20px' }}>Generate Feedback Report</button>
       
+      <Link to="/managerfeedbackgenrate">
+        
+      <button id="gf" className="gft" style={{ position: 'absolute', width: '400px', height: '70px', left: '910px', top: '440px', background: '#063a67', borderRadius: '20px' }}>Generate Feedback Report</button>
+      </Link>
+
       <ul style={{listStyleType: 'none'}}>
         {feedbacks.map((feedback, index) => (
           <li key={index} >
