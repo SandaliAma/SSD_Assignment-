@@ -72,7 +72,7 @@ function ManagerEnroll() {
     };
 
     const handleenrollform = () => {
-        navigate("/ManagerEnroll/EnrollmentForm");
+        navigate("/EnrollmentForm");
     };
 
     const handleChange = (e) => {
@@ -153,7 +153,7 @@ function ManagerEnroll() {
                                     ))}
                                 </tbody>
                             </table>
-                            <button onClick={handleOpenPopup} className="btn btn-primary">
+                            <button onClick={handleenrollform} className="btn btn-primary">
                                 Add Enrollment
                             </button>
 
