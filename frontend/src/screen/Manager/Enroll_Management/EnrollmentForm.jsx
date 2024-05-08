@@ -3,6 +3,7 @@ import axios from 'axios';
 import Head from '../Header/Header';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import './enrolmanage.css';
 
 const EnrollmentForm = () => {
     const [studentId, setStudentId] = useState('');
@@ -87,7 +88,7 @@ const EnrollmentForm = () => {
         <div>
             <Head />
             
-                <div className="enrollformdiv" ></div>
+                <div className="enrollformdiv" >
                     
                     <form onSubmit={handleSubmit}>
                         <div className="form-group" controlId="studentId">
@@ -130,6 +131,8 @@ const EnrollmentForm = () => {
                         <button className="btn btn-primary" type="submit">Submit</button>
                         <button className="btn btn-secondary" onClick={handleBack}>Back</button>
                     </form>
+
+                </div>
                     
                 
             
