@@ -8,6 +8,7 @@ import jsPDF from 'jspdf';
 import { useNavigate } from 'react-router-dom';
 import './enrolmanage.css';
 
+
 function ManagerEnroll() {
     const [enrollments, setEnrollments] = useState([]);
     const [filteredEnrollments, setFilteredEnrollments] = useState([]);
