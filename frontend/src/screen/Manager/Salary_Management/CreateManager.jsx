@@ -12,7 +12,7 @@ function CreateManager() {
   const [SubjectName, setSubjectName] = useState('');
   const [Grade, setGrade] = useState('');
   const [AttendStudents, setAttendStudents] = useState('');
-  const [subjectfee, setSubjectfee] = useState('');
+  const [subjectfee, setSubjectfee] = useState([]);
   const [FreeCardAmount, setFreeCardAmount] = useState('');
   const [InstitutePayment, setInstitutePayment] = useState('');
   const [MonthlySalary, setMonthlySalary] = useState('');
@@ -124,6 +124,20 @@ function CreateManager() {
     }
   }, [teacher]);
 
+  const handlesearch = (e) => {
+    e.preventDefault();
+  
+    axios.get('/viewSubject')
+      .then((res) => {
+        const selectedSubjectfee = res.data.filter(selectedSubjectfee => selectedSubjectfee.grade === Grade && selectedSubjectfee.teachername === teacher);
+        setSubjectfee(selectedSubjectfee);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  
+  }
+
   const [subject, setSubject] = useState([]);
 
   useEffect(() => {
@@ -135,8 +149,7 @@ function CreateManager() {
           })
           .catch((err) => {
             console.log(err);
-          });
-    
+          });    
       
   }, []);
   
@@ -182,7 +195,9 @@ function CreateManager() {
             <br /><br />
 
             <label htmlFor="grade" className="labelA4">Enter Subject Fee:</label>
-            <input type="text" id="subfee" name="subfee" placeholder="Subject fee" required className="text1" value={subject.amount} onChange={(e) => setSubjectfee(e.target.value)} /><br /><br />
+            {subjectfee.map((sub, index) => (
+            <><input type="text" id="subfee" name="subfee" placeholder="Subject fee" required className="text1" key={index} value={sub.amount} /><br /><br /></>
+             ))}
 
             <label htmlFor="attendStudents" className="labelA5">Enter Attend Students:</label>
             <input type="text" id="attendStudents" name="attendStudents" placeholder="Students" required className="text1" onChange={(e) => setAttendStudents(e.target.value)} /><br /><br />

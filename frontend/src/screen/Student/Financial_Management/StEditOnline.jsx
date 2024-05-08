@@ -13,10 +13,10 @@ function StEditOnline() {
 
   const {id} = useParams();
   const[itnumber,setItnumber] = useState();
-  const[cardname,setCardname] = useState();
+ /*  const[cardname,setCardname] = useState();
   const[cardnumber,setCardnumber] = useState();
   const[securitycode,setSecuritycode] = useState();
-  const[expiredate,setExpiredate] = useState();
+  const[expiredate,setExpiredate] = useState(); */
   const[discription,setDiscription] = useState();
   const[date,setDate] = useState();
   const[amount,setAmount] = useState();
@@ -27,10 +27,10 @@ function StEditOnline() {
       axios.get('http://Localhost:5000/getpayment/' +id)
       .then((res)=>{
         setItnumber(res.data.itnumber);
-        setCardname(res.data.cardname);
+        /* setCardname(res.data.cardname);
         setCardnumber(res.data.cardnumber);
         setSecuritycode(res.data.securitycode);
-        setExpiredate(res.data.expiredate);
+        setExpiredate(res.data.expiredate); */
         setDiscription(res.data.description);
         setDate(res.data.date);
         setAmount(res.data.amount);
@@ -42,7 +42,7 @@ function StEditOnline() {
 
   const update = (e) =>{
     e.preventDefault();
-    axios.put('http://Localhost:5000/updatepayment/'+id,{itnumber:itnumber ,cardname:cardname, cardnumber:cardnumber, securitycode:securitycode,expiredate:expiredate, description:discription,
+    axios.put('http://Localhost:5000/updatepayment/'+id,{itnumber:itnumber , description:discription,
     date:date , amount:amount})
 
     .then(res=>{
@@ -109,14 +109,14 @@ function StEditOnline() {
           },
         });
         setTimeout(() => {
-          navigator('/payment');
+          navigator('/viewonline');
         }, 2500); // Wait for 2 seconds after displaying success toast before navigating
       }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
     }, 5000); // Wait for 5 seconds before dismissing loading toast
   };
 
   const handleCancel = () => {
-    navigator('/payment');
+    navigator('/viewonline');
   }
   
   return (
@@ -134,7 +134,7 @@ function StEditOnline() {
 
             <h2 className="eonh2"><br></br>Payment Details</h2><br/>
                     <label className="labeleon1"> Enter IT Number :</label><br/>
-                    <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$"   required className="texteon1" value={itnumber} onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
+                    <input type="text" name="itnum" placeholder="IT12345678"  readOnly required className="texteon1" value={itnumber} onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
 
 
                     <label htmlFor="totalA" className="labeleon1">Enter Description:</label><br />
@@ -144,9 +144,9 @@ function StEditOnline() {
                     <input type="date" name="date" placeholder="(DD/MM/YYYY)"  readOnly className="texteon5" value={date} onChange={(e)=>setDate(e.target.value)}/><br /><br />
 
                     <label htmlFor="totalA" className="labeleon2">Enter Amount:</label><br />
-                    <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="texteon6"  value={amount} onChange={(e)=>setAmount(e.target.value)}/><br /><br />
+                    <input type="text" name="amount" placeholder="00.00" readOnly required className="texteon6"  value={amount} onChange={(e)=>setAmount(e.target.value)}/><br /><br />
                     
-                    <div className="payeon2" >
+                    {/* <div className="payeon2" >
                       <h2 className="eonh2"><br></br>Card Details</h2><br/>
                     <label htmlFor="an" className="labeleon2">Name On the Card</label>
                     <input type="text" name="cname" placeholder="Enter Name" pattern="[A-Za-z\s]+" required className="texteon2" value={cardname} onChange={(e)=>setCardname(e.target.value)}/> <br /><br />
@@ -158,7 +158,7 @@ function StEditOnline() {
                     <label htmlFor="cno" className="labeleon3">Security Code</label><br/>
                     <input type="text" name="exdate" placeholder="(MM/YY)" pattern="(0[1-9]|1[0-2])\/\d{2}" required className="texteon8" value={expiredate} onChange={(e)=>setExpiredate(e.target.value)}/>
                     <input type="text" name="scode" placeholder="***" pattern="^\d{3}$" required className="texteon4" value={securitycode} onChange={(e)=>setSecuritycode(e.target.value)} /><br /><br />
-
+ */}
 
                     <div className="containereon4"> 
                         <button type="submit" name="submit" className="buttoneon3">Save</button>
@@ -166,7 +166,7 @@ function StEditOnline() {
                         onClick={handleCancel}
                         >Cancel</button>
                     </div>
-                    </div>
+                  {/*   </div> */}
                 </form>
                 
             </div>

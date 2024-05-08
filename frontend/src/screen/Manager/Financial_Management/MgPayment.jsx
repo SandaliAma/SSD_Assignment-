@@ -15,7 +15,7 @@ function MgPayment() {
 
   const[itnumber,setItnumber] = useState();
   const[studentname,setStudentname] = useState();
-  const[discription,setDiscription] = useState();
+  const[description,setDescription] = useState();
   const[date,setDate] = useState();
   const[amount,setAmount] = useState();
   const navigator = useNavigate();
@@ -23,7 +23,7 @@ function MgPayment() {
 
   const submit = (e) => {
       e.preventDefault();
-      axios.post('http://Localhost:5000/createcash',{itnumber:itnumber ,studentname:studentname, discription:discription,
+      axios.post('http://Localhost:5000/createcash',{itnumber:itnumber ,studentname:studentname, description:description,
       date:date , amount:amount , status:status , type:type})
 
       .then(res=>{
@@ -124,13 +124,13 @@ function MgPayment() {
                     <form className="paymgpa" onSubmit={handleSubmit} >
                         <br />
                         <label htmlFor="cname" className="labelmgpa1">Enter IT Number:</label><br/>
-                        <input type="text" name="itnum" placeholder="IT12345678"  required className="textmgpa1" onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
+                        <input type="text" name="itnum" placeholder="SID123456" pattern="SID\d{6}" required className="textmgpa1" onChange={(e)=>setItnumber(e.target.value)} /><br /><br />
 
                         <label htmlFor="an" className="labelmgpa1">Enter Student Name:</label><br/>
                         <input type="text" name="sname" placeholder="Enter Name" pattern="[A-Za-z\s]+" required className="textmgpa1" onChange={(e)=>setStudentname(e.target.value)}/><br /><br />
 
                         <label id="totalA" name="totalA" className="labelmgpa1">Enter Description:</label><br/>
-                        <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="textmgpa3" onChange={(e)=>setDiscription(e.target.value)}/><br /><br />
+                        <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="textmgpa3" onChange={(e)=>setDescription(e.target.value)}/><br /><br />
 
                         <label htmlFor="tda" className="labelmgpa1">Enter Date:</label><br/>
                         <input type="date" name="dates" placeholder="(DD/MM/YY)"  value={date} readOnly  className="textmgpa4" onChange={(e)=>setDate(e.target.value)}/><br /><br />

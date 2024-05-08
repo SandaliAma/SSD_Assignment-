@@ -1,5 +1,5 @@
 import React, { useState  } from 'react';
-import './mgpayment.css';
+import './mangerwaller.css';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
@@ -110,14 +110,14 @@ function ManagerWallet() {
     <div>
     <Head />
     <Toaster />
-    <div className="bodymgpa">
-        <h1 className="h1mgpa"><br />Wallet</h1>
+    <div className="bodymgwa">
+        <h1 className="h1mgwa"><br />Wallet</h1>
         <div className="containermgpa">
 
             <form onSubmit={handlesearch}>
-                <label htmlFor="cname" className="labelmgpa1">Enter IT Number:</label><br />
-                <input type="text" name="itnum" placeholder="IT12345678" required className="textmgpa1" onChange={(e) => setItnumber(e.target.value)} />
-                <button type="submit" name="submit" className="buttonmgpa3">Search</button>
+                <label htmlFor="cname" className="labelmgwa1">Enter IT Number:</label><br />
+                <input type="text" name="itnum" placeholder="SID123456" required className="textmgwa1" onChange={(e) => setItnumber(e.target.value)} />
+                <button type="submit" name="submit" className="buttonmgwa3">Search</button>
             </form>
 
                          
@@ -126,14 +126,14 @@ function ManagerWallet() {
                 <div key={wall._id}>
                     <form className="paymgpa" onSubmit={handleSubmit} >
                          <br />  
-                    <label htmlFor="an" className="labelmgpa1">Enter wallet Id:</label><br />
-                    <input type="text" name="sname" placeholder="Enter Name" required className="textmgpa1" value={wall.walletid} readOnly/><br /><br />
-                    <label htmlFor="tda" className="labelmgpa1">Enter Date:</label><br />
-                    <input type="date" name="dates" placeholder="(DD/MM/YY)" value={date} readOnly className="textmgpa4" /><br /><br />
-                    <label id="totalA" name="totalA" className="labelmgpa1">Enter Amount:</label><br />
-                    <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="textmgpa5" value={wall.balance} readOnly /><br /><br />
-                    <div className="containermgpa4">
-                    <button type="submit" name="submit" className="buttonmgpa3">Confirm</button>
+                    <label htmlFor="an" className="labelmgwa1">Enter wallet Id:</label><br />
+                    <input type="text" name="sname" placeholder="Enter Name" required className="textmgwa1" value={wall.walletid} readOnly/><br /><br />
+                    <label htmlFor="tda" className="labelmgwa1">Enter Date:</label><br />
+                    <input type="date" name="dates" placeholder="(DD/MM/YY)" value={date} readOnly className="textmgwa4" /><br /><br />
+                    <label id="totalA" name="totalA" className="labelmgwa1">Enter Amount:</label><br />
+                    <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="textmgwa5" value={wall.balance} readOnly /><br /><br />
+                    <div className="containermgwa4">
+                    <button type="submit" name="submit" className="buttonmgwa3">Confirm</button>
                     </div>
                     </form>
                 </div>

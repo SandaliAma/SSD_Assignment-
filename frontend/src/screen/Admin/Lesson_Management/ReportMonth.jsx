@@ -29,9 +29,9 @@ function ReportMonth() {
     };
 
     return (
-        <div>
+        <div >
             <div className="containergrl">
-                <h1 className="h1grl">Generate Monthly Report</h1>
+                <h1 className="h1grl" style={{ color: '#191970' }}>Generate Monthly Report</h1>
                 <h2 className="h1grl">Lesson Materials</h2>
                 <br /><br />
                 <form className="paygrl" onSubmit={handleSubmit} noValidate>

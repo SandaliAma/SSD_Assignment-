@@ -107,9 +107,22 @@ import UpdateTeacher from './screen/Admin/User_Management/UpdateTeacher';
 import AdMain from './screen/Admin/Financial_Management/AdMain'
 import AdGenerate from './screen/Admin/Financial_Management/AdGenerate'
 import AdReport from './screen/Admin/Financial_Management/AdReport'
+
 import AdminLessonReport from './screen/Admin/Lesson_Management/AdminLessonReport'
 import ReportMonth from './screen/Admin/Lesson_Management/ReportMonth';
 import LessonReport from './screen/Admin/Lesson_Management/LessonReport';
+
+import AdgenrateClass from './screen/Admin/Class_Management/AdgenrateClass'
+import GenrateClass from './screen/Admin/Class_Management/GenrateClass'
+
+import MangerFeedbackGenrate from './screen/Manager/QA&Feedback_Management/MangerFeedbackGenrate'
+import MangerFeedbackReport from './screen/Manager/QA&Feedback_Management/MangerFeedbackReport'
+
+import Adgenratesalary from './screen/Admin/Salary_Management/AdGenrateSalary'
+import Genratesalary from './screen/Admin/Salary_Management/AdSalaryReport'
+
+import AdminGenerateUser from './screen/Admin/User_Management/AdminGenerateUser'
+import AdminGenerateReport from './screen/Admin/User_Management/AdminGenerateReport'
 
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
@@ -232,10 +245,24 @@ function App() {
       <Route path="/admain" element={<AdMain />} />  
       <Route path="/adgenrate" element={<AdGenerate />} />  
       <Route path="/adreport" element={<AdReport />} />
+
       <Route path="/adlessonreport" element={<AdminLessonReport/>} />   
       <Route path="/adgenratelesson" element={<ReportMonth />} />  
-      <Route path="/lessonReport" element={<LessonReport />} /> 
-      
+      <Route path="/lessonReport" element={<LessonReport />} />
+
+       <Route path="/adgenerateclass" element={<AdgenrateClass />} />  
+      <Route path="/adreportclass" element={<GenrateClass />} />
+ 
+      <Route path="/managerfeedbackgenrate" element={<MangerFeedbackGenrate />} />  
+      <Route path="/managerfeedbackreport" element={<MangerFeedbackReport />} />
+
+      <Route path="/adreportsalary" element={<Genratesalary />} />  
+      <Route path="/adgenratesalry" element={<Adgenratesalary />} />
+
+      <Route path="/adgenerateuser" element={<AdminGenerateUser />} />  
+      <Route path="/adgeneratereport" element={<AdminGenerateReport />} />
+
+
     </Routes>    
     </>
   );

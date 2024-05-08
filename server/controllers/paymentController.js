@@ -76,7 +76,7 @@ const getbankid = (req, res) => {
 const updatebank = (req, res) => {
     const id = req.params.id;
     BankModel.findByIdAndUpdate({_id:id},{itnumber:req.body.itnumber ,accountname:req.body.accountname,accountnumber:req.body.accountnumber,bankname:req.body.bankname,
-    discription:req.body.discription,date:req.body.date,amount:req.body.amount, })
+    description:req.body.description,date:req.body.date,amount:req.body.amount, })
     .then(Payments => res.json(Payments))
     .catch(err => res.json(err));
 }
@@ -186,7 +186,7 @@ const manageronline = (req, res) => {
 const managerbank = (req, res) => {
     const id = req.params.id;
     BankModel.findByIdAndUpdate({_id:id},{itnumber:req.body.itnumber ,
-        discription:req.body.discription,date:req.body.date,amount:req.body.amount,type:req.body.type,status:req.body.status,  })
+        description:req.body.description,date:req.body.date,amount:req.body.amount,type:req.body.type,status:req.body.status,  })
     .then(Payments => res.json(Payments))
     .catch(err => res.json(err));
 }
@@ -195,7 +195,7 @@ const managerbank = (req, res) => {
 const managercash = (req, res) => {
     const id = req.params.id;
     CashModel.findByIdAndUpdate({_id:id},{itnumber:req.body.itnumber ,
-        discription:req.body.discription,date:req.body.date,amount:req.body.amount,type:req.body.type,status:req.body.status,  })
+        description:req.body.description,date:req.body.date,amount:req.body.amount,type:req.body.type,status:req.body.status,  })
     .then(Payments => res.json(Payments))
     .catch(err => res.json(err));
 }
