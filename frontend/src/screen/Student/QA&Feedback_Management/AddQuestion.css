@@ -5,7 +5,7 @@ position: absolute;
 width: 968px;
 height: 25px;
 left: 336px;
-top: 150px;
+top: 130px;
 
 font-family: 'Epilogue';
 font-style: normal;
@@ -15,7 +15,7 @@ line-height: 25px;
 /* identical to box height, or 85% */
 letter-spacing: 0.01em;
 
-color: #5D7285;
+color: #063a67;
 
 }
 
@@ -25,13 +25,13 @@ color: #5D7285;
 position: absolute;
 width: 338px;
 height: 39px;
-left: 339px;
+left: 260px;
 top: 205px;
 
-font-family: 'Epilogue';
+font-family: 'Plus Jakarta Sans';
 font-style: normal;
 font-weight: 200;
-font-size: 29px;
+font-size: 25px;
 line-height: 25px;
 /* or 85% */
 letter-spacing: 0.01em;
@@ -45,13 +45,13 @@ color: #000000;
 position: absolute;
 width: 338px;
 height: 39px;
-left: 339px;
+left: 305px;
 top: 279px;
 
-font-family: 'Epilogue';
+font-family: 'Plus Jakarta Sans';
 font-style: normal;
 font-weight: 200;
-font-size: 29px;
+font-size: 25px;
 line-height: 25px;
 /* or 85% */
 letter-spacing: 0.01em;
@@ -65,13 +65,13 @@ color: #000000;
 position: absolute;
 width: 338px;
 height: 39px;
-left: 339px;
+left: 265px;
 top: 360px;
 
-font-family: 'Epilogue';
+font-family: 'Plus Jakarta Sans';
 font-style: normal;
 font-weight: 200;
-font-size: 29px;
+font-size: 25px;
 line-height: 25px;
 /* or 85% */
 letter-spacing: 0.01em;
@@ -86,13 +86,13 @@ color: #000000;
 position: absolute;
 width: 338px;
 height: 39px;
-left: 339px;
+left: 285px;
 top: 461px;
 
-font-family: 'Epilogue';
+font-family: 'Plus Jakarta Sans';
 font-style: normal;
 font-weight: 200;
-font-size: 29px;
+font-size: 25px;
 line-height: 25px;
 letter-spacing: 0.01em;
 
@@ -106,13 +106,13 @@ color: #000000;
 position: absolute;
 width: 338px;
 height: 39px;
-left: 339px;
+left: 280px;
 top: 554px;
 
-font-family: 'Epilogue';
+font-family: 'Plus Jakarta Sans';
 font-style: normal;
 font-weight: 200;
-font-size: 29px;
+font-size: 25px;
 line-height: 25px;
 /* or 85% */
 letter-spacing: 0.01em;
@@ -129,7 +129,7 @@ width: 129px;
 height: 31px;
 left: 1161px;
 top: 953px;
-font-family: 'Epilogue';
+font-family: 'Plus Jakarta Sans';
 font-style: normal;
 font-weight: 700;
 font-size: 32px;
@@ -138,19 +138,22 @@ letter-spacing: 0.005em;
 color: #FFFFFF;
 }
 
-.uth4{
+.udth3{
     text-decoration:none;
     color:black;
     margin-left: 300px;
     width: max-content;
     height: max-content;
     padding-right: 50px;
-    padding-top: 20px;
     padding-bottom: 20px;
-    background: #C9E8EA;
+    
+    background: #a7cced;
     border-radius: 20px;
     text-align: center;
     border: 2px solid black;
+    margin-top: 25px;
+    
+   
       
   }
 

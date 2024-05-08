@@ -143,13 +143,14 @@ function TFeedback() {
   return (
     <>
     <Head/>
+    <h1 className="heading8">We Want to Hear from You - Teacher Feedback</h1>
     <div className='uth1'>
       
         <body >
-      <h1 className="heading8">We Want to Hear from You - Teacher Feedback</h1>
+      
       <form onSubmit={handleSubmit}>
         
-        <label htmlFor="grade" className="tt1">Select Grade</label>        
+        <label htmlFor="grade" className="tt1">Grade</label>        
         <input id="dropdown1" name="dropdown" value={grade}
         style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '200px', border: '1px solid #000000', borderRadius: '10px' }}  readOnly/>
         
@@ -162,7 +163,7 @@ function TFeedback() {
         ))}
         </select>
 
-        <label htmlFor="subject" className="tt3">Select Subject</label>
+        <label htmlFor="subject" className="tt3">Subject</label>
         <input id="dropdown1" name="dropdown" value={subject} style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '346px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }}  onChange={(a)=> setSubject(a.target.value)} readOnly/>
         
         <label htmlFor="studentID" className="tt4">Student ID</label>
