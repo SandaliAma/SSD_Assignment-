@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import Head from '../Header/Header';
+import Swal from 'sweetalert2';
 
 function AddTeacher() {
     const navigate = useNavigate();
@@ -54,11 +55,23 @@ function AddTeacher() {
             toast.error(data.error);
           }else{
             setData({})
-            toast.success("Register Successfully!");
+            await Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Teacher details updated successfully!',
+                confirmButtonText: 'OK'
+              });
             navigate('/adminprofile');
           }
         } catch (error) {
           console.log(error);
+
+          await Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'An error occurred while adding teacher details. Please try again later.',
+            confirmButtonText: 'OK'
+          });
         }
         }
     }

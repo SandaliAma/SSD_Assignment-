@@ -31,6 +31,10 @@ function Test() {
       <Head/>
       <div className='bodyvc'>
         <h1 className='h1vc'><br />My Subjects</h1>
+
+        <Link to="/enrolled">
+      <input className="buttonte5" type="button" name="edit" value="Enrolled" />
+      </Link>
         <div className="tbl-headervc">
           <table className='tabletc'>
             <thead>
@@ -67,9 +71,7 @@ function Test() {
           
         </div>
       </div>
-      <Link to="/enrolled">
-      <input className="buttonte5" type="button" name="edit" value="Enrolled" />
-      </Link>
+      
     </div>
   );
 }

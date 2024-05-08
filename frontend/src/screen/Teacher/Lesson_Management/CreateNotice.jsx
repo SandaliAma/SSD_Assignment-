@@ -95,7 +95,16 @@ function CreateNotice() {
                     <div className="input_group">
                         <div className="input_col">
                             <label htmlFor="date">Date:</label>
-                            <input type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+                            
+                            <input
+                                type="date"
+                                name="date"
+                                min={date} // Set the minimum date to the current date
+                                value={date} // Automatically fill the current date
+                                onChange={(e) => setDate(e.target.value)}
+                                required
+                            />
+
                         </div>
                     </div>
                     <label htmlFor="description">Description:</label>

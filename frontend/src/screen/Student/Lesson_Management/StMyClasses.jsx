@@ -82,7 +82,7 @@ function StMyClasses() {
         })
         .catch(err => console.error(err));
     }
-  }, [grade]);
+  }, [grade, description]);
 
   useEffect(() => {
     //get notices and materials
@@ -96,7 +96,7 @@ function StMyClasses() {
       })
       .catch(err => console.error(err));
     }
-  }, [grade]);
+  }, [grade, description]);
   
 
   return (
@@ -110,11 +110,17 @@ function StMyClasses() {
               <h2>Class Details</h2>
               <div className="class-info">
                 <div className="class-title">{description} - Grade {grade}</div>
-                <div className="class-detail">Teacher: Mr. Smith</div>
+                <div className="class-detail">Teacher: 
+                {filteredMaterials.length > 0 && (
+                  <div key={filteredMaterials[0]._id}>
+                  <div>{filteredMaterials[0].teachername}</div>                 
+                  </div>
+                  )}
+                </div>
               </div>
             </div>
             <div className="notices">
-              <h2>Notices</h2>
+              <h2 style={{ color: 'black' }}>Notices</h2>
 
               {notices.map((notice) => (
                 <div className="notice" key={notice._id}>
@@ -127,12 +133,13 @@ function StMyClasses() {
               ))}
             </div>
             <div className="lesson-container">
-              <h2>Lesson Materials</h2>
+              <h2 style={{ color: 'black' }}>Lesson Materials</h2>
 
               <div className="search_bar_container">
                 <input type="search" className="search_input" placeholder="Search Materials..." value={searchTerm} onChange={handleSearchChange} />
               </div>
-              <div className="month">Materials for March 2024</div>
+              
+
               {filteredMaterials.map((lesson) => (
                 <div className="lesson" key={lesson._id}>
                   <div className="lesson-title">{lesson.lesson_topic}</div>

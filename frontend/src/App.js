@@ -102,6 +102,7 @@ import AddManager from './screen/Admin/User_Management/AddManager';
 import AddAdmin from './screen/Admin/User_Management/AddAdmin';
 import SearchusersAdmin from './screen/Admin/User_Management/AdminSearchusers';
 import UpdateStudent from './screen/Admin/User_Management/UpdateStudent';
+import UpdateTeacher from './screen/Admin/User_Management/UpdateTeacher';
 
 import AdMain from './screen/Admin/Financial_Management/AdMain'
 import AdGenerate from './screen/Admin/Financial_Management/AdGenerate'
@@ -226,6 +227,7 @@ function App() {
       <Route path="/addadmin" element={<AddAdmin />} />
       <Route path="/searchusersadmin" element={<SearchusersAdmin />} />  
       <Route path="/updatestudent/:id" element={<UpdateStudent />} />  
+      <Route path="/updateteacher/:id" element={<UpdateTeacher />} />
 
       <Route path="/admain" element={<AdMain />} />  
       <Route path="/adgenrate" element={<AdGenerate />} />  

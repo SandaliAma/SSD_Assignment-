@@ -55,9 +55,16 @@ const getclass = async(req, res) => {
 // Route to add a new class
 const addclass = async(req, res) => {
     try {
-        const newClass = new AddClassesModel(req.body);
-        await newClass.save();
-        res.json({ message: 'Class added successfully' });
+         const addclass = await AddClassesModel.create({
+          teacher: req.body.teacher,
+          classid: req.body.classid,
+          teacherid: req.body.teacherid,
+          subject: req.body.subject,
+          time: req.body.time,
+          date: req.body.date,
+          grade: req.body.grade
+         });        
+         return res.json({ addclass });
       } catch (err) {
         res.status(400).json({ error: err.message });
       }

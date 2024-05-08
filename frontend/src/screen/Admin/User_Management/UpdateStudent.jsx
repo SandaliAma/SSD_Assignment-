@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import './profile.css';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Head from '../Header/Header';
+import Swal from 'sweetalert2';
 
 function UpdateStudent() {
 
     const navigate = useNavigate();
+    const [sid, setSid] = useState('');
     const [name, setName] = useState('');
-    const [stdid, setstdid] = useState();
+    const [stdid, setstdid] = useState('');
     const [username, setUsername] = useState('');
     const [gender, setGender] = useState('');
     const [email, setEmail] = useState('');
@@ -21,6 +24,7 @@ function UpdateStudent() {
     useEffect(() => {
         axios.get(`/studentprofileid/${id}`)
             .then((res) => {
+                setSid(res.data._id);
                 setName(res.data.name);
                 setstdid(res.data.stdid);
                 setUsername(res.data.username);
@@ -36,24 +40,37 @@ function UpdateStudent() {
             });
     }, [id]);
 
-    const updateStudent = (e) => {
-        e.preventDefault();
-        axios.put(`/studentprofileeditid/${id}`, {
-            name,
-            username,
-            gender,
-            email,
-            contactnumber,
-            parentname,
-            parentphonenumber,
-            secanswer
-        })
-            .then((res) => {
-                navigate('/searchusersadmin');
+    const updateStudent = async (e) => {
+        e.preventDefault(); 
+        try {
+            await axios.put(`/studentprofileeditid/${sid}`, {
+                name,
+                username,
+                gender,
+                email,
+                contactnumber,
+                parentname,
+                parentphonenumber,
+                secanswer
             })
-            .catch((err) => {
-                console.log(err);
+        
+            await Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Student details updated successfully!',
+                confirmButtonText: 'OK'
             });
+            navigate('/searchusersadmin');
+            } catch (error) {
+            console.error(error);
+        
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An error occurred while adding student details. Please try again later.',
+                confirmButtonText: 'OK'
+            });
+            }
     };
 
     useEffect(() => {
@@ -71,7 +88,7 @@ function UpdateStudent() {
 
   return (
     <main>
-           
+            <Head/>
             <div className='profilecontent'>
                 <div>
                     <p className='usertxt'>User Profile</p>

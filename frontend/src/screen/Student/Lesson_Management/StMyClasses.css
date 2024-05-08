@@ -85,6 +85,10 @@ body {
     margin-bottom: 10px;
 }
 
+.class-detail{
+    display: flex;
+}
+
 .class-detail,
 .lesson-date,
 .notice-description {
