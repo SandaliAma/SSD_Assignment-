@@ -20,7 +20,7 @@ function StCancelOnline() {
     const [date, setDate] = useState();
     const [amount, setAmount] = useState();
     const [balance, setBalance] = useState();
-    const [walletId] = useState('6615e90982b9dffcc59d079b'); // Set the wallet ID here
+    const [walletId] = useState('6623e88bc9a8a220af8c0916'); // Set the wallet ID here
     const navigator = useNavigate();
 
     const [name, setName] = useState();
@@ -69,7 +69,7 @@ function StCancelOnline() {
   
     const updatewallet = (e) => {
       e.preventDefault();
-      const updatedAmount = balance - amount;
+      const updatedAmount = parseInt(balance) + parseInt(amount);
       axios.put(`http://Localhost:5000/updatewallet/${walletId}`, { balance: updatedAmount })
         .then(res => {
           console.log(res);
@@ -136,7 +136,7 @@ function StCancelOnline() {
             },
           });
           setTimeout(() => {
-            navigator('/payment');
+            navigator('/viewonline');
           }, 2500); // Wait for 2 seconds after displaying success toast before navigating
         }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
       }, 5000); // Wait for 5 seconds before dismissing loading toast
