@@ -57,7 +57,7 @@ function Nav() {
                     </li>
                     <li>
                         <img src={qa} alt='home' className='navimage'/>
-                        <a href='/login'>Q&A</a>
+                        <a href='/managerfeedbackgenrate'>Q&A</a>
                     </li>
                     <li>
                         <img src={feedback} alt='home' className='navimage'/>

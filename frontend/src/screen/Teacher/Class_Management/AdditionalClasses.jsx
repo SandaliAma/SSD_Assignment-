@@ -45,6 +45,7 @@ function AdditionalClasses() {
             <table className="additionalclasses-table">
                 <thead>
                     <tr>
+                      
                         <th>Teacher</th>
                         <th>Grade</th>
                         <th>Subject</th>

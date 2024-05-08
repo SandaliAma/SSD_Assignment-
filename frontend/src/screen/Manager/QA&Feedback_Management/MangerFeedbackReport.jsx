@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
-import Head from '../Header/Header'
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet,Image } from '@react-pdf/renderer';
 
 
-const LessonReport = () => {
-    const [allLessons, setAllLessons] = useState([]);
+import logo from '../photos/logofull.png';
+
+
+const FeedbackReport = () => {
+    const [allFeedbacks, setAllFeedbacks] = useState([]);
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const selectedMonth = queryParams.get('month');
@@ -15,13 +17,13 @@ const LessonReport = () => {
         const fetchLessons = async () => {
             try {
                 const onlineRes = await axios.get('http://localhost:5000/MySFeedbacks');
-                const Lesson = onlineRes.data;
+                const feedback = onlineRes.data;
 
-                const filteredLessons = Lesson.filter(lesson => {
-                    const lessonDate = new Date(lesson.date);
-                    return lessonDate.getMonth() === parseInt(selectedMonth.split('-')[1]) - 1; // Month is zero-based
+                const filteredFeedbacks = feedback.filter(feedback => {
+                    const FDate = new Date(feedback.date);
+                    return FDate.getMonth() === parseInt(selectedMonth.split('-')[1]) - 1; // Month is zero-based
                 });
-                setAllLessons(filteredLessons);
+                setAllFeedbacks(filteredFeedbacks);
             } catch (error) {
                 console.error(error);
             }
@@ -32,54 +34,76 @@ const LessonReport = () => {
 
 
 
+
     const styles = StyleSheet.create({
         page: {
-            flexDirection: 'column',
-            padding: 20,
+            padding: 40,
+            marginTop: 60,
+            backgroundColor: '#f0f0f0', // Light gray background
         },
         row: {
             flexDirection: 'row',
             borderBottomWidth: 1,
-            borderBottomColor: '#000',
+            borderBottomColor: '#ccc', // Light gray border
             alignItems: 'center',
-            height: 24,
+            minHeight: 24,
+            marginTop: 30, // Increased margin-top for more space between rows
+            marginLeft: 10,
+            backgroundColor: '#fff', // White background
+            borderRadius: 8, // Rounded corners
+            padding: 10, // Increased padding
+            shadowColor: '#000', // Shadow color
+            shadowOffset: { width: 0, height: 2 }, // Shadow offset
+            shadowOpacity: 0.25, // Shadow opacity
+            shadowRadius: 3, // Shadow radius
+            elevation: 5, // Android shadow
         },
         header: {
+            marginLeft: 160,
+            fontSize: 20, // Larger font size
             fontWeight: 'bold',
+            color: '#333', // Dark gray text color
+            flex: 1, // Expanded to fill space
         },
         cell: {
-            flexGrow: 1,
-            fontSize: 10,
+            flex: 1,
+            fontSize: 12,
+            color: '#666', // Medium gray text color
+        },
+        logo: {
+            marginLeft: 200,
+            marginBottom: 20,
+            width: 200, // Adjust as needed
+            height: 60, // Adjust as needed
         },
     });
 
 
-    const MyDocument = ({ allLessons }) => (
+    const MyDocument = ({ allFeedbacks }) => (
         <Document>
             <Page size="A4">
-                <View>
-                    <Text style={styles.header}>My Lessons for {selectedMonth}</Text>
+            <View>
+                    <Image src={logo} style={styles.logo} />
+                    <Text style={styles.header}>Feedback  Report for {selectedMonth}</Text>
                 </View>
                 <br /><br /><br /><br />
                 <View style={styles.row}>
 
                   
+                    <Text style={styles.cell}>Studet ID</Text>
                     <Text style={styles.cell}>Grade</Text>
-                    <Text style={styles.cell}>Subject</Text>
-                    <Text style={styles.cell}>Teacher</Text>
+                    <Text style={styles.cell}>Feedback</Text>
                     <Text style={styles.cell}>Date</Text>
-                    <Text style={styles.cell}>Topic</Text>
-                    <Text style={styles.cell}>File Type</Text>
+            
                 </View>
-                {allLessons.map((lesson, index) => (
+                {allFeedbacks.map((feedback, index) => (
                     <View key={index} style={styles.row}>
                      
-                        <Text style={styles.cell}>{lesson.sid}</Text>
-                        <Text style={styles.cell}>{lesson.grade}</Text>
-                        <Text style={styles.cell}>{lesson.teachername}</Text>
-                        <Text style={styles.cell}>{lesson.lesson_date}</Text>
-                        <Text style={styles.cell}>{lesson.lesson_topic}</Text>
-                        <Text style={styles.cell}>{lesson.lesson_fileType}</Text>
+                        <Text style={styles.cell}>{feedback.sid}</Text>
+                        <Text style={styles.cell}>{feedback.grade}</Text>
+                        <Text style={styles.cell}>{feedback.feedback}</Text>
+                        <Text style={styles.cell}>{feedback.date}</Text>
+                
                     </View>
                 ))}
         </Page>
@@ -97,9 +121,9 @@ return (
     
     <div className='lesson-report'>
         <div className='bodymvl'>
-            <h1 className='h1mvl'>Lesson Report for {selectedMonth}</h1>
+            <h1 className='h1mvl'>Feedback Report for {selectedMonth}</h1>
             <br /><br /><br /><br />
-            <PDFDownloadLink document={<MyDocument allLessons={allLessons} />} fileName="lessons.pdf">
+            <PDFDownloadLink document={<MyDocument allFeedbacks={allFeedbacks} />} fileName="feedback.pdf">
                 {({ loading, error }) => (
                     loading ? 'Loading document...' : (error ? 'Error generating PDF' : 'Download PDF')
                 )}
@@ -109,24 +133,22 @@ return (
                     <thead>
                         <tr>
                             
+                            <th>Studet ID</th>
                             <th>Grade</th>
-                            <th>Subject</th>
-                            <th>Teacher</th>
+                            <th>Feedback</th>
                             <th>Date</th>
-                            <th>Topic</th>
-                            <th>File Type</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
-                        {allLessons.map((lesson, index) => (
+                        {allFeedbacks.map((feedback, index) => (
                             <tr key={index}>
                               
-                                <td>{lesson.sid}</td>
-                                <td>{lesson.grade}</td>
-                                <td>{lesson.teachername}</td>
-                                <td>{lesson.subject}</td>
-                                <td>{lesson.lesson_topic}</td>
-                                <td>{lesson.lesson_fileType}</td>
+                                <td>{feedback.sid}</td>
+                                <td>{feedback.grade}</td>
+                                <td>{feedback.feedback}</td>
+                                <td>{feedback.date}</td>
+                           
                             </tr>
                         ))}
                     </tbody>
@@ -139,5 +161,5 @@ return (
 );
 };
 
-export default LessonReport;
+export default FeedbackReport;
 

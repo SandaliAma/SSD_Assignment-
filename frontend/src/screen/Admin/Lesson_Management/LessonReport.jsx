@@ -31,6 +31,7 @@ const LessonReport = () => {
         fetchLessons();
     }, [selectedMonth]);
 
+    
     const styles = StyleSheet.create({
         page: {
             padding: 40,
