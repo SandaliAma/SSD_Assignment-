@@ -102,6 +102,7 @@ function AddMaterials() {
     setLessonFiles(files[0]);
   };
 
+  // Render
   return (
     <div className="adm_container">
       <h2 className="form_topic">Lesson Material Upload</h2>
@@ -145,7 +146,16 @@ function AddMaterials() {
           <div className="input_group">
             <div className="input_col">
               <label htmlFor="date">Date:</label>
-              <input type="date" name="date" value={lesson_date} onChange={(e) => setLessonDate(e.target.value)} required />
+              <input
+                type="date"
+                name="date"
+                min={lesson_date} // Set the minimum date to the current date
+                value={lesson_date} // Automatically fill the current date
+                onChange={(e) => setLessonDate(e.target.value)}
+                required
+              />
+
+
             </div>
             <div className="input_col">
               <label htmlFor="fileType">File Type:</label>
@@ -162,8 +172,8 @@ function AddMaterials() {
           <label htmlFor="description">Description:</label>
           <textarea name="description" placeholder="Enter description" onChange={(e) => setLessonDescription(e.target.value)} required></textarea>
 
-          <input type="hidden" name="class_id" value="" onChange={(e) => setClass_id(e.target.value)} />
-          <input type="hidden" name="teacher_id" value="" onChange={(e) => setTeacher_id(e.target.value)} />
+          <input type="hidden" name="class_id" value={subject_name} onChange={(e) => setClass_id(e.target.value)} />
+          <input type="hidden" name="teacher_id" value={teacher_id} onChange={(e) => setTeacher_id(e.target.value)} />
 
           <div className="ad_button_group">
             <button type="submit">Upload</button>

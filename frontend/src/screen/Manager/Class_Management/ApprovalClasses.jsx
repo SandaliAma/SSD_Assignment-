@@ -22,11 +22,11 @@ function ApprovalClasses() {
     useEffect(() => {
         axios.get(`http://localhost:5000/approveClass/${id}`)
             .then(res => {
-                const { teacher, classid, teacherid, date1, date2, date3, date4, grade, subject, status } = res.data;
+                const { teacher, classid, teacherid, date, date2, date3, date4, grade, subject, status } = res.data;
                 setTeacher(teacher);
                 setClassId(classid);
                 setTeacherId(teacherid);
-                setDate1(date1);
+                setDate1(date);
                 setDate2(date2);
                 setDate3(date3);
                 setDate4(date4);

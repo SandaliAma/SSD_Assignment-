@@ -12,7 +12,7 @@ function SFeedback() {
   const[sid,setSid]=useState();
   const [grade, setGrade] = useState();
   const [sfeedback, setSFeedback] = useState();
-  const [date, setDate] = useState();
+  const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
   const navigator = useNavigate();
 
   const submit = (a) =>{
@@ -144,8 +144,9 @@ function SFeedback() {
         id="date"
         style={{boxSizing: 'border-box',position: 'absolute',width: '920px',height: '53px',left: '436px',top: '815px',background: '#FFFFFF',border: '1px solid #000000'}}
         type="date"
-        required
-        onChange={(a)=> setDate(a.target.value)}
+        value={date}
+        readOnly
+        onChange={(a)=> this.setState({ currentDate: a.target.value })}
       />
       <button
         id="sfeed"
