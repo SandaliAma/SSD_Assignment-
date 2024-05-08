@@ -37,11 +37,11 @@ function TeacherQuestion() {
   return (
     <div>
        <Head/>
-    <text className="heading3">Connect With Your Teachers - New Questions</text>
+    <text className="heading33">Connect With Your Teachers - New Questions</text>
     <ul style={{listStyleType: 'none', position: 'absolute', left: '344px', top: '220px',  width: '864px', background: '#FFFFFF',  padding: '10px'}}>
     
       {questions.map((question, index) => (
-        <li key={index} style={{ marginBottom: '20px',listStyleType: 'none',boxSizing: 'border-box', position: 'relative', width: '864px', height: '250px',  background: '#FFFFFF', border: '1px solid #000000' }}>
+        <li key={index} style={{ marginBottom: '20px',listStyleType: 'none',boxSizing: 'border-box', position: 'relative', width: '864px', height: '250px',  background: '#FFFFFF', border: '2px solid #000000',borderRadius:'10px' }}>
          
           
             <br/><strong>Subject:</strong>{question.subject}<br/><br/>
@@ -53,7 +53,7 @@ function TeacherQuestion() {
           <Link to = {`/AnswerQ/${question._id}`} style={{ textDecoration: 'none', color: '#FFFFFF' }}>  
           <button
             name="edit"
-            style={{ position: 'absolute', width: '182px', left: '900px', height: '70px', top:'40%', background: '#6C9DE2', borderRadius: '20px' }}
+            style={{ position: 'absolute', width: '140px', left: '900px', height: '50px', top:'40%', background: '#063a67', borderRadius: '20px' }}
             className="buttn1"
           >
             Answer

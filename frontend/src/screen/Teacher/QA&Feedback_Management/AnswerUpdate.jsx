@@ -63,7 +63,7 @@ function AnswerUpdate() {
         <text className="ttt7">Answer</text>
         <input type="text" style={{ boxSizing: 'border-box', position: 'absolute', width: '920px', height: '163px', left: '513px', top: '718px', background: '#FFFFFF', border: '1px solid #000000' }}  id="answer1"  value={answer} onChange={(event) => setAnswer(event.target.value)}></input>
         <div>
-        <button type='submit' id="reply" className="anst" style={{ position: 'absolute', width: '334px', height: '77px', left: '1079px', top: '906px', background: '#6C9DE2', borderRadius: '20px' }}>SUBMIT ANSWER</button>
+        <button type='submit' id="reply" className="anst" style={{ position: 'absolute', width: '280px', height: '60px', left: '1079px', top: '906px', background: '#063a67', borderRadius: '20px' }}>UPDATE ANSWER</button>
         </div>
     </form>
     

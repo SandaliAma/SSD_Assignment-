@@ -45,8 +45,8 @@ function ViewTeacherFeedback() {
 <ul style={{ position: 'absolute',listStyleType: 'none'}}>
   {tfeedbacks.map((tfeedback, index) => (
     <li key={index} style={{ position: 'relative', marginBottom: '20px' }}>
-      <label className="tt9">Feedback</label>
-      <ul style={{ listStyleType: 'none' ,boxSizing: 'border-box', position: 'absolute', height: '165px', width: '830px', left: '537px', top: '224px', background: '#FFFFFF', border: '1px solid #000000' }}>
+      <label className="tt91">Feedback</label>
+      <ul style={{ listStyleType: 'none' ,boxSizing: 'border-box', position: 'absolute', height: '165px', width: '830px', left: '520px', top: '150px', background: '#FFFFFF', border: '2px solid #000000',borderRadius:'10px' }}>
         <li><strong>Grade:</strong> {tfeedback.grade}</li><br/>
         <li><strong>Subject:</strong> {tfeedback.subject}</li><br/>
         <li><strong>Teacher:</strong> {tfeedback.teacher}</li><br/>
