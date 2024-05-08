@@ -6,6 +6,8 @@ import Head from '../Header/Header';
 import { toast } from 'react-hot-toast';
 import jsPDF from 'jspdf';
 import { useNavigate } from 'react-router-dom';
+import './enrolmanage.css';
+
 
 function ManagerEnroll() {
     const [enrollments, setEnrollments] = useState([]);

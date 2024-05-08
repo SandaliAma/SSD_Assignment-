@@ -3,6 +3,7 @@ import axios from 'axios';
 import Head from '../Header/Header';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import './enrolmanage.css';
 
 const EnrollmentForm = () => {
     const [studentId, setStudentId] = useState('');
@@ -53,20 +54,19 @@ const EnrollmentForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-
+    
         const formData = {
             "studentId": studentId,
             "classId": classId,
             "teacherId": teacherId,
             "subject": subject,
-            "grade":grade
+            "grade": grade,
+            "teacherid": teacherId, // Add teacherid to formData
+            "time": new Date().toISOString() // Add current time to formData
         };
-
-        console.log(formData);
-
+    
         console.log("Form Data:", formData);
-
+    
         try {
             await axios.post('/classenrollments', formData);
             toast.success("Enrollment created successfully!");
@@ -76,18 +76,17 @@ const EnrollmentForm = () => {
             setTeacherId('');
             setSubject('');
             setTeacher('');
-            setGrade();
+            setGrade('');
         } catch (error) {
             console.error("Error creating enrollment:", error);
             toast.error("Failed to create enrollment. Please try again.");
         }
     };
-
     return (
         <div>
             <Head />
             
-                <div className="enrollformdiv" ></div>
+                <div className="enrollformdiv" >
                     
                     <form onSubmit={handleSubmit}>
                         <div className="form-group" controlId="studentId">
@@ -130,6 +129,8 @@ const EnrollmentForm = () => {
                         <button className="btn btn-primary" type="submit">Submit</button>
                         <button className="btn btn-secondary" onClick={handleBack}>Back</button>
                     </form>
+
+                </div>
                     
                 
             
