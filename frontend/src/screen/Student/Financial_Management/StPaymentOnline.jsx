@@ -24,10 +24,13 @@ function StPaymentOnline() {
   // const[expiredate,setExpiredate] = useState();
   // const[discription,setDescription] = useState();
   const[date,setDate] = useState();
-  // const[amount,setAmount] = useState();
+   const[amount,setAmount] = useState();
   const navigator = useNavigate();
 
   const [stuid, setStudentid] = useState();
+
+  const [balance, setBalance] = useState();
+  const [walletId] = useState('6623e88bc9a8a220af8c0916'); // Set the wallet ID here
 
   useEffect(()=>{
     axios.get('/studentprofile')
@@ -40,7 +43,7 @@ function StPaymentOnline() {
   },[])
 
 
-  const submit = (e) => {
+/*   const submit = (e) => {
       e.preventDefault();
       axios.post('http://Localhost:5000/createonline',{itnumber:stuid , description:subname, date:date , amount:subamount ,status:status ,type:type })
 
@@ -49,7 +52,56 @@ function StPaymentOnline() {
        
       })
       .catch(err => console.error(err));
+  } */
+
+  
+  useEffect(() => {
+    axios.get(`http://Localhost:5000/getwallet/${walletId}`)
+      .then((res) => {
+        setBalance(res.data.balance);
+      })
+      .catch((err) => console.error(err));
+  }, [walletId]);
+
+  const updatewallet = (e) => {
+    e.preventDefault();
+    const updatedAmount = parseInt(balance) - parseInt(amount);
+    axios.put(`http://Localhost:5000/updatewallet/${walletId}`, { balance: updatedAmount })
+      .then(res => {
+        console.log(res);
+       
+      })
+      .catch(err => console.error(err));
   }
+
+  const submit = (e) => {
+    e.preventDefault();
+    const paymentAmount = parseFloat(subamount); // Convert amount to a float
+    const updatedBalance = parseFloat(balance) - paymentAmount; // Subtract payment amount from balance
+    axios.post('http://Localhost:5000/createonline', {
+        itnumber: stuid,
+        description: subname,
+        date: date,
+        amount: paymentAmount,
+        status: status,
+        type: type
+    })
+    .then(res => {
+        console.log(res);
+        updateWallet(updatedBalance); // Update wallet after payment
+    })
+    .catch(err => console.error(err));
+}
+
+const updateWallet = (updatedBalance) => {
+    axios.put(`http://Localhost:5000/updatewallet/${walletId}`, { balance: updatedBalance })
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => console.error(err));
+};
+
+
 
   useEffect(() => {
     const today = new Date();
