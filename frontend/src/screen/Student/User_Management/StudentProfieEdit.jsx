@@ -17,7 +17,7 @@ function StudentProfileEdit() {
     const [parentphonenumber, setParentPhonenumber] = useState('');
     const [secanswer, setSecAnswer] = useState('');
     const [profile_photo, setProfilePhoto] = useState(null);
-    const [show_profile_photo, setProfilePhotoView] = useState(null);
+    const [show_profile_photo, setProfilePhotoView] = useState([]);
     const [student_id, setStudent_id] = useState('');
 
     useEffect(() => {
@@ -31,13 +31,23 @@ function StudentProfileEdit() {
                 setParentName(res.data.parentname);
                 setParentPhonenumber(res.data.parentphonenumber);
                 setSecAnswer(res.data.SecAnswer);
+                setStudent_id(res.data.stdid); // Set the student ID
+                fetchProfilePhoto(res.data.stdid); // Fetch profile photo
             })
             .catch((err) => {
                 console.log(err);
             });
     }, []);
 
-    // Function to delete the photo
+    const fetchProfilePhoto = async (studentId) => {
+        try {
+            const result = await axios.get(`/getimage/${studentId}`);
+            setProfilePhotoView([result.data.data]); // Set the profile photo
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const handleDeletePhoto = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -49,7 +59,7 @@ function StudentProfileEdit() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete('http://localhost:5000/deletephoto/'+ id)
+                axios.delete(`http://localhost:5000/deletephoto/${id}`)
                     .then((res) => {
                         console.log('success');
                         Swal.fire(
@@ -57,7 +67,7 @@ function StudentProfileEdit() {
                             'Your Photo has been deleted.',
                             'success'
                         ).then(() => {
-                            window.location.reload(); // Reload the page after successful deletion
+                            fetchProfilePhoto(student_id); // Refresh profile photo after deletion
                         });
                     })
                     .catch((err) => {
@@ -70,8 +80,7 @@ function StudentProfileEdit() {
                     });
             }
         });
-    }
-    
+    };
 
     const updateStudent = (e) => {
         e.preventDefault();
@@ -99,36 +108,35 @@ function StudentProfileEdit() {
 
     const submitImage = async (e) => {
         e.preventDefault();
-
+    
         if (!profile_photo) {
             console.error('No file selected');
             return;
         }
-
+    
         const formData = new FormData();
         formData.append('file', profile_photo);
-        formData.append('student_id', student_id);
-
+        formData.append('student_id', student_id); // Pass the student ID
+    
         try {
-            const response = await axios.post('/addphoto', formData, {
+            await axios.post('/addphoto', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
-            setProfilePhoto(response.data.profile_photo);
+    
             await Swal.fire({
                 icon: 'success',
                 title: 'Success',
                 text: 'Photo added successfully!',
                 confirmButtonText: 'OK'
             });
-
-            // Refresh the page
-            navigate('/studentprofile');
+    
+            // Refresh the profile photo
+            fetchProfilePhoto(student_id);
         } catch (error) {
             console.error(error);
-
+    
             await Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -137,20 +145,7 @@ function StudentProfileEdit() {
             });
         }
     };
-
-
-    useEffect(() => {
-        getImage();
-    }, []);
-
-    const getImage = async () => {
-        try {
-            const result = await axios.get('/getimage');
-            setProfilePhotoView(result.data.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    
 
     return (
         <main>
@@ -163,22 +158,24 @@ function StudentProfileEdit() {
                         <tbody>
                             <tr>
                                 <td>
-                                    {show_profile_photo === null
-                                        ? ""
-                                        : show_profile_photo.map((data, index) => (
-                                            <div key={index}>
-                                                <img
-                                                    src={`http://localhost:5000/profilephotos/${data.profile_photo}`}
-                                                    height={100}
-                                                    width={100}
-                                                    alt="profile"
-                                                />
-                                                <br />
-                                                <button className='btnsp'  onClick={() => handleDeletePhoto(data._id)}>Delete</button>
 
-                                            </div>
-                                            
-                                        ))}
+                                {show_profile_photo.length > 0 ? (
+    show_profile_photo.map((data, index) => (
+        <div key={index}>
+            <img
+                src={`http://localhost:5000/profilephotos/${data.profile_photo}`}
+                height={100}
+                width={100}
+                alt="profile"
+            />
+            <br />
+            <button className='btnsp' onClick={() => handleDeletePhoto(data._id)}>Delete</button>
+        </div>
+    ))
+) : (
+    <p>No profile photo available</p>
+)}
+
 
                                 </td>
                                 <td>
@@ -188,12 +185,10 @@ function StudentProfileEdit() {
                                     <div>
                                         <form onSubmit={submitImage}>
                                             <input type="file" accept="image/*" onChange={onInputChange} />
-                                            <input type="hidden" name="student_id" value="" onChange={(e) => setStudent_id(e.target.value)} />
                                             <button className='btnsp' type="submit">Submit</button>
                                         </form>
                                     </div>
                                 </td>
-
                             </tr>
                         </tbody>
                     </table>

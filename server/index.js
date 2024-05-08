@@ -250,15 +250,23 @@ app.post('/addphoto', upload4.single('file'), (req, res) => {
     });
 });
 
-app.get("/getimage", async (req, res) => {
+
+app.get("/getimage/:studentId", async (req, res) => {
   try {
-    PhotoModel.find({}).then((data) => {
-      res.send({ status: "ok", data: data });
-    });
+    const studentId = req.params.studentId;
+    // Find the photo associated with the given student ID
+    PhotoModel.findOne({ student_id: studentId })
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ error: 'Profile photo not found for this student ID' });
+        }
+        res.send({ status: "ok", data: data });
+      });
   } catch (error) {
-    res.json({ status: error });
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 // Route to delete Photo
 app.delete('/deletephoto/:id', (req, res) => {
