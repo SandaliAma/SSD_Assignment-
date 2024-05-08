@@ -39,10 +39,7 @@ function Nav() {
                         <img src={classes} alt='home' className='navimage'/>
                         <a href='/lessonmaterial'>Lesson Material</a>
                     </li> */}
-                    <li>
-                        <img src={enroll} alt='home' className='navimage'/>
-                        <a href='/login'>Enrollments</a>
-                    </li>
+                    
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
                         <a href='/viewonline'>Payment</a>

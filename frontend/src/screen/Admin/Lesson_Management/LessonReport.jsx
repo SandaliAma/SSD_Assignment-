@@ -36,8 +36,6 @@ const LessonReport = () => {
         ict: allLessons.filter(lesson => lesson.subject_name === 'ICT').length,
         history: allLessons.filter(lesson => lesson.subject_name === 'History').length,
         commerce: allLessons.filter(lesson => lesson.subject_name === 'Commerce').length,
-   
-    
     };
     
     const styles = StyleSheet.create({
@@ -90,7 +88,6 @@ const LessonReport = () => {
                     <Image src={logo} style={styles.logo} />
                     <Text style={styles.header}>Lesson material Report for {selectedMonth}</Text>
                 </View>
-                <br /><br /><br /><br />
                 <View style={styles.row}>
                     <Text style={styles.cell}>Grade</Text>
                     <Text style={styles.cell}>Subject</Text>
@@ -108,7 +105,15 @@ const LessonReport = () => {
                         <Text style={styles.cell}>{lesson.lesson_topic}</Text>
                         <Text style={styles.cell}>{lesson.lesson_fileType}</Text>
                     </View>
+                    
                 ))}
+               <View style={styles.statisticsContainer}>
+                    <Text style={styles.statisticsText}>Lessons Statistics</Text>
+                    <Text style={styles.statisticsText}>Total Lessons: {lessonCounts.totalStudents}</Text>
+                    <Text style={styles.statisticsText}>ICT Lessons: {lessonCounts.ict}</Text>
+                    <Text style={styles.statisticsText}>History Lessons: {lessonCounts.history}</Text>
+                    <Text style={styles.statisticsText}>Commerce Lessons: {lessonCounts.commerce}</Text>
+                </View>
             </Page>
         </Document>
     );
@@ -118,7 +123,6 @@ const LessonReport = () => {
             
             <div className='bodymvl'>
                 <h1 className='h1mvl'>Lesson Report for {selectedMonth}</h1>
-                <br /><br /><br /><br />
                 <PDFDownloadLink document={<MyDocument allLessons={allLessons} />} fileName="lessons.pdf">
                     {({ loading, error }) => (
                         loading ? 'Loading document...' : (error ? 'Error generating PDF' : 'Download PDF')
@@ -151,13 +155,13 @@ const LessonReport = () => {
                     </table>
                 </div>
                 <div>
-                <h1 ><br/>Lessons Statistics</h1>
-                <div >
-                <p  className='static1'>Total Lessons: {lessonCounts.totalStudents}</p>
-                <p className='static1'>ICT Lessons: {lessonCounts.ict}</p>
-                <p className='static1'>History Lessons: {lessonCounts.history}</p>
-                <p className='static1'>Commerce Lessons: {lessonCounts.commerce}</p>
-                </div>
+                    <h1><br/>Lessons Statistics</h1>
+                    <div>
+                        <p className='static1'>Total Lessons: {lessonCounts.totalStudents}</p>
+                        <p className='static1'>ICT Lessons: {lessonCounts.ict}</p>
+                        <p className='static1'>History Lessons: {lessonCounts.history}</p>
+                        <p className='static1'>Commerce Lessons: {lessonCounts.commerce}</p>
+                    </div>
                 </div>
             </div>     
         </div>

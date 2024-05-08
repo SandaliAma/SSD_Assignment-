@@ -29,7 +29,7 @@ function Nav() {
                 <ul className='sidenavbarul'>
                     <li>
                         <img src={home} alt='home' className='navimage'/>
-                        <a href='/studentdashboard'>Dashboard</a>
+                        <a href='/adminprofile'>Dashboard</a>
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
@@ -39,30 +39,15 @@ function Nav() {
                         <img src={classes} alt='home' className='navimage'/>
                         <a href='/adgenratelesson'>Lesson Materials</a>
                     </li>
-                    <li>
-                        <img src={enroll} alt='home' className='navimage'/>
-                        <a href='/login'>Enrollments</a>
-                    </li>
+                
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
                         <a href='/admain'>Payment</a>
                     </li>
-                    <li>
-                        <img src={time} alt='home' className='navimage'/>
-                        <a href='/login'>TimeTable</a>
-                    </li>
-                    <li>
-                        <img src={attendance} alt='home' className='navimage'/>
-                        <a href='/login'>Attendance</a>
-                    </li>
-                    <li>
-                        <img src={qa} alt='home' className='navimage'/>
-                        <a href='/managerfeedbackgenrate'>Q&A</a>
-                    </li>
-                    <li>
-                        <img src={feedback} alt='home' className='navimage'/>
-                        <a href='/login'>Feedbacks</a>
-                    </li>
+                    
+                   
+                    
+                   
                     <li>
                         <img src={profile} alt='home' className='navimage'/>
                         <a href='/adminprofile'>Profile</a>
