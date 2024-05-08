@@ -101,7 +101,7 @@ function StViewCash() {
           },
         });
         setTimeout(() => {
-          navigator('/payment');
+          navigator('/viewonline');
         }, 2500); // Wait for 2 seconds after displaying success toast before navigating
       }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
     }, 5000); // Wait for 5 seconds before dismissing loading toast
@@ -150,7 +150,7 @@ function StViewCash() {
             <tr>
               <td className='tdvc'>{cash.itnumber}</td>
               <td className='tdvc'>{cash.studentname}</td>
-              <td className='tdvc'>{cash.discription}</td>
+              <td className='tdvc'>{cash.description}</td>
               <td className='tdvc'>{cash.date}</td>
               <td className='tdvc'>{cash.amount}</td>
               <td className='tdvc' style={{ color: cash.status === 'Approved' ? 'green' : cash.status === 'Rejected' ? 'red' : cash.status === 'Pending' ? 'blue' : 'inherit' }}>{cash.status}</td>

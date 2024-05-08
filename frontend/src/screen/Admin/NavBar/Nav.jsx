@@ -33,7 +33,7 @@ function Nav() {
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
-                        <a href='/lessonmaterial'>My Classes</a>
+                        <a href='/adgenerateclass'>My Classes</a>
                     </li>
                     <li>
                         <img src={classes} alt='home' className='navimage'/>
@@ -69,7 +69,7 @@ function Nav() {
                     </li>
                     <li>
                         <img src={wallet} alt='home' className='navimage'/>
-                        <a href='/Wallet'>Wallet</a>
+                        <a href='/adgenratesalry'>Salary</a>
                     </li>
                     <br/><br/><br/>
                     <li className='logoutsq'>

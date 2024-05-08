@@ -109,14 +109,14 @@ function StEditBank() {
             },
           });
           setTimeout(() => {
-            navigator('/payment');
+            navigator('/viewbank');
           }, 2500); // Wait for 2 seconds after displaying success toast before navigating
         }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
       }, 5000); // Wait for 5 seconds before dismissing loading toast
     };
   
     const handleCancel = () => {
-      navigator('/payment');
+      navigator('/viewbank');
     }
     
   return (
@@ -134,7 +134,7 @@ function StEditBank() {
                 <h2 className="ebah2"><br></br>Payment Details</h2><br/>
 
                     <label htmlFor="cname" className="labeleba1">Enter IT Number:</label><br/>
-                    <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$" required className="texteba1"  value={itnumber} onChange={(e)=>setItnumber(e.target.value)}/><br /><br />
+                    <input type="text" name="itnum" placeholder="IT12345678" readOnly required className="texteba1"  value={itnumber} onChange={(e)=>setItnumber(e.target.value)}/><br /><br />
 
                     <label htmlFor="an" className="labeleba1">Enter Account Name:</label><br/>
                     <input type="text" name="acname" placeholder="Enter Name" pattern="[A-Za-z\s]+" required className="texteba2"  value={accountname} onChange={(e)=>setAccountname(e.target.value)}/> <br /><br />
@@ -149,18 +149,18 @@ function StEditBank() {
                     <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="texteba7" value={description} onChange={(e)=>setDescription(e.target.value)}/><br /><br />
 
                     <label htmlFor="tda" className="labeleba1">Enter Date:</label><br/>
-                    <input type="date" name="dates" placeholder="(DD/MM/YY)"  readOnly className="texteba5" value={date} onChange={(e)=>setDate(e.target.value)}/><br /><br />
+                    <input type="date" name="dates" placeholder="(DD/MM/YY)"  readOnly  className="texteba5" value={date} onChange={(e)=>setDate(e.target.value)}/><br /><br />
 
                     <label htmlFor="totalA" className="labeleba1">Enter Amount:</label><br/>
-                    <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="texteba6" value={amount} onChange={(e)=>setAmount(e.target.value)}/><br /><br />
+                    <input type="text" name="amounts" placeholder="00.00" readOnly required className="texteba6" value={amount} onChange={(e)=>setAmount(e.target.value)}/><br /><br />
                     <br></br>
                     
                     
-                    <div className="payeba2">
+                   {/*  <div className="payeba2">
                       <br/>
                     <label htmlFor="file" className="labeleba8">Upload a file:</label><br />
-                    <input type="file" id="file" name="file" className="texteba8"  />
-                    </div>
+                    <input type="file" id="file" name="file" className="texteba8" readOnly />
+                    </div> */}
                     <div className="containereba4"> 
                         <button type="submit" name="submit" className="buttoneba3">Save</button>
                         <button type="submit" name="submit" className="buttoneba4" 

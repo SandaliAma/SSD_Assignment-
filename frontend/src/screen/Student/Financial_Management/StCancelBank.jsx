@@ -17,7 +17,7 @@ function StCancelBank() {
     const [accountname, setAccountName] = useState();
     const [accountnumber, setAccountnumber] = useState();
     const [bankname, setBankName] = useState();
-    const [discription, setDiscription] = useState();
+    const [description, setDescription] = useState();
     const [date, setDate] = useState();
     const [amount, setAmount] = useState();
     const [balance, setBalance] = useState();
@@ -43,7 +43,7 @@ function StCancelBank() {
           setAccountName(res.data.accountname);
           setAccountnumber(res.data.accountnumber);
           setBankName(res.data.bankname);
-          setDiscription(res.data.discription);
+          setDescription(res.data.description);
           setDate(res.data.date);
           setAmount(res.data.amount);
         })
@@ -136,14 +136,14 @@ function StCancelBank() {
             },
           });
           setTimeout(() => {
-            navigator('/payment');
+            navigator('/viewbank');
           }, 2500); // Wait for 2 seconds after displaying success toast before navigating
         }, 2500); // Wait for 2 seconds after dismissing loading toast before displaying success toast
       }, 5000); // Wait for 5 seconds before dismissing loading toast
     };
   
     const handleCancel = () => {
-      navigator('/payment');
+      navigator('/viewbank');
     }
     
   return (
@@ -162,33 +162,33 @@ function StCancelBank() {
                 <h2 className="cbah2"><br></br>Payment Details</h2><br/>
 
                     <label htmlFor="cname" className="labelcba1">Enter IT Number:</label><br/>
-                    <input type="text" name="itnum" placeholder="IT12345678" pattern="^IT\d{8}$" required className="textcba1"  value={itnumber} /><br /><br />
+                    <input type="text" name="itnum" placeholder="IT12345678" readOnly required className="textcba1"  value={itnumber} /><br /><br />
 
                     <label htmlFor="an" className="labelcba1">Enter Account Name:</label><br/>
-                    <input type="text" name="acname" placeholder="Enter Name" pattern="[A-Za-z\s]+" required className="textcba2"  value={accountname} /> <br /><br />
+                    <input type="text" name="acname" placeholder="Enter Name" readOnly required className="textcba2"  value={accountname} /> <br /><br />
 
                     <label htmlFor="an" className="labelcba1">Enter Account Number:</label><br/>
-                    <input type="text" name="acnum" placeholder="xxxxxxxxxx" pattern="[0-9]+" required className="textcba3" value={accountnumber} /> <br /><br />
+                    <input type="text" name="acnum" placeholder="xxxxxxxxxx" readOnly required className="textcba3" value={accountnumber} /> <br /><br />
 
                     <label htmlFor="cno" className="labelcba1">Enter Bank Name:</label><br/>
-                    <input type="text" name="bname" placeholder="Enter Bank Name" pattern="[A-Za-z\s]+" required className="textcba4" value={bankname} /><br /><br />
+                    <input type="text" name="bname" placeholder="Enter Bank Name" readOnly required className="textcba4" value={bankname} /><br /><br />
 
                     <label htmlFor="totalA" className="labelcba1">Enter Description:</label><br/>
-                    <input type="text" name="descriptions" placeholder="Class Name" pattern="[A-Za-z\s]+" required className="textcba7" value={discription}/><br /><br />
+                    <input type="text" name="descriptions" placeholder="Class Name" readOnly required className="textcba7" value={description}/><br /><br />
 
                     <label htmlFor="tda" className="labelcba1">Enter Date:</label><br/>
-                    <input type="date" name="dates" placeholder="(DD/MM/YY)"  required className="textcba5" value={date} /><br /><br />
+                    <input type="date" name="dates" placeholder="(DD/MM/YY)"  readOnly required className="textcba5" value={date} /><br /><br />
 
                     <label htmlFor="totalA" className="labelcba1">Enter Amount:</label><br/>
-                    <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="textcba6" value={amount} /><br /><br />
+                    <input type="text" name="amounts" placeholder="00.00" pattern="\d+(\.\d{2})?"  readOnly required className="textcba6" value={amount} /><br /><br />
                     <br></br>
                     
                     
-                    <div className="paycba2">
+                  {/*   <div className="paycba2">
                       <br/>
                     <label htmlFor="file" className="labelcba8">Upload a file:</label><br />
-                    <input type="file" id="file" name="file" className="textcba8"  />
-                    </div>
+                    <input type="file" id="file" name="file" className="textcba8"  readOnly />
+                    </div> */}
                     <div className="containercba4"> 
                         <button type="submit" name="submit" className="buttoncba3">Save</button>
                         <button type="submit" name="submit" className="buttoncba4" 
