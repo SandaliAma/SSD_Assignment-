@@ -59,7 +59,7 @@ const handleSubjectChange = (event) => {
 
         <ul style={{ marginTop: '-80px'}}>
                 {questions.map((question, index) => (
-                  <div style={{ marginBottom: '40px',listStyleType: 'none', boxSizing: 'border-box', position: 'relative', width: '800px', height: '250px', left: '359px', top: '391px', background: '#FFFFFF',borderRadius:'10px', border: '5px solid #000000' }}>
+                  <div style={{ marginBottom: '40px',listStyleType: 'none', boxSizing: 'border-box', position: 'relative', width: '800px', height: '250px', left: '359px', top: '300px', background: '#FFFFFF',borderRadius:'10px', border: '5px solid #000000' }}>
                     <li key={index} style={{marginLeft:'20px', marginTop:'20px'}}>
                         <div >Grade: {question.grade}</div><br/><br/>
                         <div>Subject: {question.subject}</div><br/><br/>
