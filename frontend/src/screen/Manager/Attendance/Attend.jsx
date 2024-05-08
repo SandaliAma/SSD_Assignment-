@@ -5,6 +5,7 @@ import Head from '../Header/Header';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../../../styles/Sasi.css';
 import jsPDF from 'jspdf';
+import './Attendmanage.css';
 
 
 function Attend() {

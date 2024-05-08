@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './AdReport.css';
 import { useLocation } from 'react-router-dom';
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet,Image } from '@react-pdf/renderer';
 import Head from '../Header/Header';
+
+import logo from '../photos/logofull.png';
 
 function AdReport() {
     const [allPayments, setAllPayments] = useState([]);
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const selectedMonth = queryParams.get('month');
+
 
     const fetchPayments = async () => {
         try {
@@ -51,30 +54,53 @@ function AdReport() {
  
     const styles = StyleSheet.create({
         page: {
-            flexDirection: 'column',
-            padding: 20,
+            padding: 40,
+            marginTop: 60,
+            backgroundColor: '#f0f0f0', // Light gray background
         },
         row: {
             flexDirection: 'row',
             borderBottomWidth: 1,
-            borderBottomColor: '#000',
+            borderBottomColor: '#ccc', // Light gray border
             alignItems: 'center',
-            height: 24,
+            minHeight: 24,
+            marginTop: 30, // Increased margin-top for more space between rows
+            marginLeft: 10,
+            backgroundColor: '#fff', // White background
+            borderRadius: 8, // Rounded corners
+            padding: 10, // Increased padding
+            shadowColor: '#000', // Shadow color
+            shadowOffset: { width: 0, height: 2 }, // Shadow offset
+            shadowOpacity: 0.25, // Shadow opacity
+            shadowRadius: 3, // Shadow radius
+            elevation: 5, // Android shadow
         },
         header: {
+            marginLeft: 160,
+            fontSize: 20, // Larger font size
             fontWeight: 'bold',
+            color: '#333', // Dark gray text color
+            flex: 1, // Expanded to fill space
         },
         cell: {
-            flexGrow: 1,
-            fontSize: 10,
+            flex: 1,
+            fontSize: 12,
+            color: '#666', // Medium gray text color
+        },
+        logo: {
+            marginLeft: 200,
+            marginBottom: 20,
+            width: 200, // Adjust as needed
+            height: 60, // Adjust as needed
         },
     });
 
     const MyDocument = () => (
         <Document>
-            <Page size="A4" style={styles.page}>
-                <View>
-                    <Text style={styles.header}>My Payments for {selectedMonth}</Text>
+           <Page size="A4">
+                 <View>
+                    <Image src={logo} style={styles.logo} />
+                    <Text style={styles.header}> payment Report for {selectedMonth}</Text>
                 </View>
                 <View style={styles.row}>
                     <Text style={styles.cell}>Student IT Number</Text>
