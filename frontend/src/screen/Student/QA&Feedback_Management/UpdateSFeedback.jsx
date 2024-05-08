@@ -126,12 +126,13 @@ function UpdateSFeedback() {
   return (
     <>   
     <Head/>
-    <div className='uth2' >
+    <h1 className="heading9">We Want to Hear from You - Update Service Feedback</h1>
+    <div  >
        
        <Toaster/>
-    <h1 className="heading9">We Want to Hear from You - Teacher Feedback</h1>
+    
     <form onSubmit={handleSubmit}>
-      <label htmlFor="grade" className="tt6">Select Grade</label>
+      <label htmlFor="grade" className="tt6">Grade</label>
       <input id="dropdown1" name="dropdown" value={grade}
         style={{ position: 'absolute', width: '920px', height: '40px', left: '436px', top: '268px', border: '1px solid #000000', borderRadius: '10px' }}  readOnly/>
 
@@ -142,7 +143,7 @@ function UpdateSFeedback() {
         value={sfeedbacks}
         onChange={(a)=> setSFeedbacks(a.target.value)}
       ></textarea>
-      <label htmlFor="date" className="tt8">Enter Date</label>
+      <label htmlFor="date" className="tt8">Date</label>
       <input
         id="date"
         style={{ boxSizing: 'border-box', position: 'absolute', width: '920px', height: '53px', left: '436px', top: '755px', background: '#FFFFFF', border: '1px solid #000000' }}
@@ -153,7 +154,8 @@ function UpdateSFeedback() {
       <button
         id="sfeed"
         className="sfet"
-        style={{ position: 'absolute', width: '334px', height: '77px', left: '1020px', top: '850px', background: '#6C9DE2', borderRadius: '20px' }}
+        
+        style={{ position: 'absolute', width: '334px', height: '77px', left: '1020px', top: '850px', background: '#384D6C', borderRadius: '12px' }}
       >
         Submit
       </button>

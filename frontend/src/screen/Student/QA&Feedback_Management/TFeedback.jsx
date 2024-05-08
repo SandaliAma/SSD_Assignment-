@@ -144,9 +144,9 @@ function TFeedback() {
     <>
     <Head/>
     <h1 className="heading8">We Want to Hear from You - Teacher Feedback</h1>
-    <div className='uth1'>
+    <div >
       
-        <body >
+        <body className='uthh1'>
       
       <form onSubmit={handleSubmit}>
         
@@ -155,7 +155,7 @@ function TFeedback() {
         style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '200px', border: '1px solid #000000', borderRadius: '10px' }}  readOnly/>
         
         <label htmlFor="teacher" className="tt2">Select Teacher</label>
-        <select id="dropdown3" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '264px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setTeacher(a.target.value)}>
+        <select id="dropdown3" name="dropdown" style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '270px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setTeacher(a.target.value)}>
          
         <option value=""></option>
         {teacherid.map((teache, index) => (

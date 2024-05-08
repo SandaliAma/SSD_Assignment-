@@ -57,12 +57,12 @@ function THQuestion() {
        <Head/>
         <text className="heading5">Connect With Your Teachers</text>
         <p className="parag2">Welcome to our online platform dedicated to supporting students' learning journey! Our platform is designed to enhance collaboration, engagement, and support within the educational community.</p>
-        <Link to="/TeacherQuestion" style={{ textDecoration: 'none',color: '#000000' }}><button id="nQuestion" style={{ position: 'absolute', width: '592px', height: '86px', left: '336px', top: '323px', background: '#83B2CD', borderRadius: '20px' }} className="buttn3">NEW QUESTIONS</button></Link>
+        <Link to="/TeacherQuestion" style={{ textDecoration: 'none',color: '#000000' }}><button id="nQuestion" style={{ position: 'absolute', width: '280px', height: '50px', left: '336px', top: '323px', background: '#063a67', borderRadius: '20px' }} className="buttn3">NEW QUESTIONS</button></Link>
         <text className="tttt1">Solved Questions</text>
         <ul style={{listStyleType: 'none'}}>
         {questions.map((question, index) => (
-          <li key={index}  >
-            <div style={{boxSizing: "border-box", position: "relative", width: "995px", height: "217px", left: "347px", top: "535px", background: "#FFFFFF", border: "5px solid #000000",borderRadius:'10px'}}>
+          <li key={index} style={{ marginBottom: '20px' }}  >
+            <div style={{boxSizing: "border-box", position: "relative", width: "995px", height: "217px", left: "347px", top: "380px", background: "#FFFFFF", border: "5px solid #000000",borderRadius:'10px'}}>
               <strong style={{marginLeft:'20px'}}>Student ID: </strong>{question.sid}<br/>
               <strong style={{marginLeft:'20px'}}>Grade: </strong>{question.grade}<br/>
               <strong style={{marginLeft:'20px'}}>Subject: </strong>{question.subject}<br/>
@@ -73,8 +73,8 @@ function THQuestion() {
             
             <div >
             <Link to={`/AnswerUpdate/${question._id}`} style={{ textDecoration: 'none', color: '#FFFFFF' }}>
-              <button id={`edit${index + 1}`} style={{ position: 'relative', width: '182px', height: '70px', left: '900px', top:'450px', background: '#136845', borderRadius: '20px' }} className="bt1">Edit</button></Link>
-              <button onClick={() => handleDeleteA(question._id)} id={`delete${index + 1}` } style={{ position: 'relative', width: '182px', height: '70px', left: '950px', top:'450px', background: '#4a2032', borderRadius: '20px' }} className="bt2">Delete</button>
+              <button id={`edit${index + 1}`} style={{ position: 'relative', width: '140px', height: '40px', left: '1040px', top:'380px', background: '#136845', borderRadius: '20px' }} className="bt1">Edit</button></Link>
+              <button onClick={() => handleDeleteA(question._id)} id={`delete${index + 1}` } style={{ position: 'relative', width: '140px', height: '40px', left: '1050px', top:'380px', background: '#4a2032', borderRadius: '20px' }} className="bt2">Delete</button>
             </div>
           </li>
         ))}

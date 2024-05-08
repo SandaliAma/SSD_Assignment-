@@ -143,14 +143,15 @@ function UpdateQuestion() {
     <>
     <div>
       <Head/>
-    <div className='uth4'>
+      <text className='heading2'>Connect with your teachers - Update Your Question</text>
+    <div className='udth3'>
       
     <Toaster/>
     <div  >
       <form onSubmit={handleSubmit}>
-      <text className='heading2'>Connect with your teachers - Add Your Question</text>
+      
         
-        <label htmlFor="dropdown1" className='t1'>Select Grade</label>
+        <label htmlFor="dropdown1" className='t1'>Grade</label>
         <input id="dropdown1" name="dropdown" value={grade}
         style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '205px', border: '1px solid #000000', borderRadius: '10px' }}  readOnly/>
           
@@ -163,7 +164,7 @@ function UpdateQuestion() {
          ))}
          </select>
         
-        <label htmlFor="dropdown2" className='t3'>Select Subject</label>
+        <label htmlFor="dropdown2" className='t3'>Subject</label>
         <input id="dropdown1" name="dropdown" value={subject} style={{ position: 'absolute', width: '351px', height: '40px', left: '632px', top: '360px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }}   readOnly/>
                         
         <text className='t5'>Student ID</text>

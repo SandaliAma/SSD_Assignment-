@@ -114,10 +114,11 @@ function SFeedback() {
   return (
     <>
     <Head/>
+    <h1 className="heading9">We Want to Hear from You - Service Feedback</h1>
     <div className='uth2' >
         
       <Toaster/>
-    <h1 className="heading9">We Want to Hear from You - Teacher Feedback</h1>
+    
     <form onSubmit={handleSubmit}>
 
     <label htmlFor="sid1" className="tv18">Student ID</label>
@@ -125,7 +126,7 @@ function SFeedback() {
         id="sid1" style={{boxSizing: 'border-box',position: 'absolute',width: '920px',height: '53px',left: '431px',top: '262px',background: '#FFFFFF',border: '1px solid #000000'}} 
         type="text" value={sid} readOnly/>
 
-      <label htmlFor="grade" className="tt61">Select Grade</label>
+      <label htmlFor="grade" className="tt61">Grade</label>
       <input
         id="sid1" style={{boxSizing: 'border-box',position: 'absolute',width: '920px',height: '53px',left: '431px',top: '406px',background: '#FFFFFF',border: '1px solid #000000'}} 
         type="text" value={grade} readOnly/>
@@ -139,7 +140,7 @@ function SFeedback() {
         required
       ></textarea>
 
-      <label htmlFor="date" className="tt81">Enter Date</label>
+      <label htmlFor="date" className="tt81">Date</label>
       <input
         id="date"
         style={{boxSizing: 'border-box',position: 'absolute',width: '920px',height: '53px',left: '436px',top: '815px',background: '#FFFFFF',border: '1px solid #000000'}}

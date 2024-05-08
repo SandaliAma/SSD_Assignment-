@@ -49,7 +49,7 @@ function MyQuestions() {
                 
    
     <div>
-      <label className="heading3">Connect With Your Teachers - My Questions</label>
+      <label className="heading31">Connect With Your Teachers - My Questions</label>
       <ul style={{ position: 'absolute', left: '344px', top: '220px',  width: '864px', background: '#FFFFFF',  padding: '10px',listStyleType: 'none'}}>
         {questions.map((question, index) => (
           <li key={index} style={{ marginBottom: '20px',boxSizing: 'border-box', width: '864px', height: '191px', background: '#FFFFFF',borderRadius:'10px', border: '5px solid #000000'  }}>
