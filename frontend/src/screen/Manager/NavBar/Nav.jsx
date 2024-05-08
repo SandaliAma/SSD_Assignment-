@@ -57,7 +57,7 @@ function Nav() {
                    
                     <li>
                         <img src={feedback} alt='home' className='navimage'/>
-                        <a href='/managerfeedbackgenrate'>Feedbacks</a>
+                        <a href='/ManagerFeedback'>Feedbacks</a>
                     </li>
                     <li>
                         <img src={profile} alt='home' className='navimage'/>
