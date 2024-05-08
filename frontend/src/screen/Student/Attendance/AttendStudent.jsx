@@ -4,6 +4,9 @@ import { toast } from 'react-hot-toast';
 import Head from '../Header/Header';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../../../styles/Sasi.css';
+
+import '../../Manager/Attendance/Attendmanage.css';
+import '../Attendance/attend.css';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 function AttendStudent() {
