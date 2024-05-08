@@ -1,59 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./ReportMonth.css";
+import Head from '../Header/Header';
 
 function ReportMonth() {
-    const [selectedMonth, setSelectedMonth] = useState(""); // Initialize with an empty string
-    const [isValid, setIsValid] = useState(true); // State to track validity
+    const [selectedMonth, setSelectedMonth] = useState("");
 
     useEffect(() => {
-        // Get the current date
+        // Get current date
         const currentDate = new Date();
-        // Format the current month as YYYY-MM
-        const currentMonth = currentDate.toISOString().slice(0, 7);
-        // Set the selected month to the current month
-        setSelectedMonth(currentMonth);
-    }, []); // Run only once when the component mounts
+        // Format date to 'YYYY-MM' for input type 'month'
+        const formattedDate = currentDate.toISOString().slice(0, 7);
+        setSelectedMonth(formattedDate);
+    }, []); // Run only once when component mounts
 
     const handleMonthChange = (event) => {
         setSelectedMonth(event.target.value);
-        // Check if a month is selected and set isValid accordingly
-        setIsValid(event.target.value !== "");
-    };
-
-    const handleSubmit = (event) => {
-        if (!isValid) {
-            // If the form is not valid, prevent default submit behavior
-            event.preventDefault();
-        }
     };
 
     return (
-        <div >
-            <div className="containergrl">
-                <h1 className="h1grl" style={{ color: '#191970' }}>Generate Monthly Report</h1>
-                <h2 className="h1grl">Lesson Materials</h2>
-                <br /><br />
-                <form className="paygrl" onSubmit={handleSubmit} noValidate>
-                    <div className="form-groupgr">
-                        <label htmlFor="from" className="label1grl">
-                            Select Month:
-                        </label>
-                        <input
-                            type="month"
-                            id="from"
-                            name="from"
-                            className={`text1gr ${isValid ? "" : "invalid"}`}
-                            value={selectedMonth}
-                            onChange={handleMonthChange}
-                            required
-                        />
-                        {!isValid && <div className="invalid-feedback">Please select a valid month.</div>}
-                    </div>
-                    <Link to={`/lessonReport?month=${selectedMonth}`}>
-                        <button type="submit" className="button7grl">Generate</button>
-                    </Link>
-                </form>
+        <div>
+            <Head />
+            <div className="mainadgen">
+                <div className="containergr">
+                    <h1 className="h1gr">Generate Report</h1>
+                    <form className="paygr">
+                        <div className="form-groupgr">
+                            <label htmlFor="from" className="label1gr">
+                                Select Month:
+                            </label>
+                            <input
+                                type="month"
+                                id="from"
+                                name="from"
+                                
+                                value={selectedMonth}
+                                onChange={handleMonthChange}
+                                required
+                            />
+                        </div>
+                        <Link to={`/lessonReport?month=${selectedMonth}`}>
+                            <input type="submit" value="Generate" className="button7gr" />
+                        </Link>
+                    </form>
+                </div>
             </div>
         </div>
     );
