@@ -169,14 +169,27 @@ background: #C9E8EA;
 border-radius: 20px;
 text-align: center;
 border: 2px solid black;
-margin-top: 10px;
+margin-top: -30px;
 
  } 
   
+  .stat{
+    width: 260px;
+    height: 380px;
+    background: linear-gradient(90deg, rgba(174,213,217,1) 0%, rgba(87,127,175,1) 100%);
+    
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid black; 
+  }
   
   
+.static1{
+  font-size : 20px;
+  color: black;
+  font-weight: bold;
   
-  
+}  
   
   
   

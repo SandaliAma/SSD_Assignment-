@@ -37,13 +37,18 @@ function AdReport() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedMonth]);
 
-    const paymentCounts = {
+   /*  const paymentCounts = {
         totalStudents: allPayments.length,
         approved: allPayments.filter(payment => payment.status === 'Approved').length,
         rejected: allPayments.filter(payment => payment.status === 'Rejected').length,
-        pending: allPayments.filter(payment => payment.status === 'Pending').length
+        pending: allPayments.filter(payment => payment.status === 'Pending').length,
+        online: allPayments.filter(payment => payment.type === 'Online').length,
+        bank: allPayments.filter(payment => payment.type === 'Bank').length,
+        cash: allPayments.filter(payment => payment.type === 'Cash').length,
     };
 
+    const totalAmount = allPayments.reduce((total, payment) => total + parseFloat(payment.amount), 0);
+ */
     const styles = StyleSheet.create({
         page: {
             flexDirection: 'column',
@@ -139,15 +144,20 @@ function AdReport() {
             </div>
 
             <div className='bodyadr'>
-                <h1 className='paystat'><br/>Payment Statistics</h1>
+               {/*  <h1 className='paystat'><br/>Payment Statistics</h1>
                 <div className='stat'>
-                <p>Total Students: {paymentCounts.totalStudents}</p>
-                <p>Approved Payments: {paymentCounts.approved}</p>
-                <p>Rejected Payments: {paymentCounts.rejected}</p>
-                <p>Pending Payments: {paymentCounts.pending}</p>
+                <p className='static1'>Total Students: {paymentCounts.totalStudents}</p>
+                <p className='static1'>Approved Payments: {paymentCounts.approved}</p>
+                <p className='static1'>Rejected Payments: {paymentCounts.rejected}</p>
+                <p className='static1'>Pending Payments: {paymentCounts.pending}</p>
+                <p className='static1'>Online Payments: {paymentCounts.online}</p>
+                <p className='static1'>Bank Payments: {paymentCounts.bank}</p>
+                <p className='static1'>Cash Payments: {paymentCounts.cash}</p>
+                <p className='static1'>Total Amount: {totalAmount.toFixed(2)}</p> {/* Display total amount */} 
                 </div>
+
             </div>
-        </div>
+        
     );
 }
 
