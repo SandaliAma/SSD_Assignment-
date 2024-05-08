@@ -101,7 +101,7 @@ function StViewOnline() {
           },
         });
         setTimeout(() => {
-          navigator('/payment');
+          navigator('/viewbank');
         }, 2500);
       }, 2500);
     }, 5000);

@@ -56,7 +56,10 @@ function AdminProfile() {
                         </td>  
                         <td>          
                             <Link to={'/addadmin'}><button className='btnedit' type="submit">Add Admin</button> </Link>
-                        </td>                        
+                        </td>  
+                        <td>          
+                            <Link to={'/adgenerateuser'}><button className='btnedit' type="submit">Generate Report</button> </Link>
+                        </td>                      
                     </tr>
                 </table>  
                 <div class="line"></div>   

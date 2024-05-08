@@ -293,10 +293,23 @@ function StPaymentBank() {
             <br />
             <br />
 
-            <div>
+            <div className='payba2'>
+              <label htmlFor="fileInput">
+                <input
+                  id="fileInput"
+                  type="file"
+                  accept=".pdf, .png, .jpg, .jpeg"
+                  required
+                  className='upload'
+                  onChange={(e) => setUpload_Files(e.target.files[0])}
+                />
+            
+              </label>
+              </div>
+            <div >
               <br />
               <br />
-              <input
+              <input 
                 type="checkbox"
                 id="terms"
                 name="terms"
@@ -304,21 +317,13 @@ function StPaymentBank() {
                 className="checkbox-textpa"
                 required
               />
+              
               <label htmlFor="terms" className="checkbox-labelpa">
                 I accept the terms and conditions
               </label>
               <br />
               <br />
-              <label htmlFor="fileInput">
-                <input
-                  id="fileInput"
-                  type="file"
-                  accept=".pdf, .png, .jpg, .jpeg"
-                  required
-                  onChange={(e) => setUpload_Files(e.target.files[0])}
-                />
-            
-              </label>
+              
               <br />
               <br />
               <button type="submit" name="submit" className="buttonba3">

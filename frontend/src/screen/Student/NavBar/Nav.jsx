@@ -45,7 +45,7 @@ function Nav() {
                     </li>
                     <li>
                         <img src={pay} alt='home' className='navimage'/>
-                        <a href='/payment'>Payment</a>
+                        <a href='/viewonline'>Payment</a>
                     </li>
                     <li>
                         <img src={time} alt='home' className='navimage'/>

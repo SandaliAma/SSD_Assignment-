@@ -216,7 +216,7 @@ mgpay
       flex-direction: column;
       padding-top: 5px;
       margin-left:200px;
-      margin-top:0px;
+      margin-top:100px;
       
     }
     
@@ -277,12 +277,13 @@ mgpay
         color: white; /* Set the text color */
         font-size: 75px; /* Adjust the font size as needed */   
         margin-bottom: 50px;
+        margin-top: 50px;
     }
     
     
     .paymgpa{
       width: 1053px;
-      height: 430px;
+      height: 630px;
       background-color: #C9E8EA;
        margin-left:100px ;
        color:#FFFFFF;

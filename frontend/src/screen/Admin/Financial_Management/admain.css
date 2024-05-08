@@ -2,7 +2,7 @@
 
 .buttonad{
     color: white;
-    margin-left: 43px; 
+    margin-left: 350px; 
     cursor: pointer;
     background-color: #384D6C;
     text-align: center;
@@ -24,7 +24,7 @@
 
 
 .bodyad{
-			background-color : white;
+			
             font-family: inter,Arial, Helvetica, sans-serif;
     min-height: 100%;
             display: flex;

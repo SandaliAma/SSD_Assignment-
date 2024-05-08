@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './AdReport.css';
 import { useLocation } from 'react-router-dom';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import Head from '../Header/Header';
 
 function AdReport() {
     const [allPayments, setAllPayments] = useState([]);
@@ -34,6 +36,13 @@ function AdReport() {
         fetchPayments();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedMonth]);
+
+    const paymentCounts = {
+        totalStudents: allPayments.length,
+        approved: allPayments.filter(payment => payment.status === 'Approved').length,
+        rejected: allPayments.filter(payment => payment.status === 'Rejected').length,
+        pending: allPayments.filter(payment => payment.status === 'Pending').length
+    };
 
     const styles = StyleSheet.create({
         page: {
@@ -73,7 +82,7 @@ function AdReport() {
                 {allPayments.map((payment) => (
                     <View key={payment._id} style={styles.row}>
                         <Text style={styles.cell}>{payment.itnumber}</Text>
-                        <Text style={styles.cell}>{payment.discription}</Text>
+                        <Text style={styles.cell}>{payment.description}</Text>
                         <Text style={styles.cell}>{payment.date}</Text>
                         <Text style={styles.cell}>{payment.amount}</Text>
                         <Text style={styles.cell}>{payment.type}</Text>
@@ -86,41 +95,56 @@ function AdReport() {
 
     return (
         <div>
-            <div className='bodymv'>
-                <h1 className='h1mv'>My Payments for {selectedMonth}</h1>
-                <br /><br /><br /><br />
+            <Head/>
+            <div className='bodyadr'>
+                <h1 className='h1adr'><br/>My Payments for {selectedMonth}</h1>
+                <br /><br />
                 <PDFDownloadLink document={<MyDocument />} fileName="payments.pdf">
-                    {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download PDF')}
+                    {({ blob, url, loading, error }) => (<button className="pdf-download-button">
+                {loading ? 'Loading document...' : 'Download PDF'}
+            </button>
+                    )}
+    
                 </PDFDownloadLink>
-                <div className="tbl-headermv">
-                    <table>
+                <div className="tbl-headeradr">
+                    <table className='tableadr'>
                         <thead>
                             <tr>
-                                <th>Student IT Number</th>
-                                <th>Description</th>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>Type</th>
-                                <th>Status</th>
+                                <th className='thadr'>Student IT Number</th>
+                                <th className='thadr'>Description</th>
+                                <th className='thadr'>Date</th>
+                                <th className='thadr'>Amount</th>
+                                <th className='thadr'>Type</th>
+                                <th className='thadr'>Status</th>
                             </tr>
                         </thead>
                     </table>
                 </div>
-                <div className="tbl-contentmv">
-                    <table>
+                <div className="tbl-contentadr">
+                    <table className='tableadr'>
                         <tbody>
                             {allPayments.map((payment) => (
                                 <tr key={payment._id}>
-                                    <td>{payment.itnumber}</td>
-                                    <td>{payment.discription}</td>
-                                    <td>{payment.date}</td>
-                                    <td>{payment.amount}</td>
-                                    <td>{payment.type}</td>
-                                    <td>{payment.status}</td>
+                                    <td className='tdadr'>{payment.itnumber}</td>
+                                    <td className='tdadr'>{payment.description}</td>
+                                    <td className='tdadr'>{payment.date}</td>
+                                    <td className='tdadr'>{payment.amount}</td>
+                                    <td className='tdadr'>{payment.type}</td>
+                                    <td className='tdadr'>{payment.status}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <div className='bodyadr'>
+                <h1 className='paystat'><br/>Payment Statistics</h1>
+                <div className='stat'>
+                <p>Total Students: {paymentCounts.totalStudents}</p>
+                <p>Approved Payments: {paymentCounts.approved}</p>
+                <p>Rejected Payments: {paymentCounts.rejected}</p>
+                <p>Pending Payments: {paymentCounts.pending}</p>
                 </div>
             </div>
         </div>

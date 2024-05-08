@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./adgenerate.css";
 import { Link } from "react-router-dom";
 import Head from '../Header/Header'
 
@@ -31,7 +30,7 @@ function AdGenerate() {
               required
             />
           </div>
-          <Link to={`/adreport?month=${selectedMonth}`}>
+          <Link to={`/managerfeedbackreport?month=${selectedMonth}`}>
             <input type="submit" value="Generate" className="button7gr" />
           </Link>
         </form>

@@ -2,6 +2,7 @@ import React from 'react';
 import './admain.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Head from '../Header/Header';
 
 
 function AdMain() {
@@ -27,15 +28,11 @@ function AdMain() {
 
   return (
     <div>
+      <Head/>
       <Toaster />
       <div class="bodyad">
         <form class="mainad">
-          <button type="submit" name="makepayment" class="buttonad">
-            Add a Payment
-          </button>
-          <button type="submit" name="viewpayment" class="buttonad">
-            View Payments
-          </button>
+       
           
           <button
             type="button"
