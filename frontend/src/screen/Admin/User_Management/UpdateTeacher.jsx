@@ -1,15 +1,14 @@
-import React, { useState,useEffect } from 'react';
-import './profile.css'
+import React, { useEffect, useState } from 'react'
+import './profile.css';
+import axios from 'axios';
 import userpng from './photos/User.png'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom'
-import Head from '../Header/Header'
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import Head from '../Header/Header';
 import Swal from 'sweetalert2';
-// import toast from 'react-hot-toast';
 
-function TeacherProfileEdit() {
+function UpdateTeacher() {
     const navigate = useNavigate();    
+    const [tid, setTid] = useState();
     const [name, setName] = useState();
     const [teid, setteid] = useState();
     const [username, setUsername] = useState();
@@ -18,12 +17,14 @@ function TeacherProfileEdit() {
     const [contactnumber, setContactnumber] = useState();
     const [subject, setSubject] = useState();
     const [secanswer, setSecAnswer] = useState();
+    const { id } = useParams();
     // const [password, setPassword] = useState();
     // const [repassword, setRepassword] = useState();
 
     useEffect(()=>{
-        axios.get('/getteacherprofileedit')
+        axios.get(`/teacherprofileid/${id}`)
         .then((res)=>{
+            setTid(res.data._id);
             setName(res.data.name);
             setteid(res.data.teid);
             setUsername(res.data.username);    
@@ -42,7 +43,7 @@ function TeacherProfileEdit() {
         e.preventDefault();
        
         try {
-            await axios.put('/teacherprofileedit', {
+            await axios.put(`/teacherprofileeditid/${tid}`, {
                 name: name,
                 username: username,
                 gender: gender,
@@ -58,7 +59,7 @@ function TeacherProfileEdit() {
               text: 'Teacher details updated successfully!',
               confirmButtonText: 'OK'
             });
-            navigate('/teacherprofile');
+            navigate('/searchusersadmin');
           } catch (error) {
             console.error(error);
       
@@ -165,7 +166,7 @@ function TeacherProfileEdit() {
                                 <button className='btnedit' type="submit">Save changes</button> 
                             </td>
                             <td>                                 
-                                <Link to={'/teacherprofile'}><button className='btnedit' >Cancel</button> </Link>      
+                                <Link to={'/searchusersadmin'}><button className='btnedit' >Cancel</button> </Link>      
                             </td>
                         </tr>
                     </table>
@@ -177,4 +178,4 @@ function TeacherProfileEdit() {
   )
 }
 
-export default TeacherProfileEdit
+export default UpdateTeacher

@@ -110,7 +110,13 @@ function StMyClasses() {
               <h2>Class Details</h2>
               <div className="class-info">
                 <div className="class-title">{description} - Grade {grade}</div>
-                <div className="class-detail">Teacher: Mr. Smith</div>
+                <div className="class-detail">Teacher: 
+                {filteredMaterials.length > 0 && (
+                  <div key={filteredMaterials[0]._id}>
+                  <div>{filteredMaterials[0].teachername}</div>                 
+                  </div>
+                  )}
+                </div>
               </div>
             </div>
             <div className="notices">

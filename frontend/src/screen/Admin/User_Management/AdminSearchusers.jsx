@@ -3,6 +3,7 @@ import './profile.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Head from '../Header/Header';
+import Swal from 'sweetalert2';
 
 function AdminSearchusers() {
     const [, setName] = useState();    
@@ -37,26 +38,77 @@ function AdminSearchusers() {
         })
     },[])
 
-    const studentDelete = (id) =>{
-        axios.delete('/deletestudent/'+id)
-        .then((res)=>{
-            window.location.reload();        
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+    const studentDelete = (id) =>{        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Are you sure you want to delete this user?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete('/deletestudent/'+id)
+                .then((res) => {
+                  console.log('success');
+                  Swal.fire(
+                    'Deleted!',
+                    'User has been removed.',
+                    'success'
+                  ).then(() => {
+                    window.location.reload(); // Reload the page after successful deletion
+                  });
+                })
+                .catch((err) => {
+                  console.error(err);
+                  Swal.fire(
+                    'Error!',
+                    'An error occurred while deleting this user.',
+                    'error'
+                  );
+                });
+            }
+          });
     }
 
     const teacherDelete = (id) =>{
-        axios.delete('/deleteteacher/'+id)
-        .then((res)=>{
-            window.location.reload();        
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Are you sure you want to delete this user?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete('/deleteteacher/'+id)
+                .then((res) => {
+                  console.log('success');
+                  Swal.fire(
+                    'Deleted!',
+                    'User has been removed.',
+                    'success'
+                  ).then(() => {
+                    window.location.reload(); // Reload the page after successful deletion
+                  });
+                })
+                .catch((err) => {
+                  console.error(err);
+                  Swal.fire(
+                    'Error!',
+                    'An error occurred while deleting this user.',
+                    'error'
+                  );
+                });
+            }
+          });
     }
 
+    const studentrowCount = student.length;
+
+    const teacherrowCount = teacher.length;
     
   return (
     <main>
@@ -65,7 +117,8 @@ function AdminSearchusers() {
            
             <div>                
                 <br/>
-                <p class='usertxt'>Student Details</p> 
+                <p class='usertxt'>Student Details</p>
+                <p class='usertxt'>Student count: {studentrowCount}</p>
                 <div class="line1"></div>  
                 <div>
                     <table>
@@ -79,6 +132,7 @@ function AdminSearchusers() {
                         </tr>
                     </table>   
                     <br/>
+                    <div style={{ maxHeight: '220px', overflowY: 'scroll' }}>
                     <table className='searchtablemainmanager'>
                         <tr className='searchtablemainmanagerheader'>
                             <th>Student ID</th>
@@ -115,10 +169,12 @@ function AdminSearchusers() {
                             </tr>
                         ))}
 
-                    </table>                 
+                    </table>    
+                    </div>             
                 </div>
                 <br/>
                 <p class='usertxt'>Teacher Details</p> 
+                <p class='usertxt'>Teacher count: {teacherrowCount}</p>
                 <div class="line1"></div> 
                 <div>
                     <table>
@@ -132,6 +188,7 @@ function AdminSearchusers() {
                         </tr>
                     </table>   
                     <br/>
+                    <div style={{ maxHeight: '220px', overflowY: 'scroll' }}>
                     <table className='searchtablemainmanager'>
                         <tr className='searchtablemainmanagerheader'>
                             <th>Teacher ID</th>
@@ -155,12 +212,17 @@ function AdminSearchusers() {
                                 <td className='searchtabledata'>{teacher.gender}</td>  
                                 <td className='searchtabledata'>{teacher.subject}</td>                                
                                 <td className='searchtabledata'>{teacher.SecAnswer}</td>
-                                <td><button className='btnupdate' >Update</button></td>
+                                <td>
+                                    <Link to={`/updateteacher/${teacher.teid}`}>
+                                        <button className='btnupdate' >Update</button>                                       
+                                    </Link>
+                                </td>
                                 <td><button className='btndelete' onClick={(e) => teacherDelete(teacher._id)}>Delete</button></td>
                             </tr>
                         ))}
 
-                    </table>                 
+                    </table> 
+                    </div>                
                 </div>
                 <br/><br/>
             </div>            
