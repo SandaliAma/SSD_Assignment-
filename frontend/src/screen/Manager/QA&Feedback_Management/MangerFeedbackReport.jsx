@@ -32,6 +32,10 @@ const FeedbackReport = () => {
         fetchLessons();
     }, [selectedMonth]);
 
+    const feedbackcounts = {
+        totalfeedbacks: allFeedbacks.length,
+    };
+
 
 
 
@@ -154,7 +158,9 @@ return (
                     </tbody>
                 </table>
             </div>
-            
+            <div >
+                <p  className='static1'>Total Feedbacks: {feedbackcounts.totalfeedbacks}</p>
+                </div>
         </div>
     </div>
     </div>

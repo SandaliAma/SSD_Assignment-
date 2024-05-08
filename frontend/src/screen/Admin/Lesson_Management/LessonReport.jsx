@@ -31,6 +31,14 @@ const LessonReport = () => {
         fetchLessons();
     }, [selectedMonth]);
 
+    const lessonCounts = {
+        totalStudents: allLessons.length,
+        ict: allLessons.filter(lesson => lesson.subject_name === 'ICT').length,
+        history: allLessons.filter(lesson => lesson.subject_name === 'History').length,
+        commerce: allLessons.filter(lesson => lesson.subject_name === 'Commerce').length,
+   
+    
+    };
     
     const styles = StyleSheet.create({
         page: {
@@ -107,6 +115,7 @@ const LessonReport = () => {
 
     return (
         <div className='lesson-report'>
+            
             <div className='bodymvl'>
                 <h1 className='h1mvl'>Lesson Report for {selectedMonth}</h1>
                 <br /><br /><br /><br />
@@ -141,7 +150,16 @@ const LessonReport = () => {
                         </tbody>
                     </table>
                 </div>
-            </div>
+                <div>
+                <h1 ><br/>Lessons Statistics</h1>
+                <div >
+                <p  className='static1'>Total Lessons: {lessonCounts.totalStudents}</p>
+                <p className='static1'>ICT Lessons: {lessonCounts.ict}</p>
+                <p className='static1'>History Lessons: {lessonCounts.history}</p>
+                <p className='static1'>Commerce Lessons: {lessonCounts.commerce}</p>
+                </div>
+                </div>
+            </div>     
         </div>
     );
 };

@@ -31,7 +31,9 @@ const ClassReport = () => {
         fetchLessons();
     }, [selectedMonth]);
 
-
+    const classcounts = {
+        totalclasses: allClasses.length,
+    };
 
 
     const styles = StyleSheet.create({
@@ -156,7 +158,9 @@ const ClassReport = () => {
                         </tbody>
                     </table>
                 </div>
-
+                <div >
+                <p  className='static1'>Total Classes: {classcounts.totalclasses}</p>
+                </div>
             </div>
         </div>
     );
