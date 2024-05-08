@@ -10,21 +10,22 @@
     font-size: 28.8546px;
     line-height: 25px;
     letter-spacing: 0.01em;
-    color: #5D7285;
+    color: #063a67;
     }
     
-    h4{
+    .pv{
     position: absolute;
     width: 478px;
     height: 55px;
-    left: 339px;
-    top: 260px;
+    left: 500px;
+    top: 250px;
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 150%;
     color: #000000;
+    text-align: center;
     }
     
     .tft1{
@@ -32,7 +33,7 @@
     width: 396px;
     height: 51px;
     left: 560px;
-    top: 426px;
+    top: 300px;
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
