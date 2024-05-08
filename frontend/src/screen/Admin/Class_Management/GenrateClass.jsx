@@ -111,6 +111,11 @@ const ClassReport = () => {
                         <Text style={styles.cell}>{classes.status}</Text>
                     </View>
                 ))}
+                 <View style={styles.statisticsContainer}>
+                    <Text style={styles.statisticsText}>Class Statistics</Text>
+                    <Text style={styles.statisticsText}>Total Classes: {classcounts.totalclasses}</Text>
+                </View>
+                   
             </Page>
         </Document >
 

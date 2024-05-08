@@ -110,6 +110,11 @@ const FeedbackReport = () => {
                 
                     </View>
                 ))}
+                 <View style={styles.statisticsContainer}>
+                    <Text style={styles.statisticsText}>Feedback Statistics</Text>
+                    <Text style={styles.statisticsText}>Total Feedbacks: {feedbackcounts.totalfeedbacks}</Text>
+                    
+                </View>
         </Page>
         </Document >
 

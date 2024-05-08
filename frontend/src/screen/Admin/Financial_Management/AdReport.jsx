@@ -120,6 +120,17 @@ function AdReport() {
                         <Text style={styles.cell}>{payment.status}</Text>
                     </View>
                 ))}
+                 <View style={styles.statisticsContainer}>
+                    <Text style={styles.statisticsText}>Payment Statistics</Text>
+                    <Text style={styles.statisticsText}>Total Students: {paymentCounts.totalStudents}</Text>
+                    <Text style={styles.statisticsText}>Approved Payments: {paymentCounts.approved}</Text>
+                    <Text style={styles.statisticsText}>Rejected Payments: {paymentCounts.rejected}</Text>
+                    <Text style={styles.statisticsText}>Pending Payments: {paymentCounts.pending}</Text>
+                    <Text style={styles.statisticsText}>Online Payments: {paymentCounts.online}</Text>
+                    <Text style={styles.statisticsText}>Bank Payments: {paymentCounts.bank}</Text>
+                    <Text style={styles.statisticsText}>Cash Payments: {paymentCounts.cash}</Text>
+                    <Text style={styles.statisticsText}>Total Amount: {totalAmount.toFixed(2)}</Text>
+                </View>
             </Page>
         </Document>
     );

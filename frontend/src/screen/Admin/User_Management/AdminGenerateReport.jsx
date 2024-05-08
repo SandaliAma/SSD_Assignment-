@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet,Image } from '@react-pdf/renderer';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import logo from '../photos/logofull.png';
 
 const UserReport = () => {
@@ -82,16 +82,16 @@ const UserReport = () => {
     const MyDocument = ({ allusers }) => (
         <Document>
             <Page size="A4">
-            <View>
+                <View>
                     <Image src={logo} style={styles.logo} />
                     <Text style={styles.header}>User  Report for {selectedMonth}</Text>
                 </View>
                 <br /><br /><br /><br />
                 <View style={styles.row}>
 
-                  
+
                     <Text style={styles.cell}>Student Name</Text>
-                   
+
                     <Text style={styles.cell}>Phone</Text>
                     <Text style={styles.cell}>Grade</Text>
                     <Text style={styles.cell}>User Name</Text>
@@ -100,72 +100,79 @@ const UserReport = () => {
                 </View>
                 {allusers.map((user, index) => (
                     <View key={index} style={styles.row}>
-                     
+
                         <Text style={styles.cell}>{user.name}</Text>
-             
+
                         <Text style={styles.cell}>{user.contactnumber}</Text>
                         <Text style={styles.cell}>{user.grade}</Text>
                         <Text style={styles.cell}>{user.username}</Text>
                         <Text style={styles.cell}>{user.stdid}</Text>
                         <Text style={styles.cell}>{user.gender}</Text>
                     </View>
+                    
                 ))}
-        </Page>
+                <View style={styles.statisticsContainer}>
+                                <Text style={styles.statisticsText}>User Statistics</Text>
+                                <Text style={styles.statisticsText}>Total Users: {usercounts.totalcounts}</Text>
+
+                            </View>
+            </Page>
         </Document >
 
-        
+
     );
 
 
 
 
-return (
-    <div className='lesson-report'>
-        <div className='bodymvl'>
-            <h1 className='h1mvl'>User Report for {selectedMonth}</h1>
-            <br /><br /><br /><br />
-            <PDFDownloadLink document={<MyDocument allusers={allusers} />} fileName="user.pdf">
-                {({ loading, error }) => (
-                    loading ? 'Loading document...' : (error ? 'Error generating PDF' : 'Download PDF')
-                )}
-            </PDFDownloadLink>
-            <div className="table-container">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            
-                            <th>Student Name</th>
-                          
-                            <th>Phone</th>
-                            <th>Grade</th>
-                            <th>User Name</th>
-                            <th>Student ID</th>
-                            <th>Gender</th>
+    return (
+        <div className='lesson-report'>
+            <div className='bodymvl'>
+                <h1 className='h1mvl'>User Report for {selectedMonth}</h1>
+                <br /><br /><br /><br />
+                <PDFDownloadLink document={<MyDocument allusers={allusers} />} fileName="user.pdf">
+                    {({ loading, error }) => (
+                        loading ? 'Loading document...' : (error ? 'Error generating PDF' : 'Download PDF')
+                    )}
+                </PDFDownloadLink>
+                <div className="table-container">
+                    <table className="table">
+                        <thead>
+                            <tr>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {allusers.map((user, index) => (
-                            <tr key={index}>
-                              
-                                <td>{user.name}</td>
-                               
-                                <td>{user.contactnumber}</td>
-                                <td>{user.grade}</td>
-                                <td>{user.username}</td>
-                                <td>{user.stdid}</td>
-                                <td>{user.gender}</td>
+                                <th>Student Name</th>
+
+                                <th>Phone</th>
+                                <th>Grade</th>
+                                <th>User Name</th>
+                                <th>Student ID</th>
+                                <th>Gender</th>
+
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-            <div >
-                <p  className='static1'>Total Users: {usercounts.totalcounts}</p>
+                        </thead>
+                        <tbody>
+                            {allusers.map((user, index) => (
+                                <tr key={index}>
+
+                                    <td>{user.name}</td>
+
+                                    <td>{user.contactnumber}</td>
+                                    <td>{user.grade}</td>
+                                    <td>{user.username}</td>
+                                    <td>{user.stdid}</td>
+                                    <td>{user.gender}</td>
+                                </tr>
+                            ))}
+                            
+                        </tbody>
+                    </table>
                 </div>
+                <div >
+                    <p className='static1'>Total Users: {usercounts.totalcounts}</p>
+                </div>
+            </div>
         </div>
-    </div>
-);
+    );
 };
 
 export default UserReport;
