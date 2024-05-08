@@ -87,7 +87,7 @@ const UserReport = () => {
 
                   
                     <Text style={styles.cell}>Student Name</Text>
-                    <Text style={styles.cell}>Email</Text>
+                   
                     <Text style={styles.cell}>Phone</Text>
                     <Text style={styles.cell}>Grade</Text>
                     <Text style={styles.cell}>User Name</Text>
@@ -98,7 +98,7 @@ const UserReport = () => {
                     <View key={index} style={styles.row}>
                      
                         <Text style={styles.cell}>{user.name}</Text>
-                        <Text style={styles.cell}>{user.email}</Text>
+             
                         <Text style={styles.cell}>{user.contactnumber}</Text>
                         <Text style={styles.cell}>{user.grade}</Text>
                         <Text style={styles.cell}>{user.username}</Text>
@@ -131,7 +131,7 @@ return (
                         <tr>
                             
                             <th>Student Name</th>
-                            <th>Email</th>
+                          
                             <th>Phone</th>
                             <th>Grade</th>
                             <th>User Name</th>
@@ -145,7 +145,7 @@ return (
                             <tr key={index}>
                               
                                 <td>{user.name}</td>
-                                <td>{user.email}</td>
+                               
                                 <td>{user.contactnumber}</td>
                                 <td>{user.grade}</td>
                                 <td>{user.username}</td>

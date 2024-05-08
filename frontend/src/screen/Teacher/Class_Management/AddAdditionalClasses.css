@@ -1,6 +1,6 @@
 .addadditional-classes-container {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin-left:350px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -8,15 +8,19 @@
 }
 
 .addadditional-class-title {
-  margin-bottom: 20px;
+  margin-top: 60px;
   text-align: center;
-  font-size: 24px;
+  font-size: 30px;
   color: #333;
 }
 
-.form-container {
-  margin-top: 20px;
+.form_container {
+  margin-right: 50px;
+  padding-top: 10px;
+  
+  margin-top: 10px;
 }
+
 
 .input-container {
   margin-bottom: 15px;
@@ -51,6 +55,8 @@
 }
 
 .requestschedule-button {
+  margin-left: 200px;
+  width: 40%;
   display: block;
   margin-top: 20px;
   background-color: #337ab7;
@@ -69,6 +75,7 @@
 }
 
 .requestschedule-button {
+  width: 30%;
   display: block;
   background-color: #337ab7;
   text-align: center;
@@ -76,6 +83,7 @@
   border-radius: 4px;
   color: #fff;
   text-decoration: none;
+  margin-left: 300px;
   margin-top: 20px;
 }
 

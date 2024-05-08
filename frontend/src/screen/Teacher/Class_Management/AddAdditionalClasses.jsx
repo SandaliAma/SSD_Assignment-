@@ -116,7 +116,7 @@ function AddAdditionalClasses() {
             <Head/>
         <div className="addadditional-classes-container">
             <h2 className="addadditional-class-title">Add Additional Classes</h2>
-            <div className="form-container">
+            <div className="form_container">
                 <form onSubmit={request}>
                     <div className="input-container">
                         <label htmlFor="teacherInput">Teacher</label>

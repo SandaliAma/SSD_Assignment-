@@ -218,7 +218,7 @@ function CreateManager() {
             <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="text1" value={MonthlySalary} onChange={(e) => setMonthlySalary(e.target.value)} /><br /><br />
 
             <label htmlFor="date" className="labelA9">Enter Date:</label>
-            <input type="text" id="date" name="date" placeholder="(DD/MM/YY)" pattern="(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]|1[0-2])/\d{2}" required className="text1" onChange={(e) => setDate(e.target.value)} /><br /><br />
+            <input type="date" id="date" name="date" placeholder="(DD/MM/YY)" pattern="(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]|1[0-2])/\d{2}" required className="text1" onChange={(e) => setDate(e.target.value)} /><br /><br />
 
             <label htmlFor="fileInput" className="labelA10">
               Upload Payment Files:
