@@ -118,6 +118,13 @@ const SalaryReport = () => {
                         <Text style={styles.cell}>{salary.Date}</Text>
                     </View>
                 ))}
+                 <View style={styles.statisticsContainer}>
+                    <Text style={styles.statisticsText}>Salary Statistics</Text>
+                    <Text style={styles.statisticsText}>Total Users: {salrycounts.totalcounts}</Text>
+                    <Text style={styles.statisticsText}>Total Free Card Amount: {totalfreecardAmount.toFixed(2)}</Text>
+                    <Text style={styles.statisticsText}>Total Instutite Amount: {totalinstutitepayment.toFixed(2)}</Text>
+                    <Text style={styles.statisticsText}>Total Salary Amount: {totalmothlysalry.toFixed(2)}</Text>
+                </View>
         </Page>
         </Document >
 
