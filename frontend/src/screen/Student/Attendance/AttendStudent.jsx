@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import Head from '../Header/Header';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../../../styles/Sasi.css';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 function AttendStudent() {
     const [enrollments, setEnrollments] = useState([]);
@@ -147,12 +148,13 @@ function AttendStudent() {
                     <br />
                     <div className='ViewAttends By Class'>
                         <div className="card text-center">
-                            
+                            <div className="card-header">
+                                View Attendance by Class
+                            </div>
                             <div className="card-body">
                                 <input
                                     type="text"
-                                    //className="form-control mb-4"
-                                    className='srchbr'
+                                    className="form-control mb-4"
                                     placeholder="Search By Class ID Or Subject "
                                     value={classFilter}
                                     onChange={handleClassFilter}
