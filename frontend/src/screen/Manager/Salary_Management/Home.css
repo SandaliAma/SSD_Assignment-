@@ -1,48 +1,74 @@
 
-.buttonsthome{
-    color: white;
-    margin-left: 75px; 
+
+.bodyC{
+    font-family: inter,Arial, Helvetica, sans-serif;
+    min-height: 100%;
+    background-color:rgb(204, 201, 203);
+    margin: 0;
+    padding:0;
+    font-family: sans-serif;
+    font-weight: 100;
+    opacity:0.9;
+    font-family: Helvetica Neue, sans-serif;
+    background-image:'./photos/n1.jpg';
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+
+    
+}
+.container5 { /* Assuming .container5 is the parent */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (if the container has sufficient height) */
+    
+}
+   
+
+
+
+
+
+
+.addsalary{
+    color: black; 
     cursor: pointer;
-    background-color: #384D6C;
+    background-color:rgb(15, 14, 14);
     text-align: center;
-    border-radius: 15px;
-    padding: 11px 50px;
+    border-radius: 12px;
+    padding: 25px 100px;
     outline: none;
     transition: 0.25s;
     font-size: 20px;
     font-weight: bold;
-	margin-top :250px;
-}
-
-.buttonsthome:hover {
-    background: linear-gradient(to right, #da4a0c, #e60b45);
-    transform: scale(1.06);
-}
-
-
-
-.bodysthome{
-    font-family: inter,Arial, Helvetica, sans-serif;
-    min-height: 100%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-            margin-left: 250px;;
-             transform: scale(0.9);
-			
-        }
-        .mainsthome {
-            width: 750px;
-            height: 550px;
-            background: linear-gradient(90deg, rgba(174,213,217,1) 0%, rgba(87,127,175,1) 100%);
-            margin-left: 10px;
-            padding: 10px;
-            border-radius: 20px;
-            border: 3px solid black; 
-            transition: transform 0.3s ease-in-out;
-        }
-        
-
+    color: #e2dfe9;
+    border: 2px solid black;
     
+   
+ 
+
+ 
+  }
+
+  .ViewSalary{
+  color: black; 
+  cursor: pointer;
+  background-color:rgb(15, 14, 14);
+  text-align: center;
+  border-radius: 12px;
+  padding: 25px 100px;
+  outline: none;
+  transition: 0.25s;
+  font-size: 20px;
+  font-weight: bold;
+  color:#e2dfe9;
+  border: 2px solid black;
+  
+
+  }

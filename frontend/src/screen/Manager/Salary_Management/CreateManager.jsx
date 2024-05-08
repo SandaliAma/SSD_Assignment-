@@ -6,13 +6,14 @@ import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import Head from '../Header/Header';
 
+
 function CreateManager() {
   // const [TeacherName, setTeacherName] = useState('');
   const [TeacherID, setTeacherID] = useState('');
   const [SubjectName, setSubjectName] = useState('');
   const [Grade, setGrade] = useState('');
   const [AttendStudents, setAttendStudents] = useState('');
-  const [subjectfee, setSubjectfee] = useState([]);
+  const [subjectfee, setSubjectfee] = useState('');
   const [FreeCardAmount, setFreeCardAmount] = useState('');
   const [InstitutePayment, setInstitutePayment] = useState('');
   const [MonthlySalary, setMonthlySalary] = useState('');
@@ -124,20 +125,6 @@ function CreateManager() {
     }
   }, [teacher]);
 
-  const handlesearch = (e) => {
-    e.preventDefault();
-  
-    axios.get('/viewSubject')
-      .then((res) => {
-        const selectedSubjectfee = res.data.filter(selectedSubjectfee => selectedSubjectfee.grade === Grade && selectedSubjectfee.teachername === teacher);
-        setSubjectfee(selectedSubjectfee);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  
-  }
-
   const [subject, setSubject] = useState([]);
 
   useEffect(() => {
@@ -149,7 +136,8 @@ function CreateManager() {
           })
           .catch((err) => {
             console.log(err);
-          });    
+          });
+    
       
   }, []);
   
@@ -166,7 +154,7 @@ function CreateManager() {
           <form onSubmit={handleSubmit} className="AddSalary"><br />
             <label htmlFor="teacherName" className="labelA1">Enter Teacher Name:</label>
             {/* <input type="text" id="teacherName" name="teacherName" placeholder="Enter Name" required className="text1" onChange={(e) => setTeacherName(e.target.value)} /> */}
-            <select id="dropdown3" name="dropdown" style={{ width: '250px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setTeacher(a.target.value)}>
+            <select id="dropdown3" name="dropdown" className="text1" style={{ width: '230px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setTeacher(a.target.value)}>
               <option value=""></option>
               {teacheridd.map((teacher, index) => (
                 <option key={index} value={teacher.name}>{teacher.name}</option>
@@ -176,13 +164,13 @@ function CreateManager() {
             <br /><br />
 
             <label htmlFor="teacherID" className="labelA2">Enter Teacher ID:</label>
-            <input type="text" id="teacherID" name="teacherID" placeholder="Enter ID" required className="text1" value={TeacherID} onChange={(e) => setTeacherID(e.target.value)} /><br /><br />
+            <input type="text" id="teacherID" name="teacherID" placeholder="Enter ID" style={{marginLeft:'105px'}} required className="text1" value={TeacherID} onChange={(e) => setTeacherID(e.target.value)} /><br /><br />
 
             <label htmlFor="subjectName" className="labelA3">Enter Subject Name:</label>
             <input type="text" id="subjectName" name="subjectName" placeholder="Enter Subject" required className="text1" value={SubjectName} onChange={(e) => setSubjectName(e.target.value)} /><br /><br />
 
             <label htmlFor="grade" className="labelA4">Enter Grade:</label>            
-            <select id="grade" name="grade" style={{ width: '250px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px' }} required onChange={(a)=> setGrade(a.target.value)}>
+            <select id="grade" name="grade" style={{ width: '240px', height: '40px', background: '#FFFFFF', border: '1px solid #000000', borderRadius: '10px',marginLeft:'140px' }} required onChange={(a)=> setGrade(a.target.value)}>
               <option value=""></option>
               <option value="6">6</option>
               <option value="7">7</option>
@@ -195,30 +183,28 @@ function CreateManager() {
             <br /><br />
 
             <label htmlFor="grade" className="labelA4">Enter Subject Fee:</label>
-            {subjectfee.map((sub, index) => (
-            <><input type="text" id="subfee" name="subfee" placeholder="Subject fee" required className="text1" key={index} value={sub.amount} /><br /><br /></>
-             ))}
+            <input type="text" id="subfee" name="subfee" placeholder="Subject fee" required className="text1"  style={{marginLeft:'98px'}} value={subject.amount} onChange={(e) => setSubjectfee(e.target.value)} /><br /><br />
 
             <label htmlFor="attendStudents" className="labelA5">Enter Attend Students:</label>
-            <input type="text" id="attendStudents" name="attendStudents" placeholder="Students" required className="text1" onChange={(e) => setAttendStudents(e.target.value)} /><br /><br />
+            <input type="text" id="attendStudents" name="attendStudents" placeholder="Students" required className="text1" style={{marginLeft:'60px'}} onChange={(e) => setAttendStudents(e.target.value)} /><br /><br />
 
             <label htmlFor="freeCardAmount" className="labelA6">Enter Free Card Amount:</label>
-            <input type="text" id="freeCardAmount" name="freeCardAmount" placeholder="00.00" required className="text1" onChange={(e) => setFreeCardAmount(e.target.value)} /><br /><br />
+            <input type="text" id="freeCardAmount" name="freeCardAmount" placeholder="00.00" required className="text1" style={{marginLeft:'50px'}} onChange={(e) => setFreeCardAmount(e.target.value)} /><br /><br />
 
             <label htmlFor="institutePayment" className="labelA7">Enter Institute Payment:</label>
-            <input type="text" id="institutePayment" name="institutePayment" placeholder="00.00" required className="text1" onChange={(e) => setInstitutePayment(e.target.value)} /><br /><br />
+            <input type="text" id="institutePayment" name="institutePayment" placeholder="00.00" required className="text1" style={{marginLeft:'52px'}} onChange={(e) => setInstitutePayment(e.target.value)} /><br /><br />
 
-            <br /><br />
+            <br />
             <button type="button" name="calculate" className="buttonA7" onClick={calculateMonthlySalary}>
               Calculate
             </button>
             <br /><br />
 
             <label id="totalA" name="totalA" className="labelA8">Enter Monthly Salary :</label>
-            <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="text1" value={MonthlySalary} onChange={(e) => setMonthlySalary(e.target.value)} /><br /><br />
+            <input type="text" name="amount" placeholder="00.00" pattern="\d+(\.\d{2})?" required className="text1" value={MonthlySalary} style={{marginLeft:'70px'}} onChange={(e) => setMonthlySalary(e.target.value)} /><br /><br />
 
             <label htmlFor="date" className="labelA9">Enter Date:</label>
-            <input type="date" id="date" name="date" placeholder="(DD/MM/YY)" pattern="(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]|1[0-2])/\d{2}" required className="text1" onChange={(e) => setDate(e.target.value)} /><br /><br />
+            <input type="text" id="date" name="date" placeholder="(DD/MM/YY)" pattern="(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(0[1-9]|1[0-2])/\d{2}" required style={{marginLeft:'150px'}} className="text1" onChange={(e) => setDate(e.target.value)} /><br /><br />
 
             <label htmlFor="fileInput" className="labelA10">
               Upload Payment Files:
