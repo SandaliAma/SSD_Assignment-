@@ -55,5 +55,12 @@ Main File
 ```
 ## Authors
 
-- [@octokatherine](https://www.github.com/octokatherine)
+- [@Eshmika Hettiarachchi](https://github.com/Eshmika)
+- [@Tishan Perera](https://github.com/TishanPerera)
+- [@Ashan Gunathilaka](https://github.com/AshanGunathilaka)
+- [@Samudra W](https://github.com/SamudraW)
+- [@Kaveesha Nimanji](https://github.com/nimanjik)
+- [@EVenuja B](https://github.com/VenujaB)
+- [@Dinusanka Gayashan](https://github.com/Dinusanka)
+- [@Sasindu Diluranga](https://github.com/Wolferlk)
 
