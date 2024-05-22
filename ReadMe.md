@@ -53,6 +53,16 @@ Main File
 ```bash
   npm i concurrently
 ```
+Start the server
+
+```bash
+  npm run dev
+```
+
+## Documentation
+
+[Final Report](https://mysliit-my.sharepoint.com/:b:/g/personal/it22004390_my_sliit_lk/EUUtSldM0eJHnle3oDt_JbwB8sWs95ROkxjIZKtOkCFcOw?e=6ANSDc)
+
 ## Authors
 
 - [@Eshmika Hettiarachchi](https://github.com/Eshmika)
@@ -64,3 +74,8 @@ Main File
 - [@Dinusanka Gayashan](https://github.com/Dinusanka)
 - [@Sasindu Diluranga](https://github.com/Wolferlk)
 
+## Screenshots
+
+![Website Screenshot1](https://github.com/Eshmika/Royal_institute/blob/db779ac34ecfeebafa2ce0b09fb9113f07302dfe/Documentation/screenshot1.png)
+![Website Screenshot2](https://github.com/Eshmika/Royal_institute/blob/db779ac34ecfeebafa2ce0b09fb9113f07302dfe/Documentation/screenshot2.png)
+![Website Screenshot3](https://github.com/Eshmika/Royal_institute/blob/db779ac34ecfeebafa2ce0b09fb9113f07302dfe/Documentation/screenshot3.png)
