@@ -1,3 +1,15 @@
+Group ID: 96
+
+Group Members:
+- IT22341822 - K.M.H.G.S.A. KONARA - Y4.S1.WE.SE.0202
+- IT22322708 - B.S. BIMSARA - Y4.S1.WE.SE.0202
+- IT22328670 - C.M.S.R.D. MORAYES - Y4.S1.WE.SE.0202
+- IT22923288 - W.G.D.D. GAYASHAN - Y4.S1.WE.SE.0301
+
+Repository Links:
+- Original Project: https://github.com/Eshmika/Royal_institute.git
+- Modified Project: https://github.com/SandaliAma/SSD_Assignment-.git
+
 
 # SLIIT-Y2S2-ITPproject-Royal_institute
 
