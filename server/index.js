@@ -11,6 +11,32 @@ const BankModel = require('./models/BankPayments');
 const SalaryModel = require('./models/Salary');
 const PhotoModel = require('./models/ProfilePhoto');
 
+// ---------- security-headers (put near top of server/index.js) ----------
+const helmet = require('helmet');
+
+// disable X-Powered-By header (Express default)
+app.disable('x-powered-by');
+
+// Basic helmet usage
+app.use(helmet());
+
+// set explicit frameguard to deny embedding (prevent clickjacking)
+app.use(helmet.frameguard({ action: 'deny' }));
+
+// Content Security Policy - minimal example; adapt to your front-end host
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "script-src": ["'self'", "http://localhost:3000"],
+      "style-src": ["'self'", "http://localhost:3000", "'unsafe-inline'"],
+      "img-src": ["'self'", "data:", "http://localhost:3000"],
+      "object-src": ["'none'"],
+      "frame-ancestors": ["'none'"]
+    }
+  })
+);
+
 mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log('Database not connected', err));
