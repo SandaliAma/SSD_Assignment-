@@ -157,37 +157,24 @@ const loginStudent = async (req, res) => {
 const forgotPasswordstudent = async (req, res) => {
     try {
         const { username, SecAnswer, newPassword } = req.body;
-        if (!username) {
-            return res.json({ message: "Username is required" });
-        }
-        if (!SecAnswer) {
-            return res.json({ message: "Answer is required" });
-        }
-        if (!newPassword) {
-            return res.json({ message: "New Password is required" });
-        }
-        //check
-        const student = await Student.findOne({ username, SecAnswer });
-        //validation
-        if (!student) {
-            return res.json({
-            success: false,
-            message: "Wrong username Or security answer",
-          });
-        }
+        if (!username) return res.json({ message: "Username is required" });
+        if (!SecAnswer) return res.json({ message: "Answer is required" });
+        if (!newPassword) return res.json({ message: "New Password is required" });
+
+        const student = await Student.findOne({ username });
+        if (!student) return res.json({ success: false, message: "User not found" });
+
+        const match = await bcrypt.compare(SecAnswer, student.SecAnswer || "");
+        if (!match) return res.json({ success: false, message: "Wrong security answer" });
+
         const hashed = await hashPassword(newPassword);
-        await Student.findByIdAndUpdate(student._id, { password: hashed });
-        return res.json({
-          success: true,
-          message: "Password Reset Successfully",
-        });
+        student.password = hashed;
+        await student.save();
+
+        return res.json({ success: true, message: "Password Reset Successfully" });
       } catch (error) {
         console.log(error);
-        return res.json({
-          success: false,
-          message: "Something went wrong",
-          error,
-        });
+        return res.json({ success: false, message: "Something went wrong", error });
       }
 }
 

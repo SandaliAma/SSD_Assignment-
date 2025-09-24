@@ -6,6 +6,8 @@ import './Login.css';
 import loginimg from './photos/studentlogin.png';
 import logofull from './photos/logofull.png';
 
+const googleLogo = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png";
+
 function StudentRegister() {
   const navigate = useNavigate();
 
@@ -75,6 +77,11 @@ function StudentRegister() {
     }
   };
 
+// Handle Google Sign In
+  const handleGoogleSignup = () => {
+    window.open("http://localhost:5000/auth/google", "_self"); 
+  };
+
   return (
     <main>
       <div className="mainlogin">
@@ -84,6 +91,8 @@ function StudentRegister() {
         <div className="login">
           <img src={logofull} alt='loginimage' />
           <p className="wel">Welcome to Royal Academy</p>
+
+          {/* Manual Form */}
           <form onSubmit={registerStudent}>
             <div className="username">
               <label htmlFor="name" className="logintxt">FULL NAME</label><br/>
@@ -129,6 +138,23 @@ function StudentRegister() {
             <button type="submit" className='btnloging'> SIGN UP</button>
             <a href='/login'><p className="register">Already have an Account? <b>Log IN</b></p></a>
           </form>
+
+          {/* OR Divider */}
+          <div style={{ margin: "20px 0", textAlign: "center" }}>
+            <p>OR</p>
+          </div>
+
+          {/* Google OAuth Button */}
+          <div style={{ textAlign: "center" }}>
+            <button 
+              onClick={handleGoogleSignup} 
+              className="btnloging" 
+              style={{ backgroundColor: "white", color: "black", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}
+            >
+              <img src={googleLogo} alt="Google" style={{ width: "20px", height: "20px" }} />
+              Sign Up with Google
+            </button>
+          </div>
         </div>
       </div>
       

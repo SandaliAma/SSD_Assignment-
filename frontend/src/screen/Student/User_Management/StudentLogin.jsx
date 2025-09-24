@@ -51,6 +51,17 @@ function StudentLogin() {
             <button type="submit" className='btnloging'>LOGIN</button>
             <a href='/register'><p class="register">New Student? <b>REGISTER</b></p></a>
           </form>
+          <button 
+            onClick={() => window.location.href = `${process.env.REACT_APP_API_URL || ''}/studentdashboard`} 
+            className="btnloging" 
+            style={{ backgroundColor: '#ffff', color: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '10px' }}
+          >
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" 
+                 alt="Google Icon" 
+                 style={{ width: '20px', height: '20px' }} 
+            />
+            Sign in with Google
+          </button>
         </div>
       </div>
       

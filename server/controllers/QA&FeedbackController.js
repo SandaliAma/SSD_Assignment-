@@ -4,6 +4,9 @@ const SFeedbackModel = require('../models/servicefeedback');
 
 //-------------Student side question-------------------------------------
 //create question
+
+// vulnerability 8
+/*
 const createque = (req, res) => {
     QuestionModel.create(req.body)
     .then((data) =>{
@@ -12,7 +15,36 @@ const createque = (req, res) => {
     .catch((err) =>{
         res.json(err);
     })
-}
+}*/
+
+const { body, validationResult } = require('express-validator');
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
+
+//validation middleware
+const validateQuestion = [
+  body('title').trim().isLength({ min: 3 }).withMessage('Title too short'),
+  body('content').isString().isLength({ min: 1 }).withMessage('Content required')
+];
+
+const createque = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+  const { title, content, author } = req.body;
+  const safeContent = DOMPurify.sanitize(content);
+
+  try {
+    const created = await QuestionModel.create({ title, content: safeContent, author });
+    return res.status(201).json(created);
+  } catch (err) {
+    return res.status(500).json({ error: 'Server error' });
+  }
+};
+
+//module.exports = { createque, validateQuestion };
 
 //all questions
 const allque = (req, res) => {

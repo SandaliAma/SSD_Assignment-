@@ -6,6 +6,10 @@ const cookieParser = require('cookie-parser');
 const app = express();
 // const path = require('path');
 const multer = require('multer');
+const passport = require('passport');
+const session = require('express-session');
+require('./helpers/passport-setup'); 
+
 const UserModelLesson = require('./models/Lesson');
 const BankModel = require('./models/BankPayments');
 const SalaryModel = require('./models/Salary');
@@ -56,6 +60,15 @@ app.use("/files2", express.static("files2")); // Accessing files folder2
 app.use("/files3", express.static("files3")); // Accessing files folder3
 app.use("/ProfilePhotos", express.static("ProfilePhotos")); // Accessing files folder
 
+// Session & Passport
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your-session-secret',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Routes
 app.use('/', require('./routes/authRouters'));
 app.use('/', require('./routes/timetableRouter'));
@@ -70,6 +83,8 @@ app.use('/', require('./routes/attendanceRouters'));
 app.use('/', require('./routes/EnrollmentsRouter'));
 app.use('/', require('./routes/studentRoutes'))
 
+// Google OAuth Routes
+app.use('/', require('./routes/googleRouter'));
 // Setup Multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
