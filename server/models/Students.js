@@ -12,7 +12,7 @@ const studentSchema = new mongoose.Schema({
     parentname: {type: 'String', default: 'None'},
     parentphonenumber: {type: 'Number', default: 0},
     SecAnswer: {type: 'String', default: 'None'},
-
+    googleId: { type: 'String', unique: true, sparse: true },
 },{timestamps: true})
 
 const StudentModel = mongoose.model('student_details', studentSchema);

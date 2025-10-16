@@ -8,6 +8,10 @@ const redis = require('redis');
 const crypto = require('crypto');
 const multer = require('multer');
 
+const passport = require('passport');
+const session = require('express-session');
+require('./helpers/passport-setup'); 
+
 const UserModelLesson = require('./models/Lesson');
 const BankModel = require('./models/BankPayments');
 const SalaryModel = require('./models/Salary');
@@ -264,7 +268,16 @@ const uploadPhoto = createSecureStorage("./ProfilePhotos", [
   'image/webp'
 ], 5 * 1024 * 1024);
 
-// Import existing routes
+// Session & Passport
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your-session-secret',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
 app.use('/', require('./routes/authRouters'));
 app.use('/', require('./routes/timetableRouter'));
 app.use('/', require('./routes/InstituenoticeRouter'));
@@ -278,46 +291,48 @@ app.use('/', require('./routes/attendanceRouters'));
 app.use('/', require('./routes/EnrollmentsRouter'));
 app.use('/', require('./routes/studentRoutes'));
 
-// SECURED LESSON MATERIAL ROUTES
-app.post('/addmaterial', authenticateToken, authorizeRoles('teacher', 'admin'), uploadLesson.single('file'), async (req, res) => {
-  try {
-    if (!req.file) {
-      return res.status(400).json({ error: 'No file uploaded' });
-    }
+// Google OAuth Routes
+app.use('/', require('./routes/googleRouter'));
+// Setup Multer for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./files");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + file.originalname);
+  },
+});
 
-    const { filename } = req.file;
+// Initialize multer middleware
+const upload = multer({ storage: storage });
 
-    // Validate required fields
-    const requiredFields = ['lesson_topic', 'lesson_fileType', 'lesson_date', 'subject_name', 'grade'];
-    for (const field of requiredFields) {
-      if (!req.body[field]) {
-        return res.status(400).json({ error: `${field} is required` });
-      }
-    }
-
-    const lessonData = await UserModelLesson.create({
-      lesson_Files: filename,
-      lesson_topic: req.body.lesson_topic,
-      lesson_fileType: req.body.lesson_fileType,
-      lesson_date: req.body.lesson_date,
-      lesson_description: req.body.lesson_description,
-      subject_name: req.body.subject_name,
-      grade: req.body.grade,
-      teacher_id: req.user.userId, // Use authenticated user ID
-      teachername: req.body.teachername,
-      createdBy: req.user.userId,
-      createdAt: new Date()
-    });
-
-    res.status(201).json({
-      success: true,
-      data: lessonData,
-      message: 'Lesson material uploaded successfully'
-    });
-  } catch (error) {
-    console.error('Add material error:', error);
-    res.status(500).json({ error: 'Failed to upload lesson material' });
+// Route to handle file uploads for Lesson materials
+app.post('/addmaterial', upload.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
   }
+
+  const { filename } = req.file;
+
+  // Create a new material document in MongoDB
+  UserModelLesson.create({
+    lesson_Files: filename,
+    lesson_topic: req.body.lesson_topic,
+    lesson_fileType: req.body.lesson_fileType,
+    lesson_date: req.body.lesson_date,
+    lesson_description: req.body.lesson_description,
+    subject_name: req.body.subject_name,
+    grade: req.body.grade,
+    teacher_id: req.body.teacher_id,
+    teachername: req.body.teachername
+  })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: 'Internal server error' });
+    });
 });
 
 // Get all materials
