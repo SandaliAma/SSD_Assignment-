@@ -5,6 +5,13 @@ const Admin = require('../models/Admin');
 const Wallet = require('../models/Wallets');
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+
+// JWT Configuration - FIXED
+const JWT_SECRET = process.env.JWT_SECRET || process.env.JWT_ACCESS_SECRET || (() => {
+    console.warn('WARNING: JWT_SECRET not found in environment variables, generating temporary secret');
+    return crypto.randomBytes(64).toString('hex');
+})();
 
 const test = (req, res) => {
     res.json('test is working')
@@ -13,7 +20,7 @@ const test = (req, res) => {
 //Register a student
 const registerStudent = async(req, res) => {
     try {
-        const { name, email, contactnumber, grade, username, stdid, password,walletid } = req.body;
+        const { name, email, contactnumber, grade, username, stdid, password, walletid } = req.body;
 
         if(!name){
             return res.json({
@@ -43,13 +50,13 @@ const registerStudent = async(req, res) => {
             return res.json({
                 error: 'Username is required'
             })
-        };  
-        
-        if(!stdid || stdid.length < 9 || stdid.length > 9){
+        };
+
+        if(!stdid || stdid.length !== 9){
             return res.json({
-                error: 'Student id is required and should be minimum 8 characters long'
+                error: 'Student id is required and should be exactly 9 characters long'
             })
-        }; 
+        };
 
         if(!password || password.length < 6){
             return res.json({
@@ -104,27 +111,28 @@ const registerStudent = async(req, res) => {
 
     } catch (error) {
         console.log(error);
+        res.status(500).json({ error: 'Registration failed' });
     }
 }
-    
-//Login a student
+
+//Login a student - FIXED
 const loginStudent = async (req, res) => {
     try {
         const { username, password } = req.body;
-
-        const student = await Student.findOne({username});
 
         if(!username){
             return res.json({
                 error: 'Username is required'
             })
-        }; 
+        };
 
         if(!password){
             return res.json({
                 error: 'Password is required'
             })
         };
+
+        const student = await Student.findOne({username});
 
         if(!student){
             return res.json({
@@ -135,25 +143,39 @@ const loginStudent = async (req, res) => {
         const match = await comparePassword(password, student.password);
 
         if(match){
+            // FIXED: Using the defined JWT_SECRET constant
             jwt.sign({
-                id: student._id
-            }, process.env.JWT_SECRET, {expiresIn: '1d'}, (err, token) => {
-                if(err) throw err;
-                res.cookie('token', token).json(student)
-            })                
-           
-        }
-        if(!match){
+                id: student._id,
+                username: student.username,
+                role: 'student',
+                stdid: student.stdid
+            }, JWT_SECRET, {expiresIn: '1d'}, (err, token) => {
+                if(err) {
+                    console.error('JWT Sign Error:', err);
+                    return res.status(500).json({ error: 'Token generation failed' });
+                }
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === 'production',
+                    sameSite: 'strict'
+                }).json({
+                    success: true,
+                    student,
+                    message: 'Login successful'
+                });
+            });
+        } else {
             res.json({
-                error: 'Password is incorrect'            
-            })
+                error: 'Password is incorrect'
+            });
         }
     } catch (error) {
-        console.log(error);
+        console.log('Login error:', error);
+        res.status(500).json({ error: 'Login failed' });
     }
 }
 
-//froget password student
+//forgot password student
 const forgotPasswordstudent = async (req, res) => {
     try {
         const { username, SecAnswer, newPassword } = req.body;
@@ -171,63 +193,68 @@ const forgotPasswordstudent = async (req, res) => {
         //validation
         if (!student) {
             return res.json({
-            success: false,
-            message: "Wrong username Or security answer",
-          });
+                success: false,
+                message: "Wrong username Or security answer",
+            });
         }
         const hashed = await hashPassword(newPassword);
         await Student.findByIdAndUpdate(student._id, { password: hashed });
         return res.json({
-          success: true,
-          message: "Password Reset Successfully",
+            success: true,
+            message: "Password Reset Successfully",
         });
-      } catch (error) {
+    } catch (error) {
         console.log(error);
         return res.json({
-          success: false,
-          message: "Something went wrong",
-          error,
+            success: false,
+            message: "Something went wrong",
+            error,
         });
-      }
+    }
 }
 
-//view profile student
+//view profile student - FIXED
 const getProfile = async (req, res) =>{
     const { token } = req.cookies;
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, (err, student)=>{
-            if(err) throw err;
+        jwt.verify(token, JWT_SECRET, {}, (err, student)=>{
+            if(err) {
+                console.error('JWT Verify Error:', err);
+                return res.status(403).json({ error: 'Invalid token' });
+            }
             Student.findById({_id:student.id})
-            .then(student => res.json(student))
-            .catch(err => res.json(err));
+                .then(student => res.json(student))
+                .catch(err => res.status(500).json({ error: 'Profile fetch failed' }));
         })
     }else{
         res.json(null);
-    }        
+    }
 }
 
 //view profile student by id
 const getProfileid = (req, res) => {
     const id = req.params.id;
     Student.findOne({stdid:id})
-    .then(id => res.json(id))
-    .catch(err => res.json(err));
+        .then(id => res.json(id))
+        .catch(err => res.status(500).json({ error: 'Profile fetch failed' }));
 }
 
-//update get profile student
+//update get profile student - FIXED
 const getupdateProfile = (req, res) =>{
-
     const { token } = req.cookies;
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, (err, student)=>{
-            if(err) throw err;
+        jwt.verify(token, JWT_SECRET, {}, (err, student)=>{
+            if(err) {
+                console.error('JWT Verify Error:', err);
+                return res.status(403).json({ error: 'Invalid token' });
+            }
             Student.findById({_id:student.id})
-            .then(student => res.json(student))
-            .catch(err => res.json(err));
+                .then(student => res.json(student))
+                .catch(err => res.status(500).json({ error: 'Profile fetch failed' }));
         })
     }else{
         res.json(null);
-    }       
+    }
 }
 
 //update profile student by id
@@ -243,20 +270,21 @@ const updateProfileid = (req, res) => {
         parentphonenumber: req.body.parentphonenumber,
         SecAnswer: req.body.secanswer
     })
-    .then(student => res.json(student))
-    .catch(err => res.json(err));
+        .then(student => res.json(student))
+        .catch(err => res.status(500).json({ error: 'Update failed' }));
 }
 
-//update profile student
+//update profile student - FIXED
 const updateProfile = async(req, res) =>{
+    const { token } = req.cookies;
 
-    const { token } = req.cookies;  
-    
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, async (err, student)=>{
-            if(err) throw err;            
-            
-            // const hashedPassword = await hashPassword(pass);
+        jwt.verify(token, JWT_SECRET, {}, async (err, student)=>{
+            if(err) {
+                console.error('JWT Verify Error:', err);
+                return res.status(403).json({ error: 'Invalid token' });
+            }
+
             Student.findByIdAndUpdate({_id:student.id},{
                 name: req.body.name,
                 email: req.body.email,
@@ -267,13 +295,13 @@ const updateProfile = async(req, res) =>{
                 parentphonenumber: req.body.parentphonenumber,
                 SecAnswer: req.body.secanswer
             })
-            .then(student => res.json(student))
-            .catch(err => res.json(err));
+                .then(student => res.json(student))
+                .catch(err => res.status(500).json({ error: 'Update failed' }));
         })
     }else{
         res.json(null);
-    }  
-}    
+    }
+}
 
 //logout
 const logout = (req, res) => {
@@ -286,8 +314,8 @@ const logout = (req, res) => {
 const getteacherProfileid = (req, res) => {
     const id = req.params.id;
     Teacher.findOne({teid:id})
-    .then(id => res.json(id))
-    .catch(err => res.json(err));
+        .then(id => res.json(id))
+        .catch(err => res.status(500).json({ error: 'Profile fetch failed' }));
 }
 
 //update profile teacher by id
@@ -299,11 +327,11 @@ const updateteacherProfileid = (req, res) => {
         gender: req.body.gender,
         contactnumber: req.body.contactnumber,
         username: req.body.username,
-        subject: req.body.subject,                
+        subject: req.body.subject,
         SecAnswer: req.body.SecAnswer
     })
-    .then(student => res.json(student))
-    .catch(err => res.json(err));
+        .then(student => res.json(student))
+        .catch(err => res.status(500).json({ error: 'Update failed' }));
 }
 
 //Register a teacher
@@ -315,8 +343,8 @@ const registerTeacher = async(req, res) => {
             return res.json({
                 error: 'Name is required'
             })
-        };   
-        
+        };
+
         if(!email){
             return res.json({
                 error: 'Email is required'
@@ -389,7 +417,7 @@ const registerTeacher = async(req, res) => {
             username,
             teid,
             password: hashedPassword,
-            gender,           
+            gender,
             subject,
             SecAnswer
         });
@@ -400,27 +428,28 @@ const registerTeacher = async(req, res) => {
 
     } catch (error) {
         console.log(error);
+        res.status(500).json({ error: 'Registration failed' });
     }
-}    
+}
 
-//Login a teacher
+//Login a teacher - FIXED
 const loginTeacher = async (req, res) => {
     try {
         const { username, password } = req.body;
-
-        const teacher = await Teacher.findOne({username});
 
         if(!username){
             return res.json({
                 error: 'Username is required'
             })
-        }; 
+        };
 
         if(!password){
             return res.json({
                 error: 'Password is required'
             })
         };
+
+        const teacher = await Teacher.findOne({username});
 
         if(!teacher){
             return res.json({
@@ -432,24 +461,37 @@ const loginTeacher = async (req, res) => {
 
         if(match){
             jwt.sign({
-                id: teacher._id                
-            }, process.env.JWT_SECRET, {expiresIn: '1d'}, (err, token) => {
-                if(err) throw err;
-                res.cookie('token', token).json(teacher)
-            })                
-           
-        }
-        if(!match){
+                id: teacher._id,
+                username: teacher.username,
+                role: 'teacher',
+                teid: teacher.teid
+            }, JWT_SECRET, {expiresIn: '1d'}, (err, token) => {
+                if(err) {
+                    console.error('JWT Sign Error:', err);
+                    return res.status(500).json({ error: 'Token generation failed' });
+                }
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === 'production',
+                    sameSite: 'strict'
+                }).json({
+                    success: true,
+                    teacher,
+                    message: 'Login successful'
+                });
+            });
+        } else {
             res.json({
-                error: 'Password is incorrect'            
-            })
+                error: 'Password is incorrect'
+            });
         }
     } catch (error) {
-        console.log(error);
+        console.log('Login error:', error);
+        res.status(500).json({ error: 'Login failed' });
     }
 }
 
-//froget password teacher
+//forgot password teacher
 const forgotPasswordteacher = async (req, res) => {
     try {
         const { username, SecAnswer, newPassword } = req.body;
@@ -467,91 +509,96 @@ const forgotPasswordteacher = async (req, res) => {
         //validation
         if (!teacher) {
             return res.json({
-            success: false,
-            message: "Wrong username Or security answer",
-          });
+                success: false,
+                message: "Wrong username Or security answer",
+            });
         }
         const hashed = await hashPassword(newPassword);
         await Teacher.findByIdAndUpdate(teacher._id, { password: hashed });
         return res.json({
-          success: true,
-          message: "Password Reset Successfully",
+            success: true,
+            message: "Password Reset Successfully",
         });
-      } catch (error) {
+    } catch (error) {
         console.log(error);
         return res.json({
-          success: false,
-          message: "Something went wrong",
-          error,
+            success: false,
+            message: "Something went wrong",
+            error,
         });
-      }
-}    
+    }
+}
 
-//view profile teacher
+//view profile teacher - FIXED
 const getTeacherProfile = async (req, res) =>{
     const { token } = req.cookies;
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, (err, teacher)=>{
-            if(err) throw err;
+        jwt.verify(token, JWT_SECRET, {}, (err, teacher)=>{
+            if(err) {
+                console.error('JWT Verify Error:', err);
+                return res.status(403).json({ error: 'Invalid token' });
+            }
             Teacher.findById({_id:teacher.id})
-            .then(teacher => res.json(teacher))
-            .catch(err => res.json(err));
+                .then(teacher => res.json(teacher))
+                .catch(err => res.status(500).json({ error: 'Profile fetch failed' }));
         })
     }else{
         res.json(null);
-    }        
+    }
 }
 
 //view all profile teacher
 const getTeacherall = async (req, res) =>{
     Teacher.find()
-    .then(teacher => res.json(teacher))
-    .catch(err => res.json(err));
-     
+        .then(teacher => res.json(teacher))
+        .catch(err => res.status(500).json({ error: 'Failed to fetch teachers' }));
 }
 
-//update get profile teacher
+//update get profile teacher - FIXED
 const getteacherupdateProfile = (req, res) =>{
-
     const { token } = req.cookies;
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, (err, teacher)=>{
-            if(err) throw err;
+        jwt.verify(token, JWT_SECRET, {}, (err, teacher)=>{
+            if(err) {
+                console.error('JWT Verify Error:', err);
+                return res.status(403).json({ error: 'Invalid token' });
+            }
             Teacher.findById({_id:teacher.id})
-            .then(teacher => res.json(teacher))
-            .catch(err => res.json(err));
+                .then(teacher => res.json(teacher))
+                .catch(err => res.status(500).json({ error: 'Profile fetch failed' }));
         })
     }else{
         res.json(null);
-    }       
+    }
 }
 
-//update profile teacher
+//update profile teacher - FIXED
 const updateteacherProfile = async(req, res) =>{
+    const { token } = req.cookies;
 
-    const { token } = req.cookies;  
-    
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, async (err, teacher)=>{
-            if(err) throw err;            
-            
-            // const hashedPassword = await hashPassword(pass);
+        jwt.verify(token, JWT_SECRET, {}, async (err, teacher)=>{
+            if(err) {
+                console.error('JWT Verify Error:', err);
+                return res.status(403).json({ error: 'Invalid token' });
+            }
+
             Teacher.findByIdAndUpdate({_id:teacher.id},{
                 name: req.body.name,
                 email: req.body.email,
                 gender: req.body.gender,
                 contactnumber: req.body.contactnumber,
                 username: req.body.username,
-                subject: req.body.subject,                
+                subject: req.body.subject,
                 SecAnswer: req.body.SecAnswer
             })
-            .then(teacher => res.json(teacher))
-            .catch(err => res.json(err));
+                .then(teacher => res.json(teacher))
+                .catch(err => res.status(500).json({ error: 'Update failed' }));
         })
     }else{
         res.json(null);
-    }  
-}   
+    }
+}
 
 //Register a manager
 const registerManager = async(req, res) => {
@@ -580,13 +627,13 @@ const registerManager = async(req, res) => {
             return res.json({
                 error: 'Username is required'
             })
-        };      
-        
+        };
+
         if(!SecAnswer){
             return res.json({
                 error: 'Security answer is required'
             })
-        };    
+        };
 
         if(!password || password.length < 6){
             return res.json({
@@ -625,27 +672,28 @@ const registerManager = async(req, res) => {
 
     } catch (error) {
         console.log(error);
+        res.status(500).json({ error: 'Registration failed' });
     }
 }
 
-//Login a manager
+//Login a manager - FIXED
 const loginManager = async (req, res) => {
     try {
         const { username, password } = req.body;
-
-        const manager = await Manager.findOne({username});
 
         if(!username){
             return res.json({
                 error: 'Username is required'
             })
-        }; 
+        };
 
         if(!password){
             return res.json({
                 error: 'Password is required'
             })
         };
+
+        const manager = await Manager.findOne({username});
 
         if(!manager){
             return res.json({
@@ -657,24 +705,36 @@ const loginManager = async (req, res) => {
 
         if(match){
             jwt.sign({
-                id: manager._id
-            }, process.env.JWT_SECRET, {expiresIn: '1d'}, (err, token) => {
-                if(err) throw err;
-                res.cookie('token', token).json(manager)
-            })                
-           
-        }
-        if(!match){
+                id: manager._id,
+                username: manager.username,
+                role: 'manager'
+            }, JWT_SECRET, {expiresIn: '1d'}, (err, token) => {
+                if(err) {
+                    console.error('JWT Sign Error:', err);
+                    return res.status(500).json({ error: 'Token generation failed' });
+                }
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === 'production',
+                    sameSite: 'strict'
+                }).json({
+                    success: true,
+                    manager,
+                    message: 'Login successful'
+                });
+            });
+        } else {
             res.json({
-                error: 'Password is incorrect'            
-            })
+                error: 'Password is incorrect'
+            });
         }
     } catch (error) {
-        console.log(error);
+        console.log('Login error:', error);
+        res.status(500).json({ error: 'Login failed' });
     }
 }
 
-//froget password manager
+//forgot password manager
 const forgotPasswordmanager = async (req, res) => {
     try {
         const { username, SecAnswer, newPassword } = req.body;
@@ -692,39 +752,42 @@ const forgotPasswordmanager = async (req, res) => {
         //validation
         if (!manager) {
             return res.json({
-            success: false,
-            message: "Wrong username Or security answer",
-          });
+                success: false,
+                message: "Wrong username Or security answer",
+            });
         }
         const hashed = await hashPassword(newPassword);
         await Manager.findByIdAndUpdate(manager._id, { password: hashed });
         return res.json({
-          success: true,
-          message: "Password Reset Successfully",
+            success: true,
+            message: "Password Reset Successfully",
         });
-      } catch (error) {
+    } catch (error) {
         console.log(error);
         return res.json({
-          success: false,
-          message: "Something went wrong",
-          error,
+            success: false,
+            message: "Something went wrong",
+            error,
         });
-      }
+    }
 }
 
-//view profile manager
+//view profile manager - FIXED
 const getManagerProfile = async (req, res) =>{
     const { token } = req.cookies;
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, (err, manager)=>{
-            if(err) throw err;
+        jwt.verify(token, JWT_SECRET, {}, (err, manager)=>{
+            if(err) {
+                console.error('JWT Verify Error:', err);
+                return res.status(403).json({ error: 'Invalid token' });
+            }
             Manager.findById({_id:manager.id})
-            .then(manager => res.json(manager))
-            .catch(err => res.json(err));
+                .then(manager => res.json(manager))
+                .catch(err => res.status(500).json({ error: 'Profile fetch failed' }));
         })
     }else{
         res.json(null);
-    }        
+    }
 }
 
 //Register a admin
@@ -754,13 +817,13 @@ const registerAdmin = async(req, res) => {
             return res.json({
                 error: 'Username is required'
             })
-        };      
-        
+        };
+
         if(!SecAnswer){
             return res.json({
                 error: 'Security answer is required'
             })
-        };    
+        };
 
         if(!password || password.length < 6){
             return res.json({
@@ -799,27 +862,28 @@ const registerAdmin = async(req, res) => {
 
     } catch (error) {
         console.log(error);
+        res.status(500).json({ error: 'Registration failed' });
     }
 }
 
-//Login a admin
+//Login a admin - FIXED
 const loginAdmin = async (req, res) => {
     try {
         const { username, password } = req.body;
-
-        const admin = await Admin.findOne({username});
 
         if(!username){
             return res.json({
                 error: 'Username is required'
             })
-        }; 
+        };
 
         if(!password){
             return res.json({
                 error: 'Password is required'
             })
         };
+
+        const admin = await Admin.findOne({username});
 
         if(!admin){
             return res.json({
@@ -831,24 +895,36 @@ const loginAdmin = async (req, res) => {
 
         if(match){
             jwt.sign({
-                id: admin._id
-            }, process.env.JWT_SECRET, {expiresIn: '1d'}, (err, token) => {
-                if(err) throw err;
-                res.cookie('token', token).json(admin)
-            })                
-           
-        }
-        if(!match){
+                id: admin._id,
+                username: admin.username,
+                role: 'admin'
+            }, JWT_SECRET, {expiresIn: '1d'}, (err, token) => {
+                if(err) {
+                    console.error('JWT Sign Error:', err);
+                    return res.status(500).json({ error: 'Token generation failed' });
+                }
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === 'production',
+                    sameSite: 'strict'
+                }).json({
+                    success: true,
+                    admin,
+                    message: 'Login successful'
+                });
+            });
+        } else {
             res.json({
-                error: 'Password is incorrect'            
-            })
+                error: 'Password is incorrect'
+            });
         }
     } catch (error) {
-        console.log(error);
+        console.log('Login error:', error);
+        res.status(500).json({ error: 'Login failed' });
     }
 }
 
-//froget password admin
+//forgot password admin
 const forgotPasswordadmin = async (req, res) => {
     try {
         const { username, SecAnswer, newPassword } = req.body;
@@ -866,69 +942,72 @@ const forgotPasswordadmin = async (req, res) => {
         //validation
         if (!admin) {
             return res.json({
-            success: false,
-            message: "Wrong username Or security answer",
-          });
+                success: false,
+                message: "Wrong username Or security answer",
+            });
         }
         const hashed = await hashPassword(newPassword);
         await Admin.findByIdAndUpdate(admin._id, { password: hashed });
         return res.json({
-          success: true,
-          message: "Password Reset Successfully",
+            success: true,
+            message: "Password Reset Successfully",
         });
-      } catch (error) {
+    } catch (error) {
         console.log(error);
         return res.json({
-          success: false,
-          message: "Something went wrong",
-          error,
+            success: false,
+            message: "Something went wrong",
+            error,
         });
-      }
+    }
 }
 
-//view profile manager
+//view profile admin - FIXED
 const getAdminProfile = async (req, res) =>{
     const { token } = req.cookies;
     if(token){
-        jwt.verify(token, process.env.JWT_SECRET, {}, (err, admin)=>{
-            if(err) throw err;
+        jwt.verify(token, JWT_SECRET, {}, (err, admin)=>{
+            if(err) {
+                console.error('JWT Verify Error:', err);
+                return res.status(403).json({ error: 'Invalid token' });
+            }
             Admin.findById({_id:admin.id})
-            .then(admin => res.json(admin))
-            .catch(err => res.json(err));
+                .then(admin => res.json(admin))
+                .catch(err => res.status(500).json({ error: 'Profile fetch failed' }));
         })
     }else{
         res.json(null);
-    }        
+    }
 }
 
 //view all students
 const getallStudent = async (req, res) =>{
     Student.find()
-    .then(student => res.json(student))
-    .catch(err => res.json(err));
+        .then(student => res.json(student))
+        .catch(err => res.status(500).json({ error: 'Failed to fetch students' }));
 }
 
 //view all teachers
 const getallTeacher = async (req, res) =>{
     Teacher.find()
-    .then(teacher => res.json(teacher))
-    .catch(err => res.json(err));
+        .then(teacher => res.json(teacher))
+        .catch(err => res.status(500).json({ error: 'Failed to fetch teachers' }));
 }
 
 //delete a student
 const deleteStudent = async (req, res) =>{
     const id = req.params.id;
     Student.findByIdAndDelete(id)
-    .then(student => res.json(student))
-    .catch(err => res.json(err));
+        .then(student => res.json({ message: 'Student deleted successfully', student }))
+        .catch(err => res.status(500).json({ error: 'Delete failed' }));
 }
 
 //delete a teacher
 const deleteTeacher = async (req, res) =>{
     const id = req.params.id;
     Teacher.findByIdAndDelete(id)
-    .then(teacher => res.json(teacher))
-    .catch(err => res.json(err));
+        .then(teacher => res.json({ message: 'Teacher deleted successfully', teacher }))
+        .catch(err => res.status(500).json({ error: 'Delete failed' }));
 }
 
 module.exports = {
@@ -939,16 +1018,17 @@ module.exports = {
     getProfile,
     getProfileid,
     getupdateProfile,
-    updateProfile,
     updateProfileid,
+    updateProfile,
+    logout,
+    getteacherProfileid,
+    updateteacherProfileid,
     registerTeacher,
     loginTeacher,
     forgotPasswordteacher,
     getTeacherProfile,
     getTeacherall,
     getteacherupdateProfile,
-    getteacherProfileid,
-    updateteacherProfileid,
     updateteacherProfile,
     registerManager,
     loginManager,
@@ -961,6 +1041,5 @@ module.exports = {
     getallStudent,
     getallTeacher,
     deleteStudent,
-    deleteTeacher,
-    logout
+    deleteTeacher
 }
